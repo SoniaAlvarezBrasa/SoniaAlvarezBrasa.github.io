@@ -51,3 +51,45 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+@import "_sugar/_vendors/normalize";
+@import "_saltw/_theme/family";
+// @import "cliente/_theme/fonts";
+@import "_sugar/_vendors/animate";
+
+
+@import "_sugar/_base/_base";
+
+
+@import "_sugar/_utils/z-index";
+@import "_sugar/_utils/funciones";
+
+
+@import "_saltw/_theme/medidas";
+
+
+@import "_saltw/_theme/colores";
+
+
+// @import "cliente/_theme/shadows";
+
+
+@import "_saltw/_theme/tipografia";
+
+
+@import "_sugar/_utils/utils";
+@import "_sugar/_components/components";
+
+
+// @import "cliente/views/web/legal";
+// @import "cliente/views/comunes";
+// @import "cliente/views/web/index";
+// @import "cliente/views/contactos/contactos-new";
+
+
+@import "_saltw/_layout/header";
+// @import "cliente/_layout/footer";
+// @import "cliente/_layout/mapa";
+
+// @import "cliente/_theme/admin";
+@import "_saltw/_theme/tema";

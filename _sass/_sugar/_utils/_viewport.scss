@@ -1,0 +1,256 @@
+// =============================================>>>>>
+// = TAMAÑOS SEGUN LA VISTA EN PANTALLA =
+// =============================================>>>>>
+
+// mixin de wadim
+// https://github.com/wadim/responsive-font-size
+
+@mixin rwd-font-size($min-font-size, $max-font-size, $min-screen-width, $max-screen-width, $font-size-step: 0.1rem) {
+
+    font-size: $max-font-size;
+    @media all and (max-width: $min-screen-width) {
+        font-size: $min-font-size;
+    }
+
+    @if $font-size-step <= 0 {
+        @warn "Argumento rwd-font-size: font-size-step debe ser mayor que 0";
+    }
+    @else {
+        $min-scale-factor: $min-font-size / $min-screen-width / 1rem * 1pt;
+        $max-scale-factor: $max-font-size / $max-screen-width / 1rem * 1pt;
+
+        $screen-width: round($max-screen-width);
+        $font-size: $max-font-size;
+
+        @while $screen-width >= $min-screen-width {
+
+            $progress: ($screen-width - $min-screen-width) / ($max-screen-width - $min-screen-width);
+            $scale-factor: $min-scale-factor + $progress * ($max-scale-factor - $min-scale-factor);
+
+            $font-size: $screen-width * $scale-factor / 1pt * 1rem;
+
+            @media all and (max-width: $screen-width) {
+                font-size: $font-size;
+            }
+
+            $screen-width-step: $font-size-step / $scale-factor / 1rem * 1pt;
+            // modificado el valor de 1pt a 0.06em
+            // por: Incompatible units: 'pt' and 'em'.
+            // al dar los argumentos max-screen y min-screen en em's
+
+            // @if $screen-width-step < 1pt{
+            //     $screen-width-step: 1pt;
+            // }
+            @if $screen-width-step < 0.06rem{
+                $screen-width-step: 0.06rem;
+            }
+            $screen-width: round($screen-width - $screen-width-step);
+        }
+    }
+}
+
+// https://gist.github.com/topaxi/ec94efe135d893e4c5962b8f4c8a72d0
+@function strip-units($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin responsive-font-size($min-size, $max-size, $min-break, $max-break) {
+  font-size: calc(
+    #{$min-size} + #{strip-units($max-size - $min-size)} *
+    ((100vw - #{$min-break}) / #{strip-units($max-break - $min-break)})
+  );
+
+  @media all and (max-width: $min-break) {
+    & {
+      font-size: $min-size;
+    }
+  }
+
+  @media all and (min-width: $max-break) {
+    & {
+      font-size: $max-size;
+    }
+  }
+}
+
+// Adaptación del mixin adaptativo anterior
+// 35rem = 50% , 63rem = 90%
+// @include rwd-width-content (35rem, 63rem, 10rem, 70rem);
+
+@mixin rwd-width-content ($min-width: 50rem, $max-width: 90rem, $min-screen-width: 10rem, $max-screen-width: 100rem, $width-step: 1rem) {
+
+    width: $min-width;
+    @media all and (max-width: $min-screen-width) {
+        width: $min-width;
+    }
+
+    @if $width-step <= 0 {
+        @warn "Argumento rwd-width: width-step debe ser mayor que 0";
+    }
+    @else {
+        $min-scale-factor: $max-width / $max-screen-width / 1rem * 1pt;
+        $max-scale-factor: $min-width / $max-screen-width / 1rem * 1pt;
+
+        $screen-width: round($max-screen-width);
+        $width: $max-width;
+
+        @while $screen-width >= $min-screen-width {
+
+            $progress: ($screen-width - $min-screen-width) / ($max-screen-width - $min-screen-width);
+            $scale-factor: $min-scale-factor + $progress * ($max-scale-factor - $min-scale-factor);
+
+            $width: $screen-width * $scale-factor / 1pt * 1rem;
+
+            @media all and (max-width: $screen-width) {
+                width: $width;
+            }
+
+            $screen-width-step: $width-step / $scale-factor / 1rem * 1pt;
+
+            @if $screen-width-step < 1rem{
+                $screen-width-step: 1rem;
+            }
+            $screen-width: round($screen-width - $screen-width-step);
+        }
+    }
+}
+
+// Cuando queremos al contenedor centrado en todo momento
+// aumenta el margin según el vw
+@mixin rwd-width {
+    @for $i from 10 through 25 {
+        @if(bol-es-multiplo10($i)){
+            @include desde-hasta(($i*1em), (($i+10)*1em)){
+                width: calc(100vw - #{$i}*0.0625em);
+                margin: auto;
+            }
+        }
+    }
+    @for $i from 25 through 200 {
+        @if(bol-es-multiplo10($i)){
+            @include desde-hasta(($i*1em), (($i+10)*1em)){
+                width: calc(100vw - #{$i}*0.25em);
+                margin: auto;
+            }
+        }
+    }
+}
+// http://niklaspostulart.de/2015/10/sass-responsive-type-mixin
+// Strip Unit from Value
+//
+// @access public
+// @example
+//   strip-unit(1px)
+//   // 1
+//   strip-unit(20rem)
+//   // 20
+// @group helpers
+// @param {Number} $n - Value to Strip Unit from
+// @return {Number}
+@function strip-unit($n) {
+  @return $n / ($n * 0 + 1);
+}
+
+// Convert px to rem
+//
+// @access public
+// @example
+//   pxtorem(16px)
+//   // 1rem
+//   pxtorem(20px, 10px)
+//   // 2rem
+// @group helpers
+// @param {Number} $n - px Value to Convert to rem
+// @return {Number}
+@function pxtorem($n, $root: 16px) {
+  @return (strip-unit($n) / strip-unit($root)) * 1rem;
+}
+
+// Responsive Typography
+//
+// Creates a responsive font-size between given view sizes.
+// Values can be set in px or rem
+//
+// Works on all modern browsers (IE9+).
+//
+// @access public
+// @example
+//   body {
+//     @include font-responsive();
+//   }
+//
+//   // Output
+//   body {
+//     font-size: calc(12px + 9 * ((100vw - 420px) / 860));
+//   }
+//   @media only screen and (max-width: 420px) {
+//     body {
+//       font-size: 12px;
+//     }
+//   }
+//   @media only screen and (min-width: 1280px) {
+//     body {
+//       font-size: 21px;
+//     }
+//   }
+//
+//   body {
+//     @include font-responsive(1rem, 2.5rem, 25rem, 75rem);
+//   }
+//
+//   // Output
+//   body {
+//     font-size: calc(1rem + 1.5 * ((100vw - 25rem) / 50));
+//   }
+//   @media only screen and (max-width: 25rem) {
+//     body {
+//       font-size: 1rem;
+//     }
+//   }
+//   @media only screen and (min-width: 75rem) {
+//     body {
+//       font-size: 2.5rem;
+//     }
+//   }
+//
+// @group typography
+// @require {function} strip-unit
+// @require {function} pxtorem
+// @param {Number} $min-size [12px] - Minimum Font Size (can be px or rem)
+// @param {Number} $max-size [21px] - Maximum Font Size (can be px or rem)
+// @param {Number} $min-width [420px] - Maximum Screen Width to use Minimum Font Size (can be px or rem)
+// @param {Number} $max-width [1280px] - Maximum Screen Width to use Maximum Font Size (can be px or rem)
+// @param {Number} $root-size [16px] - Basic Font Size (px)
+@mixin font-responsive($min-size: 12px, $max-size: 21px, $min-width: 420px, $max-width: 1600px, $root-size: 16px) {
+  $size-unit: unit($min-size);
+  $max-size-unit: unit($max-size);
+  $width-unit: unit($min-width);
+  $max-width-unit: unit($max-width);
+
+  @if (($size-unit != $max-size-unit) or ($width-unit != $max-width-unit)) {
+    @error 'min/max unit types must match';
+  }
+
+  @if ($size-unit == rem and $width-unit == px) {
+    $min-width: pxtorem($min-width, $root-size);
+    $max-width: pxtorem($max-width, $root-size);
+  } @elseif ($size-unit != $width-unit and
+            ($size-unit != rem or $width-unit != em)) {
+    @error 'this combination of units is not supported';
+  }
+
+  $size-diff: strip-unit($max-size) - strip-unit($min-size);
+  $width-diff: strip-unit($max-width) - strip-unit($min-width);
+
+  $calculated: "#{$min-size} + #{$size-diff} * ((100vw - #{$min-width}) / #{$width-diff})";
+
+  font-size: calc(#{unquote($calculated)});
+
+  @media only screen and (max-width: $min-width) {
+    font-size: $min-size;
+  }
+
+  @media only screen and (min-width: $max-width) {
+    font-size: $max-size;
+  }
+}

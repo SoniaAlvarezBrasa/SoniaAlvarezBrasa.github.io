@@ -1,0 +1,1851 @@
+//======================================================>>>>>
+// == Section Hover.css http://ianlunn.github.io/Hover == //
+// =====================================================>>>>>
+
+// ------------------------------------ //
+// ---------- Speech Bubbles ---------- //
+// (Completo)
+
+@mixin hoverCss-capirote-base (
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item
+    ) {
+
+    #{$selector},
+    .#{$selector} {
+        position: relative;
+        border: 1px solid $bg;
+
+        // Forzar nivel block para hacer el item transformable
+    	// display: inline-block;
+    	// vertical-align: middle;
+
+        // Habilitar la aceleración de hardware en androids
+        -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+
+        // AntiAlias
+        // Evitar la linea alrededor
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+        &:before {
+            position: absolute;
+            content: ' ';
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            -webkit-transition: -webkit-transform $ss;
+            transition: -webkit-transform $ss;
+            transition: transform $ss;
+            transition: transform $ss, -webkit-transform $ss;
+        }
+    }
+}
+
+@mixin hoverCss-capirote-top (
+    $w: $padding,
+    $h: $padding,
+    $left: 50%,
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 1
+){
+    @include hoverCss-capirote-base($bg, $selector, $ss);
+
+    #{$selector},
+    .#{$selector} {
+        background: $bg;
+        z-index: $z;
+
+        &:before {
+            top: 0;
+            left: calc(#{$left} - #{$w});
+            border-style: solid;
+            border-width: 0 $w $h $w;
+            border-color: transparent transparent $bg transparent;
+            z-index: -1;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: translateY(-($h));
+                    transform: translateY(-($h));
+        }
+    }
+}
+
+@mixin hoverCss-capirote-float-top (
+    $w: $padding,
+    $h: $padding,
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 1
+){
+    $cap:(
+        w: $w,
+        h: $h,
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        z: $z
+    );
+    @include hoverCss-capirote-top($cap...);
+
+    &:hover, &:focus, &:target {
+        #{$selector},
+        .#{$selector}{
+            -webkit-transition: -webkit-transform $ss;
+            transition: -webkit-transform $ss;
+            transition: transform $ss;
+            transition: transform $ss, -webkit-transform $ss;
+            -webkit-transform: translateY($h);
+                    transform: translateY($h);
+        }
+    }
+}
+
+@mixin hoverCss-capirote-bottom (
+    $w: $padding,
+    $h: $padding,
+    $left: 50%,
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 1
+){
+    @include hoverCss-capirote-base($bg, $selector, $ss);
+
+    #{$selector},
+    .#{$selector} {
+        background: $bg;
+        z-index: $z;
+
+        &:before {
+            bottom: 0;
+            left: calc(#{$left} - #{$w});
+            border-style: solid;
+            border-width: $h $w 0 $w;
+            border-color: $bg transparent transparent transparent;
+            z-index: -1;
+        }
+    }
+
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: translateY($h);
+                    transform: translateY($h);
+        }
+    }
+}
+
+@mixin hoverCss-capirote-float-bottom (
+    $w: $padding,
+    $h: $padding,
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 1
+){
+    $cap:(
+        w: $w,
+        h: $h,
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        z: $z
+    );
+    @include hoverCss-capirote-bottom ($cap...);
+
+    &:hover, &:focus, &:target {
+        #{$selector},
+        .#{$selector}{
+            -webkit-transition: -webkit-transform $ss;
+            transition: -webkit-transform $ss;
+            transition: transform $ss;
+            transition: transform $ss, -webkit-transform $ss;
+            -webkit-transform: translateY(-($h));
+                    transform: translateY(-($h));
+        }
+    }
+}
+
+@mixin hoverCss-capirote-left (
+    $w: $padding,
+    $h: $padding,
+    $top: 50%,
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 1
+){
+    @include hoverCss-capirote-base($bg, $selector, $ss);
+
+    #{$selector},
+    .#{$selector} {
+        background: $bg;
+        z-index: $z;
+
+        &:before {
+            left: 0;
+            top: calc(#{$top} - #{$h});
+            border-style: solid;
+            border-width: $h $w $h 0;
+            border-color: transparent $bg transparent transparent;
+            z-index: -1;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: translateX(-($w));
+                    transform: translateX(-($w));
+        }
+    }
+}
+
+@mixin hoverCss-capirote-float-left (
+    $w: $padding,
+    $h: $padding,
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 1
+){
+    $cap:(
+        w: $w,
+        h: $h,
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        z: $z
+    );
+    @include hoverCss-capirote-left ($cap...);
+
+    &:hover, &:focus, &:target {
+        #{$selector},
+        .#{$selector}{
+            -webkit-transition: -webkit-transform $ss;
+            transition: -webkit-transform $ss;
+            transition: transform $ss;
+            transition: transform $ss, -webkit-transform $ss;
+            -webkit-transform: translateX($w);
+                    transform: translateX($w);
+        }
+    }
+}
+
+@mixin hoverCss-capirote-right (
+    $w: $padding,
+    $h: $padding,
+    $top: 50%,
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 1
+){
+    @include hoverCss-capirote-base($bg, $selector, $ss);
+
+    #{$selector},
+    .#{$selector} {
+        background: $bg;
+        z-index: $z;
+
+        &:before {
+            right: 0;
+            top: calc(#{$top} - #{$h});
+            border-style: solid;
+            border-width: $h 0 $h $w;
+            border-color: transparent transparent transparent $bg;
+            z-index: -1;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: translateX($w);
+                    transform: translateX($w);
+        }
+    }
+}
+
+@mixin hoverCss-capirote-float-right (
+    $w: $padding,
+    $h: $padding,
+    $bg: $color-t1,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 1
+){
+    $cap:(
+        w: $w,
+        h: $h,
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        z: $z
+    );
+    @include hoverCss-capirote-right ($cap...);
+
+    &:hover, &:focus, &:target {
+        #{$selector},
+        .#{$selector}{
+            -webkit-transition: -webkit-transform $ss;
+            transition: -webkit-transform $ss;
+            transition: transform $ss;
+            transition: transform $ss, -webkit-transform $ss;
+            -webkit-transform: translateX(-($w));
+                    transform: translateX(-($w));
+        }
+    }
+}
+
+
+// ------------------------------------ //
+// --------------- Curls -------------- //
+// (Completo)
+
+@mixin hoverCss-rizo-base ($w, $h, $bg, $selector, $ss, $z) {
+    #{$selector},
+    .#{$selector} {
+        position: relative;
+        background: $bg; // IE9 //
+        // border: 1px solid $bg;
+
+        // Habilitar la aceleración de hardware en androids
+        -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+
+        // AntiAlias
+        // Evitar la linea alrededor
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+        &:before {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            background: $bg; // IE9 //
+            -webkit-transition-property: width, height;
+            transition-property: width, height;
+            -webkit-transition-duration: $ss;
+                    transition-duration: $ss;
+            z-index: $z;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            width: $w;
+            height: $h;
+        }
+    }
+}
+
+@mixin hoverCss-rizo-top-left (
+    $w: 1.5em,
+    $h: 1.5em,
+    $bg: $bg-box-t1,
+    $bg-end: $bg-body,
+    $bg-medio: colorea($bg, l2),
+    $bg-oscuro: colorea($bg, l1),
+    $opac: 0.4,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 99
+){
+    $curl:(
+        w: $w,
+        h: $h,
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        z: $z
+    );
+    @include hoverCss-rizo-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            top: 0;
+            left: 0;
+            background: -webkit-linear-gradient(315deg, $bg-end 45%, $bg-oscuro 50%, $bg-medio 56%, $bg 80%);
+            background: linear-gradient(135deg, $bg-end 45%, $bg-oscuro 50%, $bg-medio 56%, $bg 80%);
+            box-shadow: 1px 1px 1px rgba(#000, $opac);
+        }
+    }
+}
+
+@mixin hoverCss-rizo-top-right (
+    $w: 1.5em,
+    $h: 1.5em,
+    $bg: $bg-box-t1,
+    $bg-end: $bg-body,
+    $bg-medio: colorea($bg, l2),
+    $bg-oscuro: colorea($bg, l1),
+    $opac: 0.4,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 99
+){
+    $curl:(
+        w: $w,
+        h: $h,
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        z: $z
+    );
+    @include hoverCss-rizo-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            top: 0;
+            right: 0;
+            background: -webkit-linear-gradient(225deg, $bg-end 45%, $bg-oscuro 50%, $bg-medio 56%, $bg 80%);
+            background: linear-gradient(225deg, $bg-end 45%, $bg-oscuro 50%, $bg-medio 56%, $bg 80%);
+            box-shadow: -1px 1px 1px rgba(#000, $opac);
+        }
+    }
+}
+
+@mixin hoverCss-rizo-bottom-left (
+    $w: 1.5em,
+    $h: 1.5em,
+    $bg: $bg-box-t1,
+    $bg-end: $bg-body,
+    $bg-medio: colorea($bg, l2),
+    $bg-oscuro: colorea($bg, l1),
+    $opac: 0.4,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 99
+){
+    $curl:(
+        w: $w,
+        h: $h,
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        z: $z
+    );
+    @include hoverCss-rizo-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            bottom: 0;
+            left: 0;
+            background: -webkit-linear-gradient(45deg, $bg-end 45%, $bg-oscuro 50%, $bg-medio 56%, $bg 80%);
+            background: linear-gradient(45deg, $bg-end 45%, $bg-oscuro 50%, $bg-medio 56%, $bg 80%);
+            box-shadow: 1px -1px 1px rgba(#000, $opac);
+        }
+    }
+}
+
+@mixin hoverCss-rizo-bottom-right (
+    $w: 1.5em,
+    $h: 1.5em,
+    $bg: $bg-box-t1,
+    $bg-end: $bg-body,
+    $bg-medio: colorea($bg, l2),
+    $bg-oscuro: colorea($bg, l1),
+    $opac: 0.4,
+    $selector: titulo,
+    $ss: $ss-item,
+    $z: 99
+){
+    $curl:(
+        w: $w,
+        h: $h,
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        z: $z
+    );
+    @include hoverCss-rizo-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            bottom: 0;
+            right: 0;
+            background: -webkit-linear-gradient(135deg, $bg-end 45%, $bg-oscuro 50%, $bg-medio 56%, $bg 80%);
+            background: linear-gradient(315deg, $bg-end 45%, $bg-oscuro 50%, $bg-medio 56%, $bg 80%);
+            box-shadow: -1px -1px 1px rgba(#000, $opac);
+        }
+    }
+}
+
+// ---------------------------------------- //
+// ---------- Border Transitions ---------- //
+
+// Faltan border-fade, hollw, trim, ripple-out, ripple-in
+// outline-out, outline-in, round-corners y reveal (puro)
+
+@mixin hoverCss-border-base ($bg, $selector, $ss, $curva, $z) {
+    #{$selector},
+    .#{$selector} {
+        position: relative;
+        overflow: hidden;
+        background: $bg;
+
+        &:before {
+            position: absolute;
+            content: '';
+            -webkit-transition-timing-function: $curva;
+                    transition-timing-function: $curva;
+            -webkit-transition-duration: $ss;
+                    transition-duration: $ss;
+            z-index: $z;
+        }
+    }
+}
+
+@mixin hoverCss-border-underline-from-left (
+    // $w: 1.5em,
+    $px: 0.25em,
+    $bg: $bg-box-t1,
+    $borde: $bg-box-t2,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: 0
+){
+    $curl:(
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-border-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            left: 100%;
+            right: 0;
+            bottom: 0;
+            height: $px;
+            background: $borde;
+
+            -webkit-transition-property: left;
+
+            transition-property: left;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            left: 0;
+        }
+    }
+}
+
+@mixin hoverCss-border-underline-from-right (
+    // $w: 1.5em,
+    $px: 0.25em,
+    $bg: $bg-box-t1,
+    $borde: $bg-box-t2,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: 0
+){
+    $curl:(
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-border-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            left: 0;
+            right: 100%;
+            bottom: 0;
+            height: $px;
+            background: $borde;
+
+            -webkit-transition-property: right;
+
+            transition-property: right;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            right: 0;
+        }
+    }
+}
+
+@mixin hoverCss-border-underline-from-center (
+    // $w: 1.5em,
+    $px: 0.25em,
+    $bg: $bg-box-t1,
+    $borde: $bg-box-t2,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: 0
+){
+    $curl:(
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-border-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            height: $px;
+            background: $borde;
+
+            -webkit-transition-property: left, right;
+
+            transition-property: left, right;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+@mixin hoverCss-border-underline-reveal (
+    // $w: 1.5em,
+    $px: 0.25em,
+    $bg: $bg-box-t1,
+    $borde: $bg-box-t2,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: 0
+){
+    $curl:(
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-border-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: $px;
+            background: $borde;
+
+            -webkit-transition-property: -webkit-transform;
+
+            transition-property: -webkit-transform;
+
+            transition-property: transform;
+
+            transition-property: transform, -webkit-transform;
+            -webkit-transform: translateY($px);
+                    transform: translateY($px);
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+        }
+    }
+}
+
+@mixin hoverCss-border-overline-from-left (
+    // $w: 1.5em,
+    $px: 0.25em,
+    $bg: $bg-box-t1,
+    $borde: $bg-box-t2,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: 0
+){
+    $curl:(
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-border-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            left: 0;
+            right: 100%;
+            top: 0;
+            height: $px;
+            background: $borde;
+
+            -webkit-transition-property: right;
+
+            transition-property: right;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            right: 0;
+        }
+    }
+}
+
+@mixin hoverCss-border-overline-from-right (
+    // $w: 1.5em,
+    $px: 0.25em,
+    $bg: $bg-box-t1,
+    $borde: $bg-box-t2,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: 0
+){
+    $curl:(
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-border-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            left: 100%;
+            right: 0;
+            top: 0;
+            height: $px;
+            background: $borde;
+
+            -webkit-transition-property: left;
+
+            transition-property: left;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            left: 0;
+        }
+    }
+}
+
+@mixin hoverCss-border-overline-from-center (
+    // $w: 1.5em,
+    $px: 0.25em,
+    $bg: $bg-box-t1,
+    $borde: $bg-box-t2,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: 0
+){
+    $curl:(
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-border-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            left: 50%;
+            right: 50%;
+            top: 0;
+            height: $px;
+            background: $borde;
+
+            -webkit-transition-property: left right;
+
+            transition-property: left right;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+@mixin hoverCss-border-overline-reveal (
+    // $w: 1.5em,
+    $px: 0.25em,
+    $bg: $bg-box-t1,
+    $borde: $bg-box-t2,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: 0
+){
+    $curl:(
+        bg: $bg,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-border-base ($curl...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            left: 0;
+            right: 0;
+            top: 0;
+            height: $px;
+            background: $borde;
+
+            -webkit-transition-property: -webkit-transform;
+
+            transition-property: -webkit-transform;
+
+            transition-property: transform;
+
+            transition-property: transform, -webkit-transform;
+            -webkit-transform: translateY(-($px));
+                    transform: translateY(-($px));
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+        }
+    }
+}
+
+// -------------------------------------------- //
+// ---------- Background Transitions ---------- //
+
+// Faltan back-pulse, bounce todos, radial todos
+// rectangle todos y swutters
+
+@mixin hoverCss-background-base ($bg, $color, $selector, $ss, $curva, $z) {
+    #{$selector},
+    .#{$selector} {
+        position: relative;
+
+        -webkit-transition-property: color;
+
+        transition-property: color;
+        -webkit-transition-duration: $ss;
+                transition-duration: $ss;
+
+        // Habilitar la aceleración de hardware en androids
+        -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+
+        // AntiAlias
+        // Evitar la linea alrededor
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+        &:before {
+            position: absolute;
+            content: '';
+            background: $bg;
+            -webkit-transition-timing-function: $curva;
+                    transition-timing-function: $curva;
+            -webkit-transition-duration: $ss;
+                    transition-duration: $ss;
+            z-index: $z;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector},
+        .#{$selector} {
+            color: $color;
+        }
+    }
+}
+
+@mixin hoverCss-background-sweep-to-top (
+    $bg: $bg-box-t1,
+    $color: $bg-body,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: -1
+){
+    $backgs:(
+        bg: $bg,
+        color: $color,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-background-base ($backgs...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            -webkit-transform: scaleY(0);
+
+                    transform: scaleY(0);
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+            -webkit-transform-origin: 50% 100%;
+                    transform-origin: 50% 100%;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: scaleY(1);
+                    transform: scaleY(1);
+        }
+    }
+}
+
+@mixin hoverCss-background-sweep-to-bottom (
+    $bg: $bg-box-t1,
+    $color: $bg-body,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: -1
+){
+    $backgs:(
+        bg: $bg,
+        color: $color,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-background-base ($backgs...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            -webkit-transform: scaleY(0);
+
+                    transform: scaleY(0);
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+            -webkit-transform-origin: 50% 0;
+                    transform-origin: 50% 0;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: scaleY(1);
+                    transform: scaleY(1);
+        }
+    }
+}
+
+@mixin hoverCss-background-sweep-to-right (
+    $bg: $bg-box-t1,
+    $color: $bg-body,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: -1
+){
+    $backgs:(
+        bg: $bg,
+        color: $color,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-background-base ($backgs...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            -webkit-transform: scaleX(0);
+
+                    transform: scaleX(0);
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+            -webkit-transform-origin: 0 100%;
+                    transform-origin: 0 100%;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: scaleX(1);
+                    transform: scaleX(1);
+        }
+    }
+}
+
+@mixin hoverCss-background-sweep-to-left (
+    $bg: $bg-box-t1,
+    $color: $bg-body,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: -1
+){
+    $backgs:(
+        bg: $bg,
+        color: $color,
+        selector: $selector,
+        ss: $ss,
+        curva: $curva,
+        z: $z
+    );
+    @include hoverCss-background-base ($backgs...);
+
+    #{$selector},
+    .#{$selector} {
+        &:before {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            -webkit-transform: scaleX(0);
+
+                    transform: scaleX(0);
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+            -webkit-transform-origin: 100% 50%;
+                    transform-origin: 100% 50%;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector}:before,
+        .#{$selector}:before {
+            -webkit-transform: scaleX(1);
+                    transform: scaleX(1);
+        }
+    }
+}
+
+@mixin hoverCss-background-fade (
+    $bg: $bg-box-t1,
+    $color: $bg-body,
+    $selector: titulo,
+    $ss: $ss-item,
+    $curva: ease-out,
+    $z: -1
+){
+    #{$selector},
+    .#{$selector} {
+        overflow: hidden;
+
+        -webkit-transition-property: color background-color;
+
+        transition-property: color background-color;
+        -webkit-transition-timing-function: $curva;
+                transition-timing-function: $curva;
+        -webkit-transition-duration: $ss;
+                transition-duration: $ss;
+
+        // Habilitar la aceleración de hardware en androids
+        -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+
+        // AntiAlias
+        // Evitar la linea alrededor
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    }
+
+    &:hover, &:focus, &:target {
+        #{$selector},
+        .#{$selector} {
+            background-color: $bg;
+            color: $color;
+        }
+    }
+}
+
+// ------------------------------------------------- //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//= End of Section Hover.css http://ianlunn.github.io/Hover =
+//======================================================<<<<<
+
+// Hover sumario Area de Juego
+@mixin sumario-index-hover (
+    $tagTitulo: h4,
+    $tagImg: figure,
+    $tagTexto: a,
+    $bg: $bg-body,
+    $opacity1: 0.3,
+    $opacity2: 0.8,
+    $filter: none,
+    $zImg: 2,
+    $h1: 60vmin,
+    $w1: $h1 * 1.5,
+    $h2: 50vmin,
+    $w2: 50vw,
+    $xTitulo1: 0,
+    $yTitulo1: 0,
+    $sTitulo1: 1,
+    $xTitulo2: 28vw,
+    $yTitulo2: 0vw,
+    $oTitulo: 1,
+    $sTitulo2: 0.5,
+    $zTitulo: 3,
+    $xImg1: 15%,
+    $xImg2: 50%,
+    $xTexto1: 0,
+    $xTexto2: 67%,
+    $zTexto: 3,
+    $ss: $ss-item
+) {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+
+    #{$tagTitulo},
+    #{$tagImg},
+    #{$tagTexto}{
+        -webkit-transition: -webkit-transform $ss;
+        transition: -webkit-transform $ss;
+        transition: transform $ss;
+        transition: transform $ss, -webkit-transform $ss;
+    }
+
+    #{$tagTitulo}{
+        position: relative;
+        z-index: $zTitulo;
+        opacity: $oTitulo;
+        -webkit-transform: translate3d(#{$xTitulo1}, #{$yTitulo1}, 0) scale(#{$sTitulo1});
+                transform: translate3d(#{$xTitulo1}, #{$yTitulo1}, 0) scale(#{$sTitulo1});
+    }
+
+    #{$tagImg}{
+        top: 0;
+        right: 0;
+        width: $w1;
+        height: $h1;
+        margin:0;
+        z-index: $zImg;
+
+        $map:(
+            bg-color: $bg,
+            opacity: $opacity1,
+            filter: $filter
+        );
+        @include simple-before($map...);
+        position: absolute;
+
+        -webkit-transform: translateX(#{$xImg1});
+
+                transform: translateX(#{$xImg1});
+
+        &:before {
+            -webkit-transition: opacity $ss linear;
+            transition: opacity $ss linear;
+        }
+    }
+
+    #{$tagTexto}{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: $w2;
+        min-height: $h2;
+
+        -webkit-transform: translateX(#{$xTexto1}) scale(0.9);
+
+                transform: translateX(#{$xTexto1}) scale(0.9);
+    }
+
+    &:hover, &:target, &:focus {
+        #{$tagTitulo} {
+            opacity: 1;
+            -webkit-transform: translate3d(#{$xTitulo2}, #{$yTitulo2}, 0) scale(#{$sTitulo2});
+                    transform: translate3d(#{$xTitulo2}, #{$yTitulo2}, 0) scale(#{$sTitulo2});
+        }
+
+        #{$tagImg} {
+
+            -webkit-transform: translateX(-(#{$xImg2}));
+
+                    transform: translateX(-(#{$xImg2}));
+
+            &:before {
+                opacity: $opacity2;
+                -webkit-filter: none;
+                        filter: none;
+            }
+        }
+
+        #{$tagTexto} {
+            -webkit-transform: translateX(#{$xTexto2}) scale(1);
+                    transform: translateX(#{$xTexto2}) scale(1);
+            z-index: $zTexto;
+        }
+    }
+}
+
+
+//------- Transiciones sombra que pasa al hover ------- //
+// transicion de oeste a este
+@mixin hover-transition-oe (
+    $rgba: rgba(#000, 0.3),
+    $w: 300px
+){
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    &:hover, &:focus, &:target {
+        box-shadow: $w 0 $rgba inset;
+    }
+}
+
+// de norte a sur
+@mixin hover-transition-ns (
+    $rgba : rgba(#000, 0.3),
+    $h: 50px
+){
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    &:hover, &:focus, &:target {
+        box-shadow: 0 $h $rgba inset;
+    }
+}
+
+// de noroeste a sudeste
+@mixin hover-transition-nose (
+    $rgba : rgba(#000, 0.3),
+    $w: 100px,
+    $h: 50px
+){
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    &:hover, &:focus, &:target {
+        box-shadow: $w $h $rgba inset;
+    }
+}
+
+// horizontal vertical color dentro|fuera
+@mixin hover-transition-dentro-fuera (
+    $rgba : rgba(#000, 0.3),
+    $w: 100px
+){
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    &:hover, &:focus, &:target {
+        box-shadow: $w 0 $rgba inset,
+            (-1)*$W 0 $rgba inset;
+    }
+}
+
+//-------- Fin de Transiciones sombra que pasa al hover ------- //
+
+@mixin table-highlight (
+    $bg-rgbax: rgba(#fff, 0.3),
+    $bg-rgbay: rgba(#fff, 0.2)
+){
+
+    li,
+    th,
+    td {
+    	background-color: $bg-rgbay;
+    }
+    ul,
+    tr {
+        &:hover {
+            background-color: $bg-rgbax;
+        }
+    }
+
+    li,
+    td {
+        position: relative;
+        &:hover {
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: -9999px;
+                bottom: -9999px;
+                background-color: $bg-rgbay;
+                z-index: -1;
+            }
+        }
+    }
+}
+
+@mixin mvto3d (
+    $selector,
+    $main: left,
+    $cross: top,
+    $width: 50%,
+    $x1: 100%,
+    $y1: 0,
+    $z1: 0,
+    $x2: 0,
+    $y2: 0,
+    $z2: 0,
+    $ss: 0.35s
+) {
+    position: relative;
+
+    .#{$selector},
+    #{$selector} {
+        position: absolute;
+        width: $width;
+        #{$cross}: 0;   // top | bottom
+        #{$main}: 0;    // left | right
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        transition: transform 0.35s, -webkit-transform 0.35s;
+        -webkit-transform: translate3d(#{$x1},0,0);
+        transform: translate3d(#{$x1},0,0);
+    }
+    &:hover, &:focus, &:target {
+        .#{$selector},
+        #{$selector} {
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+    }
+}
+
+@mixin svg-hover (
+    $class1: logoH,
+    $class2: logoP,
+    $z: $z-index-slogan,
+    $animacion1: fadeInUp,
+    $animacion2: fadeInDown,
+    $duracion: 1s,
+    $curva: ease-in,
+    $retardo: 0s,
+    $repeticiones: 1,
+    $direccion: none,
+    $fill: forwards
+){
+    & svg {
+        z-index: $z;
+        .#{$class1},
+        .#{$class2}{
+            display: none;
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        & svg {
+            .#{$class1},
+            .#{$class2}{
+                display: block;
+            }
+            .#{$class1} {
+                @include animacion ($animacion1, $duracion, $curva, $retardo, $repeticiones, $direccion, $fill);
+            }
+            .#{$class2} {
+                @include animacion ($animacion2, $duracion, $curva, $retardo, $repeticiones, $direccion, $fill);
+            }
+        }
+    }
+}
+
+// https://tympanus.net
+
+.tympanus {
+    overflow: hidden;
+    margin: 0;
+
+    & h2, & h3, & h4, & h5, & h6 {
+        margin: 0;
+    }
+
+    & figcaption {
+        position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+        -webkit-backface-visibility: hidden;
+	    backface-visibility: hidden;
+
+        &:before, &:after {
+            // La propiedad pointer-events no existe : none
+            // pointer-events: none;
+        }
+    }
+}
+
+// Individual effects
+
+@mixin tympanus-terry (
+    $height: 50vmin,
+    $border-color: #101010,
+    $font-size-a: 4vmax,
+    $color: #fff,
+    $color-hover: gold,
+    $border-before-w: 10vw,  // fondo de iconos y texto oculto
+    $border-before-h: 9vh,
+    $border-after-w: 2vw,    // border y padding
+    $border-after-h: 2vh,
+    $ss: 0.35s
+
+){
+
+    figure.tympanus.terry {
+
+        & figcaption {
+        	padding: $border-after-h $border-after-w;
+            white-space: nowrap;
+
+            &:before, &:after {
+            	content: '';
+                position: absolute;
+            	width: 200%;
+            	height: 200%;
+            	border-style: solid;
+            	border-color: $border-color;
+            	-webkit-transition: -webkit-transform $ss;
+            	transition: -webkit-transform $ss;
+            	transition: transform $ss;
+            	transition: transform $ss, -webkit-transform $ss;
+            }
+
+            &:before {
+                right: 0;
+            	bottom: 0;
+            	border-width: 0 $border-before-w $border-before-h 0;
+            	-webkit-transform: translate3d($border-before-w, $border-before-h, 0);
+            	transform: translate3d($border-before-w, $border-before-h, 0);
+            }
+
+            &:after {
+                top: 0;
+            	left: 0;
+            	border-width: $border-after-h 0 0 $border-after-w;
+            	-webkit-transform: translate3d((-1)*$border-after-w, (-1)*$border-after-h, 0);
+            	transform: translate3d((-1)*$border-after-w, (-1)*$border-after-h, 0);
+            }
+
+            & h3, & h4, & h5, & h6 {
+                position: absolute;
+            	bottom: 0;
+            	left: 0;
+            	width: 50%;
+            	padding: $border-after-h/2  $border-after-w;
+                font-size: $border-before-h - $border-after-h*2;
+                text-align: right;
+            	-webkit-transition: -webkit-transform $ss;
+            	transition: -webkit-transform $ss;
+            	transition: transform $ss;
+            	transition: transform $ss, -webkit-transform $ss;
+            	-webkit-transform: translate3d(100%,0,0);
+            	transform: translate3d(100%,0,0);
+            }
+
+            & p {
+                height: calc(#{$height} - (#{$border-before-h} + #{$border-after-h}));
+                max-height: calc(#{$height} - (#{$border-before-h} + #{$border-after-h}));
+                width: $border-before-w/2;
+                float: right;
+            	clear: both;
+            	text-align: left;
+            	text-transform: none;
+
+                & a {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                	margin-bottom: $top;
+            	    // font-size: $border-before-w/2;
+            	    font-size: $font-size-a;
+                    text-shadow: 2pt 2pt 2pt #000;
+                	color: $color;
+                	opacity: 0;
+                	-webkit-transform: translate3d(90px,0,0);
+                	transform: translate3d(90px,0,0);
+
+                    &:hover, &:focus, &:target {
+                        background: $border-color;
+                        color: $color-hover;
+                    }
+
+                    &:before {
+                    }
+                }
+            }    // fin del p
+        }    // fin de figcaption
+
+        &:before,
+        & p a {
+            @include transition-transform(opacity, $ss);
+            // -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        	// transition: opacity 0.35s, transform 0.35s;
+        }
+
+        &:before {
+            opacity: 0.85;
+        }
+
+        // figure.effect-terry:hover figcaption::before y after
+        &:hover, &:focus, &:target {
+            &:before {
+                opacity: 0.6;
+            }
+
+            & figcaption:before, & figcaption:after {
+                -webkit-transform: translate3d(0,0,0);
+            	transform: translate3d(0,0,0);
+            }
+
+            & h3, & h4, & h5, & h6 {
+                text-align: left;
+            }
+
+            & h3, & h4, & h5, & h6,
+            & p a {
+                -webkit-transform: translate3d(0,0,0);
+            	transform: translate3d(0,0,0);
+            }
+
+            & p a {
+	            opacity: 1;
+
+                &:first-child {
+                    -webkit-transition-delay: 0.025s;
+                	transition-delay: 0.025s;
+                }
+
+                &:nth-child(2) {
+                    -webkit-transition-delay: 0.05s;
+                	transition-delay: 0.05s;
+                }
+                &:nth-child(3) {
+                    -webkit-transition-delay: 0.075s;
+                	transition-delay: 0.075s;
+                }
+                &:nth-child(4) {
+                    -webkit-transition-delay: 0.1s;
+                	transition-delay: 0.1s;
+                }
+            }
+        }
+    }    // fin de figure
+}
+
+@mixin pause-tympanus-apollo {
+    &:before {
+        opacity: 0.95;
+        -webkit-transform: scale3d(1.05,1.05,1);
+        transform: scale3d(1.05,1.05,1);
+    }
+
+    & figcaption {
+        &:before {
+            -webkit-transform: scale3d(3,3,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+            transform: scale3d(3,3,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+        }
+
+        & section,
+        & p {
+            opacity: 0;
+        }
+    }
+}
+
+@mixin play-tympanus-apollo {
+    &:before {
+        opacity: 0.6;
+        -webkit-transform: scale3d(1,1,1);
+        transform: scale3d(1,1,1);
+    }
+
+    & figcaption {
+        &:before {
+            -webkit-transform: scale3d(3,3,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+            transform: scale3d(3,3,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+        }
+
+        & section,
+        & p {
+            opacity: 1;
+        }
+    }
+}
+
+@mixin tympanus-apollo (
+    $bg: #3498db,
+    $bg-figcaption: rgba(#fff, 0.3),
+    $ss1: 0.35s,
+    $ss2: $ss1 * 2
+){
+    figure.tympanus.apollo {
+    	background: $bg;
+
+        &:before {
+            // opacity: 0.95;
+        	-webkit-transition: opacity $ss1, -webkit-transform $ss1;
+        	transition: opacity $ss1, -webkit-transform $ss1;
+        	transition: opacity $ss1, transform $ss1;
+        	transition: opacity $ss1, transform $ss1, -webkit-transform $ss1;
+        	// -webkit-transform: scale3d(1.05,1.05,1);
+        	// transform: scale3d(1.05,1.05,1);
+        }
+        & figcaption {
+            &:before {
+            	content: '';
+            	position: absolute;
+            	top: 0;
+            	left: 0;
+            	width: 100%;
+            	height: 100%;
+            	background: $bg-figcaption;
+            	-webkit-transition: -webkit-transform $ss2;
+            	transition: -webkit-transform $ss2;
+            	transition: transform $ss2;
+            	transition: transform $ss2, -webkit-transform $ss2;
+            	// -webkit-transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+            	// transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+            }
+
+            & > h3, & > h4, & > h5, & > h6 {
+	            text-align: left;
+            }
+
+            & section,
+            & p {
+            	position: absolute;
+            	right: 0;
+            	bottom: 0;
+            	// max-width: 150px;
+            	margin: 3vmin;
+            	padding:  0 1em;
+            	border-right: 4px solid #fff;
+            	text-align: right;
+            	// opacity: 0;
+            	-webkit-transition: opacity $ss1;
+            	transition: opacity $ss1;
+            }
+        }
+        @include pause-tympanus-apollo;
+        &:hover, &:focus, &:target {
+            @include play-tympanus-apollo;
+        }
+    }
+}
+
+// Efecto sólo al figcaption
+@mixin tympanus-marley(
+    $selector1: h3,
+    $selector2: a,
+    $padding1: 0.6em 0,
+    $padding2: 0.6em,
+    $text-align1: right,
+    $text-align2: center,
+    $bg1: none,
+    $bg2: rgba(#fff, 0.6),
+    $uno: 0.6em,
+    $doble: 1.2em,
+    $triple: 1.8em,
+    $cuadruple: 2.4em,
+    $top: $uno,
+    $bottom: $triple,
+    $left: $uno,
+    $right: $uno,
+    $line-h: 1.5,
+    $borde-grosor: 0.25em,
+    $borde-color: rgba(#fff, 0.6),
+    $ss1: $ss-item
+){
+
+    figure.tympanus.marley {
+        & figcaption {
+            #{$selector1},
+            #{$selector2} {
+                position: absolute;
+            	right: $right;
+            	left: $left;
+            }
+
+            #{$selector1}:after,
+            #{$selector2} {
+                opacity: 0;
+                -webkit-transition: opacity $ss1, -webkit-transform $ss1;
+                transition: opacity $ss1, -webkit-transform $ss1;
+                transition: opacity $ss1, transform $ss1;
+                transition: opacity $ss1, transform $ss1, -webkit-transform $ss1;
+            }
+
+            #{$selector1} {
+	            top: $top;
+                padding: $padding1;
+                background: $bg1;
+                text-align: $text-align1;
+	            -webkit-transition: -webkit-transform $ss1;
+	            transition: -webkit-transform $ss1;
+	            transition: transform $ss1;
+	            transition: transform $ss1, -webkit-transform $ss1;
+	            transition: transform $ss1;
+	            -webkit-transform: translate3d(0, $doble, 0);
+	                    transform: translate3d(0, $doble, 0);
+
+                &:after {
+                    position: absolute;
+                	content: '';
+                	top: 100%;
+                	left: 0;
+                	width: 100%;
+                	height: $borde-grosor;
+                	background: $borde-color;
+                	-webkit-transform: translate3d(0, $cuadruple, 0);
+                	        transform: translate3d(0, $cuadruple, 0);
+                }
+            }
+
+            #{$selector2} {
+                bottom: $bottom;
+                padding: $padding2;
+                text-align: $text-align2;
+                background: $bg2;
+            	line-height: $line-h;
+            	-webkit-transform: translate3d(0, 100%, 0);
+            	        transform: translate3d(0, 100%, 0);
+            }
+        }
+        &:hover, &:focus, &:target {
+            #{$selector1}:after,
+            #{$selector2} {
+                opacity: 1;
+	            -webkit-transform: translate3d(0,0,0);
+	                    transform: translate3d(0,0,0);
+            }
+            #{$selector1} {
+                -webkit-transform: translate3d(0,0,0);
+                        transform: translate3d(0,0,0);
+            }
+        }
+    }
+}
+
+@mixin tympanus-romeo-figure (
+    $z: 10vmin,
+    $ss: $ss-item,
+    $opacity: 0.6
+){
+    figure.tympanus.romeo {
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+
+        &:before {
+            -webkit-transition: opacity $ss, -webkit-transform $ss;
+            transition: opacity $ss, -webkit-transform $ss;
+            transition: opacity $ss, transform $ss;
+            transition: opacity $ss, transform $ss, -webkit-transform $ss;
+            -webkit-transform: translate3d(0,0,$z);
+            transform: translate3d(0,0,$z);
+        }
+
+        &:hover, &:focus, &:target {
+            &:before {
+                opacity: $opacity;
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+            }
+        }
+    }
+}
+
+@mixin tympanus-romeo-figcaption {}

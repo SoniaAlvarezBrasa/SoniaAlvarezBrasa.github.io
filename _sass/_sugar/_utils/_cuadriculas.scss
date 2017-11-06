@@ -1,0 +1,306 @@
+// Mixins para cuadriculas
+// Se aplica al contendor de la cuadricula.
+// Los parámetros son el selector de item al que se aplica el width y el número de columnas
+// El tercer parámetro (opcional) es la separacion entre columnas
+// Los $items pueden ser elementos puros html o clases (sin el punto, ya se añade al mixin)
+
+// Con un flex auto a los items
+// q ocuparán todo el espacio disponible.
+@mixin cuadricula ($items, $columnas, $separacion: 1em){
+    $width: 100% / $columnas;
+    // Se elimina el margin
+    // por preferencia margins top y bottom;
+    // margin: 0 auto;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-left: -($separacion / 2);
+    margin-right: -($separacion / 2);
+
+    // Si el contenedor es un ul
+    @if $items == li {
+        margin     : 0;
+        padding    : 0;
+        list-style : none;
+
+        li {
+            margin-left: 0;
+        }
+    }
+    & > #{$items},
+    & > .#{$items}{
+        -webkit-box-flex: 1;
+            -ms-flex: auto;
+                flex: auto;
+
+        width  : item-width($width, $separacion);
+        margin : $separacion / 2;
+    }
+}
+
+// Sin el flex-auto a los ítems
+@mixin cuadricula-fija ($items, $columnas, $separacion: 1em){
+    // Se elimina por preferencia margins top y bottom;
+    // margin: 0 auto;
+
+    $width: 100% / $columnas;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-left: -($separacion / 2);
+    margin-right: -($separacion / 2);
+
+    // Si el contenedor es un ul
+    @if $items == li {
+        margin     : 0;
+        padding    : 0;
+        list-style : none;
+
+        li {
+            margin-left: 0;
+        }
+    }
+    & > #{$items},
+    & > .#{$items}{
+        // -webkit-box-flex: 1;
+        //     -ms-flex: auto;
+        //         flex: auto;
+
+        width  : item-width($width, $separacion);
+        margin : $separacion / 2;
+    }
+}
+
+// Cuadricula con flex-items
+// Se centra en el html con los flex-box
+@mixin grid ($items, $columnas, $separacion: 1em){
+    $width: 100% / $columnas;
+    // Se elimina el margin
+    // por preferencia margins top y bottom;
+    // margin: 0 auto;
+
+    // display: -webkit-box;
+    // display: -ms-flexbox;
+    // display: flex;
+    // -ms-flex-wrap: wrap;
+    //     flex-wrap: wrap;
+    margin-left: -($separacion / 2);
+    margin-right: -($separacion / 2);
+
+    // Si el contenedor es un ul
+    @if $items == li {
+        margin     : 0;
+        padding    : 0;
+        list-style : none;
+
+        li {
+            margin-left: 0;
+        }
+    }
+    & > #{$items},
+    & > .#{$items}{
+        -webkit-box-flex: 1;
+            -ms-flex: auto;
+                flex: auto;
+
+        width  : item-width($width, $separacion);
+        margin : $separacion / 2;
+    }
+}
+
+// Igual que la anterior pero sin el molesto margin-left/right
+// Se centra en el html con las clases flex-box
+@mixin grid-fixed ($items, $columnas, $separacion: 1em){
+    // Se elimina por preferencia margins top y bottom;
+    // margin: 0 auto;
+
+    $width: 100% / $columnas;
+
+    // display: -webkit-box;
+    // display: -ms-flexbox;
+    // display: flex;
+    // -ms-flex-wrap: wrap;
+    //     flex-wrap: wrap;
+
+    // margin-left: -($separacion / 2);
+    // margin-right: -($separacion / 2);
+
+    // Si el contenedor es un ul
+    @if $items == li {
+        margin     : 0;
+        padding    : 0;
+        list-style : none;
+
+        li {
+            margin-left: 0;
+        }
+    }
+    & > #{$items},
+    & > .#{$items}{
+        // -webkit-box-flex: 1;
+        //     -ms-flex: auto;
+        //         flex: auto;
+
+        width  : item-width($width, $separacion);
+        margin-top: $separacion / 2;
+        margin-bottom : $separacion / 2;
+    }
+}
+
+// Parrillas con 2 columnas de selectores distintos
+// El selector izq. contiene una img-before
+// 2 opciones: margin si o margin no
+// Si margin no -> No flex padre. Se maqueta en la vista
+
+@mixin grid-diptico (
+    $margin: si,
+    $separacion: $padding,
+    $height: $height-item,
+    $fondo: $bg-body,
+    $size: $xm,
+    $tagImg: figure,
+    $tagTexto: caracteristicas
+) {
+    position: relative;
+
+    & > #{$tagImg},
+    & > .#{$tagImg} {
+        height: $height;
+        overflow: hidden;
+        @include simple-before ((bg-color: $fondo)...);
+        @include hasta (#{$size}) {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    & > #{$tagTexto},
+    & > .#{$tagTexto} {
+        margin-top: $padding;
+        @include desde (#{$size}) {
+            height: $height;
+            overflow: hidden;
+            margin-top: 0;
+        }
+    }
+
+    @if ($margin == 'si') {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+
+        @include desde (#{$size}) {
+            & > #{$tagImg},
+            & > .#{$tagImg},
+            & > #{$tagTexto},
+            & > .#{$tagTexto} {
+                margin-left: -($separacion / 2);
+                margin-right: -($separacion / 2);
+
+                width  : item-width(50%, $separacion);
+                margin : $separacion / 2;
+            }
+        }
+    }
+
+    @else {
+        @include desde (#{$size}) {
+            & > #{$tagImg},
+            & > .#{$tagImg},
+            & > #{$tagTexto},
+            & > .#{$tagTexto} {
+                width  : item-width(50%, $separacion);
+                margin: 0;
+            }
+        }
+    }
+}
+
+@mixin cuadricula-cuadrados($items, $columnas, $separacion: 4vw){
+    $width: 100vw / $columnas;
+    // Se elimina el margin
+    // por preferencia margins top y bottom;
+    // margin: 0 auto;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-left: -($separacion / 2);
+    margin-right: -($separacion / 2);
+
+    // Si el contenedor es un ul
+    @if $items == li {
+        margin     : 0;
+        padding    : 0;
+        list-style : none;
+
+        li {
+            margin-left: 0;
+        }
+    }
+    & > #{$items},
+    & > .#{$items}{
+        -webkit-box-flex: 1;
+            -ms-flex: auto;
+                flex: auto;
+
+        width  : item-width($width, $separacion);
+        height: item-width($width, $separacion);
+        margin : $separacion / 2;
+    }
+}
+
+// Para width & height en medidas vw
+// $heigth = $widht * $ratio * 1.214 (factor de corrección a ollo)
+// El navegador no hace el mismo cálculo vw para widht que para height.
+// Recibe $base segun width del contenedor en vw, p.ej. 100% = 100vw
+
+@mixin cuadricula-rwd-width($base, $items, $columnas, $ratio: 1, $separacion: 2vw){
+
+    // Se elimina el margin
+    // por preferencia margins top y bottom;
+    // margin: 0 auto;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left: -($separacion / 2);
+    margin-right: -($separacion / 2);
+
+    // Si el contenedor es un ul
+    @if $items == li {
+        margin     : 0;
+        padding    : 0;
+        list-style : none;
+
+        li {
+            margin-left: 0;
+        }
+    }
+
+    & > #{$items},
+    & > .#{$items}{
+        -webkit-box-flex: 1;
+        -ms-flex: auto;
+        flex: auto;
+
+        $width: dame-width($base, $columnas, $separacion);
+        $height: dame-height($width, $ratio);
+
+        width: $width;
+        height: $height;
+        margin : $separacion / 2;
+    }
+}

@@ -1,0 +1,335 @@
+dl-buttons-dos {
+    position: relative;
+    dt {
+        display: inline-block;
+    }
+    dd {
+        display: none;
+    }
+    dt:hover + dd {
+        display: block;
+    }
+    dt:nth-of-type(2) {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+@mixin buttons-dos (
+    $boton: label,
+    $block: desplegable
+){
+    position: relative;
+
+    #{$boton},
+    .#{$boton} {
+        display: inline-block;
+    }
+
+    #{$boton}:nth-of-type(2),
+    .#{$boton}:nth-of-type(2) {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+// Simula estilo a details html5 (incompatibilidad ie)
+@mixin estilo-details-ie (
+    $rgba: 0.6,
+    $bg-summary: $color-b,
+    $bg-summary--active: $color-t1,
+    $bg-details: rgba(#000, $rgba),
+
+    $color-summary: #fff,
+    $color-summary--active: colorea($bg-body, l4),
+    $color-marker-close: darkseagreen,
+    $color-marker-open: darkred
+){
+    //----------- Theme -----------//
+    strong {
+        font-weight: bold;
+    }
+
+    .contacto-details,
+    .bloque-details,
+    .bloque-details ul:first-child,
+    .bloque-details ul li:first-child {
+        border-top-left-radius: 0.2em;
+        border-top-right-radius: 0.2em;
+    }
+
+    .contacto-details,
+    .bloque-details,
+    .bloque-details ul:last-child,
+    .bloque-details ul li:last-child {
+        border-bottom-left-radius: 0.2em;
+        border-bottom-right-radius: 0.2em;
+    }
+
+    .bloque-details {
+        background: $bg-details;
+        box-shadow: $box-shadow-p;
+    }
+
+    .contacto-details {
+        display: block;
+        background: rgba($bg-summary, $rgba);
+        color: $color-summary;
+        box-shadow: $box-shadow-p;
+        cursor: pointer;
+
+        &:target, &:focus {
+            outline: 0.5pt solid $bg-summary--active;
+        }
+    }
+
+    //----------- Layout -----------//
+    position: relative;
+
+    #contacto-details {
+        display: none;
+
+        &:checked + label {
+            background: rgba($bg-summary--active, $rgba);
+            color: $color-summary--active;
+            &:before {
+                content:"▼";
+                position: relative;
+                left: -1em;
+                font-size: 1em;
+                color: $color-marker-open;
+                transition: .3s linear;
+            }
+        }
+
+        &:checked ~ .bloque-details {
+            display: block;
+        }
+    }
+
+    .contacto-details {
+        padding-top: 0.6em;
+        padding-bottom: 0.6em;
+        font-size: 0.8em;
+        text-transform: none;
+        text-align: center;
+        padding-left: 1em;
+        padding-right: 1em;
+
+        &:before {
+            content:"►";
+            position: relative;
+            left: -1em;
+            font-size: 1em;
+            color: $color-marker-close;
+            transition: .3s linear;
+        }
+    }
+
+    .bloque-details {
+        display: none;
+        margin-top: $top;
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            padding: 0.6em 1em;
+            font-size: 1em;
+            text-align: center;
+            text-transform: none;
+            color: #fff;
+            text-shadow: 0 0.125rem 0.125rem #000;
+        }
+        ul {
+            margin: 0 auto;
+            padding: 0 1em;
+
+            &:last-child {
+                padding-bottom: 2em;
+            }
+            & li {
+                text-indent: 1em;
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+// Mixin para dar estilo a details html5
+@mixin estilo-details (
+    $bg-summary: rgba($color-b, 0.6),
+    $bg-button--active: rgba($color-t1, 0.6),
+    $bg-summary--active: rgba($color-t1, 0.6),
+    $bg-details: rgba(#000, 0.6),
+
+    $color-summary: #fff,
+    $color-summary--active: colorea($bg-body, l4),
+    $color-marker-close: darkseagreen,
+    $color-marker-open: darkred
+){
+    //----------- Theme -----------//
+    details,
+    summary,
+    details ul:first-child,
+    details ul li:first-child {
+        border-top-left-radius: 0.2em;
+        border-top-right-radius: 0.2em;
+    }
+
+    details,
+    summary,
+    details ul:last-child,
+    details ul li:last-child {
+        border-bottom-left-radius: 0.2em;
+        border-bottom-right-radius: 0.2em;
+    }
+
+    details {
+        background: $bg-details;
+        box-shadow: $box-shadow-p;
+
+        summary {
+            cursor: pointer;
+            &::-webkit-details-marker {
+                color: $color-marker-close;
+                font-size: 150%;
+            }
+        }
+
+        &[open] summary {
+            background: $bg-summary--active;
+            color: $color-summary--active;
+            &::-webkit-details-marker {
+                font-size: 2em;
+                color: $color-marker-open;
+            }
+        }
+
+        summary.detalle-plegado,
+        & summary {
+            background: $bg-summary;
+            color: $color-summary;
+            // Para IE
+            & a:hover, a:target, a:focus {
+                color: $color-summary;
+                outline: solid colorea($bg-summary, d2);
+            }
+        }
+
+        strong {
+            font-weight: bold;
+        }
+    }
+
+    //----------- Layout -----------//
+    position: relative;
+
+    details {
+        summary,
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 1em;
+            text-transform: none;
+        }
+        ul li {
+            text-indent: 1em;
+            font-size: 0.8em;
+
+        }
+
+        summary {
+            padding-top: 0.6em;
+            padding-bottom: 0.6em;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0.6em 0;
+            color: #fff;
+            text-shadow: 0 0.125rem 0.125rem #000;
+        }
+
+        summary,
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        ul {
+            margin: 0 auto;
+            padding: 0 1em;
+
+            &:last-child {
+                padding-bottom: 2em;
+            }
+        }
+    }
+}
+
+@mixin summary (
+    $margin: 0,
+    $margin-h-article: 0.6em 0 1em 0,
+    $padding-summary: $top 1em,
+    // $padding-s--before: 0.5em,
+    $padding-article: 0 5% 5% 5%,
+    $text-align: center,
+    $font-family-summary: $font-family-title,
+    $bg-close: none,
+    $bg-open: none,
+    $color-open: inherit,
+    $color-icon-open: darkseagreen,
+    $color-close: inherit,
+    $color-icon-close: darkred,
+    $border-radius: 1pt
+    // $content-open: '\25BC',
+    // $content-close: '\25BA'
+    ){
+
+    // details
+    margin-top: $margin;
+    background: $bg-close;
+    color: $color-close;
+    border-radius: $border-radius;
+    // visibility: hidden;
+
+    &[open] {
+        background: $bg-open;
+        box-shadow: $box-shadow--black;
+        color: $color-open;
+        // visibility: visible;
+        //
+        // summary:before {
+        //     content: $content-open;
+        //     color: $color-icon-open;
+        // }
+    }
+
+    summary {
+        // &::-webkit-details-marker { display:none; }
+        font-family: $font-family-summary;
+        padding: $padding-summary;
+        text-align: $text-align;
+        cursor: pointer;
+
+        // visibility: visible;
+        //
+        // &:before {
+        //     position: relative;
+        //     content: $content-close;
+        //     padding-right: $padding-s--before;
+        //     transition: linear 0.3s;
+        //     color: $color-icon-close;
+        // }
+    }
+
+    p,
+    article {
+        padding: $padding-article;
+        h3 {
+            margin: $margin-h-article;
+        }
+    }
+}
+
+
+//----------- MODAL INLINE -----------//
+//  Véase tabs.scss

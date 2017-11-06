@@ -1,0 +1,756 @@
+@mixin wrapping-ie-abcenter (
+    $h: $height-portada,
+    $w: 90%
+    ) {
+    // para IE
+    height: $h;
+    width: $w;
+    max-width: 100%;
+    margin: 0 auto;
+
+    display: -webkit-box;
+    // display: -ms-flexbox;
+    display: flex;
+
+    // -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+
+    -webkit-box-pack: center;
+    // -ms-flex-pack: center;
+    justify-content: center;
+
+    -webkit-box-align: center;
+    // -ms-flex-align: center;
+    align-items: center;
+    // -ms-flex-line-pack: center;
+    align-content: center;
+}
+
+// http://ianlunn.github.io/Hover/
+
+@mixin capirote ($bg: $color-t1) {
+    position: relative;
+    border: 1px solid $bg;
+
+    // Habilitar la aceleración de hardware en androids
+    // transform: translateZ(0);
+
+    // AntiAlias
+    // Evitar la linea alrededor
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+    &:before {
+        position: absolute;
+        content: '.';
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+@mixin capirote-top (
+    $w: 10px,
+    $h: 10px,
+    $bg: $color-t1,
+    $z: 1
+){
+    @include capirote($bg);
+    background: $bg;
+
+    &:before {
+        top: -#{$h};
+        left: calc(50% - #{$w});
+        border-style: solid;
+        border-width: 0 $w $h $w;
+        border-color: transparent transparent $bg transparent;
+        z-index: $z;
+    }
+}
+
+@mixin capirote-bottom (
+    $w: 10px,
+    $h: 10px,
+    $bg: $color-t1,
+    $z: 1
+){
+    @include capirote($bg);
+    background: $bg;
+
+    &:before {
+        bottom: -#{$h};
+        left: calc(50% - #{$w});
+        border-style: solid;
+        border-width: $h $w 0 $w;
+        border-color: $bg transparent transparent transparent;
+        z-index: $z;
+    }
+}
+
+@mixin capirote-left (
+    $w: 10px,
+    $h: 10px,
+    $bg: $color-t1,
+    $z: 1
+){
+    @include capirote($bg);
+    background: $bg;
+
+    &:before {
+        left: -#{$w};
+        top: calc(50% - #{$h});
+        border-style: solid;
+        border-width: $h $w $h 0;
+        border-color: transparent $bg transparent transparent;
+        z-index: $z;
+    }
+}
+
+@mixin capirote-right (
+    $w: 10px,
+    $h: 10px,
+    $bg: $color-t1,
+    $z: 1
+){
+    @include capirote($bg);
+    background: $bg;
+
+    &:before {
+        right: -#{$w};
+        top: calc(50% - #{$h});
+        border-style: solid;
+        border-width: $h 0 $h $w;
+        border-color: transparent transparent transparent $bg;
+        z-index: $z;
+    }
+}
+
+@mixin titulo-comb-categoria {
+    font-family: $font-family-subtitle;
+    font-weight: $font-weight-sumario;
+    color: #fff;
+    text-shadow: $text-shadow-default;
+    strong {
+        display: inline;
+        bottom: -1pt;
+        font-variant: small-caps;
+        font-weight: $font-weight-keyword;
+        color: colorea($color-t1, d2);
+        text-shadow:$text-shadow-default;
+    }
+}
+
+//----------- COMBINACIONES BASE -----------//
+
+@mixin color-sombra {
+    color: $color-title;
+    text-shadow: 0 0 2rem #000;
+}
+
+@mixin text-shadow (
+    $x: 1pt,
+    $y: 1pt,
+    $blur: 3pt,
+    $color: $rgba-70
+) {
+    text-shadow: $x $y $blur $color;
+}
+
+//----------- TRIPLE -----------//
+
+// Titulos contraste 3 colores corp x si unless=true
+// El contenedor debe ser un flex
+// para que en linea tenga efecto el contraste
+// Unifica las fuente para q se mantengan a paño
+@mixin header-group-tricolor (
+    $margin-group: 2em,
+    $font-weight: 700,
+    $selector1: h1,
+    $selector2: h2,
+    $selector3: p,
+    $color1: $color-subtitle,
+    $color2: $color-title,
+    $color3: $color-byline,
+    $font-family: $font-family-subtitle
+){
+
+    // contenedor del grupo
+    margin: $margin-group 0;
+
+    #{$selector1},
+    #{$selector2} {
+        font-weight: $font-weight;
+    }
+
+    #{$selector1} { color: $color1; }
+    #{$selector2} { color: $color2; }
+    #{$selector3} { color: $color3; }
+
+    #{$selector1},
+    #{$selector2},
+    #{$selector3} {
+        margin: 0;
+        font-family: $font-family;
+        @include rwd-font-size (1.1rem, 2rem, 20rem, 80rem, 0.5rem);
+        &.nombre-empresa {
+            font-family: $font-family-header;
+        }
+    }
+}
+
+//----------- MÚLTIPLE ROTACION -----------//
+
+// hgroup title + ul categorias
+@mixin titulo-rotacion-categorias (
+    $lenght: 6,
+    $duracion: $lenght*6s,
+    $position-top: 2pt,
+    $margin-title: 0.5em,
+    $color-title: #fff,
+    $bg-text-shadow: colorea($color-b, d2)
+){
+    position: absolute;
+    top: $position-top;
+
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    &, h1, ul, li {
+        line-height: $height-title;
+        height: $height-title;
+    }
+
+    h1 {
+        display: inline;
+        margin: 0;
+        margin-right: $margin-title;
+        color: $color-title;
+        text-shadow: 1pt 1pt 1pt $bg-text-shadow;
+
+        @include responsive-font-size (1.8rem, 2.1rem, 20rem, 80rem);
+    }
+
+    ul {
+        margin: 0;
+        list-style: none;
+
+        display: none;
+        @include desde (36rem) {
+            display: block;
+        }
+
+        @include keyframe-rotate-text($height-title, $lenght, #fff, $color-b);
+        @include animacion(rotate-text, $duracion, linear, 0s, infinite, alternate);
+    }
+}
+
+//----------- HOVER TEXTs -----------//
+
+// Capa con figcaption con efecto hover
+@mixin hover-text-round (
+    $height: 50vmin,
+    $margin-translate: 10pt,
+    $bottom-strong: -1pt,
+
+    $color-h3: #fff,
+    $color-strong: colorea($color-t1, d2),
+    $color-subtitulo: #fff,
+    $color-a: colorea($color-t1, d2),
+    $color-border-hover: #fff,
+    $font-style-figcaption: normal,
+    $font-variant-figcaption: small-caps,
+    $text-shadow: $text-shadow-default,
+    $display-strong: inline,
+
+    // ../utils/a-shadows
+    $box-shadow-figcaption: dame-box-shadow-cover-spread(),
+
+    $opacity-figure: 0.9,
+    $opacity-figcaption-hover: 1
+){
+
+    h3, h4, p {
+        margin: 0;
+        @include rwd-font-size (0.7rem, 1.2rem, 20rem, 80rem, 0.3rem);
+    }
+
+    figure,
+    figcaption,
+    h3, h4, p, a, strong {
+        position: relative;
+    }
+
+    // Contenedor del figcaption
+    figure {
+        margin: -1*$margin-translate 0 0 -1*$margin-translate;
+        width: calc(100% + #{$margin-translate});
+        max-width: none;
+        min-height: 100%;
+        // opacity: $opacity-figure;
+
+        @include transition-transform(opacity, 0.35s);
+
+        transform: translate3d($margin-translate, $margin-translate, 0);
+        -webkit-transform: translate3d($margin-translate, $margin-translate, 0);
+
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+
+        figcaption {
+            width: 100%;
+            height: $height;
+            padding: 1em;
+
+            font-style: $font-style-figcaption;
+            font-variant: $font-variant-figcaption;
+
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+
+            overflow: hidden;
+
+            &:before {
+                position: absolute;
+                content: '';
+                right: -100pt;
+                bottom: -100pt;
+                width: 300pt;
+                height: 250pt;
+
+                opacity: 0;
+
+                border: 2pt solid $color-border-hover;
+                border-radius: 50%;
+
+                box-shadow: $box-shadow-figcaption;
+
+                transform-origin: 50% 50%;
+                -webkit-transform-origin: 50% 50%;
+
+                transform: scale3d(0.5,0.5,1);
+                -webkit-transform: scale3d(0.5,0.5,1);
+
+                @include transition-transform(opacity, 0.35s);
+            }
+
+            h3 {
+                text-align: left;
+                color: $color-h3;
+                font-family: $font-family-subtitle;
+                word-spacing: -0.15em;
+                font-weight: $font-weight-sumario;
+                text-shadow: $text-shadow;
+
+                transition: transform 0.35s;
+                transition: -webkit-transform 0.35s;
+                -webkit-transition: -webkit-transform 0.35s;
+                transition: transform 0.35s, -webkit-transform 0.35s;
+
+                transform: translate3d($margin-translate, $margin-translate, 0);
+                -webkit-transform: translate3d($margin-translate, $margin-translate, 0);
+
+                // -webkit-transform: translate3d(5pt,5pt,0);
+                // transform: translate3d(5pt,5pt,0);
+
+                strong {
+                    bottom: $bottom-strong;
+                    display: $display-strong;
+                    font-weight: $font-weight-keyword;
+                    color: $color-strong;
+                    text-shadow: $text-shadow;
+                }
+            }
+
+            // Subtitulo hover-text
+            p,
+            h4 {
+                position: absolute;
+                right: 1em;
+                bottom: 1em;
+                padding: 0 $top $top 0;
+                width: 150pt;
+                text-align: right;
+                color: $color-subtitulo;
+                opacity: 0;
+
+                transform: translate3d($margin-translate*2, $margin-translate*2, 0);
+                -webkit-transform: translate3d($margin-translate*2, $margin-translate*2, 0);
+
+                @include transition-transform(opacity, 0.35s);
+
+                // letter-spacing: 1pt;
+                line-height: 1.1;
+
+                text-shadow: $text-shadow;
+            }
+
+            a {
+                display: none;
+                height: $height;
+                color: $color-a;
+            }
+
+            &:hover, &:focus, &:target {
+                opacity: $opacity-figcaption-hover;
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+
+                & a {
+                    display: block;
+                }
+            }
+        }
+        &:hover figcaption:before,
+        &:focus figcaption:before,
+        &:target figcaption:before {
+            opacity: 1;
+            -webkit-transform: scale3d(1,1,1);
+            transform: scale3d(1,1,1);
+        }
+
+        &:hover h3, &:focus h3, &:target h3,
+        &:hover p, &:focus p, &:target p,
+        &:hover h4, &:focus h4, &:target h4 {
+            opacity: 1;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+    }
+}
+
+// Capa con figcaption con efecto hover
+@mixin text-hover-round (
+    $width,
+    $height,
+    $margin-translate: 10pt,
+    $bottom-strong: -1pt,
+    $scalex: 1,
+    $scaley: 1,
+
+    $color-h3: #fff,
+    $color-strong: colorea($color-t1, d2),
+    $color-subtitulo: #fff,
+    $color-a: colorea($color-t1, d2),
+    $color-border-hover: #fff,
+    $font-style-figcaption: normal,
+    $font-variant-figcaption: small-caps,
+    $text-shadow: $text-shadow-default,
+    $display-strong: inline,
+
+    // ../utils/a-shadows
+    $box-shadow-figcaption: dame-box-shadow-cover-spread(),
+
+    $opacity-figure: 0.9,
+    $opacity-figcaption-hover: 1
+){
+
+    h3, h4, p {
+        margin: 0;
+        @include rwd-font-size (0.7rem, 1.2rem, 20rem, 80rem, 0.3rem);
+    }
+
+    figure,
+    figcaption,
+    h3, h4, p, a, strong {
+        position: relative;
+    }
+
+    // Contenedor del figcaption
+    figure {
+        margin: -1*$margin-translate 0 0 -1*$margin-translate;
+        width: calc(100% + #{$margin-translate});
+        max-width: none;
+        min-height: 100%;
+        // opacity: $opacity-figure;
+
+        @include transition-transform(opacity, 0.35s);
+
+        transform: translate3d($margin-translate, $margin-translate, 0);
+        -webkit-transform: translate3d($margin-translate, $margin-translate, 0);
+
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+
+        figcaption {
+            width: 100%;
+            height: $height;
+            padding: 1em;
+
+            font-style: $font-style-figcaption;
+            font-variant: $font-variant-figcaption;
+
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+
+            overflow: hidden;
+
+            &:before {
+                position: absolute;
+                content: '';
+                right: -100pt;
+                bottom: -100pt;
+                width: $width;
+                height: $height;
+
+                opacity: 0;
+
+                border: 1pt solid $color-border-hover;
+                border-radius: 50%;
+
+                box-shadow: $box-shadow-figcaption;
+
+                transform-origin: 50% 50%;
+                -webkit-transform-origin: 50% 50%;
+
+                transform: scale3d(0.5,0.5,1);
+                -webkit-transform: scale3d(0.5,0.5,1);
+
+                @include transition-transform(opacity, 0.35s);
+            }
+
+            h3 {
+                text-align: left;
+                color: $color-h3;
+                font-family: $font-family-subtitle;
+                word-spacing: -0.15em;
+                font-weight: $font-weight-sumario;
+                text-shadow: $text-shadow;
+
+                transition: transform 0.35s;
+                transition: -webkit-transform 0.35s;
+                -webkit-transition: -webkit-transform 0.35s;
+                transition: transform 0.35s, -webkit-transform 0.35s;
+
+                transform: translate3d($margin-translate, $margin-translate, 0);
+                -webkit-transform: translate3d($margin-translate, $margin-translate, 0);
+
+                // -webkit-transform: translate3d(5pt,5pt,0);
+                // transform: translate3d(5pt,5pt,0);
+
+                strong {
+                    bottom: $bottom-strong;
+                    display: $display-strong;
+                    font-weight: $font-weight-keyword;
+                    color: $color-strong;
+                    text-shadow: $text-shadow;
+                }
+            }
+
+            // Subtitulo hover-text
+            p,
+            h4 {
+                position: absolute;
+                right: 1em;
+                bottom: 1em;
+                padding: 0 $top $top 0;
+                width: $width / 2;
+                text-align: right;
+                color: $color-subtitulo;
+                opacity: 0;
+
+                transform: translate3d($margin-translate*2, $margin-translate*2, 0);
+                -webkit-transform: translate3d($margin-translate*2, $margin-translate*2, 0);
+
+                @include transition-transform(opacity, 0.35s);
+
+                // letter-spacing: 1pt;
+                line-height: 1.1;
+
+                text-shadow: $text-shadow;
+            }
+
+            a {
+                display: none;
+                height: 100%;
+                color: $color-a;
+            }
+
+            &:hover, &:focus, &:target {
+                opacity: $opacity-figcaption-hover;
+                -webkit-transform: translate3d(0,0,0);
+                transform: translate3d(0,0,0);
+
+                & a {
+                    display: block;
+                }
+            }
+        }
+        &:hover figcaption:before,
+        &:focus figcaption:before,
+        &:target figcaption:before {
+            opacity: 1;
+            // -webkit-transform: scale3d(#{$scalex},#{$scaley},1) translate3d(0,0,0);
+            -webkit-transform: translate3d(0,0,0) scale3d(#{$scalex},#{$scaley},1);
+                    transform: translate3d(0,0,0) scale3d(#{$scalex},#{$scaley},1);
+        }
+
+        &:hover h3, &:focus h3, &:target h3,
+        &:hover p, &:focus p, &:target p,
+        &:hover h4, &:focus h4, &:target h4 {
+            opacity: 1;
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+    }
+}
+
+// Para ul al mismo nivel que su contenedor
+@mixin mostrar-list (
+    $line-h: 1.5,
+    $items: 5,
+    $heigt-sobrao-list--hover: 150pt,
+
+    $color: #fff,
+    $border--hover: 1pt inset #fff,
+    $border-radius--hover: 15%,
+    $bg-color-before: rgba($bg-box--hover, 0.2),
+    $bg-color-list--hover: rgba(#000, 0.5),
+
+    $opacity-before: 0,
+    $opacity-before--hover: 0.2
+){
+
+    position: relative;
+    overflow: hidden;;
+
+    -webkit-transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.5s;
+
+    & ul {
+        display: none;
+        opacity: 0;
+
+        li {
+            position: relative;
+            color: $color;
+            text-shadow: 1pt 1pt 1pt #000;
+            line-height: $line-h;
+        }
+    }
+
+    &:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        opacity: $opacity-before;
+        background: $bg-color-before;
+
+        @include transition-transform(opacity, 0.35s);
+    }
+
+    &:hover, &:focus, &:target {
+        opacity: 1;
+        box-shadow: $box-shadow--hover;
+        -webkit-transform: scale(1.05);
+                transform: scale(1.05);
+
+        ul {
+            // position: relative;
+            display: block;
+            opacity: 1;
+            // line-height: 1.5 por default
+            $h: 1.5 * 4 * 1em;
+            -webkit-transform: translate3d(0, -#{$h}, 0);
+                    transform: translate3d(0, -#{$h}, 0);
+
+            &:before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: $heigt-sobrao-list--hover;
+                background: $bg-color-list--hover;
+                border-top: $border--hover;
+                border-top-left-radius: $border-radius--hover;
+            }
+        }
+        &:before {
+            opacity: $opacity-before--hover;
+        }
+    }
+}
+
+//----------- COMBINACIONES FONT-SIZE -----------//
+
+@mixin font-size-titulo {
+    @include rwd-font-size (1.5rem, 3rem, 40rem, 80rem, 0.5rem);
+}
+@mixin font-size-subtitulo {
+    @include rwd-font-size(1.3rem, 2.5rem, 40rem, 80rem, 0.5rem);
+}
+
+@mixin titulo-small {
+    @include rwd-font-size(0.8rem, 1.3rem, 20rem, 80rem, 0.5rem);
+    text-align: center;
+}
+
+//----------- OTROS -----------//
+
+// Efecto 3D con 2 o tres colores clave
+@mixin text-shadow-simple-3d {
+    color: $color-title;
+  text-shadow: 0 1pt 0 rgba($color28, 0.1),
+               0 2pt 0 rgba($color29, 0.1),
+               0 3pt 0 rgba($color30, 0.1),
+               0 4pt 0 rgba($color19, 0.1),
+               0 3pt 0 rgba($color20, 0.1),
+               0 4pt 1pt rgba(0,0,0,.1),
+               0 0 5pt rgba(0,0,0,.1),
+               0 1pt 3pt rgba(0,0,0,.3),
+               0 3pt 5pt rgba(0,0,0,.2),
+               0 5pt 10pt rgba(0,0,0,.25),
+               0 10pt 10pt rgba(0,0,0,.2),
+               0 20pt 20pt rgba(0,0,0,.15);
+
+    // Original para color blanco
+    // y tamaño muy grande
+    // text-shadow: 0 1pt 0 #ccc,
+    //            0 2pt 0 #c9c9c9,
+    //            0 3pt 0 #bbb,
+    //            0 4pt 0 #b9b9b9,
+    //            0 5pt 0 #aaa,
+    //            0 6pt 1pt rgba(0,0,0,.1),
+    //            0 0 5pt rgba(0,0,0,.1),
+    //            0 1pt 3pt rgba(0,0,0,.3),
+    //            0 3pt 5pt rgba(0,0,0,.2),
+    //            0 5pt 10pt rgba(0,0,0,.25),
+    //            0 10pt 10pt rgba(0,0,0,.2),
+    //            0 20pt 20pt rgba(0,0,0,.15);
+}
+
+// Efecto hundido (fuentes muy grandes)
+@mixin sombra-hundido (
+    $bg: $bg-body,
+    $titulo: rgba($color-title, 0.15),
+    $inglete: rgba(0,0,0,.1),
+    $sombra: rgba($color-subtitle,.3),
+    $brillo: rgba(#fff,1)
+){
+    color: $titulo;
+    text-shadow: 1pt 2pt 8pt $bg,
+        0 0 0 $sombra,
+        1pt 2pt 8pt $bg,
+        2pt 2pt 0pt $brillo;
+}
+
+// Efecto lácteo
+.milky {
+  position: relative;
+  padding: 100pt 200pt;
+  top: 50%;
+  left: 50%;
+  text-transform: uppercase;
+  color: #f1ebe5;
+  text-shadow: 0 8pt 9pt #c4b59d, 0pt -2pt 1pt #fff;
+  font-weight: bold;
+  letter-spacing: -4pt;
+  text-align: center;
+  -webkit-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}

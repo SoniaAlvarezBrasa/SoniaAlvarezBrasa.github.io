@@ -1,0 +1,57 @@
+//----------- FONT-WEIGHT -----------
+// normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | inherit
+$thin       : 100;
+$extra-light: 200;
+$light      : 300;
+$regular    : 400;
+$medium     : 500;
+$semi-bold  : 600;
+$bold       : 700;
+$extra-bold : 800;
+$black      : 900;
+
+// Estilos base
+// -- secciones y descendientes
+$font-weight-header: 900;
+$font-weight-title: 500;
+$font-weight-subtitle: 500;
+// -- párrafos
+$font-weight-p : 400;
+// --sumario fondo foto
+$font-weight-keyword: 300;
+$font-weignt-nota: 100;
+
+//----------- FONT-FAMILY -----------
+// familia | generica, familia | generica, ... | inherit
+
+// base
+// $font-family-body : 'PuppyBellies' !important;
+$font-family-body: 'Crimson Text', serif;
+
+// títulos
+$font-family-title: 'Crimson Text', serif;
+
+$font-family-subtitle: 'Crimson Text', serif;
+
+// Header
+$font-family-header: 'Nasal', cursive;
+// $font-family-header: 'Raleway', sans-serif;
+
+// especiales
+$font-family-special: 'Nasal', cursive;
+// $font-family-special: 'Dancing Script', cursive;
+
+// footer (siempre italic)
+// $font-family-number: 'Raleway', sans-serif;
+
+//----------- FONT-SIZE -----------
+// mixins-viewport / @mixin rwd-font-size
+
+//----------- FONT-VARIANT -----------
+// normal | small-caps | inherit
+
+//----------- TEXT-TRANSFORM -----------
+// upercase | capitalize
+
+//----------- TEXT-SHADOW's -----------
+// Text-shadows del sitio

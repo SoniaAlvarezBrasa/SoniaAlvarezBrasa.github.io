@@ -1,0 +1,26 @@
+// layout/_show-imagenesinicio .show figure
+// layout/_index .sumario
+// lauout/_index .bienvenida
+$z-index-tras-fixed: -1;
+
+// Slogans del carrousel de imagenesinicio
+$z-index-slogan: 1;
+
+// elementos fixed
+$z-index-fixed: 1;
+
+// modales s/fondo
+$z-index-modal: 1;
+$z-index-galeria: 2;
+
+// Hover s/ su parent
+$z-index--hover: 1;
+
+// title previo a figure
+$z-index-title-figure: 1;
+
+// footer supera a menu
+$z-index-footer: 2;
+
+// Nav menú
+$z-index-menu: 2;

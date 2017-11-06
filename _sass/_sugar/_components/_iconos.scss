@@ -1,0 +1,118 @@
+@mixin estilo-icon-fonts {
+    [class^="icon-"]:before,
+    [class*=" icon-"]:before {
+        @content;
+    }
+}
+
+@include estilo-icon-fonts {
+    position: relative;
+    top: .1em;
+    margin-right: 0.2em;
+}
+
+
+.icon-verde{
+    @include rwd-font-size (2rem, 3rem, 40rem, 75rem, 0.5rem);
+    color: lime;
+    margin-right: 0.3em;
+}
+
+@mixin sociales (
+    $p: .4em,
+    $m: .3em,
+    $opacity: 0.9,
+    $bg: #fff,
+    $color: rgba(colorea($color-t1, d4), $opacity)
+){
+    // ul.sociales
+    li {
+        a {
+            padding: $p;
+            margin: $m;
+            border-radius: 50%;
+            background: $bg;
+            color: $color;
+
+            &.icon-facebook {
+                &:hover, &:focus, &:target {
+                    background: #3b5998;
+                    color: $bg;
+                }
+            }
+            &.icon-twitter {
+                &:hover, &:focus, &:target {
+                    background: #00aced;
+                    color: $bg;
+                }
+            }
+            &.icon-googleplus{
+                &:hover, &:focus, &:target {
+                    background: #dd4b39;
+                    color: $bg;
+                }
+            }
+            &.icon-linkedin {
+                &:hover, &:focus, &:target {
+                    background: #0077b5;
+                    color: $bg;
+                }
+            }
+            &.icon-youtube {
+                &:hover, &:focus, &:target {
+                    background: #b00;
+                    color: $bg;
+                }
+            }
+            &.icon-github {
+                &:hover, &:focus, &:target {
+                    background: #000;
+                    color: $bg;
+                }
+            }
+        }
+    }
+}
+
+$social: (
+    facebook: #3b5998,
+    twitter: #00aced,
+    googleplus: #dd4b39,
+    rss: #f60,
+    youtube: #b00,
+    vimeo: #000
+);
+@each $social, $bgcolor in $social {
+    .social--#{$social} {
+        color: $bgcolor;
+    }
+}
+
+// todo: crear un map de los colores sociales y un mixin con los parámetros
+// Para escoger los colores del map o definir colores propios.
+// Además de personalizar el estilo (vertical, redondo, cuadrado, ...)
+
+.social {
+    display: table;
+    a {
+        display: inline-block;
+        color: rgba(#fff,.7);
+        line-height: 1;
+    }
+    &.circle,
+    &.square{
+        a {
+            background: rgba(#000,.5);
+            padding: .4em;
+            margin: .3em;
+            &:hover {
+                background: rgba(#000,.5);
+            }
+        }
+    }
+    &.circle {
+        a:before {
+            border-radius: 50%;
+        }
+    }
+}

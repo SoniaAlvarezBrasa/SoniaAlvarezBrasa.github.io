@@ -1,0 +1,333 @@
+// Desplegables al imput radio checked
+// Selectores display en unchecked
+
+
+// En @medias pq etiquetar el texto label (conserva el :before)
+// El $tagNone será display none en unchecked
+// -- Defaul $tagNone = h1 (para display si)
+// El $tagMini será $fs-mini en unchecked
+// -- Default $tagMini = h1 (para font size inherit)
+@mixin mini-label-unchecked (
+    $display: inline-block,
+    $tagNone: h1,
+    $tagMini: h1,
+    $fs-mini: 0.5em
+){
+    input {
+        &:checked + label {
+            & > .#{$tagNone},
+            & > #{$tagNone} {
+                display: $display;
+            }
+            & > .#{$tagMini},
+            & > #{$tagMini} {
+                font-size: inherit;
+            }
+        }
+    }
+
+    label {
+        & > .#{$tagNone},
+        & > #{$tagNone} {
+            display: none;
+        }
+
+        & > .#{$tagMini},
+        & > #{$tagMini} {
+            font-size: $fs-mini;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+
+// icon-caracter before para desplegables
+@mixin icon-abrirCerrar (
+    $cerrado: "\25b6",
+    $abierto: "\25bc",
+    $color-cerrado: darkseagreen,
+    $color-abierto: darkred
+){
+
+    & > input:checked + label {
+        &:before {
+            content: $abierto;
+            position: relative;
+            left: -1em;
+            // font-size: 1em;
+            color: $color-abierto;
+            -webkit-transition: .3s linear;
+            transition: .3s linear;
+        }
+    }
+
+    & > label {
+        &:before {
+            content: $cerrado;
+            position: relative;
+            left: -1em;
+            // font-size: 1em;
+            color: $color-cerrado;
+            -webkit-transition: .3s linear;
+            transition: .3s linear;
+        }
+    }
+}
+
+// width 100% label y selector
+// Para html section {input + label + article}
+@mixin desplegable (
+    $selector: article,
+    $bg: $bg-body,
+    $color: $color-body,
+    $color--check: $color--checked,
+    $color--hover: $color--hover-oscuro,
+    $padding-left: $padding-comunes,
+    $padding-top: $padding-item,
+    $padding-bottom: $padding-left / 2,
+    $margin-bottom: $padding-left / 2,
+    $fw: 600,
+    $borde: $border-default,
+    $borde-px: 4px,
+    $border-top-color: $color-b,
+    $border-top: $borde-px solid $border-top-color,
+    $border-radius: 10px
+){
+    #{$selector},
+    .#{$selector} {
+        display: none;
+        padding-left: $padding-left;
+        padding-right: $padding-left;
+        padding-bottom: $padding-bottom;
+        padding-top: 0;
+        margin: auto;
+        margin-bottom: $margin-bottom;
+        border-left: $borde;
+        border-right: $borde;
+    }
+
+    input {
+        // display: none;
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px); // IE6, IE7
+        clip: rect(1px, 1px, 1px, 1px);
+        padding:0 !important;
+        border:0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
+
+        +label {
+            display: block;
+            margin: 0 0 -1px;
+            padding: $padding-top $padding-left;
+            font-weight: $fw;
+            text-align: center;
+            color: $color;
+            border: 1px solid transparent;
+
+            &:hover, &:focus, &:target {
+                color: $color--hover;
+                cursor: pointer;
+            }
+        }
+
+        &:checked + label {
+            color: $color--check;
+            border: $borde;
+            border-top: $border-top;
+            border-bottom: $borde-px/2 solid $bg;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+        }
+
+        &:checked ~ .#{$selector},
+        &:checked ~ #{$selector} {
+            display: block;
+            border-bottom: $borde;
+        }
+    }
+}
+
+@mixin desplegable-incompletos (
+    $selector: article,
+    $bg: $bg-body,
+    $color: $color-body,
+    $color--check: $color--checked,
+    $color--hover: $color--hover-oscuro,
+    $color-strong: $color-subtitle,
+    $padding-left: $padding-comunes,
+    $padding-top: $padding-item,
+    $padding-bottom: $padding-left / 2,
+    $margin-bottom: $padding-left / 2,
+    $fw: 600,
+    $borde: $border-default,
+    $borde-px: 4px,
+    $border-top-color: $color-b,
+    $border-top: $borde-px solid $border-top-color,
+    $border-radius: 10px,
+    $z: 1
+){
+
+    input {
+        // display: none;
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px); // IE6, IE7
+        clip: rect(1px, 1px, 1px, 1px);
+        padding:0 !important;
+        border:0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
+
+        +label {
+            display: block;
+            margin: 0 0 -1px;
+            line-height: $padding-top;
+            padding-top: $padding-top;
+            padding-bottom: $padding-top;
+            padding-left: $padding-left;
+            padding-right: $padding-left;
+            font-weight: $fw;
+            text-align: center;
+            color: $color;
+            border: 1px solid transparent;
+
+            &:hover, &:focus, &:target {
+                color: $color--hover;
+                cursor: pointer;
+            }
+        }
+
+        &:checked + label {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            border: $borde;
+            border-top: $border-top;
+            border-bottom: $borde-px/2 solid $bg;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+            background: $bg;
+            color: $color--check;
+            z-index: $z;
+            &:hover, &:focus, &:target {
+                color: $color-strong;
+            }
+        }
+
+        &:checked ~ .#{$selector},
+        &:checked ~ #{$selector} {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: $padding-top *3;
+            padding-left: $padding-left;
+            padding-right: $padding-left;
+            padding-bottom: $padding-bottom;
+            padding-top: 0;
+            margin: auto;
+            margin-bottom: $margin-bottom;
+            // margin-right: 1px;
+            border-left: $borde;
+            border-right: $borde;
+            border-bottom: $borde;
+            background: $bg;
+            color: $color--check;
+            z-index: $z;
+
+            & strong,
+            & b,
+            & em {
+                color: $color-strong;
+            }
+        }
+    }
+}
+
+// labels inline (pestañas) y selector al 100%
+// Para html section (input1 + label1 + input2 + label2 + contenido1 + contenido2)
+@mixin tabs (
+    // Numero de pestañas
+    $through-tab-num: 3,
+    // Número de ids del each
+    $through-tab-id: 200,
+    $id-tab: tab,
+    $id-contenido: contenido,
+    $contenedor: ficha,
+    $bg: $bg-body,
+    $color: $color-label,
+    // $color: #555,
+    $color--check: $color--checked,
+    // $color--check: #bbb,
+    $color--hover: $color--hover-oscuro,
+    // $color--hover: #888,
+
+    $padding-left: $padding,
+    $padding-top: $padding *0.625,
+    $padding-contenedor: $padding-left,
+    $fw: 600,
+    $borde: $border-default,
+    $borde-px: 4px,
+    $border-top: $borde-px solid $color-b,
+    $border-radius: 10px,
+    $display: inline-block
+){
+    & > input {
+        // display: none;
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px); // IE6, IE7
+        clip: rect(1px, 1px, 1px, 1px);
+        padding:0 !important;
+        border:0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
+
+        &:checked + label {
+            color: $color--check;
+            border: $borde;
+            border-top: $border-top;
+            border-bottom: 3px solid $bg;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+        }
+    }
+
+    & > label {
+        position: relative;
+        display: $display;
+        margin: 0 0 -2px;
+        // padding: 15px 25px;
+        padding: $padding-top $padding-left;
+        // font-weight: 600;
+        font-weight: $fw;
+        text-align: center;
+        background: $bg;
+        color: $color;
+        border: 1px solid transparent;
+
+        &:hover, &:focus, &:target {
+            color: $color--hover;
+            cursor: pointer;
+        }
+    }
+
+    // el contenedor oculto
+    .#{$contenedor},
+    #{$contenedor}{
+        display: none;
+        margin-top: 0;
+        padding: $padding-contenedor;
+        border: $borde;
+    }
+
+    @for $i from 1 through $through-tab-num {
+        @for $j from 1 through $through-tab-id {
+            ##{$id-tab}#{$i}-#{$j}:checked ~ ##{$id-contenido}#{$i}-#{$j} {
+                display: block;
+            }
+        }
+    }
+}

@@ -1,0 +1,258 @@
+// Variables del sitio
+$color-b: #006699;
+$color-t1: #971F1F;
+$color-t2: #009933;
+$negro: #000000;
+$blanco: #ffffff;
+
+// FUNCION COLOREA
+// lx = light nivel
+// dx = dark nivel
+
+// Ejemplo de uso
+//
+// body {
+// color: colorea($color-base,l4);
+// background: colorea(#fff,d2);
+// border: 1px solid colorea($comp-color,d3);
+// }
+
+@function colorea($color: $color-b, $mezcla: n) {
+  @if $mezcla == n {
+    @return $color;
+  }
+  @if $mezcla == l1 {
+    @return lighten($color, 10%);
+  }
+  @if $mezcla == l2 {
+    @return lighten($color, 20%);
+  }
+  @if $mezcla == l3 {
+    @return lighten($color, 30%);
+  }
+  @if $mezcla == l4 {
+    @return lighten($color, 40%);
+  }
+  @if $mezcla == l5 {
+    @return lighten($color, 50%);
+  }
+  @if $mezcla == l6 {
+    @return lighten($color, 60%);
+  }
+  @if $mezcla == l7 {
+    @return lighten($color, 70%);
+  }
+  @if $mezcla == l8 {
+    @return lighten($color, 80%);
+  }
+  @if $mezcla == d1 {
+    @return darken($color, 10%);
+  }
+  @if $mezcla == d2 {
+    @return darken($color, 20%);
+  }
+  @if $mezcla == d3 {
+    @return darken($color, 30%);
+  }
+  @if $mezcla == d4 {
+    @return darken($color, 40%);
+  }
+  @if $mezcla == d5 {
+    @return darken($color, 50%);
+  }
+  @if $mezcla == d6 {
+    @return darken($color, 60%);
+  }
+  @if $mezcla == d7 {
+    @return darken($color, 70%);
+  }
+  @if $mezcla == d8 {
+    @return darken($color, 80%);
+  }
+}
+
+// FUNCION COMPLEMENTA
+// n = normal
+// c = complement
+// dc = dark complement
+// lc = light complement
+// lb = light base
+// db = dark base
+
+@function complementa($color:$color-b, $complemento: n) {
+    @if $complemento == n {
+        @return complement($color);
+    }
+    @if $complemento == c {
+        @return complement($color);
+    }
+    @if $complemento == dc {
+        @return hsl(hue(complement($color)),saturation($color),30);
+    }
+    @if $complemento == lc {
+        @return hsl(hue(complement($color)),saturation($color),70);
+    }
+    @if $complemento == db {
+        @return hsl(hue($color),saturation($color),30);
+    }
+    @if $complemento == lb {
+        @return hsl(hue($color),saturation($color),70);
+    }
+}
+
+// FUNCION TRIADA
+// n = normal
+// t1 = triada1
+// t2 = triada2
+
+@function triada($color:$color-b, $triada: n) {
+  @if $triada == n {
+    @return $color;
+  }
+  @if $triada == t1 {
+    @return adjust-hue($color, 120deg);
+  }
+  @if $triada == t2 {
+    @return adjust-hue($color, 240deg);
+  }
+}
+
+// FUNCION ANALOGOS
+// n = normal
+// a1 = analogo1
+// a2 = analogo2
+
+@function analogos($color:$color-b, $hno: n) {
+  @if $hno == n {
+    @return $color;
+  }
+  @if $hno == a1 {
+    @return adjust-hue($color, 45deg);
+  }
+  @if $hno == a2 {
+    @return adjust-hue($color, -45deg);
+  }
+}
+
+// FUNCION TONOS
+// n = normal
+// t1 = tono complementario 1
+// t2 = tono complementario 2
+
+@function tonos($color:$color-b, $grados: n) {
+  @if $grados == n {
+    @return $color;
+  }
+  @if $grados == t1 {
+    @return adjust-hue($color, 150deg);
+  }
+  @if $grados == t2 {
+    @return adjust-hue($color, 210deg);
+  }
+}
+
+
+//----------- OTROS COLORES  -----------//
+// Fondos papelería, merchandising ...
+$bg-corp: #c4b59d;
+
+
+//----------- BACKGROUND-COLOR -----------//
+// transparent | color | inherit
+
+// $bg-body: colorea(#cfeed9, l1);
+// $bg-body: #c6d3db !default;
+$bg-body: #f9f9f9;
+
+
+//----------- TIPOGRAFIA COLOR -----------//
+// black | color | inherit
+
+$base: analogos($color-t2, a2);
+// $color-body       : colorea(gold, l2);
+$color-body       : #333 !default;
+$color-body       : $color-b;
+
+// color configuracion.comercial//
+$color-header: $color-b;
+
+// -- color titulos
+$color-title: $color-b;
+$color-subtitle: $color-t2;
+$color-byline: #999 !default;
+$color-byline: colorea($color-t1, d2);
+
+$color-portada: #fff;
+$color-item: $color-title;
+
+$color-link : inherit;
+
+// Colores hover, active y checked:
+$color--hover-claro: colorea($color-t1, l3);
+$color--hover-oscuro: $color-t1;
+$color--active: $color-t1;
+$color-label: desaturate($color--hover-oscuro, 75%);
+$color--checked: desaturate($color-body, 75%);
+
+$color--error: #DD2C00;
+
+
+//----------- COLOR EFECTOS SOMBRAS -----------//
+
+//----------- TEXT-SHADOWs -----------//
+// Color del text-shadow vs body
+$color-text-shadow-title: rgba(#fff, 0.2);
+$color-text-shadow-header: #bbb;
+
+
+//----------- BOX-SHADOWs -----------//
+
+$rgba-70: rgba(#000, .7);
+$rgba-80: rgba(#000, .8);
+
+
+//----------- BACKGROUND-COLOR IMG/ITEM -----------//
+$bg-img: linear-gradient(-45deg, colorea($color-t1, d1) 0%, colorea($color-t1, l1) 100%);
+
+$bg-img-rect: linear-gradient(colorea($color-t1, l2), transparent);
+$bg-img-circle: linear-gradient(-45deg, colorea($color-t1, d1) 0%, colorea($color-t1, l1) 100%);
+
+$bg-boton-simple: #eee;
+
+
+// Unifica box-shadow-cover genérico
+$bg-box--hover: analogos($color-b, a1);
+
+$bg-box-b: $color-b;
+$bg-box-t1: $color-t1;
+$bg-box-t2: $color-t2;
+$bg-color-box-b: $bg-body;
+$bg-color-box-t1: $bg-body;
+$bg-color-box-t2: $bg-body;
+
+$bg-box-b--hover: colorea($color-b, d1);
+$bg-box-t1--hover: colorea($color-t1, d1);
+$bg-box-t2--hover: colorea($color-t2, d1);
+$bg-color-box-b--hover: #fff;
+$bg-color-box-t1--hover: #fff;
+$bg-color-box-t2--hover: #fff;
+
+
+//----------- LAYOUT -----------//
+
+// -- footer
+$bg-footer-back: colorea($color-t1, d3);
+$bg-footer-end: rgba(colorea($color-b, d1), 0.6);
+$color-footer: rgba(#fff, .45);
+$color-footer--hover: $color-t1;
+$color-footer--active: $color-b;
+
+
+// -- Menus
+$bg-inventory: $bg-footer-back;
+$color-inventory: $color-footer;
+$color-inventory--hover: $color-footer--hover;
+$color-inventory--active: $color-footer--active;
+
+// mapa
+$bg-mapa: rgba($color-b, 0.8);

@@ -1,0 +1,644 @@
+@mixin animacion (
+    $nombre,
+    $duracion,
+    $curva: ease-in,
+    $retardo: 5s,
+    $repeticiones: infinite,
+    $direccion: normal,
+    $fill: forwards // para evitar que la animacion se reinicie
+) {
+
+    -webkit-animation-name: $nombre;
+            animation-name: $nombre;
+    -webkit-animation-duration: $duracion;
+            animation-duration: $duracion;
+    -webkit-animation-timing-function: $curva;
+            animation-timing-function: $curva;
+    -webkit-animation-delay: $retardo;
+            animation-delay: $retardo;
+    -webkit-animation-iteration-count: $repeticiones;
+            animation-iteration-count: $repeticiones;
+    -webkit-animation-direction: $direccion;
+            animation-direction: $direccion;
+    -webkit-animation-fill-mode: $fill;
+            animation-fill-mode: $fill;
+}
+
+// Igual q anterio para 2 animaciones
+@mixin animacion2 (
+    $animacion1,
+    $animacion2,
+    $duracion,
+    $curva: ease-in,
+    $retardo: 5s,
+    $repeticiones: infinite,
+    $direccion: normal,
+    $fill: forwards // para evitar que la animacion se reinicie
+) {
+
+    -webkit-animation-name: $animacion1, $animacion2;
+            animation-name: $animacion1, $animacion2;
+    -webkit-animation-duration: $duracion;
+            animation-duration: $duracion;
+    -webkit-animation-timing-function: $curva;
+            animation-timing-function: $curva;
+    -webkit-animation-delay: $retardo;
+            animation-delay: $retardo;
+    -webkit-animation-iteration-count: $repeticiones;
+            animation-iteration-count: $repeticiones;
+    -webkit-animation-direction: $direccion;
+            animation-direction: $direccion;
+    -webkit-animation-fill-mode: $fill;
+            animation-fill-mode: $fill;
+}
+
+// Slider de images que se reparten del 0 al 100%
+// Con una pausa de su midad
+// Parámetro $lenght: Cantidad de img's en su etiqueta padre
+
+@mixin keyframe-slidy ($lenght){
+    @keyframes slidy#{$lenght} {
+        @for $i from 0 through ($lenght)-1 {
+            $numerador: 1/(($lenght)-1);
+            $selector: $i*$numerador;
+            $transicion: ($selector)-($numerador/2);
+            $inicio: percentage($transicion);
+            $fin: percentage($selector);
+
+            @if $i > 0 {
+                #{$inicio} { left: percentage((-1)*$i); }
+                #{$fin} { left: percentage((-1)*$i); }
+            }
+        }
+    }
+}
+
+// ====== Combinaciones xfade ====================
+
+// base
+@mixin keyframe-xfade ($lenght, $duracion, $curva: ease-in, $repes: infinite) {
+    $invisible: percentage(1 / $lenght);
+    $visible: percentage(1 / ($lenght + 1));
+    @for $i from 1 through $lenght {
+        $retardo: $duracion * ($i - 1);
+        &:nth-child(#{$i}) {
+            @include animacion (xfade, $duracion*$lenght, $curva, $retardo, $repes);
+        }
+    }
+    @keyframes xfade {
+      0%{
+        opacity: 1;
+      }
+      #{$visible} {
+        opacity: 1;
+      }
+      #{$invisible} {
+        opacity: 0;
+      }
+      98% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+}
+
+
+
+// xfade en before
+@mixin keyframe-xfade-before ($lenght, $duracion, $curva: ease-in, $repes: infinite) {
+    $invisible: percentage(1 / $lenght);
+    $visible: percentage(1 / ($lenght + 1));
+    @for $i from 1 through $lenght {
+        $retardo: $duracion * ($i - 1);
+        &:nth-child(#{$i}):before {
+            @include animacion (xfade, $duracion*$lenght, $curva, $retardo, $repes);
+        }
+    }
+    @keyframes xfade {
+      0%{
+        opacity: 1;
+      }
+      #{$visible} {
+        opacity: 1;
+      }
+      #{$invisible} {
+        opacity: 0;
+      }
+      98% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+}
+
+// xfade before + efecto background-size
+@mixin keyframe-xfade-beforeZoom ($lenght, $duracion, $curva: ease-in, $repes: infinite) {
+    $invisible: percentage(1 / $lenght);
+    $visible: percentage(1 / ($lenght + 1));
+    @for $i from 1 through $lenght {
+        $retardo: $duracion * ($i - 1);
+        &:nth-child(#{$i}):before {
+            @include animacion (xfade, $duracion*$lenght, $curva, $retardo, $repes);
+        }
+    }
+    @keyframes xfade {
+      0%{
+        opacity: 1;
+        background-size: 100%;
+      }
+      #{$visible} {
+        opacity: 1;
+        background-size: 100%;
+      }
+      #{$invisible} {
+        opacity: 0;
+        background-size: 80%;
+      }
+      98% {
+        opacity: 0;
+        background-size: 80%;
+      }
+      100% {
+        opacity: 1;
+        background-size: 100%;
+      }
+    }
+}
+
+// Combinación xfade con subelementos
+// zoomIn = $scale < 1
+// zoomOut = $scale > 1
+// $id identifica el keyframe
+// a scale 1.5, id = 15, a scale 1.2, id = 12 etc
+@mixin keyframe-xfadeZoom ($lenght, $duracion, $hijo, $scale: 0.5, $id: 05, $curva: ease-in, $repes: infinite) {
+    $invisible: percentage(1 / $lenght);
+    $visible: percentage(1 / ($lenght + 1));
+    @for $i from 1 through $lenght {
+        $retardo: $duracion * ($i - 1);
+        &:nth-child(#{$i}) #{$hijo} {
+            @include animacion (xfadeZoom#{$id}, $duracion*$lenght, $curva, $retardo, $repes);
+        }
+    }
+    @keyframes xfadeZoom#{$id} {
+      0%{
+        opacity: 1;
+      }
+      #{$visible} {
+        opacity: 1;
+      }
+      #{$invisible} {
+        opacity: 0;
+        -webkit-transform: scale3d($scale, $scale, $scale);
+        transform: scale3d($scale, $scale, $scale);
+      }
+      98% {
+        opacity: 0;
+        -webkit-transform: scale3d($scale, $scale, $scale);
+        transform: scale3d($scale, $scale, $scale);
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+}
+
+// Combinación xfade con subelementos
+// Mueve el elemento de x-25% a x 50%
+// Se nota el salto de inicio
+@mixin keyframe-xfadeSlideInLeft ($lenght, $duracion, $hijo, $curva: ease-in, $repes: infinite) {
+    $invisible: percentage(1 / $lenght);
+    $visible: percentage(1 / ($lenght + 1));
+    @for $i from 1 through $lenght {
+        $retardo: $duracion * ($i - 1);
+        &:nth-child(#{$i}) #{$hijo} {
+            @include animacion (xfadeSlideInLeft, $duracion*$lenght, $curva, $retardo, $repes);
+        }
+    }
+    @keyframes xfadeSlideInLeft {
+        0%{
+            opacity: 1;
+            -webkit-transform: translate3d(-25%, 0, 0);
+            transform: translate3d(-25%, 0, 0);
+        }
+        #{$visible} {
+            opacity: 1;
+        }
+        #{$invisible} {
+            opacity: 0;
+            -webkit-transform: translate3d(50%, 0, 0);
+            transform: translate3d(50%, 0, 0);
+        }
+        98% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
+        }
+    }
+}
+
+// Combinación xfade con subelementos
+// Sin acabar, feísimo
+@mixin keyframe-xfadeDown ($lenght, $duracion, $hijo, $curva: ease-in, $repes: infinite) {
+    $invisible: percentage(1 / $lenght);
+    $visible: percentage(1 / ($lenght + 1));
+    @for $i from 1 through $lenght {
+        $retardo: $duracion * ($i - 1);
+        &:nth-child(#{$i}) #{$hijo} {
+            @include animacion (xfadeDown, $duracion*$lenght, $curva, $retardo, $repes);
+        }
+    }
+    @keyframes xfadeDown {
+        0%{
+            opacity: 1;
+            -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+        }
+        #{$visible} {
+            opacity: 1;
+            -webkit-transform: translate3d(0, #{$invisible}, 0);
+            transform: translate3d(0, #{$invisible}, 0);
+
+        }
+        #{$invisible} {
+            opacity: 0;
+            // -webkit-transform: translate3d(0, 50%, 0);
+            // transform: translate3d(0, 50%, 0);
+        }
+        98% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, 50%, 0);
+            transform: translate3d(0, 50%, 0);
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
+        }
+    }
+}
+
+// xfade con mismo efecto para continente y  2 subelementos
+@mixin keyframe-xfade-before-2 ($lenght, $duracion, $titulo1, $titulo2: i, $curva: linear) {
+    $invisible: percentage(1 / $lenght);
+    $visible: percentage(1 / ($lenght + 1));
+    @for $i from 1 through $lenght {
+        $retardo: $duracion * ($i - 1);
+        &:nth-child(#{$i}) #{$titulo1},
+        &:nth-child(#{$i}) #{$titulo2},
+        &:nth-child(#{$i}):before {
+            @include animacion (xfade, $duracion*$lenght, $curva, $retardo, infinite);
+        }
+    }
+    @keyframes xfade {
+      0%{
+        opacity: 1;
+      }
+      #{$visible} {
+        opacity: 1;
+      }
+      #{$invisible} {
+        opacity: 0;
+      }
+      98% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+}
+// ====== fin de Combinaciones xfade ====================
+
+
+@keyframes slide-opacity {
+	0% {
+        opacity:1;
+        -webkit-transform: translate(0pt, $top);
+                transform: translate(0pt, $top);
+    }
+
+    20% {
+        opacity: 0.8;
+        -webkit-transform: translate(5vw, $top);
+                transform: translate(5vw, $top);
+    }
+
+    40% {
+        opacity: 0.6;
+        -webkit-transform: translate(10vw, $top);
+                transform: translate(10vw, $top);
+    }
+
+    50% {
+        opacity: 0.4;
+        -webkit-transform: translate(15vw, $top);
+                transform: translate(15vw, $top);
+    }
+
+    60% {
+        opacity: 0.4;
+        -webkit-transform: translate(20vw, $top);
+                transform: translate(20vw, $top);
+    }
+
+    70% {
+        opacity: 0.4;
+        -webkit-transform: translate(25vw, $top);
+                transform: translate(25vw, $top);
+    }
+
+    80% {
+        opacity: 0.6;
+        -webkit-transform: translate(30vw, $top);
+                transform: translate(30vw, $top);
+    }
+
+    90% {
+        opacity: 0.8;
+        -webkit-transform: translate(35vw, $top);
+                transform: translate(35vw, $top);
+
+    }
+    100% {
+        opacity: 0.1;
+        -webkit-transform: translate(40vw, $top);
+                transform: translate(40vw, $top);
+    }
+
+}
+@mixin keyframe-desaparecer-bottom ($bottom: -50pt) {
+    @keyframes desaparecer-bottom
+    {
+        0%    {bottom: 0pt;}
+        80%    {bottom: 0pt;}
+        100%    {bottom: $bottom;}
+    }
+}
+
+@mixin keyframe-aparecer-bottom ($bottom: -100vh) {
+    @keyframes aparecer-bottom
+    {
+        0%    {bottom: $bottom;}
+        60% {bottom: -1em;}
+        70% {bottom: -2em;}
+        80% {bottom: -3em;}
+        90% {bottom: -4em;}
+        100%    {bottom: 0;}
+    }
+}
+
+@keyframes gradTexts {
+    0%{background-position:0% 80%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 80%}
+}
+
+@keyframes gelatine {
+  from, to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+    transform: scale(0.9, 1.1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+    transform: scale(1.1, 0.9);
+  }
+
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+
+  from, to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  25% {
+    -webkit-transform: scale(0.9, 1.1);
+    transform: scale(0.9, 1.1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.1, 0.9);
+    transform: scale(1.1, 0.9);
+  }
+
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+}
+
+@keyframes opacity-simple {
+    0% { opacity: 0;}
+    50% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+@mixin keyframe-rotate-text (
+    $h-text: 48pt,
+    $lenght: 5,
+    $color1: #fff,
+    $color2: $color-b
+    ) {
+    @keyframes rotate-text {
+        @for $i from 0 through ($lenght)-1 {
+            $numerador: 1/(($lenght)-1);
+            $selector: $i*$numerador;
+            $transicion: ($selector)-($numerador/2);
+            $inicio: percentage($transicion);
+            $fin: percentage($selector);
+
+            @if $i < 1 {
+                $inicio: $fin;
+                $fin: percentage(($numerador)/(2*2));
+            }
+
+            #{$inicio} {
+                margin-top: (-1)*$i*$h-text;
+                opacity: 1;
+                color: $color1;
+            }
+            #{$fin} {
+                margin-top: (-1)*$i*$h-text;
+                opacity: 0;
+                color: $color2;
+            }
+        }
+    }
+}
+
+@mixin keyframe-rotate-top (
+    $h-text: 48pt,
+    $lenght: 5
+    ) {
+    @keyframes rotate-top {
+        @for $i from 0 through ($lenght)-1 {
+            $numerador: 1/(($lenght)-1);
+            $selector: $i*$numerador;
+            $transicion: ($selector)-($numerador/2);
+            $inicio: percentage($transicion);
+            $fin: percentage($selector);
+
+            @if $i < 1 {
+                $inicio: $fin;
+                $fin: percentage(($numerador)/(2*2));
+            }
+
+            #{$inicio} {
+                margin-top: (-1)*$i*$h-text;
+            }
+            #{$fin} {
+                margin-top: (-1)*$i*$h-text;
+            }
+        }
+    }
+}
+@mixin maqueta-rotacion (
+    $h: 3rem,
+    $w: $svg-x*1px,
+    $absoluto: lista-categorias,
+    $t: 20px,
+    $l: 122px
+){
+
+    position: relative;
+    #{$absoluto},
+    .#{$absoluto} {
+        position: absolute;
+        height: $h;
+        top: $t;
+        left: $l;
+        clip: rect($h/4, $w, $h/4*3, 0);
+        overflow: hidden;
+
+        & ul {
+            margin: 0;
+            &,
+            & li {
+                height: $h;
+                line-height: $h;
+                font-size: $h/2;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+@mixin keyframe-rotacionY (
+    $h: 48pt,
+    $lenght: 5,
+    $direccion: norte
+    ) {
+    @keyframes rotacionY{
+        @for $i from 0 through ($lenght)-1 {
+            $numerador: 1/(($lenght)-1);
+            $selector: $i*$numerador;
+            $transicion: ($selector)-($numerador/2);
+            $inicio: percentage($transicion);
+            $fin: percentage($selector);
+
+            @if $i < 1 {
+                $inicio: $fin;
+                $fin: percentage(($numerador)/(2*2));
+            }
+
+            @if ($direccion == 'norte') {
+                #{$inicio} {
+                    -webkit-transform: translateY((-1)*$i*$h);
+                    transform: translateY((-1)*$i*$h);
+
+                }
+                #{$fin} {
+                    -webkit-transform: translateY((-1)*$i*$h);
+                    transform: translateY((-1)*$i*$h);
+                }
+            }
+
+            @else {
+                #{$inicio} {
+                    -webkit-transform: translateY($i*$h);
+                    transform: translateY((-1)*$i*$h);
+
+                }
+                #{$fin} {
+                    -webkit-transform: translateY($i*$h);
+                    transform: translateY((-1)*$i*$h);
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes visible {
+    from, to {
+        visibility: visible;
+    }
+}
+
+// priori
+// visibility: hidden;
+// height: 0
+@keyframes teveo {
+    from, to {
+        visibility: visible;
+        height: $svg-y*1px;
+    }
+}
+
+// posteriori
+// visibility: visible;
+// height: $height
+@keyframes invisible {
+    from, to {
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+
+
+// @mixin visible-child ($lenght, $duracion, $curva: linear, $repes: infinite) {
+//     @for $i from 1 through $lenght {
+//         &:nth-child(#{$i}) {
+//             @include animacion (visible-child, $duracion*$lenght, $curva, $retardo, $repes);
+//         }
+//     }
+//     @keyframes visible-child {
+//         from, to {
+//             visibility: visible;
+//         }
+//     }
+// }
+
+@keyframes rotationX {
+    from{
+        transform: rotateX(0deg);
+    }
+    to{
+        transform: rotateX(360deg);
+    }
+}
+
+@keyframes rotationY {
+    from{
+        transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(360deg);
+    }
+}

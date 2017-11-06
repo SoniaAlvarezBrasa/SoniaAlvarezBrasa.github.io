@@ -1,0 +1,457 @@
+// Simple mixin base sin propiedades de imagen
+// para un background-image en :before
+// Solo reutiliza positions y resto de cogigo
+// Pensado para
+//    &:nth-child()
+//    mixins erb
+//    multiples images...
+// Se pasan propiedades fondo color y filtros
+@mixin simple-before (
+    $bg-color: #222,
+    $bg-color-webkit: $bg-color,
+
+    $opacity: 1,
+    $filter: none
+){
+    position: relative;
+    background: -webkit-#{$bg-color-webkit};
+    background: $bg-color;
+
+    &:before {
+        position: absolute;
+        content : '';
+        top : 0;
+        left: 0;
+        width : 100%;
+        height : 100%;
+
+        opacity: $opacity;
+        -webkit-filter: $filter;
+                filter: $filter;
+    }
+}
+
+// Igual q el anterior sin color
+@mixin spartano-before (
+    $opacity: 1,
+    $filter: none
+){
+    position: relative;
+
+    &:before {
+        position: absolute;
+        content : '';
+        top : 0;
+        left: 0;
+        width : 100%;
+        height : 100%;
+
+        opacity: $opacity;
+        -webkit-filter: $filter;
+                filter: $filter;
+    }
+}
+
+// Igual q el anterior pero añade color al before
+@mixin simple-color-before (
+    $bg-color: #222,
+
+    $opacity: 1,
+    $filter1: none,
+    $filter2: none
+){
+    position: relative;
+
+    &:before {
+        position: absolute;
+        content : '';
+        top : 0;
+        left: 0;
+        width : 100%;
+        height : 100%;
+
+        opacity: $opacity;
+        background: $bg-color;
+        -webkit-filter: $filter1 $filter2;
+                filter: $filter1 $filter2;
+    }
+}
+
+// Igual q el anterior pero añade color al before
+@mixin simple-color-before-right (
+    $bg-color: #222,
+    $tp: 0,
+    $right: 0,
+    $width: 100%,
+    $height: 100%,
+
+    $opacity: 1,
+    $filter1: none,
+    $filter2: none
+){
+    position: relative;
+
+    &:before {
+        position: absolute;
+        content : '';
+        top : $tp;
+        right: $right;
+        width : $width;
+        height : $height;
+
+        opacity: $opacity;
+        background: $bg-color;
+        -webkit-filter: $filter1 $filter2;
+                filter: $filter1 $filter2;
+    }
+}
+
+// Igual q el anterior pero añade color al before
+@mixin simple-color-after-left (
+    $bg-color: #222,
+    $tp: 0,
+    $left: 0,
+    $width: 100%,
+    $height: 100%,
+
+    $opacity: 1,
+    $filter1: none,
+    $filter2: none
+){
+    position: relative;
+
+    &:after {
+        position: absolute;
+        content : '';
+        top : $tp;
+        left: $left;
+        width : $width;
+        height : $height;
+
+        opacity: $opacity;
+        background: $bg-color;
+        -webkit-filter: $filter1 $filter2;
+                filter: $filter1 $filter2;
+    }
+}
+
+// Igual q el primero pero en after
+@mixin simple-after (
+    $bg-color: #222,
+
+    $opacity: 1,
+    $filter1: none,
+    $filter2: none
+){
+    position: relative;
+    background: $bg-color;
+
+    &:after {
+        position: absolute;
+        content : '';
+        top : 0;
+        left: 0;
+        width : 100%;
+        height : 100%;
+
+        opacity: $opacity;
+        -webkit-filter: $filter1 $filter2;
+                filter: $filter1 $filter2;
+    }
+}
+
+
+// header con imagen de fondo y titulo
+// No incluye los stilos de texto
+@mixin portadaImagen-show (
+    $h: $height-portada,
+    $w: 100%,
+    $tag-img: figure,
+    $tag-titulo: h2,
+
+    $z: $z-index-fixed,
+    $lh: $line-height-min,
+
+    $ie: si,
+
+    $bg: $bg-img
+){
+    // el width del contenedor se declara en los stilos cliente
+    & > header {
+        position: relative;
+
+        #{$tag-img},
+        .#{$tag-img},
+        #{$tag-titulo},
+        .#{$tag-titulo} {
+            width: $w;
+        }
+
+        #{$tag-titulo},
+        .#{$tag-titulo} {
+            position: absolute;
+            z-index: $z;
+            left: 0;
+            right: 0;
+            line-height: $lh;
+
+            // Si se suponen títulos de + de una línea
+            @if ($ie == 'si') {
+                $wrap:(h: $h);
+                @include wrapping-ie-abcenter($wrap...);
+            }
+        }
+
+        #{$tag-img},
+        .#{$tag-img} {
+            height: $h;
+            margin: 0;
+            overflow: hidden;
+            $fondo: $bg;
+
+            @include simple-before ((bg-color: $fondo)...);
+        }
+    }
+}
+
+// header con imagen de fondo y titulo
+// No incluye stilos de texto ni simple-before
+@mixin portadaImagenTituloFixed (
+    $h: $height-portada,
+    $w: 100%,
+    $tag-img: figure,
+    $tag-titulo: h2,
+
+    $z: $z-index-fixed,
+    $lh: $line-height-min,
+
+    $ie: si,
+
+    $bg: $bg-img
+){
+    // el width del contenedor se declara en los stilos cliente
+    & > header {
+        position: relative;
+
+        #{$tag-img},
+        .#{$tag-img},
+        #{$tag-titulo},
+        .#{$tag-titulo} {
+            width: $w;
+        }
+
+        #{$tag-titulo},
+        .#{$tag-titulo} {
+            position: absolute;
+            z-index: $z;
+            left: 0;
+            right: 0;
+            line-height: $lh;
+
+            // Si se suponen títulos de + de una línea
+            @if ($ie == 'si') {
+                $wrap:(h: $h);
+                @include wrapping-ie-abcenter($wrap...);
+            }
+        }
+
+        #{$tag-img},
+        .#{$tag-img} {
+            height: $h;
+            margin: 0;
+            overflow: hidden;
+        }
+    }
+}
+
+// Simple background-image (antiguo)
+@mixin simple-bg (
+    $url: 'default.jpg',
+    $top: 0,
+    $left: 0,
+    $width: 100%,
+    $height: 100%,
+    $bg-attachement: scroll,
+    $bg-color: rgba(#222, 0.6),
+    $bg-repeat: no-repeat,
+    $bg-position: 50% 50%,
+    $bg-size: cover,
+    $bg-origin: border-box,
+    $bg-clip: border-box,
+    $opacity: 1,
+    $filter: blur(4px)
+){
+    position: relative;
+    top: $top;
+    left: $left;
+    width: $width;
+    height: $height;
+    background: $bg-color;
+
+    &:before {
+        position: absolute;
+        content : '';
+        top : 0;
+        left: 0;
+        width : 100%;
+        height : 100%;
+        background: url($url);
+        background-position: $bg-position;
+        background-size: $bg-size;
+
+        opacity: $opacity;
+        -webkit-filter: $filter;
+                filter: $filter;
+
+        background-repeat: $bg-repeat;
+        background-attachment: $bg-attachement;
+        background-origin: $bg-origin;
+    }
+}
+
+
+// =============================================>>>>>
+// = BACKGROUND-IMAGE HTML =
+// =============================================>>>>>
+
+//----------- SIN :BEFORE -----------//
+
+// Añadir al elemento la clase ascendente--fit
+// para que ocupe el fondo 100%
+// y se le apliquen los efectos que se
+// argumentan. Por defecto:
+
+// Posicion absoluta sin before
+@mixin bg--fit (
+    // position
+    $position: absolute,
+    $top: 0,
+    $left: 0,
+    // background
+    $color: black,  // Default transparent
+    // Efectos
+    $filter: none,      // Default
+    $opacity: 1,        // Default
+    $overflow: visible, // Default
+    $transform: none    // Defaul
+){
+
+    // Clase elemento--fit en el tag html
+    &--fit {
+        position: $position;
+        top: $top;
+        left: $left;
+        height: 100vh;
+        width: 100%;
+        padding: 0;
+
+        background: $color;
+        -webkit-filter: $filter;
+                filter: $filter;
+        opacity: $opacity;
+        overflow: $overflow;
+        -webkit-transform: $transform;
+                transform: $transform;
+        -o-object-fit: cover;
+           object-fit: cover;
+    }
+}
+
+
+//----------- CON :BEFORE (En construcción) -----------//
+
+// Position relativa con :before
+@mixin img--fit (
+    // position
+    $position: relative,
+    $top: 0,
+    $left: 0,
+    // background
+    $color: black,  // Default transparent
+    // Efectos
+    $filter: none,      // Default
+    $opacity: 1,        // Default
+    $overflow: visible, // Default
+    $transform: none    // Defaul
+){
+
+    // Clase elemento--fit en el tag html
+    &--fit {
+        position: $position;
+        top: $top;
+        left: $left;
+        height: 100%;
+        width: 100%;
+        &:before {
+            position: absolute;
+            content: '';
+            top : 0;
+            left: 0;
+            width : 100%;
+            height : 100%;
+
+            // Efectos before
+            background: $color;
+            opacity: $opacity;
+            -webkit-filter: $filter;
+                    filter: $filter;
+            -o-object-fit: cover;
+               object-fit: cover;
+        }
+
+        background: $color;
+        -webkit-filter: $filter;
+                filter: $filter;
+        opacity: $opacity;
+        overflow: $overflow;
+        -webkit-transform: $transform;
+                transform: $transform;
+        -o-object-fit: cover;
+           object-fit: cover;
+    }
+}
+
+@mixin rwd-pictures (
+    $height: 90vmin
+){
+    padding: 0;
+    margin: 0 auto;
+
+    li {
+        display: none;
+        &:target {
+            display: block;
+        }
+        figure{
+            picture {
+                overflow: hidden;
+                source {
+                }
+                img {
+                    height: $height;
+                    display: block;
+                    margin: auto;
+                }
+            }
+        }
+    }
+}
+
+
+// Mixins para ratio o proporcion de aspecto, se le pasan tres parámetros
+// Horizontal, Vertical y Ancho.
+// Este ultimo es opcional, por defecto tomará el 100% de ancho.
+
+@mixin proporcion($h,$v,$width:100%){
+  height         : 0;
+  width          : $width;
+  overflow       : hidden;
+  padding-bottom : $width * ($v/$h);
+}
+
+@mixin ratio ($w, $h, $width:100%) {
+    height: 0;
+    width: $width;
+    overflow: hidden;
+    padding-bottom: percentage($h/$w);
+}

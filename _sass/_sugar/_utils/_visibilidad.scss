@@ -1,0 +1,47 @@
+// =============================================>>>>>
+// = ... AHORA NO ME VES =
+// =============================================>>>>>
+
+.lola {
+    background: tomato;
+}
+// Visible a algunos lectores de pantalla
+.oculto { display: none; }
+
+// Oculto a todos
+.ocultisimo {
+    display: none;
+    visibility: hidden;
+    overflow-x: hidden;
+    height: 0;
+}
+// Visible a todos los lectores de pantalla
+// http://www.cssmojo.com/hide-content-from-sighted-users/
+.pechado {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); // IE6, IE7
+    clip: rect(1px, 1px, 1px, 1px);
+    padding:0 !important;
+    border:0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+
+// oculto desde @media (.pasando-d-$size)
+@each $size, $screen-size in $breakpoints{
+  @media all and (max-width: $screen-size - 1){
+    .pasando-d-#{$size} {
+      display: none !important;
+    }
+  }
+}
+
+// oculto hasta @media (.pasando-h-$size)
+@each $size, $screen-size in $breakpoints{
+  @media all and (min-width: $screen-size){
+    .pasando-h-#{$size} {
+      display: none !important;
+    }
+  }
+}

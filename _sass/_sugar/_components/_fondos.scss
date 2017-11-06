@@ -1,0 +1,189 @@
+// bacground linear-gradient
+@mixin bg-gradient (
+    $bg-color0: #000,
+    $bg-color100: #fff,
+    $border-radius: 2pt,
+    $box-shadow: $box-shadow-default,
+
+    // Sobra ?¿
+    $transition-li: all 0.3s cubic-bezier(.25,.8,.25,1)
+){
+    // ../utils/images
+    // @include simple-before((bg-color:none)...);
+
+    overflow: hidden;
+    cursor: pointer;
+
+    border-radius: $border-radius;
+
+    // Fondo gradiente a inglete
+    //* de sudeste a noroeste
+
+    background: linear-gradient(-45deg, $bg-color0 0%, $bg-color100 100%);
+    background: -webkit-linear-gradient(135deg, $bg-color0 0%, $bg-color100 100%);
+
+    box-shadow: $box-shadow;
+
+    transition: $transition-li;
+    -webkit-transition: $transition-li;
+}
+
+
+//----------- CUADERNO -----------//
+
+// Alineacion con el texto
+// equiparar el line-height
+// line-h-base, line-h-titulos
+// p-padding-bottom = line-h
+
+.cuaderno {
+    $padding-cuaderno: $padding !default;
+    $line-height-cuaderno: 1.875em !default;
+    $bg-cuaderno: $bg-body;
+    $color-linea-cuaderno: $color-body;
+
+    position: relative;
+    background: $bg-cuaderno;
+    padding: $padding-cuaderno;
+
+    // lineas cuaderno
+    background: -webkit-linear-gradient(
+    $bg-cuaderno 98%,
+    $color-linea-cuaderno 98%);
+    background: linear-gradient(
+    $bg-cuaderno 98%,
+    $color-linea-cuaderno 98%);
+    background-size: 100% $line-height-cuaderno;
+    background-position: 0 $padding-cuaderno;
+
+    .cuaderno header {
+        color: $color-body;
+        line-height: 2 * $line-height-cuaderno;
+        // margin 0
+    }
+
+    ul {
+        li {
+            position: relative;
+            &:before {
+                content: "\2713";
+                color: green;
+                font-weight: bold;
+                // posicionamiento con position anula
+                // margin-right: .5em;
+
+                position: absolute;
+                left: -1.6em;
+            }
+        }
+    }
+}
+
+// Fondo papel pintado a franjas bicolores
+// Combinar la opacidad con el bacground del contenedor
+@mixin bg-bicolor (
+    $direccion: 90deg,
+    $c1: colorea($color-t1, l2),
+    $c2: colorea($color-t1, d2),
+    $background: linear-gradient(#fff, #000),
+    $opacity: 0.8
+){
+    background: $background;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: -webkit-repeating-linear-gradient($direccion, $c1, $c1 1em, $c2 0, $c2 2em);
+        background: repeating-linear-gradient($direccion, $c1, $c1 1em, $c2 0, $c2 2em);
+        opacity: $opacity;
+    }
+}
+
+// Ribete decorativo que rodea a su contenedor
+// simulando la trasera de un lazo.
+@mixin lazo (
+    $width: 100vw,
+    $vuelo: 1vw,
+    $bg-color-av: $color-b,
+    $bg-color-ar: colorea($color-b, d1),
+    $shadow-color: colorea($color-b, d1)
+){
+    width: $width;
+    margin: 0 -1*$vuelo;
+    box-shadow: 0 0 $vuelo $shadow-color;
+    background: $bg-color-av;
+
+    &:after,
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -1*$vuelo;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-color: $bg-color-ar transparent;
+    }
+
+    &:before {
+        border-width: $vuelo 0 0 $vuelo;
+        left: 0;
+    }
+    &:after  {
+        border-width: $vuelo $vuelo 0 0;
+        right: 0;
+    }
+}
+
+// Fondo de texto tipo post-it despegado
+// En la esquina sudoeste.
+// Resto de esquinas en
+// https://codepen.io/bsmith/pen/Fgapi
+
+// Recibe selectores padre e hijo sin comillas
+
+// Ir añadiendo variables elementos html, colores...
+@mixin post-it ($padre, $hijo){
+    #{$padre} {
+        position: relative;
+
+        overflow: hidden;
+        // Evita las sombras que caen detrás de contenedores con fondos
+        // z-index: 1;
+        z-index: 0;
+
+        #{$hijo} {
+            position: relative;
+            // float: left;
+            // width: 250pt;
+            // height: 150pt;
+            // padding: 0;
+            border: 1pt solid #efefef;
+            margin: 0 30pt 30pt 0;
+            background: #fff;
+            box-shadow: 0 1pt 4pt rgba(#000, 0.27),
+            0 0 40pt rgba(#000, 0.06) inset;
+
+            &:after,
+            &:before {
+                position: absolute;
+                content: '';
+                width: 70%;
+                left: 10pt;
+                bottom: 10pt;
+                z-index: -1;
+                // El skew queda feo a grandes anchos de contenedor
+                max-width: 219pt;
+                max-height: 100pt;
+                height: 55%;
+                box-shadow: 0 8pt 16pt rgba(0, 0, 0, 0.3);
+                -webkit-transform: skew(-15deg) rotate(-5deg);
+                transform: skew(-15deg) rotate(-5deg);
+            }
+        }
+    }
+}

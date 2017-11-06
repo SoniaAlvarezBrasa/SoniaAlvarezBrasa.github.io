@@ -1,0 +1,510 @@
+@mixin simple-item-form(
+    $color: $color-t1,
+    $color--focus: $color-t1,
+    $bg-input: #333,
+    $line-height-input: 1.8
+) {
+
+    // Tamaño base de los iconos
+    @include estilo-icon-fonts {
+        @include rwd-font-size(1.2rem, 2rem, 20rem, 80rem, 0.5rem);
+        text-shadow: 0.5px 0.5px 1px #000;
+    }
+
+    .icon-exclamacion:before {
+        color: $color-b;
+        @include rwd-font-size(0.7rem, 1rem, 20rem, 80rem, 0.5rem);
+        text-align: right;
+        padding: $top;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        border: none;
+        background-color: $bg-input;
+        &:hover, &:target, &:focus {
+            // outline: none;
+        }
+    }
+
+    input {
+        line-height: $line-height-input;
+    }
+
+    input[type="checkbox"] {
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+    }
+
+
+    li {
+        padding: 0.6em 1em;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin: 1rem 0;
+        background: $bg-input;
+        color: #fff;
+        border-radius: 2pt;
+
+        &>* {
+            color: $color;
+        }
+
+        &:hover, &:target, &:focus {
+            box-shadow: 0 0 3pt $color--focus;
+        }
+    }
+}
+
+// Estilo para formulario con details simulado
+@mixin simple-form-ie (
+    $principal: $color-t1,
+    $secundario: $color-b,
+    $terciario: $color-t2,
+
+    $bg-legend: rgba($principal, 0.6),
+    $bg-input: $bg-body,
+    $bg-fieldset: rgba($principal, 0.6),
+    $bg-submit: rgba($secundario, 0.8),
+    $color: $secundario,
+    $color-legend: $secundario,
+    $color--focus: $principal,
+    $color-info: $terciario,
+    $color-borde: colorea($principal, l2),
+    $margin-info: 0,
+    $padding-fieldset-y: 1rem,
+    $padding-fieldset-x: 1rem,
+    $padding-ul: 1rem,
+    $padding-li: 0.6em 1em,
+    // $padding-form-top: 5vmin,
+    // $padding-form-bottom: 5vmin,
+    $sombra-iconos: none,
+    $sombra: $box-shadow-p,
+    $sombra--hover: 2px 2px 3px rgba(#000, 0.2),
+    $border-radius: 5px,
+    $line-height-input: 2
+){
+    //----------- theme -----------//
+    // Titulo
+    legend,
+    h2.legend {
+        margin-top: 0;
+        background: $bg-legend;
+        border: 1px inset $color-borde;
+        color: $color-legend;
+        box-shadow: $sombra;
+
+        a:hover, a:focus, a:target {
+            color: $terciario;
+        }
+    }
+
+    // contraste al pasar por enlaces
+    a:hover, a:target, a:focus {
+        color: $color--focus;
+    }
+
+    // Color de fondo de los ítems
+    li {
+        background-color: $bg-input;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        background-color: $bg-input;
+    }
+
+    p.info {
+        padding: $top;
+        margin: $top $margin-info;
+        text-align: center;
+        font-weight: bold;
+        background: rgba(#000, 0.6);
+        color: #fff;
+        text-shadow: 1px 1px 2px #000;
+        border-radius: $border-radius;
+        box-shadow: $sombra;
+    }
+
+    // Icono de aviso de distinto color
+    .icon-info:before,
+    .icon-exclamacion:before {
+        color: $color-info;
+    }
+
+    fieldset {
+        background: $bg-fieldset;
+        border: 1px inset $color-borde;
+        box-shadow: $sombra;
+
+        form {
+            ul {
+                li {
+                    box-shadow: $sombra;
+                    label {
+                        text-align: left;
+                        // color: complement($color);
+                        color: $color;
+                    }
+                    input,
+                    textarea {
+                        color: $color;
+                        &:target, &:focus {
+                            outline: 0.5pt solid $color--focus;
+                        }
+                    }
+
+                    &:hover, &:target, &:focus {
+                        box-shadow: $sombra--hover;
+                    }
+                }
+            }
+            input[type="submit"] {
+                background: $bg-input;
+                color: $color;
+                &:hover, &:target, &:focus {
+                    background: $bg-submit;
+                    color: $bg-input;
+                    box-shadow: $sombra--hover;
+                }
+            }
+        }
+    }
+
+    //----------- Layout -----------//
+
+    // padding-top: $padding-form-top;
+    // padding-bottom: $padding-form-bottom;
+
+    h1, h2, h3, h4, h5, h6,
+    p, a,
+    .contacto-details, fieldset, legend, ul {
+        position: relative;
+    }
+
+    // Leyenda del aviso de menor tamaño
+    .contacto_terms_of_service,
+    .contacto_terms_of_service a,
+    p.info {
+        @include rwd-font-size(0.7rem, 1rem, 20rem, 80rem, 0.5rem);
+    }
+
+    // Tamaño base de la fuente
+    @include rwd-font-size (0.8rem, 1.4rem, 20rem, 80rem, 0.3rem);
+
+    // Resto de iconos de mayor tamaño
+    @include estilo-icon-fonts {
+        @include rwd-font-size(1.2rem, 2rem, 20rem, 80rem, 0.5rem);
+        text-shadow: $sombra-iconos;
+    }
+
+    // Icono de aviso de menor tamaño
+    .icon-info:before,
+    .icon-exclamacion:before {
+        @include rwd-font-size(0.5rem, 1rem, 20rem, 100rem, 0.5rem);
+        top: $top;
+    }
+
+
+    // legend,
+    li {
+        padding: $padding-li;
+    }
+
+    h2.legend {
+        padding: $padding-fieldset-x;
+    }
+    // Titulo
+    legend,
+    h2.legend {
+        text-transform: none;
+        & a {
+            font-size: 0.9em;
+        }
+    }
+
+    // hgroup.accesskey-info h3,
+    h2.legend,
+    legend {
+        text-align: center;
+    }
+
+    // header,
+    legend,
+    h2.legend,
+    fieldset {
+        border-radius: $border-radius;
+    }
+
+    fieldset {
+        position: relative;
+        padding: $padding-fieldset-y $padding-fieldset-x;
+        text-align: center;
+        form {
+            ul {
+                margin: 0 auto;
+                padding-left: $padding-ul;
+                padding-right: $padding-ul;
+
+                li {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    margin: 1rem 0;
+
+                    & label {
+                        @include hasta (23em){
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                input[type="text"],
+                input[type="email"] {
+                    line-height: $line-height-input;
+                }
+
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                    border: none;
+                }
+
+                input[type="checkbox"] {
+                    width: 1em;
+                    height: 1em;
+                    vertical-align: middle;
+                }
+            }
+
+            input[type="submit"] {
+                width: 50%;
+                margin-top: 1em;
+                margin-bottom: 1em;
+                // margin-left: 25%;
+                padding: $padding-fieldset-x;
+                line-height: $line-height-input;
+                font-weight: bold;
+
+                cursor:pointer;
+                -webkit-transition: all ease-in-out 1s;
+                transition: all ease-in-out 0.8s;
+
+                &:hover, &:target, &:focus {
+                    width: 95%;
+                    margin-left: 0;
+                    text-transform: uppercase;
+                    border-radius: $border-radius;
+                }
+            }
+        }
+    }
+}
+
+@mixin simple-form (
+    $color: $color-body,
+    $color--focus: $color-b,
+    $color-submit: $color-t1,
+    $color-info: gold,
+    $color-legend: #eee,
+    $bg-fondo: rgba($color-b, 0.2),
+    $bg-legend: $bg-body,
+    $bg-input: $bg-body,
+    $padding-fieldset-y: 0.6em,
+    $padding-fieldset-x: 1em,
+    $padding-form-top: 10%,
+    $padding-form-bottom: 10%,
+    $line-height-input: 2
+){
+    padding-top: $padding-form-top;
+    padding-bottom: $padding-form-bottom;
+
+    // Color de fondo del formulario
+    $bg-fieldset: rgba($bg-fondo, 0.4);
+
+    // contraste al pasar por enlaces
+    & a:hover, a:target, a:focus {
+        color: $color--focus;
+    }
+
+    header,
+    h1, h2, h3, h4, h5, h6,
+    p, a,
+    summary, fieldset, legend, ul {
+        position: relative;
+    }
+
+    // Tamaño base de la fuente
+    @include rwd-font-size (0.8rem, 1.4rem, 20rem, 80rem, 0.3rem);
+
+    // Tamaño base de los iconos
+    @include estilo-icon-fonts {
+        @include rwd-font-size(1.2rem, 2rem, 20rem, 80rem, 0.5rem);
+        text-shadow: 0pt 1pt 1pt $color;
+    }
+
+    // Leyenda del aviso de menor tamaño
+    .contacto_terms_of_service,
+    .contacto_terms_of_service a {
+        @include rwd-font-size(0.7rem, 1rem, 20rem, 80rem, 0.5rem);
+    }
+
+    p.info {
+        position: relative;
+        color: #fff;
+        text-shadow: 0 0.125rem 0.125rem #000;
+
+        @include rwd-font-size(0.7rem, 1rem, 20rem, 80rem, 0.5rem);
+        text-align: right;
+        padding: $top;
+    }
+
+    // Icono de aviso de menor tamaño y distinto color
+    .icon-info:before,
+    .icon-exclamacion:before {
+        @include rwd-font-size(0.8rem, 1.5rem, 20rem, 80rem, 0.5rem);
+        color: $color-info;
+        top: $top;
+    }
+
+    legend,
+    li {
+        padding: 0.6em 1em;
+    }
+
+    // Titulo
+    legend,
+    h2.legend {
+        text-transform: none;
+        padding: $padding-fieldset-x;
+        color: $color-legend;
+        background: rgba($bg-legend, 0.9);
+        box-shadow: $box-shadow-p;
+
+        & a {
+            font-size: 0.9em;
+        }
+    }
+
+    // Color de fondo de los ítems
+    li {
+        background-color: $bg-input;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        background-color: $bg-input;
+    }
+
+    hgroup.accesskey-info h3,
+    h2.legend,
+    legend {
+        text-align: center;
+    }
+
+    header,
+    legend,
+    h2.legend,
+    fieldset {
+        border-radius: 5pt;
+    }
+
+    fieldset {
+        position: relative;
+        padding: $padding-fieldset-y $padding-fieldset-x;
+        text-align: center;
+        background: $bg-fieldset;
+        box-shadow: $box-shadow-p;
+        form {
+            ul {
+                margin: 0 auto;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+
+                li {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    margin: 1rem 0;
+                    box-shadow: $box-shadow-p;
+
+                    color: complement($color);
+                    &>* {
+                        color: $color;
+                    }
+
+                    & label {
+                        @include hasta (23em){
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    &:hover, &:target, &:focus {
+                        box-shadow: 0pt 0pt 3pt $color--focus;
+                    }
+                }
+
+                input[type="text"],
+                input[type="email"] {
+                    line-height: $line-height-input;
+                }
+
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                    border: none;
+                }
+
+                input[type="checkbox"] {
+                    width: 1em;
+                    height: 1em;
+                    vertical-align: middle;
+                }
+
+                input[type="text"],
+                input[type="email"],
+                input[type="checkbox"],
+                textarea {
+                    &:hover, &:target, &:focus {
+                        outline: solid $color-b;
+                    }
+                }
+            }
+
+            input[type="submit"] {
+                width: 50%;
+                margin-top: 1em;
+                margin-bottom: 1em;
+                // margin-left: 25%;
+                padding: $padding-fieldset-x;
+                line-height: $line-height-input;
+                font-weight: bold;
+                background: $bg-input;
+                color: $color;
+                border-radius: 2pt;
+
+                cursor:pointer;
+                -webkit-transition: all ease-in-out 1s;
+                transition: all ease-in-out 1s;
+
+                &:hover, &:target, &:focus {
+                    width: 80%;
+                    margin-left: 0;
+                    font-variant: small-caps;
+                    background: rgba($color-submit, 0.8);
+                    color: $bg-input;
+                }
+            }
+        }
+    }
+}

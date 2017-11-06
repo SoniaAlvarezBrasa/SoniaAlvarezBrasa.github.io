@@ -1,0 +1,25 @@
+// softgalia
+
+	// CENTRAR //
+.centrar {
+	margin: 0 auto;
+	width: 70%;
+	@media screen and (max-width: 1280px) {width: 80%;}
+	@media screen and (max-width: 980px) {width: 90%;}
+	@media screen and (max-width: 780px) {width: 90%;}
+	@media screen and (max-width: 480px) {width: 94%;}
+}
+
+.mw-90 {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+//----------- FLOATS -----------//
+
+@mixin centrar ($width: auto){
+  display: table;
+  width: $width;
+  margin-left: auto;
+  margin-right: auto;
+}

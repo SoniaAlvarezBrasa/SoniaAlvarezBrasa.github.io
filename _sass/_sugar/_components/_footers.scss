@@ -1,0 +1,185 @@
+// Footer pegajoso de de una línea (sin construir)
+@mixin footer-lineal {
+    width: 100%;
+    // height: 100vh;
+
+    &__info {
+        background-color: $color12;
+        color: #fff;
+        line-height: 2;
+        font-style: italic;
+        word-spacing: normal;
+        letter-spacing: normal;
+        text-align: right;
+
+        p.direccion {
+            margin: $top 0 0 0;
+            padding-right: 1rem;
+            @include rwd-font-size (0.5rem, 0.8rem, 20rem, 80rem, 0.3rem);
+        }
+        ul {
+            margin: 0 auto;
+            margin-bottom: $top;
+            li {
+                padding-right: 1em;
+
+                a, span {
+                    display: block;
+                    @include rwd-font-size (0.4rem, 0.6rem, 20rem, 80rem, 0.3rem);
+                }
+                a:target, a:focus, a:hover {
+                    color: $color18;
+                }
+            }
+
+            .favicon {
+                margin-right: 2em;
+                background-repeat: no-repeat;
+                background: url("favicon.png") center / cover;
+            }
+        }
+    }
+    &--active {
+        padding-left: 1em;
+        padding-right: 1em;
+        background-color: $bg-body;
+        color: $color12;
+    }
+}
+
+@mixin footer-parallax {
+    $color-footer: triada($color-t2, t1);
+    $bg-footer-top: colorea($color-footer, d4);
+    $bg-footer-bottom: colorea($color-footer, d5);
+    $opacity: 0.9;
+    $color: #fff;
+    $color--hover: colorea($color-b, l2);
+
+    z-index: $z-index-footer;
+    padding-left: 10%;
+    padding-right: 10%;
+
+    font-family: $font-family-subtitle;
+
+    color: $color;
+    background-image: linear-gradient(0deg, rgba($bg-footer-bottom, $opacity), rgba($bg-footer-top, $opacity));
+
+    @include hasta (30rem) {
+        @include cuadricula-simple (contentinfo, 1, 1.5em);
+    }
+    @include desde (30rem) {
+        @include cuadricula-simple (contentinfo, 2, 5%);
+    }
+
+    // rwd font-size
+    .contentinfo {
+        & h2,
+        & h2 a {
+            @include rwd-font-size (0.9rem, 1.6rem, 20rem, 80rem, 0.3rem);
+            &:hover, &:focus, &:target {
+                color: $color--hover;
+            }
+        }
+
+        & li,
+        & p a,
+        & ul li a,
+        & ul li span {
+            @include rwd-font-size (0.6rem, 1.1rem, 20rem, 80rem, 0.3rem);
+            &:hover, &:focus, &:target {
+                color: $color--hover;
+            }
+        }
+    }
+
+    &__pie {
+        & p a,
+        & ul li a,
+        & ul li span {
+            @include rwd-font-size (0.5rem, 1rem, 20rem, 80rem, 0.3rem);
+            &:hover, &:focus, &:target {
+                color: $color--hover;
+            }
+        }
+    }
+    // fin de rwd font-size
+
+    .contentinfo {
+        h1, h2, h3, h4, h5, p {
+            color: #fff;
+            text-shadow: none;
+            text-align: left;
+        }
+
+        &:nth-child(even),
+        &:nth-child(even) h2 {
+            text-align: right;
+        }
+
+        address {
+            ul {
+                li {
+                    display: flex;
+                    font-style: normal;
+                }
+            }
+
+            ul.redes {
+                li {
+                    padding: .4em;
+                    margin: .3em;
+                    border-radius: 50%;
+                    background: #fff;
+                    color: rgba($bg-footer-top, $opacity);
+                    &.icon-facebook {
+                        &:hover, &:focus, &:target {
+                            background: #3b5998;
+                            color: #fff;
+                        }
+                    }
+                    &.icon-twitter {
+                        &:hover, &:focus, &:target {
+                            background: #00aced;
+                            color: #fff;
+                        }
+                    }
+                    &.icon-googleplus{
+                        &:hover, &:focus, &:target {
+                            background: #dd4b39;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__pie {
+        width: 100%;
+
+        border-top: 1pt solid rgba(#fff, 0.2);
+
+        & p,
+        & nav {
+            line-height: 3;
+            & ul {
+                margin: 0;
+                li, span {
+                    margin-left: $top;
+                }
+            }
+        }
+
+        .favicon {
+            margin-right: 2em;
+            background-repeat: no-repeat;
+            background: url("favicon.png") center / cover;
+        }
+    }
+
+    &--active {
+        padding-left: 1em;
+        padding-right: 1em;
+        color: colorea($color-b, l2);
+    }
+}

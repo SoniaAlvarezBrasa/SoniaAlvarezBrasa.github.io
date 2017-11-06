@@ -1,0 +1,122 @@
+// section/article/aside .enlaces
+.enlaces {
+    position: relative;
+
+    // fondo de la seccion/article/aside
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        -webkit-filter: blur(4px);
+        filter: blur(4px);
+        -webkit-filter: grayscale(85%);
+                filter: grayscale(85%);
+        // cuando la imagen es panorámica
+        @media all and (orientation: landscape) {
+            background: url('viveiro-vial-fondo-index-lands') center / cover;
+        }
+        @media all and (orientation: portrait) {
+            background: url('viveiro-vial-fondo-index-port') center / cover;
+        }
+    }
+    // Eliminar el estilo default ul
+    ul {
+        margin: 0 auto;
+
+        // li
+        .box,
+        .box:before {
+            border-radius: 3px;
+        }
+
+        & .box {
+            position: relative;
+            -webkit-box-flex: 1;
+            -ms-flex: auto;
+            flex: auto;
+            margin: 1em;
+            padding: 1em;
+            text-align: center;
+            box-shadow: $box-shadow-p;
+            transition: all ease-in 1s;
+
+            &:hover, &:target, &:focus {
+                box-shadow: 0pt 0pt 3pt colorea($color-b, d3), 1pt 1pt 5pt colorea($color-b, d4);
+
+            }
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0.6;
+            }
+            // 4 categoria 4 colores fondo
+
+            &:nth-child(2n+1) {
+                &:before {
+                    background-color: analogos($color-b, a1);
+                }
+            }
+            &:nth-child(2n) {
+                &:before {
+                    background-color: analogos($color-b, a2);
+                }
+            }
+
+            h2, h3, p, ul {
+                position: relative;
+            }
+
+            h2, h3, p {
+                margin-top: 0;
+                margin-bottom: 1em;
+                width: 100%;
+                text-shadow: 0pt 1pt 2pt #fff;
+            }
+            h2, h3 {
+                @include rwd-font-size (0.7rem, 1.2rem, 20rem, 80rem, 0.3rem);
+
+            }
+            h2 {
+                 color: complementa($color-b, db);
+             }
+             h3 {
+                 background-color: rgba($bg-body, 0.2);
+                 border-radius: 2pt;
+             }
+
+            // Sublista
+            ul {
+                opacity: 1;
+                text-align: center;
+
+                li a {
+                    display: block;
+                    color: #fff;
+                    @include rwd-font-size (0.6rem, 1rem, 20rem, 80rem, 0.3rem);
+                    text-shadow: 0 1pt 2pt #000;
+                }
+
+                & a:hover, & a:target, & a:focus {
+                    // width: 100%;
+                    // @include rwd-font-size (0.7rem, 1.2rem, 20rem, 80rem, 0.3rem);
+                    color: complementa(#fff, c);
+                    background: rgba($bg-body, 0.6);
+                    text-shadow: 0pt 1pt 1pt #fff;
+                    box-shadow: 1pt 1pt 1pt #000;
+                    border-radius: 1pt;
+                    // text-shadow:
+                    // 1pt 0pt 1pt #ccc, 0pt 1pt 1pt #eee;
+                }
+            }
+        }
+    }
+}

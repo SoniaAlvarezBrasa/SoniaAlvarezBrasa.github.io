@@ -1,0 +1,128 @@
+// Devuelve boolean a multiplos de 10
+@function bol-es-multiplo($i){
+    @return ($i%10 == 0);
+}
+
+// Exponenciales
+@function pow($number, $exp) {
+    $value: 1;
+    @if $exp > 0 {
+        @for $i from 1 through $exp {
+            $value: $value * $number;
+        }
+    }
+    @else if $exp < 0 {
+        @for $i from 1 through -$exp {
+            $value: $value / $number;
+        }
+    }
+    @return $value;
+}
+
+//Factorial
+@function fact($number) {
+    $value: 1;
+    @if $number > 0 {
+        @for $i from 1 through $number {
+            $value: $value * $i;
+        }
+    }
+    @return $value;
+}
+
+// Senos, cosenos y tangentes
+@function pi() {
+    @return 3.14159265359;
+}
+
+@function rad($angle) {
+    $unit: unit($angle);
+    $unitless: $angle / ($angle * 0 + 1);
+    // If the angle has 'deg' as unit, convert to radians.
+    @if $unit == deg {
+        $unitless: $unitless / 180 * pi();
+    }
+    @return $unitless;
+}
+
+@function sin($angle) {
+    $sin: 0;
+    $angle: rad($angle);
+    // Iterate a bunch of times.
+    @for $i from 0 through 10 {
+        $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+    }
+    @return $sin;
+}
+
+@function cos($angle) {
+    $cos: 0;
+    $angle: rad($angle);
+    // Iterate a bunch of times.
+    @for $i from 0 through 10 {
+        $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+    }
+    @return $cos;
+}
+
+@function tan($angle) {
+    @return sin($angle) / cos($angle);
+}
+
+// Retorna la altura segun eje de giro X o Y
+// Argumento $axis string debe ser 'Y' | cualquiera
+@function dame-altura($width, $height, $axis){
+    $cateto: $width;
+
+    @if $axis == 'Y' {
+        $cateto: $width;
+    }
+    @else {
+        $cateto: $height;
+    }
+    @return $cateto;
+}
+
+// Devuelve la transform rotate translate
+// compilada correctamente
+// (problemas con los parentesis)
+@function dame-rotateXY-tZ($axis, $grados, $tz) {
+    $transform: rotateX(unquote($grados + "deg")) translateZ($tz);
+
+    @if $axis == 'Y' {
+        $transform: rotateY(unquote($grados + "deg")) translateZ($tz);
+    } @else {
+        $transform: rotateX(unquote($grados + "deg")) translateZ($tz);
+    }
+    @return $transform;
+}
+
+
+
+// Retorna el calculo en % del with en parrillas
+@function item-width($width, $separacion: 1em){
+    @return calc(#{$width} - #{$separacion});
+}
+
+// Funciones que trabajan conjuntamente
+// Retornan el ancho y alto de un elemento
+// que forma cuadriculas en su contenedor
+
+@function dame-width($vw-contenedor, $columnas: 1, $margin: 0) {
+    $w: $vw-contenedor / $columnas;
+    $width: $w - ($margin *2);
+    @return $width;
+}
+
+// $heigth = $widht * $ratio
+// El navegador no calcula el vw para el height.
+// Se aplica un factor de corrección de 1.214 (a ojo)
+// para ratios no cuadrados
+@function dame-height($width, $ratio: 1) {
+    @if ($ratio == 1){
+        @return $width * $ratio;
+    }
+    @else {
+        @return $width * $ratio * 1.214;
+    }
+}

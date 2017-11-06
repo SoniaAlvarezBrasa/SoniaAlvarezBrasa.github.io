@@ -1,0 +1,20 @@
+//----------- text-shadow -----------//
+@mixin sombra-texto ($blur, $color){
+    $pt: 25pt;
+    @if $blur == fino {
+        $pt: 9pt;
+    } @else if $blur == medio {
+        $pt: 25pt;
+    } @else if $blur == grande {
+        $pt: 50pt;
+    } @else {
+    }
+
+    $angulo: 0pt 2pt 2pt #000;
+    $resplandor: 0 0 $pt $color;
+    $contorno: 0 0 5pt #000;
+
+    text-shadow: $angulo, $resplandor, $contorno;
+}
+
+//----------- box-shadow -----------//

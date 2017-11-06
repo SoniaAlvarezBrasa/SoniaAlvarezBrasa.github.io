@@ -1,0 +1,1407 @@
+// https://themarklee.com/2013/10/16/simple-crossfading-slideshow-css
+
+// slideshow fade in out funcional
+// con 2 slogans
+@mixin slideshow-xfade (
+    $lenght,
+    $ul: ul,
+    $li: li,
+    $w: 100%,
+    $h: 60vmin,
+    $margin: 0 auto,
+    $bg: linear-gradient(-45deg, #000 0%, #fff 100%),
+    $bg-moz: -moz-linear-gradient(135deg, #000 0%, #fff 100%),
+    $bg-webkit: -webkit-linear-gradient(135deg, #000 0%, #fff 100%),
+    $filter: none,
+    $duracion: 10s,
+    $texto-top: h4,
+    $texto-bottom: h5,
+    $keyframe-top: xfadeZoom,
+    $keyframe-bottom: xfadeZoom
+) {
+
+    #{$ul} {
+        position: relative;
+        width: $w;
+        height: $h;
+        margin: $margin;
+        overflow: hidden;
+
+        background: $bg-webkit;
+        background: $bg-moz;
+        background: $bg;
+
+        #{$li} {
+            height: $h;
+            @include keyframe-xfade-before($lenght, $duracion);
+            @if ($keyframe-top == 'xfadeZoom') {
+                @include keyframe-xfadeZoom ($lenght, $duracion, $texto-top, 0.5, 05);
+            }
+
+            @if ($keyframe-bottom == 'xfadeZoom'){
+                @include keyframe-xfadeZoom ($lenght, $duracion, $texto-bottom, 2, 2);
+            }
+
+            #{$texto-top},
+            #{$texto-bottom} {
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+                margin: $margin;
+
+                opacity: 0;
+
+                -webkit-transition: opacity 2s;
+                transition: opacity 2s;
+
+            }
+
+            #{$texto-top} {
+                top: 0;
+            }
+
+            #{$texto-bottom} {
+                bottom: 0;
+            }
+
+            // include simple-before sin color ni opacity
+            &:before {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                opacity: 0;
+
+                -webkit-filter: $filter;
+                        filter: $filter;
+            }
+
+            &:hover, &:focus, &:target {
+            }
+        }
+    }
+}
+
+@mixin slideshow-crossfading (
+    $lenght: dame-count('Imageninicio'),
+    $width: 100%,
+    $height: 50vmin,
+    $bg: linear-gradient(-45deg, #000 0%, #fff 100%),
+    $bg-moz: -moz-linear-gradient(135deg, #000 0%, #fff 100%),
+    $bg-webkit: -webkit-linear-gradient(135deg, #000 0%, #fff 100%),
+    $filter: none,
+    $duracion: 10s,
+    $descendiente: p
+) {
+    position: relative;
+    background: $bg-webkit;
+    background: $bg-moz;
+    background: $bg;
+
+    li:before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: $width;
+        height: $height;
+        margin: 0;
+
+        -webkit-filter: $filter;
+                filter: $filter;
+        opacity: 0;
+    }
+
+    li {
+        @include keyframe-xfade-before($lenght, $duracion, $descendiente);
+        p {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 8px 12px;
+            text-align: center;
+            color: #fff;
+            background: rgba(0,0,0, .6);
+            @include responsive-font-size (0.5rem, 0.8rem, 20rem, 80rem);
+
+            opacity: 0;
+            -webkit-transition: opacity .5s;
+            transition: opacity .5s;
+
+        }
+        &:hover, &:focus, &:target {
+            p {
+                // opacity: 1;
+            }
+        }
+    }
+}
+
+
+@mixin carrousel-slidy (
+    $lenght: 3,
+    $z: $z-index-tras-fixed,
+
+    $ss: $ss-anime,
+    $curva: ease-in,
+    $retardo: 0s,
+    $repeticiones: infinite,
+    $direccion: alternate,
+    $fill: forwards
+) {
+// Html: figure>legend/>ul>li*$i
+    // El contenedor hidden
+    figure {
+        overflow: hidden;
+        z-index: $z;
+
+        // La vista
+        & ul li {
+            width: percentage(1/$lenght);
+            float: left;
+        }
+        // El proceso oculto
+        & ul {
+            position: relative;
+            width: percentage($lenght);
+            margin: 0;
+            left: 0;
+            font-size: 0;
+            text-align: left;
+            $duracion: $lenght*$ss;
+            @include keyframe-slidy($lenght);
+            @include animacion (slidy#{$lenght}, $duracion, $curva, $retardo, $repeticiones, $direccion);
+        }
+    }
+}
+
+// animacion textos imagen carrousel
+// No incluye los estilos font
+@mixin carrousel-img-textos (
+    $h-slider: $height-item,
+    $ul: carrousel,
+    $fondo: transparent,
+
+    $selector1: strong,
+    $display1: inline-block,
+    $bg1: transparent,
+    $animacion1: fadeOutUp,
+
+    $selector2: em,
+    $display2: none,
+    $bg2: rgba(#000, 0.4),
+    $animacion2: none,
+
+    $duracion: $ss-anime,
+    $curva: linear,
+    $retardo: 0s,
+    $repeticiones: infinite,
+    $direccion: none,
+    $fill: forwards
+){
+    & figure {
+        #{$ul},
+        .#{$ul} {
+            top: 0em;
+            left: 0;
+            bottom: 0;
+            // right: 0;
+            height: $h-slider;
+            margin: 0 auto;
+            padding: 0;
+
+            li {
+                height: $h-slider;
+
+                @include simple-before ((bg-color: $fondo)...);
+
+                & #{$selector1},
+                & #{$selector2}{
+                    width: 100%;
+                    overflow: hidden;
+                    z-index: $z-index-slogan;
+                    text-align: center;
+                    border: none;
+                }
+
+                & #{$selector1}{
+                    display: $display1;
+                    position: relative;
+                    background: $bg1;
+
+                    @include animacion ($animacion1, $duracion, $curva, $retardo, $repeticiones, $direccion, $fill);
+                }
+
+                & #{$selector2}{
+                    display: $display2;
+                    position: absolute;
+                    bottom: 0;
+                    background: $bg2;
+
+                    @include animacion ($animacion2, $duracion, $curva, $retardo, 1, $direccion, $fill);
+                }
+            }
+        }
+
+        // Muestra los textos sin animacion al hover
+        &:hover, &:focus, &:target {
+            #{$ul} li,
+            .#{$ul} li {
+                // #{$selector1},
+                #{$selector1} {
+                    @include animacion (none, $duracion, $curva, $retardo, $repeticiones, $direccion, $fill);
+                }
+                #{$selector2} {
+                    display: $display1;
+                }
+            }
+        }
+    }
+}
+
+// <article class="ofertas">
+//     <h3></h3>
+//     <div class="slides">
+//     each
+//         if index == 0 %>
+//         ar = (@productosEnOferta.count- 1) %>
+//         av = index + 1 %>
+//         elsif index == (@productosEnOferta.count - 1) %>
+//         av = 0 %>
+//         ar = index -1 %>
+//          else %>
+//         ar = index - 1 %>
+//         av = index + 1 %>
+//         end %>
+//
+//         <input id="producto-< index %>" type="radio" name="radio-btn" checked>
+//
+//         <div class="slide-container" role="presentation">
+//             <!-- Al pulsar en la imagen href a la siguiente -->
+//             <figure id="index-ofertas--producto.id%>" class="slide"></figure>
+//             <div class="nav" role="navigation">
+//                 <label for="producto- ar %>" class="prev" aria-label="Ir a la oferta anterior">&laquo;</label >
+//                 <label for="producto- av %>" class="next" aria-label="Ir a la siguiente oferta">&raquo;</label>
+//             </div>
+//         </div>
+//     <end%>
+//
+//         <div class=botonera>
+//         each
+//             <label id="img-<index%>" for="producto-< index %>" class="nav-dot" aria-label="Ir a la diapositiva <index%>"></label>
+//         <%end%>
+//         </div>
+//     </div>
+// </article>
+
+@mixin image-slider (
+    $lenght,
+    $width: 609px,
+    $height: 420px,
+    //----------- label-controls -----------//
+    $bg-label: rgba(#000, 0.6),
+    $bg-label--checked: rgba(#000, 0.8),
+    $bg-nav-label: rgba(#fff, 0.3),
+    $color-label: #fff,
+    $text-shadow-label: 0pt 0pt 6pt rgba(#000, 0.3)
+
+){
+    // div.slides antes del each
+    .slides {
+        position: relative;
+        margin: 0 auto;
+        padding: 0;
+        width: $width;
+        height: $height;
+        display: block;
+
+        & input {
+            display: none;
+
+            &:checked + .slide-container .slide {
+                opacity: 1;
+
+                -webkit-transform: scale(1);
+                        transform: scale(1);
+
+                -webkit-transition: opacity 1s ease-in-out;
+                transition: opacity 1s ease-in-out;
+            }
+            &:checked + .slide-container .nav label {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+            }
+
+            @for $i from 0 through ($lenght - 1) {
+                &#producto-#{$i}:checked ~ .botonera label#img-#{$i} {
+                    background: $bg-label--checked;
+                }
+            }
+        }
+
+        // div con el figure y los labels anterior y siguiente
+        .slide-container {
+            display: block;
+
+            // figure.slide
+            .slide {
+                position: absolute;
+                top: 0;
+                width: $width;
+                height: $height;
+                margin: 0;
+                display: block;
+
+                opacity: 0;
+
+                -webkit-transform: scale(0);
+                        transform: scale(0);
+
+                -webkit-transition: all .7s ease-in-out;
+                transition: all .7s ease-in-out;
+
+                &:hover + .nav label,
+                &:focus + .nav label,
+                &:target + .nav label {
+                    opacity: 0.5;
+                }
+            }
+
+            // div.nav con las label anterior y siguiente
+            .nav label {
+                position: absolute;
+                width: $width / 3;
+                height: 100%;
+                z-index: 9;
+                cursor: pointer;
+
+                display: none;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+                -ms-flex-line-pack: center;
+                    align-content: center;
+
+                font-size: $width / 3;
+                text-align: center;
+                font-family: $font-family-title;
+                color: $color-label;
+                // font-family: "Varela Round", sans-serif;
+                background-color: $bg-nav-label;
+                text-shadow: $text-shadow-label;
+
+                -webkit-transition: opacity .2s;
+                transition: opacity .2s;
+
+                opacity: 0;
+
+                &:hover, &:focus, &:target {
+                    opacity: 1;
+                }
+
+                &.next {
+                    right: 0;
+                }
+            }
+        }
+
+        // div q repite el each q contiene una línea con
+        // todas las labels de acceso directo a cada diapositiva
+        .botonera {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            display: block;
+            text-align: center;
+
+            // label.nav-dot
+            .nav-dot {
+                position: relative;
+                width: 0.6em;
+                height: 0.6em;
+                margin: 0 $top;
+                border-radius: 100%;
+                display: inline-block;
+                background-color: $bg-label;
+
+                &:hover, &:focus, &:target {
+                    cursor: pointer;
+                    background-color: $bg-label--checked;
+                }
+            }
+        }
+    }
+    // No seleccionable
+    .slides * {
+        user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+}
+
+
+// section ó article class show
+.show {
+    // ********************** comImageninicio
+    // $count: dame-count("Imageninicio");
+    // $map:(id:'imagenesinicio');
+    // @include mostrar-paperclips ($map...);
+    // @include carrousel-slidy($count);
+    // figure {
+    //     figcaption {
+    //         h3 {
+    //             @include animacion(slide-opacity, $count*10s, linear, 5s, infinite, alternate);
+    //         }
+    //         h4 {
+    //             @include animacion(gelatine, $count*5s, linear, 1s, infinite, alternate);
+    //         }
+    //     }
+    // }
+    // ********************** comImageninicio
+
+    $h-slider: 60vmin;
+
+    figure {
+        position: relative;
+        margin: $top 0;
+        // Máximo alto del slider
+        height: $h-slider;
+
+        figcaption {
+            // position: relative;
+            width: 100%;
+            text-align: center;
+
+            h3, h4 {
+                position: absolute;
+                // sitos antes que las imagenesinicio en el html
+                z-index: $z-index-slogan;
+                margin: 0 auto;
+                color: #fff;
+                text-shadow: 0 0.125rem 0.125rem #000;
+
+                @include rwd-font-size (1.1rem, 2rem, 20rem, 80rem);
+
+            }
+
+            h3 {
+                top: 0;
+                left: 0;
+                // misma duracion que carrousel-slidy
+                // @include animacion(slide-opacity, $count*10s, linear, 5s, infinite, alternate);
+            }
+
+            h4 {
+                bottom: 0;
+                right: 10pt;
+                // @include animacion(gelatine, $count*5s, linear, 1s, infinite, alternate);
+            }
+        }
+        // ul
+        .carrousel {
+            position: absolute;
+            top: 0em;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: $h-slider;
+
+            padding: 0;
+            margin: 0 auto;
+
+            li {
+                height: $h-slider;
+                @include simple-before;
+
+                & p {
+                    z-index: $z-index-slogan;
+                    margin: 0 auto;
+                    margin: 1em;
+                    text-align: center;
+                    color: #fff;
+                    text-shadow: 0 0.125rem 0.125rem #000;
+                    font-family: $font-family-header;
+
+                    @include rwd-font-size (1.1rem, 2rem, 20rem, 80rem);
+
+                    -webkit-animation-duration: 10s;
+                    animation-duration: 10s;
+
+                    animation-iteration-count: infinite;
+                    -webkit-animation-iteration-count: infinite;
+
+                    -webkit-transition-timing-function: ease-in;
+
+                    transition-timing-function: ease-in;
+                }
+            }
+        }
+    }
+}
+
+// section ó article class show
+.comShow {
+    // ********************** comImageninicio
+    // $count: dame-count("Imageninicio");
+    // $map:(id:'imagenesinicio');
+    // @include mostrar-paperclips ($map...);
+    // @include carrousel-slidy($count);
+    // figure {
+    //     figcaption {
+    //         h3 {
+    //             @include animacion(slide-opacity, $count*10s, linear, 5s, infinite, alternate);
+    //         }
+    //         h4 {
+    //             @include animacion(gelatine, $count*5s, linear, 1s, infinite, alternate);
+    //         }
+    //     }
+    // }
+    // ********************** comImageninicio
+
+    $h-slider: $height-portada;
+
+    figure {
+        position: relative;
+        margin: $top 0;
+        // Máximo alto del slider
+        height: $h-slider;
+
+        figcaption {
+            // position: relative;
+            width: 100%;
+            text-align: center;
+
+            h3, h4 {
+                position: absolute;
+                // sitos antes que las imagenesinicio en el html
+                z-index: $z-index-slogan;
+                margin: 0 auto;
+                color: #fff;
+                text-shadow: 0 0.125rem 0.125rem #000;
+
+                @include rwd-font-size (1.1rem, 2rem, 20rem, 80rem);
+
+            }
+
+            h3 {
+                top: 0;
+                left: 0;
+                // misma duracion que carrousel-slidy
+                // @include animacion(slide-opacity, $count*10s, linear, 5s, infinite, alternate);
+            }
+
+            h4 {
+                bottom: 0;
+                right: 10pt;
+                // @include animacion(gelatine, $count*5s, linear, 1s, infinite, alternate);
+            }
+        }
+        // ul
+        .carrousel {
+            position: absolute;
+            top: 0em;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: $h-slider;
+
+            padding: 0;
+            margin: 0 auto;
+
+            li {
+                height: $h-slider;
+                @include simple-before;
+
+                & p {
+                    z-index: $z-index-slogan;
+                    margin: 0 auto;
+                    // margin: 1em;
+                    text-align: center;
+                    color: #fff;
+                    text-shadow: 0 0.125rem 0.125rem #000;
+                    font-family: $font-family-header;
+
+                    @include rwd-font-size (1.1rem, 2rem, 20rem, 80rem);
+
+                    -webkit-animation-duration: 10s;
+                    animation-duration: 10s;
+
+                    animation-iteration-count: infinite;
+                    -webkit-animation-iteration-count: infinite;
+
+                    -webkit-transition-timing-function: ease-in;
+
+                    transition-timing-function: ease-in;
+                }
+            }
+        }
+    }
+}
+
+// Igual .comShow sin stilos texto
+@mixin carrousel-show (
+    $h-slider: $height-portada,
+    $margin: $top 0,
+    $figcp-hijo1: h3,
+    $figcp-hijo2: h4,
+    $li-hijo: p,
+    $n: 0,
+    $s: 0,
+    $e: 10px,
+    $o: 0,
+    $bg: $bg-body,
+    $opacity: 1,
+    $filter: none,
+    $ss: $ss-anime
+
+){
+    figure {
+        position: relative;
+        // Máximo alto del slider
+        height: $h-slider;
+        margin: $margin;
+
+        figcaption {
+            // position: relative;
+            width: 100%;
+            text-align: center;
+
+            #{$figcp-hijo1},
+            .#{$figcp-hijo1},
+            #{$figcp-hijo2},
+            .#{$figcp-hijo2} {
+                position: absolute;
+                // sitos antes que las imagenesinicio en el html
+                z-index: $z-index-slogan;
+                margin: 0 auto;
+            }
+
+            .#{$figcp-hijo1},
+            #{$figcp-hijo1} {
+                top: $n;
+                left: $o;
+                // misma duracion que carrousel-slidy
+                // @include animacion(slide-opacity, $count*10s, linear, 5s, infinite, alternate);
+            }
+
+            .#{$figcp-hijo2},
+            #{$figcp-hijo2} {
+                bottom: $s;
+                right: $e;
+                // @include animacion(gelatine, $count*5s, linear, 1s, infinite, alternate);
+            }
+        }
+        // ul
+        .carrousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: $h-slider;
+
+            padding: 0;
+            margin: 0 auto;
+
+            li {
+                height: $h-slider;
+                $zip:(bg-color: $bg, opacity: $opacity, filter: $filter);
+                @include simple-before($zip...);
+
+                & #{$li-hijo} {
+                    z-index: $z-index-slogan;
+                    margin: 0 auto;
+
+                    -webkit-animation-duration: $ss;
+                    animation-duration: $ss;
+
+                    animation-iteration-count: infinite;
+                    -webkit-animation-iteration-count: infinite;
+
+                    -webkit-transition-timing-function: ease-in;
+
+                    transition-timing-function: ease-in;
+                }
+            }
+        }
+    }
+}
+
+// ///
+//  * --Slider de images q simula un tiovivo
+//  * ---------------------------------------
+//  *
+//  * HTML: Contenedor
+//  *    ul
+//  *        li(n)
+//  *            [a]
+//  *                figure[#id]
+//  *                    [figcaption]
+//  *                        [h1|h2|h3|h4|h5|h6|p|strong]
+//  *                            > [h1|h2|h3|h4|h5|h6|p|strong]
+//  *
+//  * ARGUMENTOS:
+//  * -----------
+//  * $lenght: total de images
+//  * $axis -> 'Y' | loquesea (else)
+//  * $axis ->  mayusc. y entrecomillado)
+//  *
+//  * Llama a las funciones ../utils/_funciones:
+//  * -- @function dame-altura($width, $height, $axis)
+//  * -- @function dame-rotateXY-tZ($axis, $grados, $tz)
+//  *
+//  * keyframes : ../utils/_animaciones.scss
+//  * -- animation-name: rotationX | rotationY
+//  * -- decide el mixin segun $axis.
+//  *
+//
+@mixin tiovivo-3d(
+    $lenght: 3,
+    $axis: 'Y',
+    $grosor-borde: 4pt,
+    $color-borde: #000,
+
+    $width: 210pt,
+    $height: 140pt,
+
+    $perspective: 1000pt,
+    $originX: 75%,
+    $originY: 75%,
+
+    $opacity: 0.8,
+    $filter: grayscale(0),
+    $filter--hover: grayscale(1),
+
+    // Animacion:
+    $duracion: $lenght * 5s,
+    $curva: linear,
+    $retraso: 0s,
+    $repeticiones: infinite
+) {
+
+    //----------- TRIGONOMETRIA -----------//
+    // Grados del poliedro
+    $deg: 360/ $lenght;
+    // Tan = cateto / adyacente
+
+    $h: dame-altura($width, $height, $axis);
+    $tz: round( ($h/2) / tan(pi() / $lenght));
+    //----------------------//
+
+    // contenedor, tipo article.show
+    position: relative;
+    width: $width;
+    height: $height;
+    margin: 0 auto 40pt;
+    -webkit-perspective-origin: $originX $originY;
+            perspective-origin: $originX $originY;
+    -webkit-perspective: $perspective;
+            perspective: $perspective;
+    // perspective: 1100pt;
+
+    // z-index: 99;
+
+    // Lista de imágenes
+    ul {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+
+        @include animacion (rotation+$axis, $duracion, $curva, $retraso, $repeticiones);
+
+        // animation: rotation 20s infinite linear;
+
+        &:hover {
+            -webkit-animation-play-state: paused;
+                    animation-play-state: paused;
+        }
+
+        & li {
+            position: absolute;
+            width: 186pt;
+            height: 116pt;
+            left: 10pt;
+            top: 10pt;
+
+            display: block;
+            background: $color-borde;
+            border: solid $grosor-borde $color-borde;
+
+            opacity: $opacity;
+            // transition: opacity 1s, transform 1s;
+
+            overflow: hidden;
+
+            @for $i from 0 through $lenght {
+                &:nth-child(#{$i}) {
+                    $grados: $i*$deg;
+                    -webkit-transform: dame-rotateXY-tZ($axis, $grados, $tz);
+                            transform: dame-rotateXY-tZ($axis, $grados, $tz);
+                }
+            }
+
+            & figure {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: 0;
+
+                -webkit-filter: $filter;
+                    filter: $filter;
+                cursor: pointer;
+                -webkit-transition: all .5s ease;
+                transition: all .5s ease;
+
+                &:hover {
+                    -webkit-filter: $filter--hover;
+                        filter: $filter--hover;
+                    -webkit-transform: scale(1.2,1.2);
+                            transform: scale(1.2,1.2);
+                }
+
+                & figcaption {
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// NO FUNCIONA
+@mixin slider-manual ($lenght, $contenedor) {
+// Html: figure>legend/>ul>li*$i
+    // El contenedor hidden
+    #{$contenedor}{
+        overflow: hidden;
+        z-index: $z-index-tras-fixed;
+
+        // La vista
+        & ul li {
+            width: percentage(1/$lenght);
+            float: left;
+        }
+        // El proceso oculto
+        & ul {
+            position: relative;
+            width: percentage($lenght);
+            margin: 0;
+            left: 0;
+            font-size: 0;
+            text-align: left;
+            $duracion: $lenght*10s;
+            @include keyframe-slidy($lenght);
+            @include animacion (slidy, $duracion, ease-in, 5s, infinite, alternate);
+        }
+    }
+}
+
+
+// SIN IMPLEMENTAR
+@mixin carrousel-manual {
+    //Carousel CSS by dizzyzane: https://dizzyzane.github.io/carousel-css/
+    @media screen, projection, tv {
+        .carousel-container {
+            list-style-type: none;
+            padding: 0;
+            margin: 30pt auto;
+            max-width: 100%;
+            width: 550pt;
+            height: 500pt;
+            border-radius: 4pt;
+            position: relative;
+        }
+        .carousel-container .arrow {
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            color: rgba(255,255,255,0.5);
+            display: block;
+            width: 50pt;
+            font-size: 62pt;
+            text-align: center;
+            bottom: 0;
+            top: 0;
+            line-height: 500pt;
+            position: absolute;
+            z-index: 9999;
+            padding-bottom: 4pt;
+            padding-top: 2pt;
+            border-radius: 4pt;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .carousel-container .arrow.back {
+            left: 0pt;
+            background: -webkit-linear-gradient(left, rgba(0,0,0,0.5), transparent);
+            background: linear-gradient(to right, rgba(0,0,0,0.5), transparent);
+        }
+        .carousel-container .arrow.back::before {
+            content: '\2039';
+        }
+        .carousel-container .arrow.next {
+            right: 0pt;
+            background: -webkit-linear-gradient(right, rgba(0,0,0,0.5), transparent);
+            background: linear-gradient(to left, rgba(0,0,0,0.5), transparent);
+        }
+        .carousel-container .arrow.next::before {
+            content: '\203a';
+        }
+        .carousel-container .arrow:hover {
+            color: #fff;
+        }
+        .carousel-container li:nth-child(1) > .dot {
+            margin-left: 50pt;
+        }
+        .carousel-container .carousel-content {
+            height: 0;
+            overflow: hidden;
+            line-height: 22pt;
+            background: #000;
+            position: absolute;
+            top: 0pt;
+            border-radius: 4pt;
+            box-shadow: 0 5pt 5pt -5pt #333;
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            line-height: 500pt;
+        }
+        .carousel-container .carousel-content img {
+            opacity: 0;
+            padding: 0;
+            width: auto;
+            height: auto;
+            border-radius: 4pt;
+            -webkit-transition: 0.2s ease-in;
+            transition: 0.2s ease-in;
+            max-height: 500pt;
+            max-width: 550pt;
+            vertical-align: middle;
+        }
+        .carousel-container .dot {
+            float: left;
+            cursor: pointer;
+            opacity: 1;
+            width: 12pt;
+            height: 12pt;
+            background: rgba(255,255,255,0.5);
+            position: relative;
+            margin-top: 475pt;
+            border-radius: 50%;
+            z-index: 999;
+            margin-right: 8pt;
+            display: block;
+            border: 1pt solid #000;
+        }
+        .carousel-container .dot:hover {
+            background: #fff;
+        }
+        .carousel-container .carousel-toggle {
+            display: none;
+        }
+        .carousel-container .carousel-toggle:checked + .dot,
+        .carousel-container .carousel-toggle.active + .dot {
+            background: #fff;
+        }
+        .carousel-container .carousel-toggle:checked ~ .carousel-content,
+        .carousel-container .carousel-toggle.active ~ .carousel-content {
+            height: 100%;
+            width: 100%;
+        }
+        .carousel-container .carousel-toggle:checked ~ .carousel-content img,
+        .carousel-container .carousel-toggle.active ~ .carousel-content img {
+            opacity: 1;
+        }
+        .carousel-fullscreen {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin: 0 4pt 4pt 0;
+            width: 27pt;
+            height: 27pt;
+            z-index: 99999;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            color: rgba(255,255,255,0.5);
+        }
+        .carousel-fullscreen svg {
+            width: 27pt;
+            height: 27pt;
+        }
+        .carousel-fullscreen .exitFS {
+            fill: none;
+        }
+        .carouselFullScreen:checked,
+        .carouselFullScreen.active {
+            display: block;
+            height: 560pt;
+        }
+        .carouselFullScreen:checked+.carousel-container,
+        .carouselFullScreen.active+.carousel-container {
+            border-radius: 0;
+            margin: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: #000;
+        }
+        .carouselFullScreen:checked+.carousel-container .arrow,
+        .carouselFullScreen.active+.carousel-container .arrow {
+            line-height: 100vh;
+        }
+        .carouselFullScreen:checked+.carousel-container .carousel-toggle:checked ~.carousel-content >li,
+        .carouselFullScreen.active+.carousel-container .carousel-toggle:checked ~.carousel-content >li {
+            height: 100%;
+            line-height: 100vh;
+        }
+        .carouselFullScreen:checked+.carousel-container .dot,
+        .carouselFullScreen.active+.carousel-container .dot {
+            display: none;
+        }
+        .carouselFullScreen:checked+.carousel-container .carousel-fullscreen,
+        .carouselFullScreen.active+.carousel-container .carousel-fullscreen {
+            width: 54pt;
+            height: 54pt;
+        }
+        .carouselFullScreen:checked+.carousel-container .carousel-fullscreen svg,
+        .carouselFullScreen.active+.carousel-container .carousel-fullscreen svg {
+            width: 54pt;
+            height: 54pt;
+        }
+        .carouselFullScreen:checked+.carousel-container .carousel-fullscreen .exitFS,
+        .carouselFullScreen.active+.carousel-container .carousel-fullscreen .exitFS {
+            fill: currentColor;
+        }
+        .carouselFullScreen:checked+.carousel-container .carousel-fullscreen .intoFS,
+        .carouselFullScreen.active+.carousel-container .carousel-fullscreen .intoFS {
+            fill: none;
+        }
+        .carouselFullScreen:checked+.carousel-container img,
+        .carouselFullScreen.active+.carousel-container img {
+            width: auto;
+            height: auto;
+            max-height: 100vh;
+            max-width: 100vw;
+        }
+    }
+    @media print, handheld {
+        .carousel-container {
+            text-align: center;
+            border: 2pt dotted;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-flow: row wrap;
+                flex-flow: row wrap;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+        }
+        .carousel-container::before {
+            content: "Gallery of images";
+            font-size: 2em;
+            -ms-flex-item-align: start;
+                -ms-grid-row-align: start;
+                align-self: start;
+        }
+        .carousel-container ul,
+        .carousel-container li {
+            list-style-type: none;
+            margin: 0;
+        }
+        .carousel-container label,
+        .carousel-container input {
+            display: none;
+        }
+        .carousel-container img {
+            max-width: 200pt;
+            max-height: 200pt;
+            width: auto;
+            height: auto;
+        }
+    }
+}
+
+@mixin prueba-aparte (
+    $w-figure: 50%,
+    // ratio a 16:9 + factor made in Sonia (1.21)
+    $h-figure: 100%,
+    //----------- texto -----------//
+    $color-texto: #fff,
+    $text-shadow: $text-shadow-default
+
+){
+    h2, h3, h4 {
+        width: 50%;
+        padding: $top 0;
+        top: 0;
+        left: 25%;
+        color: $color-texto;
+        position: absolute;
+        box-shadow: 0 1px 1px #000;
+        background: rgba(#000, 0.6);
+    }
+
+    h2, h3, h4, h5, h6, figcaption {
+        text-shadow: $text-shadow;
+        margin: 0;
+        z-index: 3;
+    }
+
+    //  ADAPTAR A LA NECESIDAD
+    & figure.producto-oferta {
+        position: absolute;
+        top: 0;
+        left: 25%;
+        width: $w-figure;
+        height: $h-figure;
+        margin: 0;
+    }
+
+    a {
+        position: absolute;
+        width: 50%;
+        height: 5em;
+        left: 25%;
+        bottom: 6vh;
+        padding: 1em 0;
+        background: rgba(#000, 0.8);
+        // border-radius: 100%;
+
+        figure.comprar {
+            position: relative;
+            width: 9em;
+            height: 5em;
+            margin: 0 auto;
+            // border-radius: 50%;
+            // background: #000;
+            -webkit-transition: all ease-in-out 0.2s;
+            transition: all ease-in-out 0.2s;
+
+            svg,
+            figcaption {
+                position: absolute;
+                top: 0;
+            }
+            svg {
+                left: 0;
+                .a {
+                    fill: $color-texto;
+                }
+            }
+            figcaption {
+                right: 0;
+                color: $color-texto;
+                font-weight: bold;
+            }
+        }
+
+        &:hover, &:focus, &:target {
+            box-shadow: $box-shadow--black;
+            // animation-fill-mode: both;
+            // animation-duration: 1s;
+            // animation-name: rubberBand;
+        }
+    }
+    // ----------------------------//
+}
+
+@mixin slider-diapositivas (
+    $lenght,
+    $width: 100%,
+    $height: 50vh,
+    $w-flecha: 20%,
+    $w-boton: 0.6em,
+    $h-boton: 0.6em,
+    $bg: rgba(#000, 0.6),
+
+    //----------- label-controls -----------//
+    $bg-boton: rgba(#000, 0.6),
+    $bg-boton--checked: rgba(#fff, 0.6),
+    $bg-avance-label: rgba(#fff, 0.3),
+    $color-label: #fff,
+    $color-boton: $bg-boton--checked,
+    $text-shadow-label: 0pt 0pt 6pt rgba(#000, 0.3),
+    //----------- Animation -----------//
+    $duracion: 1s,
+    $animacion: bounceIn
+){
+    // div.carrete antes del each
+    & .carrete {
+        position: relative;
+        height: 100%;
+        // width: $width;
+        // height: $height;
+        // display: block;
+        background: $bg;
+
+        & input {
+            display: none;
+
+            // Aquí animación entre diapositiva y diapositiva
+            &:checked + .faldon .diapositiva {
+                @content;
+            }
+
+            &:checked + .faldon {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+            }
+
+            @for $i from 0 through ($lenght - 1) {
+                &#producto-#{$i}:checked ~ .botonera label#img-#{$i} {
+                    background: $bg-boton--checked;
+                }
+            }
+        }
+
+        // div con el article.diapositiva y los labels anterior y siguiente
+        .faldon {
+            position: relative;
+            height: 100%;
+            display: none;
+
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+
+            // article.diapositiva
+            .diapositiva {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                margin: 0 auto;
+
+                // @include prueba-aparte;
+
+                &:hover + .avance label,
+                &:focus + .avance label,
+                &:target + .avance label {
+                    opacity: 0.5;
+                }
+            }
+
+            // nav con las label anterior y siguiente
+            .avance label {
+                position: absolute;
+                top: 0;
+                width: $w-flecha;
+                height: 100%;
+                z-index: 9;
+                cursor: pointer;
+
+                display: -webkit-box;
+
+                display: -ms-flexbox;
+
+                display: flex;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+                -ms-flex-line-pack: center;
+                    align-content: center;
+
+
+                text-align: center;
+                font-family: $font-family-title;
+                color: $color-label;
+                // font-family: "Varela Round", sans-serif;
+                background-color: $bg-avance-label;
+                text-shadow: $text-shadow-label;
+
+                @include responsive-font-size (2rem, 10rem, 10rem, 80rem);
+
+                -webkit-transition: opacity .2s;
+                transition: opacity .2s;
+                opacity: 0;
+
+                &.ar {
+                    left: 0;
+                }
+                &.av {
+                    right: 0;
+                }
+
+                &:hover, &:focus, &:target {
+                    opacity: 1;
+                }
+
+            }
+        }
+
+        // div q repite el each q contiene una línea con
+        // todas las labels de acceso directo a cada diapositiva
+        .botonera {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            display: block;
+            text-align: center;
+
+            // label.boton
+            .boton {
+                position: relative;
+                width: $w-boton;
+                height: $h-boton;
+                margin: 0 $top;
+                border-radius: 100%;
+                display: inline-block;
+                background-color: $bg-boton;
+
+                // añadirle la clase .abcenter para posicionar
+                & i {
+                    font-size: $w-boton/3;
+                    color: $color-boton;
+                    font-style: normal;
+                }
+
+                &:hover, &:focus, &:target {
+                    cursor: pointer;
+                    background-color: $bg-boton--checked;
+                }
+            }
+        }
+    }
+    // No seleccionable
+    .carrete * {
+        user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+}

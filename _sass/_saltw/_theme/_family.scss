@@ -1,0 +1,23 @@
+//----------- TIPOGRAFÍA -----------//
+
+// Títulos
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Nasal';
+    src: url('nasal-webfont.eot');
+    src: url('nasal-webfont.eot?#iefix') format('embedded-opentype'),
+         url('nasal-webfont.woff2') format('woff2'),
+         url('nasal-webfont.woff') format('woff'),
+         url('nasal-webfont.ttf') format('truetype'),
+         url('nasal-webfont.svg#Nasal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// texto
+
+//
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i');
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i');

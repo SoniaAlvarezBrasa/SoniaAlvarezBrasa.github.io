@@ -1,0 +1,131 @@
+// Las reglas agrupadas en esta categoria se aplican a
+// todo el proyecto como identidad corporativa.
+// Es la capa visual.
+
+@include bodySaltw;
+
+//----------- COLORES -----------
+body {
+  background  : $bg-body;
+  font-family : $font-family-body;
+  color       : #333;
+}
+
+header,
+footer {
+    // background-color: $bg-corp;
+}
+
+a {
+  color           : inherit;
+  text-decoration : none;
+  font-family: $font-family-subtitle;
+  font-style: italic;
+
+    // Para IE. Con dos cojones
+    display: block;
+
+  &:hover, &:focus, &:target {
+      color: $color-t1;
+  }
+}
+
+//----------- MARGIN ----------- //
+p, blockquote, li {
+  word-spacing: $word-spacing;
+}
+
+// Margin al final de cada párrafo
+// excepto el final
+p {
+  margin : 0 0 $margin-p 0;
+
+  &:only-of-type,
+  &:last-child,
+  &:only-child {
+      margin-bottom: 0;
+  }
+}
+
+ul {
+    padding: 0;
+}
+
+//----------- TIPOGRAFÍA ----------- //
+
+// Según la customización permitida en la api-font
+strong {
+    // font-weight: bold;
+    font-family: $font-family-title;
+}
+
+// Encabezados
+h1 {
+    font-family: $font-family-header;
+    font-weight: $font-weight-header;
+    color: $color-header;
+}
+
+h2 {
+    font-family: $font-family-title;
+    font-weight: $font-weight-title;
+    text-align: center;
+    color: $color-title;
+}
+
+h3, h4, h5, h6 {
+  font-family    : $font-family-subtitle;
+  font-weight    : $font-weight-subtitle;
+  text-align: center;
+  color: $color-subtitle;
+}
+
+// Font-style
+// normal | italic | oblique | inherit
+figcaption {
+    font-style: italic;
+}
+
+
+// Font-variant
+// normal | small-caps | inherit
+
+
+//----------- FONT-SIZE -----------
+// @mixin rwd-font-size($min-font-size, $max-font-size, $min-screen-width, $max-screen-width, $font-size-step: 0.1em)
+// NOTA: VARIAR DE FORMA RELATIVA CON larger, smaller
+
+// Tipografía títulos y subtítulos (adaptar a la font)
+// Tipografía default GRANDE
+
+// h1, svg {
+h1 {
+     @include responsive-font-size (1.3rem, 2.2rem, 20rem, 100rem);
+}
+
+h2 {
+    @include responsive-font-size (1.2rem, 2rem, 10rem, 100rem);
+}
+
+h3 {
+    @include responsive-font-size (1.1rem, 1.8rem, 10rem, 100rem);
+}
+
+h4, summary {
+    @include responsive-font-size (1rem, 1.6rem, 10rem, 100rem);
+}
+p, a, ol, ul, li, blockquote, dl, dt, dd, cite, q, article {
+    @include responsive-font-size (0.9rem, 1.5rem, 10rem, 100rem);
+}
+
+h5 {
+    @include responsive-font-size (0.8rem, 1.4rem, 10rem, 100rem);
+}
+h6 {
+    @include responsive-font-size (0.7rem, 1.3rem, 10rem, 100rem);
+}
+sub, sup, figcaption {
+    @include responsive-font-size (0.6rem, 1.2rem, 10rem, 100rem);
+}
+
+// Tipografías de título en compontents/titulos

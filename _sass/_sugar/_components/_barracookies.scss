@@ -1,0 +1,107 @@
+@mixin barracookies (
+    $h-aviso: 7em,
+    $bg-barracookies: rgba($color-b, 0.8),
+    $bg-button: rgba($color-t1, 0.8),
+    $bg-button--hover: rgba(#fff, 0.8),
+    $color: #fff,
+    $color--hover: colorea($color-b, d2),
+    $text-shadow: 0 1pt 2pt #000,
+    $text-shadow--hover: 0 1pt 2pt #fff,
+    $box-shadow-barracookies: 1pt -1pt 2pt rgba(#000, 0.6),
+    $box-shadow-button: 1pt 1pt 2pt rgba(#000, 0.6)
+){
+    //-----------  ----------- //
+    & > article {
+        position: relative;
+
+        // font-size
+        h4, label, p, a {
+            @include responsive-font-size (0.6rem, 1.2rem, 10rem, 100rem);
+        }
+
+        a {
+            display: block;
+            padding: $padding/2 $padding;
+            background: $bg-button;
+            border-radius: 2pt;
+            box-shadow: $box-shadow-button;
+            &:target, &:focus, &:hover {
+                background: $bg-button--hover;
+                color:$color--hover;
+                text-shadow: $text-shadow--hover;
+            }
+        }
+
+        // Demasiado por default
+        p {
+            margin-bottom: $top;
+        }
+
+        // Estilos comunes etiqueta y texto aviso cookies
+        label,
+        #aviso-cookies,
+        #aviso-noscript {
+            color: $color;
+            text-shadow: $text-shadow;
+            box-shadow: $box-shadow-barracookies;
+        }
+
+        // Estilos label
+        label {
+            display: inline-block;
+            margin: auto;
+            padding: $top $padding;
+            border-top-left-radius: 5pt;
+            border-top-right-radius: 5pt;
+            background-color: $bg-barracookies;
+            cursor: pointer;
+            &:before {
+                color: $bg-button;
+            }
+        }
+
+        // Modal oculto unchecked
+        #aviso-noscript{
+            display: none;
+        }
+
+        // Casilla checkbox oculta
+        #modal-cookies {
+            display: none;
+            // Mostrar modal al checked
+            &:checked ~ #aviso-noscript {
+                display: block;
+            }
+        }
+
+        // Posicion y medidas del mensaje
+        #aviso-cookies,
+        #aviso-noscript {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            // height: $h-aviso;
+            padding: $padding;
+            text-align: center;
+            background-color: $bg-barracookies;
+        }
+
+        // Posicion label en checked
+        #modal-cookies:checked + label {
+            position: fixed;
+            bottom: ($h-aviso + 0.3em + 0.06em);
+        }
+
+        // Posicion label en no-checked
+        #modal-cookies + label {
+            position: absolute;
+            bottom: -0.8em;
+        }
+    }
+}
+
+#barracookies {
+    @include barracookies;
+}

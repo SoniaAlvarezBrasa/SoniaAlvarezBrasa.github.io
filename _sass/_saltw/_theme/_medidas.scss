@@ -1,0 +1,63 @@
+//----------- GLOBAL -----------
+// 1em = 16px
+
+// Para casos de global width máximo
+// $max-width: 80em;
+$max-width: 100%;
+
+// Declaración de los @media del sitio
+$xs: 30rem;
+$xm: 40rem;
+$xl: 65rem;
+$xxl: 90rem;
+$xxxl: 100rem;
+
+// Declaración de los widht paths y comunes
+$wxs: 95%;
+$wxm: 90%;
+$wxl: 85%;
+$wxxl: 80%;
+$wxxxl: 75%;
+
+
+// Alturas elementos fijos
+$height-header: 9rem;
+    $height-menu: 2rem;
+    $padding-menu: 3rem;
+$height-footer: 1.5em;
+
+$height-inventory-nav: 80px;
+$height-inventory-item: 50px;
+
+// medidas svg
+$svg-x: 144;
+$svg-y: 144;
+$svg-large-x: 512;
+$svg-large-y: 256;
+$height-svg: $height-header;
+$height-svg-mini: $height-footer;
+$height-svg-large: $height-header;
+
+// footer pegajoso
+$min-h-main: calc(100vh - (#{$height-header} + #{$height-footer}));
+
+// Separación entre items
+$padding-comunes: 5%;
+$padding-item: 4%;
+$padding: 1em;
+
+// Separación entre contenedores en el cross-axis (medida más pequeña)
+$top: 0.3rem;
+
+// Párrafos
+$line-height-max: 2;
+$line-height : 1.6;    // Minima accesibilidad visual
+$line-height-min: 1.1;
+$word-spacing: 2pt;    // Minima accesibilidad visual
+$margin-p: 1rem;
+
+// figures
+$height-portada: 70vmin;
+$height-item: 50vmin;
+$ss-anime: 10s;
+$ss-item: 0.5s;

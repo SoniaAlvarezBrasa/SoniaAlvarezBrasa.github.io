@@ -1,0 +1,79 @@
+@mixin rwd-tabla (
+    $bg-th: rgba($color-b, 0.2),
+    $bg-odd: rgba($color-t1, 0.2),
+    $bg-even: rgba($color-t2, 0.2),
+
+    $color-th: $color-body
+) {
+
+    margin: auto;
+
+    // Establecer para que sean block en viewports estrechos
+    tbody,
+    tr,
+    th,
+    td {
+        display: block;
+        padding: 0;
+        text-align: left;
+        white-space: normal;
+    }
+
+    caption {
+        margin-bottom: 1em;
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    thead {
+
+    }
+
+    tbody {
+        display: table-row-group;
+        tr {
+            &:nth-of-type(even) {
+                background: $bg-even;
+            }
+            &:nth-of-type(odd) {
+                background: $bg-odd;
+            }
+        }
+    }
+
+    tr {
+        display: table-row;
+    }
+
+    th, td {
+        display: table-cell;
+        padding: .5em;
+        vertical-align: middle;
+    }
+
+    th {
+        background: $bg-th;
+        border: 1pt solid $bg-th;
+        color: $color-th;
+        font-weight: normal;
+    }
+
+    td {
+        text-align: right;
+    }
+
+    tfoot {
+        display: table-footer-group;
+        background: $bg-th;
+        border: 1pt solid $bg-th;
+        td {
+            text-align: center;
+        }
+    }
+}
+
+.rwd-table {
+    width: 100%;
+    @include rwd-tabla;
+}

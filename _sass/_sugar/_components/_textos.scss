@@ -1,0 +1,20 @@
+// ----- LISTAS -----//
+@mixin lista-indent (
+    $lista: ul,
+    $margin: 0,
+    $type: disc,
+    $ta: left,
+    $position: inside,
+    $padding-li: $padding
+){
+    & #{$lista} {
+        margin: $margin;
+        list-style-type: $type;
+        li {
+            padding-left: $padding-li;
+            text-align: $ta;
+            list-style-position: $position;
+            text-indent: (-1)*$padding-li;
+        }
+    }
+}

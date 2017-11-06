@@ -1,0 +1,177 @@
+// li contenedor de la background-image
+// que contiene un enlace
+@mixin button-img (
+    $selector: figcaption,
+    $display: none,
+    $display--hover: block,
+    $width: 100pt,
+    $height: 100pt,
+    $tp: 100pt,
+    $left: -50pt,
+    $bg-color: $bg-img,
+    $bg-color-webkit: $bg-img,
+    $border-radius: 50%,
+    $bs: 1px 1px 2px rgba(#000, 0.6),
+    $bs--hover: $box-shadow--hover
+){
+    position: relative;
+    width: $width;
+    height: $height;
+    border-radius: $border-radius;
+    background: -webkit-#{$bg-color-webkit};
+    background: $bg-color;
+    box-shadow: $bs;
+    cursor: pointer;
+    -webkit-transition: ease-in-out 0.35s;
+            transition: ease-in-out 0.35s;
+
+    &:before {
+        border-radius: $border-radius;
+    }
+
+    & #{$selector} {
+        position: absolute;
+        width: 200%;
+        top: $tp;
+        left: $left;
+
+        display: $display;
+    }
+
+    &:hover, &:focus, &:target {
+        box-shadow: $bs--hover;
+
+        & #{$selector} {
+            display: $display--hover;
+        }
+    }
+}
+
+@mixin submit (
+    $w1: 25%,
+    $w2: 30%,
+    $padding-top: 0.5em,
+    $padding-left: 0.8em,
+    $border-radius: 5pt,
+    $color: #222,
+    $color--hover: $color-title,
+    $bg: radial-gradient(#aaa, #666),
+    $bg-webkit: $bg,
+    $bg--hover: rgba($color-title, 0.5)
+){
+    width: $w1;
+    padding: $padding-top $padding-left;
+    font-weight: bold;
+    color: $color;
+    background: -webkit-#{$bg-webkit};
+    background: $bg;
+
+    cursor: pointer;
+    border-radius: 5pt;
+    -webkit-transition: all ease-in-out 0.35s;
+            transition: all ease-in-out 0.35s;
+
+    &:hover, &:target, &:focus {
+        width: $w2;
+        font-variant: small-caps;
+        color: $color--hover;
+        background: $bg--hover;
+        box-shadow: $box-shadow--black;
+    }
+}
+
+@mixin boton-liso (
+    $border-radius: 4pt,
+    $bg: colorea($color-t1),
+    $color: $color-body,
+    $rgba: #000
+){
+    $bg-hover: colorea($bg, l1);
+    $bg-active: colorea($bg, d1);
+    $color-borde: colorea($bg, d2);
+
+    position:relative;
+    top: 0px;
+    white-space: nowrap;
+    cursor: pointer;
+
+    border-radius:$border-radius;
+    border: none;
+    background: none;
+    -webkit-transition: 0.1s all ease;
+    transition:0.1s all ease;
+
+    background-color: $bg;
+    color: $color;
+    border-bottom: 1pt solid $color-borde;
+
+    &:hover, &:focus, &:target {
+        top:-2px;
+        background-color: $bg-hover;
+        border-bottom: 4pt solid $color-borde;
+        box-shadow: 0pt 2pt 5pt 0pt rgba($rgba,0.25);
+    }
+
+    &:active{
+        top:0px;
+        border: 1px solid $color-borde;
+        background-color: $bg-active;
+        box-shadow: inset 0pt 0pt 4pt rgba($rgba,0.25);
+    }
+
+    &:focus {
+        // outline:0;
+    }
+}
+
+@mixin boton-gradient (
+    $border-radius: 4pt,
+    $bg: $color-t1,
+    $color: colorea($color-t1, l4),
+    $color--hover: $bg-body,
+    $rgba: #000,
+    $ss: 0.15s
+){
+    $bg-hover: colorea($bg, l1);
+    $bg-active: colorea($bg, d1);
+    $color-borde: colorea($bg, d2);
+
+    position:relative;
+    top: 0px;
+    // white-space: nowrap;
+    cursor: pointer;
+
+    border-radius:$border-radius;
+    border: none;
+    background: none;
+    -webkit-transition: all ease $ss;
+    transition: all ease $ss;
+
+    background: -webkit-linear-gradient(top, $bg 0%, colorea($bg, d2) 100%);
+
+    background: linear-gradient(to bottom, $bg 0%, colorea($bg, d2) 100%); // W3C
+    color: $color;
+    border-bottom: 1pt solid $color-borde;
+
+    &:hover, &:focus, &:target {
+        top:-2px;
+        background: -webkit-linear-gradient(top, $bg-hover 0%, colorea($bg-hover, d2) 100%);
+        background: linear-gradient(to bottom, $bg-hover 0%, colorea($bg-hover, d2) 100%); // W3C
+        color: $color--hover;
+        border-bottom: 4pt solid $color-borde;
+        border-right: 2pt solid $color-borde;
+        box-shadow: 2pt 2pt 5pt 0pt rgba($rgba,0.25);
+    }
+
+    &:active{
+        top:0px;
+        border: 1px solid $color-borde;
+        background: -webkit-linear-gradient(top, $bg-active 0%, colorea($bg-active, d2) 100%);
+        background: linear-gradient(to bottom, $bg-active 0%, colorea($bg-active, d2) 100%); // W3C
+        box-shadow: inset 0pt 0pt 4pt rgba($rgba,0.25);
+    }
+
+    &:focus {
+        outline:0;
+    }
+}

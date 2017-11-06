@@ -1,0 +1,391 @@
+// Todas las galerias incluyen:
+//     parrilla de miniaturas
+//     una modal de fondo display no/si.
+//     botones anterior, siguiente y cerrar.
+
+@mixin simple-gallery (
+    $color-end: #000,
+    $color-front: #fff,
+    $font-family: $font-family-body,
+    $bg-cerrar: darkred,
+    $bg-cerrar-close: darkseagreen,
+    // contenedor imagen: ratio 16:9
+    $width: 90vmin,
+    // $height: 56.25vmin,
+    $height: $width * 3/4,
+    $min-font-h: 0.5rem,
+    $max-font-h: 1.2rem,
+    $min-font-icon: 2rem,
+    $max-font-icon: 5rem,
+    $h-position: 1.5em,
+    $z-index: $z-index-galeria
+
+    ) {
+
+    $bg-modal: rgba($color-end, 0.8);
+    $sombra1: 1pt 1pt 2pt $color-end;
+    $sombra2: 2pt 2pt 10pt rgba($color-end, 0.9);
+    // ...
+    $box-shadow: $sombra1, $sombra2;
+
+    // ul.modal
+    li {
+        display: none;
+        z-index: $z-index-galeria;
+
+        &:target {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $bg-modal;
+        }
+
+        & h2,
+        & h3,
+        & h4,
+        & h5 {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0;
+            // margin-left: 1em;
+            // margin-right: 1em;
+            width: 100%;
+            color: $color-front;
+            background: $color-end;
+            text-shadow: $box-shadow;
+            font-family: $font-family;
+            text-align: center;
+            @include responsive-font-size ($min-font-h, $max-font-h, 20rem, 100rem);
+        }
+
+        h4 {
+            padding: 1em;
+            top: $h-position;
+        }
+
+        h5 {
+            padding: 0.5em 0.3em;
+            bottom: $h-position;
+        }
+
+        & .imagen{
+            width: 100%;
+            // height: $height;
+            margin: 0 auto;
+
+            display: -webkit-box;
+
+            display: -ms-flexbox;
+
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+
+            figure {
+                width: $width;
+                height: 100%;
+                max-width: 100%;
+                margin: 0;
+
+                box-shadow: $box-shadow;
+            }
+
+            &:hover, &:focus, &:target {
+                & a.av {
+                    opacity: 1;
+                }
+            }
+
+            & a {
+                color: $color-front;
+                text-shadow: $box-shadow;
+
+                &.av,
+                &.ar {
+                    height: $height;
+                    width: calc((100% - #{$width})/2);
+                    @include rwd-font-size ($min-font-icon, $max-font-icon, 20rem, 100rem, 0.5rem);
+
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+
+                    -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                            justify-content: center;
+                    -webkit-box-align: center;
+                        -ms-flex-align: center;
+                            align-items: center;
+
+                    background-color: rgba($color-front, 0.1);
+                    opacity: 0;
+                    -webkit-transition: opacity ease 0.5s;
+                    transition: opacity ease 0.5s;
+
+                    &:before {
+                        margin-left: $top;
+                        margin-right: $top;
+                    }
+                }
+
+                &.ar {
+                    &:hover, &:focus, &:target {
+                        opacity: 1;
+                    }
+                }
+
+                &.actual {
+                    // IE
+                    display: block;
+
+                    margin: 0;
+                    height: $height;
+                    -ms-flex-negative: 2;
+                        flex-shrink: 2;
+
+                    &:hover, &:focus, &:target {
+                        box-shadow: $box-shadow--hover;
+                    }
+                }
+
+                &.x {
+                    position: absolute;
+                    top: $top;
+                    right: $top;
+                    @include rwd-font-size (2rem, 5rem, 20rem, 100rem, 0.5rem);
+
+                    color: $bg-cerrar;
+                    &:hover, &:focus, &:target {
+                        color: $bg-cerrar-close;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//----------- BASE -----------//
+// Antiguo
+@mixin galeria-simple (
+    $color-end: #000,
+    $color-front: #fff,
+    $font-family: $font-family-body,
+    $bg-cerrar: colorea($color-t1, d2),
+    $bg-button: analogos($color-b, a1),
+    // contenedor imagen: ratio 16:9
+    $width: 100vmin,
+    $height: 56.25vmin) {
+
+    $bg-modal: rgba($color-end, 0.8);
+    $sombra1: 1pt 1pt 2pt $color-end;
+    $sombra2: 2pt 2pt 10pt rgba($color-end, 0.9);
+    // ...
+    $box-shadow: $sombra1, $sombra2;
+
+    // ul.modal
+    li {
+        display: none;
+        z-index: $z-index-modal;
+
+        &:target {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $bg-modal;
+        }
+
+        & h2,
+        & h3,
+        & h4,
+        & h5 {
+            // margin-left: 1em;
+            // margin-right: 1em;
+            width: 100%;
+            color: $color-front;
+            background: $color-end;
+            text-shadow: $box-shadow;
+            font-family: $font-family;
+            text-align: center;
+        }
+
+        & .imagen{
+            width: $width;
+            height: $height;
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            figure {
+                width: 90vmin;
+                height: 100%;
+                max-width: 100%;
+                margin: 0;
+
+                box-shadow: $box-shadow;
+            }
+
+            &:hover, &:focus, &:target {
+                & a.av {
+                    opacity: 1;
+                }
+            }
+
+            & a {
+                color: $color-front;
+                text-shadow: $box-shadow;
+
+                &.av,
+                &.ar {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: $height;
+                    background-color: rgba($color-front, 0.1);
+                    opacity: 0;
+                    transition: opacity ease 0.5s;
+
+                    &:before {
+                        margin-left: $top;
+                        margin-right: $top;
+                    }
+                }
+
+                &.ar {
+                    &:hover, &:focus, &:target {
+                        opacity: 1;
+                    }
+                }
+
+                &.actual {
+                    margin: 0;
+                    height: 100%;
+                    flex-shrink: 2;
+
+                    &:hover, &:focus, &:target {
+                        box-shadow: $box-shadow--hover;
+                    }
+                }
+
+                &.x {
+                    position: absolute;
+                    top: $top;
+                    right: $top;
+                    @include rwd-font-size (2rem, 5rem, 20rem, 80rem, 0.5rem);
+
+                    color: $bg-cerrar;
+                    &:hover, &:focus, &:target {
+                        color: invert($bg-cerrar);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin galeria-default {
+    .galeria {
+    // ul.modal
+        & .modal {
+            // Contenedor figure
+            $map:(max-font-icon: 10rem);
+            @include simple-gallery($map...);
+
+            .imagen {
+                & a {
+                    &.ar,
+                    &.av {
+                        font-family: $font-family-header;
+                        font-weight: 900;
+                    }
+
+                    &.actual {
+                        figure {
+                            @include spartano-before;
+                        }
+                    }
+                }
+            }
+        }
+
+        // ul.miniaturas
+        & .miniaturas {
+
+            & li {
+                display: -webkit-inline-box;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                margin: 0.6em;
+                // Evitar fondo transparente al transform
+                background-color: $bg-body;
+                box-shadow: 0pt 1pt 2pt rgba(#000, 0.4);
+                -webkit-transition: ease-in-out 0.35s;
+                transition: ease-in-out 0.35s;
+
+                &:hover, &:focus, &:target {
+                    box-shadow: $box-shadow--hover;
+                    -webkit-transform: scale(1.1);
+                            transform: scale(1.1);
+                }
+
+                // Contrarresta .legal
+                &:only-of-type,
+                &:last-child,
+                &:only-child {
+                    margin: 0.6em;
+                }
+
+
+                & a {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    width: 100%;
+
+                    & figure {
+                        // ratio 16:9
+                        width: 128pt;
+                        height: 72pt;
+                        margin: $top;
+                        $fondo: linear-gradient(colorea($color-t1, l2), transparent);
+
+                        @include simple-before ((bg-color: $fondo)...);
+
+                    }
+                }
+            }
+        }
+    }
+}

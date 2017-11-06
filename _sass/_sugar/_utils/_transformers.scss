@@ -1,0 +1,7 @@
+
+@mixin transition-transform($propiedad, $ss) {
+    transition: $propiedad $ss, transform $ss;
+    transition: $propiedad $ss, -webkit-transform $ss;
+    transition: $propiedad $ss, transform $ss, -webkit-transform $ss;
+    -webkit-transition: $propiedad $ss, -webkit-transform $ss;
+}

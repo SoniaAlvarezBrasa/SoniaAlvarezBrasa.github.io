@@ -1,0 +1,476 @@
+// todo: Menus RWD
+
+// Por defecto el menú es vertical.
+// Las clases  .tablet-x o .web-x
+// definen desde qué tamaños se pasa a horizontal
+
+@mixin menu-flex-auto {
+    ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        li {
+            -webkit-box-flex: 1;
+                -ms-flex: auto;
+                    flex: auto;
+        }
+    }
+}
+
+@mixin menu-flex-main-center {
+    ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+}
+
+@mixin menu-simple (
+        $flex: 'auto',
+        $size: 25rem,
+        $line-height-menu: $height-menu,
+        $padding-button: $top,
+
+        $bg-menu: $color-t1,
+        $color: $bg-body,
+
+        $bg-button--hover: $color,
+        $color--hover: $bg-menu,
+
+        $bg-button--active: colorea($bg-menu, l5),
+        $color--active: $bg-menu,
+
+        $bg-submenu: $color-t2,
+
+        $border-button: 1pt solid colorea($bg-menu, d1),
+        $border-bottom: 0.06rem solid $bg-button--hover,
+        $border-radius-menu: 2pt,
+        $margin-right: $top,
+        $font-weight: normal,
+        $box-shadow: 0 0 20pt rgba(#000, 0.7)
+) {
+    nav {
+        background: $bg-menu;
+        text-transform: capitalize;
+        // font-variant: small-caps;
+
+        border-bottom: $border-bottom;
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+
+        ul {
+            padding: 0;
+            margin: 0 auto;
+                    z-index: $z-index-menu;
+            li {
+                text-align: center;
+                line-height: $line-height-menu;
+                &:last-child {
+                    border: none;
+                }
+
+                & a, & .active {
+                    border-radius: $border-radius-menu;
+                }
+
+                & .active {
+                    display: block;
+                    padding-left: $padding-button;
+                    padding-right: $padding-button;
+                    background: $bg-button--active;
+                    color: $color--active;
+                }
+            }
+
+            a {
+                display: block;
+                // line-height: $line-height-menu / 3;
+                // padding-top: #{$line-height-menu / 3}em;
+                // padding-bottom: #{$line-height-menu / 3}em;
+                padding-left: $padding-button;
+                padding-right: $padding-button;
+                color: $color;
+                font-weight: $font-weight;
+                &:hover, &:focus, &:target {
+                    // font-variant: normal;
+                    background: $bg-button--hover;
+                    color: $color--hover;
+                }
+            }
+        }
+
+        #icon-menu {
+            // display: none;
+            position: absolute !important;
+            clip: rect(1px 1px 1px 1px); // IE6, IE7
+            clip: rect(1px, 1px, 1px, 1px);
+            padding:0 !important;
+            border:0 !important;
+            height: 1px !important;
+            width: 1px !important;
+            overflow: hidden;
+        }
+
+        //----------- column -----------//
+        @include hasta ($size) {
+            ul {
+                display: none;
+                li {
+                    line-height: #{$line-height-menu}rem;
+                    border-bottom: $border-button;
+
+                    & a, & .active {
+                        border-radius: 0;
+                    }
+                }
+            }
+            #icon-menu {
+                // display: none;
+                +label {
+                    line-height: $line-height-menu;
+                    display: block;
+                    text-align: center;
+                    cursor: pointer;
+                    color: $color;
+                    &:hover, &:focus, &:target {
+                        background: colorea($bg-menu, d1);
+                        // color: $color--hover;
+                    }
+                }
+                &:checked + label {
+                    background: colorea($bg-menu, d1);
+                    // background: $hover--color-li;
+                    // background: $gradient1;
+                    // color: #f9f9f9;
+                    // @include sombra-texto (medio, #fff);
+                }
+                &:checked ~ ul {
+                    display: block;
+                }
+            }
+        }
+
+        @include desde ($size) {
+
+            @if ($flex == 'auto') {
+                @include menu-flex-auto;
+            }
+            @else if ($flex == 'main-center'){
+                @include menu-flex-main-center;
+            }
+
+            ul {
+                li {
+                    margin-right: $margin-right;
+                    // border-right: $border-button;
+                }
+            }
+
+            #icon-menu {
+                display: none;
+                + label {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@mixin menu-estas-aqui (
+    $size: 25rem,
+    $bg-button--active: $bg-body,
+    $margin: $top
+){
+    @include desde ($size) {
+        nav {
+            ul {
+                li {
+                    a {
+                        margin-top: $margin;
+                        margin-bottom: $margin;
+                    }
+                    & .active {
+                        padding-top: $margin;
+                        padding-bottom: $margin;
+                        background: $bg-button--active;
+                        border-radius: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Para menus horizontales distintos del menu-simple
+@mixin menu-movil (
+    $size: 25rem,
+    $width: 98vw,
+    $margin-aire: 0.1$size,
+
+    $line-height-menu: $height-menu-movil,
+    $line-height-button: $line-height,
+
+    $padding-button: $top,
+
+    $bg-label: colorea($color-t1, d2),
+    $color: colorea($color-t1, l2),
+    $bg-label--checked: colorea($color-t1, l2), // color
+    $color-label--checked: colorea($color-t1, d2), // bg-label
+
+    $bg-ul: colorea($color-b, l2), // color secundario
+    $color-ul: colorea($color-b, d3),
+    $bg-button--hover: colorea($color-t1, d2), // bg-label
+    $color--hover: $color,
+
+    $bg-button--active: $bg-label,
+    $color--active: $color,
+
+    $text-transform: capitalize, // nav
+    $font-variant: small-caps, // Actives
+
+    $box-shadow-top: 0 1pt 2pt rgba(#000, 0.4) inset,
+    $box-shadow-bottom: 0 1pt 2pt rgba(#000, 0.4)
+) {
+
+    #icon-menu {
+        // display: none;
+        position: absolute !important;
+        clip: rect(1px 1px 1px 1px); // IE6, IE7
+        clip: rect(1px, 1px, 1px, 1px);
+        padding:0 !important;
+        border:0 !important;
+        height: 1px !important;
+        width: 1px !important;
+        overflow: hidden;
+    }
+
+    //----------- column -----------//
+    @include hasta ($size) {
+        width: $width;
+        margin-top: $margin-aire;
+        text-transform: $text-transform;
+
+        box-shadow: $box-shadow-top, $box-shadow-bottom;
+
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        ul {
+            margin: 0 auto;
+            background: $bg-ul;
+            color: $color-ul;
+            display: none;
+
+            li {
+                text-align: center;
+                box-shadow: $box-shadow-bottom;
+
+                & a, & .active {
+                    display: block;
+                    line-height: $line-height-button;
+                    padding: $padding-button;
+                }
+
+                & .active {
+                    background: $bg-button--active;
+                    color: $color--active;
+                    font-variant: $font-variant;
+                }
+
+                & a {
+                    font-weight: bold;
+                    &:hover, &:focus, &:target {
+                        font-weight: bold;
+                        background: $bg-button--hover;
+                        color: $color;
+                        // font-variant: normal;
+                    }
+                }
+            }
+        }
+        #icon-menu {
+            // display: none;
+            +label {
+                line-height: $line-height-menu;
+                display: block;
+                text-align: center;
+                font-weight: bold;
+                cursor: pointer;
+                background: $bg-label;
+                color: $color;
+            }
+
+            &:checked + label {
+                font-variant: $font-variant;
+                background: $bg-label--checked;
+                color: $color-label--checked;
+                // @include sombra-texto (medio, #fff);
+            }
+            &:checked ~ ul {
+                display: block;
+            }
+        }
+    }
+
+    @include desde ($size) {
+        #icon-menu,
+        #icon-menu + label {
+            display: none;
+        }
+    }
+}
+
+@mixin menu-vertical-boing (
+    $margin-aire: 2pt,
+    $height: 2em,
+    $left: -1vw,
+    $margin-width: 4em,
+    $max-caracteres: 25em,
+    $bg1: $color-b,
+    $bg2: $color-t1,
+    $bg3: $color-t2,
+    $color: #fff,
+    $padding-button: 1em,
+    $animacion: bounceInLeft,
+    $duracion: 0.5s
+){
+    // Contenedor nav
+    margin-top: $margin-aire;
+
+    // Width que no ocupe el 100% default
+    width: 1em;
+
+    & ul {
+        margin: 0;
+
+        // Width para Sensibilidad hover
+        // Recibe +/- el margin del main/section/article
+        width: $margin-width;
+
+        list-style: none;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+
+        & li,
+        & li i:before {
+            line-height: $height;
+        }
+
+        & li {
+            position: relative;
+
+
+            display: -webkit-box;
+
+
+            display: -ms-flexbox;
+
+
+            display: flex;
+            left: $left;
+            height: $height;
+            margin-bottom: $margin-aire;
+            // transition: all 0.3s ease-in-out;
+
+            &:nth-child(3n+1) i {
+                background-color: rgba($bg1, 0.8);
+            }
+            &:nth-child(3n+2) i {
+                background-color: rgba($bg2, 0.8);
+            }
+            &:nth-child(3n) i {
+                background-color: rgba($bg3, 0.8);
+            }
+
+            &:nth-child(3n+1):hover,
+            &:nth-child(3n+1):target,
+            &:nth-child(3n+1):focus {
+                & a, & .active {
+                    background-color: rgba($bg1, 0.8);
+                }
+                & i {
+                    background-color: rgba(colorea($bg1, d2), 0.6);
+                }
+            }
+
+
+            &:nth-child(3n+2):hover,
+            &:nth-child(3n+2):target,
+            &:nth-child(3n+2):focus {
+                & a, & .active {
+                    background-color: rgba($bg2, 0.8);
+                }
+                & i {
+                    background-color: colorea($bg2, d2);
+                }
+            }
+
+            &:nth-child(3n):hover,
+            &:nth-child(3n):target,
+            &:nth-child(3n):focus {
+                & a, & .active {
+                    background-color: rgba($bg3, 0.8);
+                }
+                & i {
+                    background-color: colorea($bg3, d2);
+                }
+            }
+
+            &:nth-child(n) i{
+                position: relative;
+                color: $color;
+                text-shadow: -1pt -1pt 1pt #000;
+                box-shadow: $text-shadow-default;
+                border-bottom-right-radius: 75%;
+                border-top-right-radius: 75%;
+            }
+
+            & a,
+            & .active {
+                position: absolute;
+                display: none;
+                padding-left: 2*$padding-button;
+                padding-right: $padding-button;
+                color: $color;
+                font-weight: bold;
+                text-decoration: none;
+                // text-shadow: $text-shadow-default;
+            }
+
+            & a,
+            & .active {
+                box-shadow: $text-shadow-default;
+                border-bottom-right-radius: 20pt;
+                border-top-right-radius: 20pt;
+            }
+
+            &:hover, &:focus, &:target {
+
+                // Width 100% toma el width parent
+                // Vale perfectam- 100vw
+                width: 95vw;
+                & a,
+                & .active {
+                    display: inline-block;
+
+                    -webkit-animation-name: $animacion;
+
+                            animation-name: $animacion;
+                    -webkit-animation-duration: $duracion;
+                            animation-duration: $duracion;
+                    -webkit-animation-timing-function: ease-out;
+                            animation-timing-function: ease-out;
+                    -webkit-animation-fill-mode: forwards;
+                            animation-fill-mode: forwards;
+                }
+            }
+        }
+    }
+}

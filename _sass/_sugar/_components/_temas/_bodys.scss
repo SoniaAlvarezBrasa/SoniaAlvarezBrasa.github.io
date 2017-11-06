@@ -1,0 +1,241 @@
+// Default
+@mixin bodyFlexColumn {
+    //----------- MAQUETACION -----------//
+    body {
+        margin: 0;
+        width: 100%;
+        // footer pegajoso
+        min-height: 100vh;
+
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+
+        margin: auto;
+
+       // Nota:
+       // 1. display block en main para IE
+       // 2. IE10 establece flex-shrink a 0 en vez de a 1
+       // https://github.com/philipwalton/flexbugs#6-the-default-flex-value-has-changed //
+
+        & > header,
+        & > footer {
+            width: $max-width;
+            margin: auto;
+            // flex: 0 0 auto;
+        }
+
+        // Dudas sobre IE. Hay q probar
+        main {
+            display: block; // 1 //
+            -webkit-box-flex: 1;
+                -ms-flex-positive: 1;
+                    flex-grow: 1;
+            -ms-flex-negative: 1;
+                flex-shrink: 1; // 2 //
+            -ms-flex: auto;
+                flex: auto;
+
+            overflow: auto;
+        }
+    }
+}
+
+// Sin probar
+@mixin bodyFlexColumnFixed {
+    //----------- MAQUETACION -----------//
+    body {
+        margin: 0;
+        width: 100%;
+        // height fixed
+        height: 100vh;
+
+        display: -webkit-box;
+
+        display: -ms-flexbox;
+
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+
+        margin: auto;
+
+       // Nota:
+       // 1. display block en main para IE
+       // 2. IE10 establece flex-shrink a 0 en vez de a 1
+       // https://github.com/philipwalton/flexbugs#6-the-default-flex-value-has-changed //
+
+        & > header,
+        & > footer {
+            width: $max-width;
+            margin: auto;
+            // flex: 0 0 auto;
+        }
+
+        & > header {
+            height: $height-header;
+        }
+
+        & > footer {
+            height: $height-footer;
+        }
+
+        main {
+            display: block; // 1 //
+            -webkit-box-flex: 1;
+                -ms-flex-positive: 1;
+                    flex-grow: 1;
+            -ms-flex-negative: 1;
+                flex-shrink: 1; // 2 //
+            -ms-flex: auto;
+                flex: auto;
+
+            overflow: auto;
+        }
+    }
+}
+
+// preload.es
+@mixin bodyFixed {
+    body {
+        & > header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            // height: $height-header;
+            min-height: $height-header;
+        }
+
+        main {
+            position: absolute;
+            width: 100%;
+            bottom: $height-footer;
+            @include hasta (25rem) {
+                top: $height-header + $height-menu;
+            }
+            @include desde (25rem) {
+                top: $height-header;
+            }
+        }
+
+        & > footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: $height-footer;
+        }
+    }
+}
+
+// meigabella.com
+@mixin bodyMenuOut {
+    body {
+        & > header {
+            position: fixed;
+            top: 0;
+            height: $height-header;
+            bottom: auto;
+        }
+
+        & > nav {
+            position: fixed;
+            top: $height-header;
+        }
+
+        & > header,
+        & > nav {
+            width: 98%;
+            margin: 0;
+            left: 1vw;
+            right: 1vw;
+        }
+
+        main {
+            & > section,
+            & > article {
+            // ----------- ANCHO MAX ----------- //
+                // @include rwd-width;
+                @include hasta (25rem) {
+                    width: 98%;
+                    margin: auto;
+                }
+                @include desde (25rem) {
+                    width: 80%;
+                    margin: auto;
+                }
+            }
+        }
+
+        main,
+        & > aside,
+        & > section,
+        & > footer {
+            position: relative;
+            @include hasta (25rem) {
+                top: $height-header + $height-menu-movil;
+            }
+            @include desde (25rem) {
+                top: $height-header;
+            }
+            margin: auto;
+        }
+
+        & > footer {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            // margin: auto;
+        }
+    }
+}
+
+// salt.io
+@mixin bodySaltw {
+    body {
+        & > header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: auto;
+            width: $height-header;
+            height: 100%;
+
+            & > nav {
+                & > ul {
+                    position: absolute;
+                    top: $height-menu/2;
+                    left: $height-menu/2;
+                    padding: $padding-menu;
+
+                    & > li {
+                        width: $height-menu;
+                    }
+
+                }
+
+            }
+        }
+
+        & main,
+        & > footer {
+            width: calc(100% - #{$height-header});
+            margin-left: $height-header;
+        }
+    }
+}

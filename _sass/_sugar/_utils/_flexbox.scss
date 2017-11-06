@@ -1,0 +1,613 @@
+// todo: las clases de alineacion (justify, top, bottom ..)
+// se aplican a un item unico o a todo un contenedor para que hereden sus hijos
+
+//=============================================>>>>>
+// = CLASS FLEX =
+//=============================================>>>>>
+
+//----------- CONTAINER -----------//
+// display: flex; or inline-flex
+
+.linea,
+.continente {
+    display      : -webkit-box;
+    display      : -ms-flexbox;
+    display      : flex;
+    margin-left  : auto;
+    margin-right : auto;
+    width        : 100%;
+    max-width: $max-width;
+    &.total {
+        max-width : 100%;
+    }
+}
+
+.continente {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+//----------- ITEM -----------//
+
+.celda,
+.contenido {
+    margin        : 0;
+    padding-left  : $padding;
+    padding-right : $padding;
+}
+.contenido {
+    width         : 100%;
+}
+
+//=============================================>>>>>
+// = CLASS FLEX CONTAINER =
+//=============================================>>>>>
+
+//----------- FLEX DIRECTION -----------//
+// flex-direction: row | row-reverse | column | column-reverse;
+// reverse
+%container-reverse {
+   -webkit-box-orient: horizontal;
+   -webkit-box-direction: reverse;
+       -ms-flex-direction: row-reverse;
+           flex-direction: row-reverse;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+}
+%container-reverse-wrap {
+    @extend %container-reverse;
+   -ms-flex-wrap: wrap;
+       flex-wrap: wrap;
+}
+.reverse {
+    @extend %container-reverse-wrap;
+}
+// colum
+%container-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+%container-column-wrap {
+    @extend %container-column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+.column {
+    @extend %container-column-wrap;
+}
+//column reverse
+.column-reverse {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+}
+
+//----------- FLEX-FLOW -----------//
+// flex-flow: <‘flex-direction’> || <‘flex-wrap’>
+
+
+
+// ========== MAIN-AXIS =========== //
+
+//----------- JUSTIFY-CONTENT -----------//
+// justify-content: flex-start | flex-end | center | space-between | space-around;
+
+// -- start
+.main-inicio,
+.main-start {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+}
+.main-start {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+// -- end
+.main-fin,
+.main-end {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+}
+.main-end {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+// -- center
+.main-centro,
+.main-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
+.main-center {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+// -- space-between
+.justificado,
+.justify {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.justify {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+// -- space-around
+.rodeado,
+.distribute {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.distribute {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+// ========== CROSS-AXIS =========== //
+
+//------ ALIGN-ITEMS & ALIGN CONTENT ------//
+// align-items: flex-start | flex-end | center | baseline | stretch;
+
+// start
+.cross-inicio,
+.cross-start {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -ms-flex-line-pack: start;
+        align-content: flex-start;
+}
+.cross-start {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+// end
+.cross-fin,
+.cross-end {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -ms-flex-line-pack: end;
+        align-content: flex-end;
+}
+.cross-end {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+// center
+.cross-centro,
+.cross-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+}
+.cross-center {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+// ------//
+// Centrado absoluto (vertical y horizontal)
+.abcentro,
+.abcenter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    text-align: center;
+}
+.abcenter {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+//=============================================>>>>>
+// = CLASS FLEX ITEMS =
+//=============================================>>>>>
+
+// No hay
+
+//=============================================>>>>>
+// = MIXINS FLEX =
+//=============================================>>>>>
+
+//=============================================>>>>>
+// ========== MIXINS FLEX CONTAINER =========== //
+
+//----------- FLEX DIRECTION -----------//
+// flex-direction: row | row-reverse | column | column-reverse;
+
+// reverse
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-reverse {
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: reverse;
+                -ms-flex-direction: row-reverse;
+                    flex-direction: row-reverse;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+// colum
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-column {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+//column reverse
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-column-reverse {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: reverse;
+                -ms-flex-direction: column-reverse;
+                    flex-direction: column-reverse;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+//----------- FLEX-FLOW -----------//
+// flex-flow: <‘flex-direction’> || <‘flex-wrap’>
+
+
+
+// ========== MAIN-AXIS =========== //
+
+//----------- JUSTIFY-CONTENT -----------//
+// justify-content: flex-start | flex-end | center | space-between | space-around;
+
+// -- start
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-main-inicio {
+            -webkit-box-pack: start;
+                -ms-flex-pack: start;
+                    justify-content: flex-start;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+    }
+}
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-main-start {
+            -webkit-box-pack: start;
+                -ms-flex-pack: start;
+                    justify-content: flex-start;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+// -- end
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-main-fin{
+            -webkit-box-pack: end;
+                -ms-flex-pack: end;
+                    justify-content: flex-end;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+    }
+}
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-main-end {
+            -webkit-box-pack: end;
+                -ms-flex-pack: end;
+                    justify-content: flex-end;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+// -- center
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-main-centro {
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+    }
+}
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-main-center {
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+// -- space-between
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-justificado {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+        }
+    }
+}
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-justify {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+// -- space-around
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-rodeado {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
+        }
+    }
+}
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-distribute {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+// ========== CROSS-AXIS =========== //
+
+//------ ALIGN-ITEMS & ALIGN CONTENT ------//
+// align-items: flex-start | flex-end | center | baseline | stretch
+
+// start
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-cross-inicio{
+            -webkit-box-align: start;
+                -ms-flex-align: start;
+                    align-items: flex-start;
+            -ms-flex-line-pack: start;
+                align-content: flex-start;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+    }
+}
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-cross-start {
+            -webkit-box-align: start;
+                -ms-flex-align: start;
+                    align-items: flex-start;
+            -ms-flex-line-pack: start;
+                align-content: flex-start;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+// end
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-cross-fin{
+            -webkit-box-align: end;
+                -ms-flex-align: end;
+                    align-items: flex-end;
+            -ms-flex-line-pack: end;
+                align-content: flex-end;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+    }
+}
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-cross-end {
+            -webkit-box-align: end;
+                -ms-flex-align: end;
+                    align-items: flex-end;
+            -ms-flex-line-pack: end;
+                align-content: flex-end;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+
+// center
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-cross-centro{
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+    }
+}
+@each $size, $screen-size in $breakpoints {
+    @media all and (min-width: $screen-size){
+        .#{$size}-cross-center {
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+        }
+    }
+}
+//=============================================<<<<<
+
+
+//=============================================>>>>>
+// ========== MIXINS FLEX ITEMS ================= //
+
+//----------- ORDER FLEX -----------//
+// order: <integer>;
+
+// Se usan clases del tipo .size-order-n
+// donde size es un tamaño de inicio y n es cualquier entero del 1 al 10.
+
+@each $size, $screen-size in $breakpoints{
+    @media screen and (min-width: $screen-size){
+        @for $i from 1 through 10 {
+            .#{$size}-order-#{$i} {
+                -webkit-box-ordinal-group: NaN;
+                    -ms-flex-order: $i;
+                        order: $i;
+            }
+        }
+    }
+}
+
+//----------- FLEX GROW -----------//
+// flex-grow: <number>
+
+// Se usan clases del tipo .size-grow-n
+// donde size es un tamaño de inicio y n es cualquier entero del 1 al 10.
+
+@each $size, $screen-size in $breakpoints{
+    @media screen and (min-width: $screen-size){
+        @for $i from 1 through 10 {
+            .#{$size}-grow-#{$i} {
+                -webkit-box-flex: $i;
+                    -ms-flex-positive: $i;
+                        flex-grow: $i;
+            }
+        }
+    }
+}

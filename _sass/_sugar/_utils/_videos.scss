@@ -1,0 +1,81 @@
+.rwd-iframe {
+    position: relative;
+    padding-bottom: 56.25%; //16:9
+    height: 0;
+    overflow: hidden;
+    // box-shadow: 5pt 5pt 2pt #eee;
+
+    box-shadow: 5pt 5pt 28pt rgba(#000, 0.4),
+                5pt 5pt 10pt rgba(#000, 0.4);
+    iframe {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        // The frameborder attribute on the iframe element is obsolete. Use CSS instead.
+        border-width: 0px;
+    }
+}
+
+@mixin rwd-iframe {
+    position: relative;
+    padding-bottom: 56.25%; //16:9
+    height: 0;
+    overflow: hidden;
+    // box-shadow: 5pt 5pt 2pt #eee;
+
+    box-shadow: 5pt 5pt 28pt rgba(#000, 0.4),
+                5pt 5pt 10pt rgba(#000, 0.4);
+    iframe {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        // The frameborder attribute on the iframe element is obsolete. Use CSS instead.
+        border-width: 0px;
+    }
+}
+
+// Videos responsive
+// Este mixing se debe aplicar al contenedor del video.
+// @param   {selector} $video - selector del elemento video
+// @ej.
+//     #personal-video--@id {
+//       @include rwd-video("video");
+//     }
+// El height del contenedor del mixin (height: 0)
+// será el ratio% del width de su padre
+
+@mixin rwd-video (
+    $video: null,
+    $ratio: 56.25%
+) {
+    position       : relative;
+    height         : 0;    // height = $ratio del width de su padre
+    padding-bottom : $ratio;
+    overflow       : hidden;
+
+    @if $video != null {
+        #{$video} {
+            position : absolute;
+            top      : 0;
+            left     : 0;
+            width    : 100%;
+            height   : 100%;
+        }
+    } @else {
+        > iframe,
+        > video,
+        > .video {
+            position : absolute;
+            top      : 0;
+            left     : 0;
+            width    : 100%;
+            height   : 100%;
+        }
+    }
+}

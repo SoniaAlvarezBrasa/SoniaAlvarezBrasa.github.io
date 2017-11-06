@@ -1,0 +1,114 @@
+// Capas frontales con links internos
+
+// Capa frontal sobre imagen de fondo q alterna left-right.
+// Sólo texto
+
+@mixin titulares-left-right (
+$position:relative,
+$padding-left: 10%,
+$padding-right: 10%,
+$padding-top: 25vh,
+$padding-bottom: 25vh,
+$padding-caja: 5%,
+$color-caja: rgba($color-b, 0.2),
+$box-shadow: $box-shadow-capa-av,
+$border-radio: 0.3125em
+) {
+    // Contenedor antes del bucle
+    position: $position;
+    padding-left: $padding-left;
+    padding-right: $padding-right;
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+
+    @include desde (25rem){
+        &:nth-child(2n) &__fondo {
+            margin-left: 0;
+            margin-right: auto;
+            text-align: left;
+        }
+        &:nth-child(2n+1) &__fondo {
+            margin-left: auto;
+            margin-right: 0;
+            text-align: right;
+        }
+    }
+    &__fondo {
+        position: relative;
+        padding: $padding-caja;
+        background: $color-caja;
+
+        border-radius: $border-radio;
+        box-shadow: $box-shadow;
+
+        // utils/viewport
+        // @mixin rwd-width-content ($min-width, $max-width, $min-screen-width, $max-screen-width, $width-step: 1rem)
+        // 35rem = 50% de 70 , 63rem = 90% de 70
+        @include rwd-width-content (35rem, 63rem, 10rem, 70rem);
+
+    }
+    &__texto {
+        margin-top: 0;
+    }
+
+    &__foto {
+        img {
+            position: absolute;
+            top: 55%;
+            left: 35%;
+            left: 70%;
+            width: 30vw;
+            // height: 240pt;
+            -webkit-transform: translateZ(0.015625rem) scale(.75) translateX(-94%) translateY(-100%) rotate(2deg);
+            transform: translateZ(0.015625rem) scale(.75) translateX(-94%) translateY(-100%) rotate(2deg);
+            padding: 0.625rem;
+            border-radius: $border-radio;
+            background: rgba(240,230,220, .7);
+            box-shadow: $box-shadow;
+
+            &:nth-child(2n) &:before {
+                // left: 35%;
+                left: 70%;
+            }
+            &:nth-child(2n+1) &:before {
+                // left: 70%;
+                left: 35%;
+            }
+
+            &:last-of-type {
+                -webkit-transform: translateZ(0.025rem) scale(.6) translateX(-104%) translateY(-40%) rotate(-5deg);
+                transform: translateZ(0.025rem) scale(.6) translateX(-104%) translateY(-40%) rotate(-5deg);
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 55%;
+                // left: 70%;
+                bottom: 0;
+                right: 0;
+            }
+        }
+    }
+}
+
+@mixin sumarios-front (
+    $position:relative,
+    $padding-caja: 5%,
+    $color-caja: rgba($color-b, 0.2),
+    $box-shadow: $box-shadow-capa-av,
+    $border-radio: 0.3125em
+) {
+    &__fondo {
+        position: relative;
+        padding: $padding-caja;
+        background: $color-caja;
+
+        border-radius: $border-radio;
+        box-shadow: $box-shadow;
+    }
+
+    &__texto {
+        margin-top: 0;
+    }
+}
