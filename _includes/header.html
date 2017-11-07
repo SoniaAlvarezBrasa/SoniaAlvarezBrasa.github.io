@@ -1,4 +1,5 @@
 <header class="vertical-menu">
+    <h1 class="pechado">{{ site.title[page.lang] | escape }}</h1>
     <nav>
         <ul>
         {% assign pages=site.pages | where:"lang", page.lang %}
