@@ -1,6 +1,7 @@
 ---
 layout: page
 title: À propos
+permalink: /a-propos.html
 ref: about
 lang: fr
 ---
