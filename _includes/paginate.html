@@ -1,0 +1,33 @@
+{% assign posts=site.posts | where:"lang", page.lang %}
+{% unless posts.blank? %}
+<section class="paginate">
+    {% assign paginate=site.data.t.[page.lang].paginate %}
+    <header>
+        <h2>{{ paginate.heading }}</h2>
+    </header>
+    {% for post in posts limit: 10 %}
+    <article class="">
+        {% assign tor=site.data.authors | where:"alias", post.autor %}
+        <header>
+            <h3>
+                <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h3>
+            <small>{{ post.date | date: "%b %-d, %Y" }} {{ paginate.show.x }} <strong><a href="{{ tor.url | prepend: site.baseurl }}">{{ post.autor }}</a></strong></small>
+            <!-- <p>{{ paginate.show.x}} <strong><a href="#">{{ post.autor}}</a></strong></p> -->
+        </header>
+        <!-- <p>{{ post.content | strip_html | truncatewords:65 }} </p> -->
+        <p><a href="{{ post.url }}" title="{{ paginate.show.title}} '{{ post.title }}'">{{ post.description }}</a></p>
+    </article>
+    {% endfor %}
+    <footer>
+        <nav>
+            <ul>
+                <li>{{ paginate.index.feed.texto }}&nbsp; <a target="_blank" href="{{ paginate.index.feed.url | prepend: site.baseurl }}" title="{{ paginate.index.feed.title}}">{{ paginate.index.feed.link }}</a></li>
+            </ul>
+        </nav>
+    </footer>
+</section>
+
+{% else %}
+<p>{{ paginate.else }}</p>
+{% endunless %}

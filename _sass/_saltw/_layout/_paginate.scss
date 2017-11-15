@@ -1,0 +1,59 @@
+.paginate {
+    h2, h3 {
+        text-align: left;
+    }
+    h3 {
+        display: flex;
+        margin: 0;
+    }
+
+    article {
+        header {
+            small {
+                color: #828282;
+            }
+        }
+
+        $map1:(
+            px: 2px,
+            bg: $bg-body,
+            borde: colorea($bg-box-t1, l5),
+            selector: p
+        );
+        @include hoverCss-border-underline-from-right ($map1...);
+
+        & > p {
+            @include responsive-font-size (0.6rem, 1.2rem, 10rem, 100rem);
+            padding: 1em;
+            font-style: italic;
+        }
+
+        &:hover, &:focus, &:target {
+            h3 {
+                a {
+                    color: $color-t1;
+                }
+            }
+        }
+    }
+    footer {
+        $map2:(
+            px: 2px,
+            bg: $bg-body,
+            borde: colorea($bg-box-t1, l5),
+            selector: a
+        );
+        @include hoverCss-border-underline-from-right ($map2...);
+
+        ul {
+            li {
+                display: flex;
+                white-space: nowrap;
+                a {
+                    font-style: normal;
+                }
+            }
+        }
+
+    }
+}

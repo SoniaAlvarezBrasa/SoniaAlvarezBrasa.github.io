@@ -236,6 +236,7 @@
         & > footer {
             width: calc(100% - #{$height-header});
             margin-left: $height-header;
+            padding-right: $height-header/3;
         }
     }
 }

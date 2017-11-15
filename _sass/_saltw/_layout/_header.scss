@@ -2,7 +2,6 @@ header.vertical-menu {
     // border-right: 1px solid #eee;
     ul {
         display: block;
-        margin: 0;
 
         & > li {
             // display: block;
@@ -10,6 +9,7 @@ header.vertical-menu {
             // width: 1.5em;
             $map:(bg: colorea($color-t1, l5), color: $color-t1, selector: a, ss: 230ms);
             @include hoverCss-background-sweep-to-right ($map...);
+
             & > a, span {
                 display: inline-block;
                 // vertical-align: top;
@@ -23,9 +23,6 @@ header.vertical-menu {
                 }
             }
             & > a {
-                &:hover, &:focus, &:target {
-                    text-decoration: none;
-                }
                 &:before {
                     height: 0.1em;
                 }

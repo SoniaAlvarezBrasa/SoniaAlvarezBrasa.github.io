@@ -1,0 +1,18 @@
+en:
+    -   ref: index
+        url: /
+        name: Home
+        title: Your awesome title
+        blocks:
+            -   ref: paginate
+                name: Recent Posts
+                heading: Recent Posts
+fr:
+    -   ref: index
+        url: /accueil.html
+        name: Accueil
+        title: Votre titre génial
+        blocks:
+            -   ref: paginate
+                name: Articles
+                heading: Articles

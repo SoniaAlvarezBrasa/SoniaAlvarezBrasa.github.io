@@ -1,0 +1,51 @@
+es:
+    paginate:
+        heading: Últimos artículos
+        else: No hay artículos.
+        show:
+            title: Ir al artículo
+            link: Leer al artículo completo
+            x: por
+        index:
+            blogs:
+                title:
+                url:
+            feed:
+                title: Abrir el canal web
+                texto: Suscribirse
+                link: via RSS
+                url: /feed.xml
+en:
+    paginate:
+        heading: Recent Posts
+        else: No post yet
+        show:
+            title: Go to post
+            link: Read the full post
+            x: by
+        index:
+            blogs:
+                title:
+                url:
+            feed:
+                title: Open web channel
+                texto: Suscribe
+                link: via RSS
+                url: /feed.xml
+fr:
+    paginate:
+        heading: Articles récents
+        else: Pas encore d'articles
+        show:
+            title: Aller à la publication
+            link: lire l’article
+            x: par
+        index:
+            blogs:
+                title:
+                url:
+            feed:
+                title: Ouvrir le canal Web
+                texto: Suivre le
+                link: flux RSS
+                url: /flux.xml
