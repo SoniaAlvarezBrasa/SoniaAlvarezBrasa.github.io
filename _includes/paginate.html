@@ -7,12 +7,12 @@
     </header>
     {% for post in posts limit: 10 %}
     <article class="">
-        {% assign tor=site.data.authors | where:"alias", post.autor %}
+        {% assign tor=site.data.people[post.autor] %}
         <header>
             <h3>
                 <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
             </h3>
-            <small>{{ post.date | date: "%b %-d, %Y" }} {{ paginate.show.x }} <strong><a href="{{ tor.url | prepend: site.baseurl }}">{{ post.autor }}</a></strong></small>
+            <small>{{ post.date | date: "%b %-d, %Y" }} {{ paginate.show.x }} <strong><a href="{{ tor.about[page.lang] | prepend: site.baseurl }}">{{ post.autor }}</a></strong></small>
             <!-- <p>{{ paginate.show.x}} <strong><a href="#">{{ post.autor}}</a></strong></p> -->
         </header>
         <!-- <p>{{ post.content | strip_html | truncatewords:65 }} </p> -->

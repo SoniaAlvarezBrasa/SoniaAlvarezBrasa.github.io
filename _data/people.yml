@@ -1,0 +1,28 @@
+Saltw:
+    name: Sonia Álvarez Brasa
+    avatar:
+    email: sonia.alvarez.brasa@gmail.com
+    about:
+        en: /about.html
+        fr: /a-propos.html
+    social:
+        -   title: GitHub
+            name: github
+            url: https://github.com/
+            username: SoniaAlvarezBrasa
+        -   title: Twitter
+            name: twitter
+            url: https://twitter.com/
+            username: SaltwDAW
+        -   title: CodePen
+            name: codepen
+            url: https://codepen.io/
+            username: saltw
+        -   title: LinkedIn
+            name: linkedin
+            url: https://es.linkedin.com/in/
+            username: soniaalvarezbrasa
+        -   title: Facebook
+            name: facebook
+            url: https://www.facebook.com/
+            username: SoniaAlvarezBrasa
