@@ -2,12 +2,21 @@
     <ul>
         {% if include.sjobs == 1 %}
             {% for red in site.data.people[include.webuser].social.jobs %}
-            {%capture redname %}
-            svg--{{ red.name }}
-            {% endcapture %}
+                {% capture classname %}
+                    svg--{{ red.name }}
+                {% endcapture %}
+                {% capture idName %}
+                    {{red.name}}--{{ include.iconid }}
+                {% endcapture %}
+                {% capture idTitle %}
+                    {{red.name}}Title--{{ include.iconid }}
+                {% endcapture %}
+                {% capture idDesc %}
+                    {{red.name}}Desc--{{ include.iconid }}
+                {% endcapture %}
             <li>
                 <a href="{{ red.username | prepend: red.url }}" target="_blank" class="svg {{ include.aclass }}">
-                    {% include svg/icon-{{ red.name }}.svg hidden = 'true' iconclass = redname %}
+                    {% include svg/icon-{{ red.name }}.svg hidden='true' iconclass=classname idn=idName idt=idTitle idd=idDesc %}
                     {{ red.title }}/{{ site.data.people[include.webuser].tradename }}
                 </a>
             </li>
@@ -15,12 +24,21 @@
         {% endif %}
         {% if include.sme == 1 %}
             {% for red in site.data.people[include.webuser].social.me %}
-            {%capture redname %}
-            svg--{{ red.name }}
-            {% endcapture %}
+                {% capture classname %}
+                    svg--{{ red.name }}
+                {% endcapture %}
+                {% capture idName %}
+                    {{red.name}}--{{ include.iconid }}
+                {% endcapture %}
+                {% capture idTitle %}
+                    {{red.name}}Title--{{ include.iconid }}
+                {% endcapture %}
+                {% capture idDesc %}
+                    {{red.name}}Desc--{{ include.iconid }}
+                {% endcapture %}
             <li>
                 <a href="{{ red.username | prepend: red.url }}" target="_blank" class="svg {{ include.aclass }}">
-                    {% include svg/icon-{{ red.name }}.svg hidden = 'true' iconclass = redname %}
+                    {% include svg/icon-{{ red.name }}.svg hidden='true' iconclass=classname idn=idName idt=idTitle idd=idDesc %}
                     {{ red.title }}/{{ site.data.people[include.webuser].darlingname }}
                 </a>
             </li>

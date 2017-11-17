@@ -13,3 +13,23 @@
         transition: all $ss-icon ease;
     }
 }
+
+//----------- HOVERS ---------------------
+// HoverUnderline links del sitio
+
+// .underlineFromRight
+$mapHoverCssBorderUnderlineFromRight:(
+    px: 2px,
+    bg: $bg-body,
+    borde: colorea($bg-box-t1, l5),
+    selector: underlineFromRight
+);
+
+// .underlineFromRightMini
+$mapHoverCssBorderUnderlineFromRightMini:(
+    px: 2px,
+    bg: $bg-body,
+    borde: colorea($bg-box-t1, l5),
+    selector: underlineFromRightMini,
+    ss: $ss-icon
+);

@@ -14,14 +14,6 @@
             }
         }
 
-        $map1:(
-            px: 2px,
-            bg: $bg-body,
-            borde: colorea($bg-box-t1, l5),
-            selector: p
-        );
-        @include hoverCss-border-underline-from-right ($map1...);
-
         & > p {
             @include responsive-font-size (0.6rem, 1.2rem, 10rem, 100rem);
             padding: 1em;
@@ -35,16 +27,10 @@
                 }
             }
         }
+        @include hoverCss-border-underline-from-right ($mapHoverCssBorderUnderlineFromRight...);
     }
-    footer {
-        $map2:(
-            px: 2px,
-            bg: $bg-body,
-            borde: colorea($bg-box-t1, l5),
-            selector: a
-        );
-        @include hoverCss-border-underline-from-right ($map2...);
 
+    footer {
         ul {
             li {
                 display: flex;
@@ -54,6 +40,6 @@
                 }
             }
         }
-
+        @include hoverCss-border-underline-from-right ($mapHoverCssBorderUnderlineFromRightMini...);
     }
 }
