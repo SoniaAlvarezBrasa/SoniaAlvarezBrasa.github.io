@@ -74,6 +74,51 @@
     }
 }
 
+@mixin sociales-svg (
+    $bg: $bg-body,
+    $color: $color-body
+){
+    // ul.li.a.svg
+    & svg {
+        background: $bg;
+        fill: $color;
+    }
+
+    &:hover, &:focus, &:target {
+        & svg {
+            fill: $bg;
+        }
+        & .svg--facebook,
+        &.svg--facebook {
+            background: #3b5998;
+        }
+        & .svg--twitter,
+        &.svg--twitter {
+            background: #00aced;
+        }
+        & .svg--googleplus,
+        &.svg--googleplus {
+            background: #dd4b39;
+        }
+        & .svg--linkedin,
+        &.svg--linkedin {
+            background: #0077b5;
+        }
+        & .svg--youtube,
+        &.svg--youtube {
+            background: #b00;
+        }
+        & .svg--github,
+        &.svg--github {
+            background: #000;
+        }
+        & .svg--codepen,
+        &.svg--codepen {
+            background: #000;
+        }
+    }
+}
+
 @mixin icon-svg-social (
     $bg: $bg-body,
     $color: $color-body

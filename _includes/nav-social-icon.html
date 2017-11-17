@@ -14,8 +14,8 @@
                 {% capture idDesc %}
                     {{red.name}}Desc--{{ include.iconid }}
                 {% endcapture %}
-            <li>
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="svg">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname idn=idName idt=idTitle idd=idDesc %}</a>
+            <li class="svg-icon {{ classname | strip }}">
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname idn=idName idt=idTitle idd=idDesc %}</a>
             </li>
             {% endfor %}
         {% endif %}
@@ -33,9 +33,9 @@
                 {% capture idDesc %}
                     {{red.name}}Desc--{{ include.iconid }}
                 {% endcapture %}
-            <li>
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="svg">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname idn=idName idt=idTitle idd=idDesc %}</a>
-            </li>
+            <li class="svg-icon {{ classname | strip }}">
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname idn=idName idt=idTitle idd=idDesc %}</a>
+                </li>
             {% endfor %}
         {% endif %}
     </ul>
