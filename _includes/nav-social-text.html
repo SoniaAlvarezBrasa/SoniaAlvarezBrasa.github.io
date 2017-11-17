@@ -14,8 +14,8 @@
                 {% capture idDesc %}
                     {{red.name}}Desc--{{ include.iconid }}
                 {% endcapture %}
-            <li>
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" class="svg {{ include.aclass }}">
+            <li class="svg">
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" class="{{ include.aclass }} underlineFromRightMini">
                     {% include svg/icon-{{ red.name }}.svg hidden='true' iconclass=classname idn=idName idt=idTitle idd=idDesc %}
                     {{ red.title }}/{{ site.data.people[include.webuser].tradename }}
                 </a>
@@ -36,8 +36,8 @@
                 {% capture idDesc %}
                     {{red.name}}Desc--{{ include.iconid }}
                 {% endcapture %}
-            <li>
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" class="svg {{ include.aclass }}">
+            <li class="svg">
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" class="{{ include.aclass }} underlineFromRightMini">
                     {% include svg/icon-{{ red.name }}.svg hidden='true' iconclass=classname idn=idName idt=idTitle idd=idDesc %}
                     {{ red.title }}/{{ site.data.people[include.webuser].darlingname }}
                 </a>
