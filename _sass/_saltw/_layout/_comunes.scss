@@ -47,7 +47,7 @@ $mapHoverCssBorderUnderlineFromRightMini:(
 .svg-icon {
     display: inline-flex;
     padding: $padding-icon;
-    border-radius: 50%;
+    border-radius: 15%;
     transition: all $ss-icon ease;
     @include sociales-svg;
 

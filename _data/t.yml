@@ -20,6 +20,10 @@ es:
             title: Ver mis proyectos en GitHub
             iconTitle: Logo de GitHub
             iconDesc: La imágen de Marca de GitHub es la silueta en blanco y negro de su mascota 'Octocat' que tiene cabeza de gato y ocho tentáculos de pulpo aunque en el dibujo sólo se ven 5. Dos que hacen de piernas, dos de brazos y el que se ve en la silueta como su cola.
+        GitLab:
+            title: Ver mis proyectos en GitLab
+            iconTitle: Logo de GitLab
+            iconDesc: La imágen de marca de GitLab es una combinación de triángulos en tres tonos naranja que forman la silueta de un zorro.
         Twitter:
             title: Sígueme en Twitter
             iconTitle: Logo de Twitter
@@ -58,6 +62,10 @@ en:
             title: See my projects on GitHub.com
             iconTitle: GitHub.com logo
             iconDesc: The GitHub mark is the black and white silhouette of their pet 'Octocat' which has a cat's head and eight octopus tentacles although in the drawing only 5 are seen. Two that make its legs, two arms, and which is seen in the silhouette as its tail.
+        GitLab:
+            title: See my projects on GitLab.com
+            iconTitle: GitLab.com logo
+            iconDesc: The GitLab brand image is a combination of triangles in three orange shades that form the silhouette of a fox.
         Twitter:
             title: Follow me on Twitter
             iconTitle: Twitter logo
@@ -96,6 +104,10 @@ fr:
             title: Voir mes projets sur GitHub.com
             iconTitle: Logo GitHub
             iconDesc: L'image de marque de GitHub est la silhouette en noir et blanc de s'animal de compagnie 'Octocat' qui a une tête de chat et huit tentacules de pieuvre bien que sur le dessin seulement 5 sont visibles. Deux qui font des jambes, deux bras et qui on regarde dans la silhouette comme sa queue.
+        GitLab:
+            title: Voir mes projets sur GitLab.com
+            iconTitle: Logo GitLab
+            iconDesc: L'image de marque GitLab est une combinaison de triangles dans trois tons orange qui forment la silhouette d'un renard.
         Twitter:
             title: Suis-moi sur Twitter
             iconTitle: Twitter logo

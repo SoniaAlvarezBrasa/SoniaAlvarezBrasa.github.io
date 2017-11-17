@@ -14,14 +14,18 @@ Saltw:
                 name: github
                 url: https://github.com/
                 username: SoniaAlvarezBrasa
-            -   title: Twitter
-                name: twitter
-                url: https://twitter.com/
-                username: SaltwDAW
+            -   title: GitLab
+                name: gitlab
+                url: https://gitlab.com/
+                username: Saltw
             -   title: CodePen
                 name: codepen
                 url: https://codepen.io/
                 username: saltw
+            -   title: Twitter
+                name: twitter
+                url: https://twitter.com/
+                username: SaltwDAW
         me:
             -   title: LinkedIn
                 name: linkedin
