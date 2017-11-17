@@ -1,0 +1,30 @@
+<nav>
+    <ul>
+        {% if include.sjobs == 1 %}
+            {% for red in site.data.people[include.webuser].social.jobs %}
+            {%capture redname %}
+            svg--{{ red.name }}
+            {% endcapture %}
+            <li>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" class="svg {{ include.aclass }}">
+                    {% include svg/icon-{{ red.name }}.svg hidden = 'true' iconclass = redname %}
+                    {{ red.title }}/{{ site.data.people[include.webuser].tradename }}
+                </a>
+            </li>
+            {% endfor %}
+        {% endif %}
+        {% if include.sme == 1 %}
+            {% for red in site.data.people[include.webuser].social.me %}
+            {%capture redname %}
+            svg--{{ red.name }}
+            {% endcapture %}
+            <li>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" class="svg {{ include.aclass }}">
+                    {% include svg/icon-{{ red.name }}.svg hidden = 'true' iconclass = redname %}
+                    {{ red.title }}/{{ site.data.people[include.webuser].darlingname }}
+                </a>
+            </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</nav>

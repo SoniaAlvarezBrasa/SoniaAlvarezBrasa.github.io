@@ -1,33 +1,33 @@
 {% assign posts=site.posts | where:"lang", page.lang %}
 {% unless posts.blank? %}
 <section class="paginate">
-    {% assign paginate=site.data.t.[page.lang].paginate %}
     <header>
-        <h2>{{ paginate.heading }}</h2>
+        <h2>{{ site.data.t.[page.lang].paginate.heading }}</h2>
     </header>
     {% for post in posts limit: 10 %}
     <article class="">
-        {% assign tor=site.data.people[post.autor] %}
         <header>
             <h3>
                 <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
             </h3>
-            <small>{{ post.date | date: "%b %-d, %Y" }} {{ paginate.show.x }} <strong><a href="{{ tor.about[page.lang] | prepend: site.baseurl }}">{{ post.autor }}</a></strong></small>
-            <!-- <p>{{ paginate.show.x}} <strong><a href="#">{{ post.autor}}</a></strong></p> -->
+            <small>{{ post.date | date: "%b %-d, %Y" }} {{ site.data.t.[page.lang].paginate.show.x }} <strong><a href="{{ site.data.people[post.autor].about[page.lang] | prepend: site.baseurl }}">{{ post.autor }}</a></strong></small>
         </header>
         <!-- <p>{{ post.content | strip_html | truncatewords:65 }} </p> -->
-        <p><a href="{{ post.url }}" title="{{ paginate.show.title}} '{{ post.title }}'">{{ post.description }}</a></p>
+        <p class="underlineFromRight"><a href="{{ post.url }}" title="{{ site.data.t.[page.lang].paginate.show.title}} '{{ post.title }}'">{{ post.description }}</a></p>
     </article>
     {% endfor %}
     <footer>
         <nav>
             <ul>
-                <li>{{ paginate.index.feed.texto }}&nbsp; <a target="_blank" href="{{ paginate.index.feed.url | prepend: site.baseurl }}" title="{{ paginate.index.feed.title}}">{{ paginate.index.feed.link }}</a></li>
+                <li>{{ site.data.t.[page.lang].paginate.index.feed.texto }}&nbsp;
+                    <a target="_blank" href="{{ site.data.t.[page.lang].paginate.index.feed.url | prepend: site.baseurl }}" title="{{ site.data.t.[page.lang].paginate.index.feed.title}}" class="underlineFromRightMini">{{ site.data.t.[page.lang].paginate.index.feed.link }}
+                    </a>
+                </li>
             </ul>
         </nav>
     </footer>
 </section>
 
 {% else %}
-<p>{{ paginate.else }}</p>
+<p>{{ site.data.t.[page.lang].paginate.else }}</p>
 {% endunless %}

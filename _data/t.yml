@@ -15,6 +15,27 @@ es:
                 texto: Suscribirse
                 link: via RSS
                 url: /feed.xml
+    social:
+        GitHub:
+            title: Ver mis proyectos en GitHub
+            iconTitle: Logo de GitHub
+            iconDesc: La imágen de Marca de GitHub es la silueta en blanco y negro de su mascota 'Octocat' que tiene cabeza de gato y ocho tentáculos de pulpo aunque en el dibujo sólo se ven 5. Dos que hacen de piernas, dos de brazos y el que se ve en la silueta como su cola.
+        Twitter:
+            title: Sígueme en Twitter
+            iconTitle: Logo de Twitter
+            iconDesc: la imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulejo de las montañas'
+        CodePen:
+            title: Ver mis proyectos elegidos en CodePen.io
+            iconTitle: Logo CodePen.io
+            iconDesc: El logotipo abreviado de Codepen es un cubo geométrico 3d transparente.
+        LinkedIn:
+            title: Sígueme en LinkedIn
+            iconTitle: Logo de LinkedIn
+            iconDesc: El logo de LinkedIn son las letras 'in' en minúsculas, en color blanco sobre fondo azul claro.
+        Facebook:
+            title: Sígueme en Facebook
+            iconTitle: Logo de Facebook
+            iconDesc: El logo abreviado de Facebook es su inicial 'f' en minúscula, en color blanco sobre un fondo azul de tono oscuro.
 en:
     paginate:
         heading: Recent Posts
@@ -32,6 +53,27 @@ en:
                 texto: Suscribe
                 link: via RSS
                 url: /feed.xml
+    social:
+        GitHub:
+            title: See my projects on GitHub.com
+            iconTitle: GitHub.com logo
+            iconDesc: The GitHub mark is the black and white silhouette of their pet 'Octocat' which has a cat's head and eight octopus tentacles although in the drawing only 5 are seen. Two that make its legs, two arms, and which is seen in the silhouette as its tail.
+        Twitter:
+            title: Follow me on Twitter
+            iconTitle: Twitter logo
+            iconDesc: The logo image of Twitter is the silhouette of its little bird in sky blue color, inspired by the species 'Mountain bluebird'.
+        CodePen:
+            title: See Picked Pens in CodePen.io
+            iconTitle: CodePen.io logo
+            iconDesc: The Codepen abbreviated logo is a transparent 3d geometric cube.
+        LinkedIn:
+            title: Follow me on LinkedIn
+            iconTitle: LinkedIn logo
+            iconDesc: The LinkedIn abbreviated logo are the letters 'in' in lowercase, white on a light blue background.
+        Facebook:
+            title: Follow me on Facebook
+            iconTitle: Facebook logo
+            iconDesc: The abbreviated logo of Facebook is its initial 'f' in lowercase, in white on a dark blue background.
 fr:
     paginate:
         heading: Articles récents
@@ -49,3 +91,24 @@ fr:
                 texto: Suivre le
                 link: flux RSS
                 url: /flux.xml
+    social:
+        GitHub:
+            title: Voir mes projets sur GitHub.com
+            iconTitle: Logo GitHub
+            iconDesc: L'image de marque de GitHub est la silhouette en noir et blanc de s'animal de compagnie 'Octocat' qui a une tête de chat et huit tentacules de pieuvre bien que sur le dessin seulement 5 sont visibles. Deux qui font des jambes, deux bras et qui on regarde dans la silhouette comme sa queue.
+        Twitter:
+            title: Suis-moi sur Twitter
+            iconTitle: Twitter logo
+            iconDesc: L'image du logo de Twitter est la silhouette de son petit oiseau de couleur bleu ciel, inspiré par l'espèce 'Merlebleu azuré'.
+        CodePen:
+            title: Voir Stylos choisis dans CodePen.io
+            iconTitle: CodePen.io logo
+            iconDesc: Le logo abrégé Codepen est un cube géométrique 3d transparent.
+        LinkedIn:
+            title: Suis-moi sur LinkedIn
+            iconTitle: LinkedIn logo
+            iconDesc: Le logo LinkedIn sont les lettres «in» en minuscules, blanches sur un fond bleu clair.
+        Facebook:
+            title: Suis-moi sur Facebook
+            iconTitle: Facebook logo
+            iconDesc: Le logo abrégé de Facebook est son «f» initial en minuscules, en blanc sur un fond bleu foncé.

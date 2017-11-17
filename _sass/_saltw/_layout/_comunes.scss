@@ -1,0 +1,15 @@
+// a.svg
+.svg {
+    @include icon-svg-social;
+    & > svg {
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        width: $icon-x;
+        height: $icon-y;
+        vertical-align: middle;
+        padding: $padding-icon;
+        border-radius: 50%;
+        transition: all $ss-icon ease;
+    }
+}

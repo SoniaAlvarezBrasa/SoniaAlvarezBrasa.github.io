@@ -1,0 +1,24 @@
+<nav>
+    <ul>
+        {% if include.sjobs == 1 %}
+            {% for red in site.data.people[include.webuser].social.jobs %}
+            {%capture redname %}
+            svg--{{ red.name }}
+            {% endcapture %}
+            <li>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="svg">{% include svg/icon-{{ red.name }}.svg hidden = 'false' iconclass = redname %}</a>
+            </li>
+            {% endfor %}
+        {% endif %}
+        {% if include.sme == 1 %}
+            {% for red in site.data.people[include.webuser].social.me %}
+            {%capture redname %}
+            svg--{{ red.name }}
+            {% endcapture %}
+            <li>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="svg">{% include svg/icon-{{ red.name }}.svg hidden = 'false' iconclass = redname %}</a>
+            </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</nav>
