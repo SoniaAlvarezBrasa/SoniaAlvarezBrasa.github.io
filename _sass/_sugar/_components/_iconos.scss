@@ -74,137 +74,305 @@
     }
 }
 
-// Para svg en línea
-// Distingue bicolor y multicolor
+// ================== $maps Redes Sociales ===================
 // Por orden alfabético
-@mixin sociales-svg (
-    $bg: $bg-body,
-    $color: $color-body
-){
-    // Todas (backgrounds)
-    $mapSocial: (
-        codepen: #000,
-        facebook: #3b5998,
-        github: #181616,
-        gitlab: #30353e,
-        googleplus: #dd4b39,
-        linkedin: #0077b5,
-        twitter: #00aced,
-        youtube: #b00
-    );
-    // Monocromas
-    $mapSocialMono: (
-        codepen: #000,
-        facebook: #3b5998,
-        github: #181616,
-        googleplus: #dd4b39,
-        linkedin: #0077b5,
-        twitter: #00aced,
-        youtube: #b00
-    );
 
-    // nav.ul.li.a.svg.svg--link
-    & svg {
-        @each $name in $mapSocialMono {
-            &.svg--#{$name} {
-                background: $bg;
-                fill: $color;
-            }
+// Monocromas
+$mapSocialMono: (
+    codepen: #000,
+    facebook: #3b5998,
+    github: #181616,
+    googleplus: #dd4b39,
+    linkedin: #0077b5,
+    twitter: #00aced,
+    youtube: #b00
+);
+// Multicolor
+$mapSocialMulti: (
+    gitlab: #30353e
+);
+// ================== fin maps Redes Sociales ===================
+
+
+// Para svg.svg--$name hijo de un <box>,
+// P.ej.: span.svg--$name / svg.svg--$name.
+// span.svg--$name con padding, margin-r,
+// border-radius ... prev definidos
+// Causa: CSS no puede leer hacia arriba
+@mixin sociales-svg-box (
+    // Fondo claro, texto oscuro
+    $bg: $bg-body,
+    $color: $color-body,
+    // Simulación a color
+    $filter-before: grayscale(1),
+    $filter-after: none,
+    // Transiciones
+    $ss: $ss-icon
+){
+    // li.svg
+
+    // Convirtiendo los iconos svg monocromos a B/W (color/bg)
+    @each $name, $bgcolor in $mapSocialMono {
+        // Sólo svg
+        & svg.svg--#{$name} {
+            background: $bg;
+            fill: $color;
         }
-        // Multicolor a b/w
-        & .svg--gitlab,
-        &.svg--gitlab {
-            .a {
-              fill:#5c5c5c;
-            }
-            .b {
-              fill:#787878;
-            }
-            .c {
-              fill:#a1a1a1;
-            }
+        // Padre e hijo class .svg--$name
+        // span.svg--$name + svg.svg--$name
+        & .svg--#{$name} {
+            transition: all $ss ease;
+        }
+    }
+    // fill de iconos svg multicolor a filtro (b/w)
+    @each $name, $bgcolor in $mapSocialMulti {
+        // Sólo svg
+        & svg.svg--#{$name} {
+            background: $bg;
+            -webkit-filter: $filter-before;
+            filter: $filter-before;
+        }
+        // Padre e hijo class .svg--$name
+        // span.svg--$name + svg.svg--$name
+        & .svg--#{$name} {
+            transition: all $ss ease;
         }
     }
 
+    // li.svg
     &:hover, &:focus, &:target {
-        // Monocromo background
-        @each $name, $bgcolor in $mapSocial {
-            & .svg--#{$name},
-            &.svg--#{$name} {
+        // Invirtiendo los iconos svg monocromos a W/B (bg/color)
+        @each $name, $bgcolor in $mapSocialMono {
+            // Padre e hijo .svg--$name
+            // span.svg--$name + svg.svg--$name
+            & .svg--#{$name} {
                 background: $bgcolor;
                 fill: $bg;
             }
         }
-
-        // fill multicolor
-        & .svg--gitlab,
-        &.svg--gitlab {
-            .a {
-              fill:#E24329;
+        // fill de iconos svg multicolor a multicolor (filter: none)
+        @each $name, $bgcolor in $mapSocialMulti {
+            // Padre e hijo .svg--$name
+            // span.svg--$name + svg.svg--$name
+            & .svg--#{$name} {
+                background: $bgcolor;
             }
-            .b {
-              fill:#FC6D26;
-            }
-            .c {
-              fill:#FCA326;
+            // Sólo svg
+            & svg.svg--#{$name} {
+                -webkit-filter: $filter-after;
+                filter: $filter-after;
             }
         }
     }
 }
 
-@mixin icon-svg-social (
+// Versión contraria a la anterior:
+// alterna en :hover color/bg
+// NOTA: No tengo efecto para los mapas multicolor
+
+@mixin sociales-svg-box-inverso (
     $bg: $bg-body,
-    $color: $color-body
+    // $color: $color-body,
+    $filter-before: none,
+    $filter-after: none,
+    $ss: $ss-icon
 ){
-    // ul.li.a.svg
-    & svg {
-        background: $bg;
-        fill: $color;
+    // li.svg
+
+    // Fondo corporativo y texto transparente
+    @each $name, $bgcolor in $mapSocialMono {
+        // Padre e hijo class .svg--$name
+        // span.svg--$name + svg.svg--$name
+        & .svg--#{$name} {
+            background: $bgcolor;
+            fill: $bg;
+            transition: all $ss-icon ease;
+        }
+    }
+    @each $name, $bgcolor in $mapSocialMulti {
+        // Padre e hijo class .svg--$name
+        // span.svg--$name + svg.svg--$name
+        & .svg--#{$name} {
+            background: $bgcolor;
+            transition: all $ss-icon ease;
+        }
+        // fill de iconos svg multicolor a multicolor (filter: none)
+        // Sólo svg
+        & svg.svg--#{$name} {
+            -webkit-filter: $filter-before;
+            filter: $filter-before;
+        }
     }
 
+    // li.svg
+    // Invirtiendo a fondo transparente y texto a color corporativo
     &:hover, &:focus, &:target {
-        & svg.svg--facebook {
-            background: #3b5998;
-            fill: $bg;
+        // Padre e hijo class .svg--$name
+        // span.svg--$name + svg.svg--$name
+        @each $name, $bgcolor in $mapSocialMono {
+            & .svg--#{$name} {
+                background: $bg;
+                fill: $bgcolor;
+            }
         }
-        & svg.svg--twitter {
-            background: #00aced;
-            fill: $bg;
-        }
-        & svg.svg--googleplus {
-            background: #dd4b39;
-            fill: $bg;
-        }
-        & svg.svg--linkedin {
-            background: #0077b5;
-            fill: $bg;
-        }
-        & svg.svg--youtube {
-            background: #b00;
-            fill: $bg;
-        }
-        & svg.svg--github {
-            background: #000;
-            fill: $bg;
-        }
-        & svg.svg--codepen {
-            background: #000;
-            fill: $bg;
+        // NOTA: no tengo alternancia para svg con fill multicolor
+        // fill de iconos svg multicolor a multicolor (filter: none)
+        @each $name, $bgcolor in $mapSocialMulti {
+            // Padre e hijo class .svg--$name
+            // span.svg--$name + svg.svg--$name
+            & .svg--#{$name} {
+                background: $bg;
+            }
+            // Sólo svg
+            & svg.svg--#{$name} {
+                -webkit-filter: $filter-after;
+                filter: $filter-after;
+            }
         }
     }
 }
 
-$social: (
-    facebook: #3b5998,
-    twitter: #00aced,
-    googleplus: #dd4b39,
-    rss: #f60,
-    youtube: #b00,
-    vimeo: #000
-);
-@each $social, $bgcolor in $social {
-    .social--#{$social} {
-        color: $bgcolor;
+// Para svg.svg--$name hijo de un <a> y nieto de un <box>
+// P.ej.: li.svg--$name / a / svg.svg--$name
+// li.svg--$name con padding, margin-r,
+// border-radius ... prev definidos
+// Causa: CSS no puede leer hacia arriba,
+// ------ el <a> no tiene texto: sólo title y el icono
+// ------ y <a> debe ser display *block para IE
+@mixin sociales-svg-li-box (
+    $bg: $bg-body,
+    $color: $color-body,
+    $filter-before: grayscale(1),
+    $filter-after: none,
+    $ss: $ss-icon
+){
+    // li.svg--icon
+
+    // Convirtiendo los iconos svg monocromos a B/W (color/bg)
+    @each $name, $bgcolor in $mapSocialMono {
+        // Sólo svg
+        & svg.svg--#{$name} {
+            background: $bg;
+            fill: $color;
+        }
+        // Abuelo y nieto class .svg--$name
+        // li.svg--$name + svg.svg--$name
+        & .svg--#{$name} {
+            transition: all $ss ease;
+        }
+    }
+    // fill de iconos svg multicolor a filtro (b/w)
+    @each $name, $bgcolor in $mapSocialMulti {
+        // Sólo svg
+        & svg.svg--#{$name} {
+            background: $bg;
+            -webkit-filter: $filter-before;
+            filter: $filter-before;
+        }
+        // Abuelo y nieto class .svg--$name
+        // li.svg--$name + svg.svg--$name
+        & .svg--#{$name} {
+            transition: all $ss ease;
+        }
+    }
+
+    // li.svg--icon
+    &:hover, &:focus, &:target {
+        // Invirtiendo los iconos svg monocromos a W/B (bg/color)
+        @each $name, $bgcolor in $mapSocialMono {
+            // Abuelo y nieto class .svg--$name
+            // li.svg--$name + svg.svg--$name
+            &.svg--#{$name},
+            & .svg--#{$name} {
+                background: $bgcolor;
+                fill: $bg;
+            }
+        }
+        // fill de iconos svg multicolor a multicolor (filter: none)
+        @each $name, $bgcolor in $mapSocialMulti {
+            // Abuelo y nieto class .svg--$name
+            // li.svg--$name + svg.svg--$name
+            &.svg--#{$name},
+            & .svg--#{$name} {
+                background: $bgcolor;
+            }
+            // Sólo svg
+            & svg.svg--#{$name} {
+                -webkit-filter: $filter-after;
+                filter: $filter-after;
+            }
+        }
+    }
+}
+
+// Versión contraria a la anterior:
+// alterna en :hover color/bg corporativos (monocolor)
+// NOTA: No tengo efecto para los mapas multicolor
+
+@mixin sociales-svg-li-box-inverso (
+    $bg: $bg-body,
+    // $color: $color-body,
+    $filter-before: none,
+    $filter-after: none,
+    $ss: $ss-icon
+){
+    // li.svg--icon
+
+    // Fondo corporativo y texto transparente
+    @each $name, $bgcolor in $mapSocialMono {
+        // Abuelo y nieto class .svg--$name
+        // li.svg--$name + svg.svg--$name
+        &.svg--#{$name},
+        & .svg--#{$name} {
+            background: $bgcolor;
+            fill: $bg;
+            transition: all $ss-icon ease;
+        }
+    }
+    @each $name, $bgcolor in $mapSocialMulti {
+        // Abuelo y nieto class .svg--$name
+        // li.svg--$name + svg.svg--$name
+        &.svg--#{$name},
+        & .svg--#{$name} {
+            background: $bgcolor;
+            transition: all $ss-icon ease;
+        }
+        // fill de iconos svg multicolor a multicolor (filter: none)
+        // Sólo svg
+        & svg.svg--#{$name} {
+            -webkit-filter: $filter-before;
+            filter: $filter-before;
+        }
+    }
+
+    // li.svg--icon
+
+    // Invirtiendo a fondo transparente y texto a color corporativo
+    &:hover, &:focus, &:target {
+        // Abuelo y nieto class .svg--$name
+        // li.svg--$name + svg.svg--$name
+        @each $name, $bgcolor in $mapSocialMono {
+            &.svg--#{$name},
+            & .svg--#{$name} {
+                background: $bg;
+                fill: $bgcolor;
+            }
+        }
+        // NOTA: no tengo alternancia para svg con fill multicolor
+        // fill de iconos svg multicolor a multicolor (filter: none)
+        @each $name, $bgcolor in $mapSocialMulti {
+            // Abuelo y nieto class .svg--$name
+            // li.svg--$name + svg.svg--$name
+            &.svg--#{$name},
+            & .svg--#{$name} {
+                background: $bg;
+            }
+            // Sólo svg
+            & svg.svg--#{$name} {
+                -webkit-filter: $filter-after;
+                filter: $filter-after;
+            }
+        }
     }
 }
 

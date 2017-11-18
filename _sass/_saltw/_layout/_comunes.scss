@@ -18,9 +18,9 @@ $mapHoverCssBorderUnderlineFromRightMini:(
     ss: $ss-icon
 );
 
-// li.svg
+// li.svg/a/span.svg--name/svg.svg--name
 .svg {
-    @include sociales-svg;
+    @include sociales-svg-box;
     @include hoverCss-border-underline-from-right ($mapHoverCssBorderUnderlineFromRightMini...);
 
     & > a {
@@ -29,7 +29,6 @@ $mapHoverCssBorderUnderlineFromRightMini:(
             margin-right: $padding-icon;
             border-radius: 15%;
             z-index: 1;
-            transition: all $ss-icon ease;
         }
     }
 
@@ -40,7 +39,6 @@ $mapHoverCssBorderUnderlineFromRightMini:(
         width: $icon-x;
         height: $icon-y;
         vertical-align: middle;
-        transition: all $ss-icon ease;
     }
 }
 
@@ -49,7 +47,7 @@ $mapHoverCssBorderUnderlineFromRightMini:(
     padding: $padding-icon;
     border-radius: 15%;
     transition: all $ss-icon ease;
-    @include sociales-svg;
+    @include sociales-svg-li-box-inverso;
 
     & svg {
         display: -webkit-inline-box;
