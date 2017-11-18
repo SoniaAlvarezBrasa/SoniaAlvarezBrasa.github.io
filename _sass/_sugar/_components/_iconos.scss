@@ -74,47 +74,80 @@
     }
 }
 
+// Para svg en línea
+// Distingue bicolor y multicolor
+// Por orden alfabético
 @mixin sociales-svg (
     $bg: $bg-body,
     $color: $color-body
 ){
-    // ul.li.a.svg
+    // Todas (backgrounds)
+    $mapSocial: (
+        codepen: #000,
+        facebook: #3b5998,
+        github: #181616,
+        gitlab: #30353e,
+        googleplus: #dd4b39,
+        linkedin: #0077b5,
+        twitter: #00aced,
+        youtube: #b00
+    );
+    // Monocromas
+    $mapSocialMono: (
+        codepen: #000,
+        facebook: #3b5998,
+        github: #181616,
+        googleplus: #dd4b39,
+        linkedin: #0077b5,
+        twitter: #00aced,
+        youtube: #b00
+    );
+
+    // nav.ul.li.a.svg.svg--link
     & svg {
-        background: $bg;
-        fill: $color;
+        @each $name in $mapSocialMono {
+            &.svg--#{$name} {
+                background: $bg;
+                fill: $color;
+            }
+        }
+        // Multicolor a b/w
+        & .svg--gitlab,
+        &.svg--gitlab {
+            .a {
+              fill:#5c5c5c;
+            }
+            .b {
+              fill:#787878;
+            }
+            .c {
+              fill:#a1a1a1;
+            }
+        }
     }
 
     &:hover, &:focus, &:target {
-        & svg {
-            fill: $bg;
+        // Monocromo background
+        @each $name, $bgcolor in $mapSocial {
+            & .svg--#{$name},
+            &.svg--#{$name} {
+                background: $bgcolor;
+                fill: $bg;
+            }
         }
-        & .svg--facebook,
-        &.svg--facebook {
-            background: #3b5998;
-        }
-        & .svg--twitter,
-        &.svg--twitter {
-            background: #00aced;
-        }
-        & .svg--googleplus,
-        &.svg--googleplus {
-            background: #dd4b39;
-        }
-        & .svg--linkedin,
-        &.svg--linkedin {
-            background: #0077b5;
-        }
-        & .svg--youtube,
-        &.svg--youtube {
-            background: #b00;
-        }
-        & .svg--github,
-        &.svg--github {
-            background: #000;
-        }
-        & .svg--codepen,
-        &.svg--codepen {
-            background: #000;
+
+        // fill multicolor
+        & .svg--gitlab,
+        &.svg--gitlab {
+            .a {
+              fill:#E24329;
+            }
+            .b {
+              fill:#FC6D26;
+            }
+            .c {
+              fill:#FCA326;
+            }
         }
     }
 }

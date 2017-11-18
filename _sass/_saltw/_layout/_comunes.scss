@@ -27,7 +27,7 @@ $mapHoverCssBorderUnderlineFromRightMini:(
         & > span {
             padding: $padding-icon;
             margin-right: $padding-icon;
-            border-radius: 50%;
+            border-radius: 15%;
             z-index: 1;
             transition: all $ss-icon ease;
         }
