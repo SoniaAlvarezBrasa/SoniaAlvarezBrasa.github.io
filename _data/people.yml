@@ -22,6 +22,10 @@ Saltw:
                 name: codepen
                 url: https://codepen.io/
                 username: saltw
+            -   title: StackOverflow
+                name: stackoverflow
+                url: https://es.stackoverflow.com/
+                username: users/43210/saltw
             -   title: Twitter
                 name: twitter
                 url: https://twitter.com/

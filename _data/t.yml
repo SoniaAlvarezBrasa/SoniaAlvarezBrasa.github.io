@@ -1,4 +1,7 @@
 es:
+    menu:
+        iconTitle: Menú Principal
+        iconDesc: La imágen del menú desplegable son tres líneas horizontales apiladas una encima de la otra, como si fuera un signo de igual con una raya extra.
     paginate:
         heading: Últimos artículos
         else: No hay artículos.
@@ -16,6 +19,14 @@ es:
                 link: via RSS
                 url: /feed.xml
     social:
+        CodePen:
+            title: Ver mis proyectos elegidos en CodePen.io
+            iconTitle: Logo CodePen.io
+            iconDesc: El logotipo abreviado de Codepen es un cubo geométrico 3d transparente.
+        Facebook:
+            title: Sígueme en Facebook
+            iconTitle: Logo de Facebook
+            iconDesc: El logo abreviado de Facebook es su inicial 'f' en minúscula, en color blanco sobre un fondo azul de tono oscuro.
         GitHub:
             title: Ver mis proyectos en GitHub
             iconTitle: Logo de GitHub
@@ -24,23 +35,23 @@ es:
             title: Ver mis proyectos en GitLab
             iconTitle: Logo de GitLab
             iconDesc: La imágen de marca de GitLab es una combinación de triángulos en tres tonos naranja que forman la silueta de un zorro.
-        Twitter:
-            title: Sígueme en Twitter
-            iconTitle: Logo de Twitter
-            iconDesc: la imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulejo de las montañas'
-        CodePen:
-            title: Ver mis proyectos elegidos en CodePen.io
-            iconTitle: Logo CodePen.io
-            iconDesc: El logotipo abreviado de Codepen es un cubo geométrico 3d transparente.
         LinkedIn:
             title: Sígueme en LinkedIn
             iconTitle: Logo de LinkedIn
             iconDesc: El logo de LinkedIn son las letras 'in' en minúsculas, en color blanco sobre fondo azul claro.
-        Facebook:
-            title: Sígueme en Facebook
-            iconTitle: Logo de Facebook
-            iconDesc: El logo abreviado de Facebook es su inicial 'f' en minúscula, en color blanco sobre un fondo azul de tono oscuro.
+        StackOverflow:
+            title: Ver mis contribuciones en Stack Overflow
+            iconTitle: Logo de Stack Overflow
+            iconDesc: El logo de Stack Overflow son cinco líneas de color naranja apiladas una encima de otra en abanico sobre un paréntesis boca arriba de color gris, como simulando cinco libros de lomo naranja cayendo en una bandeja gris.
+        Twitter:
+            title: Sígueme en Twitter
+            iconTitle: Logo de Twitter
+            iconDesc: la imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulejo de las montañas'
 en:
+    menu:
+        iconTitle: Main Menu
+        iconDesc: The image of the drop-down menu is three horizontal lines stacked on top of each other, as if it were an equal sign with an extra line.
+
     paginate:
         heading: Recent Posts
         else: No post yet
@@ -58,6 +69,14 @@ en:
                 link: via RSS
                 url: /feed.xml
     social:
+        CodePen:
+            title: See Picked Pens in CodePen.io
+            iconTitle: CodePen.io logo
+            iconDesc: The Codepen abbreviated logo is a transparent 3d geometric cube.
+        Facebook:
+            title: Follow me on Facebook
+            iconTitle: Facebook logo
+            iconDesc: The abbreviated logo of Facebook is its initial 'f' in lowercase, in white on a dark blue background.
         GitHub:
             title: See my projects on GitHub.com
             iconTitle: GitHub.com logo
@@ -66,23 +85,22 @@ en:
             title: See my projects on GitLab.com
             iconTitle: GitLab.com logo
             iconDesc: The GitLab brand image is a combination of triangles in three orange shades that form the silhouette of a fox.
-        Twitter:
-            title: Follow me on Twitter
-            iconTitle: Twitter logo
-            iconDesc: The logo image of Twitter is the silhouette of its little bird in sky blue color, inspired by the species 'Mountain bluebird'.
-        CodePen:
-            title: See Picked Pens in CodePen.io
-            iconTitle: CodePen.io logo
-            iconDesc: The Codepen abbreviated logo is a transparent 3d geometric cube.
         LinkedIn:
             title: Follow me on LinkedIn
             iconTitle: LinkedIn logo
             iconDesc: The LinkedIn abbreviated logo are the letters 'in' in lowercase, white on a light blue background.
-        Facebook:
-            title: Follow me on Facebook
-            iconTitle: Facebook logo
-            iconDesc: The abbreviated logo of Facebook is its initial 'f' in lowercase, in white on a dark blue background.
+        StackOverflow:
+            title: See my contributions in Stack Overflow
+            iconTitle: Stack Overflow logo
+            iconDesc: The Stack Overflow logo consists of five orange lines stacked one on top of the other in a fan on a gray upside-down parenthesis, as if simulating five books of orange loin falling on a gray tray.
+        Twitter:
+            title: Follow me on Twitter
+            iconTitle: Twitter logo
+            iconDesc: The logo image of Twitter is the silhouette of its little bird in sky blue color, inspired by the species 'Mountain bluebird'.
 fr:
+    menu:
+        iconTitle: Menu Principal
+        iconDesc: L'image du menu déroulant est constituée de trois lignes horizontales empilées les unes sur les autres, comme s'il s'agissait d'un signe égal avec une ligne supplémentaire.
     paginate:
         heading: Articles récents
         else: Pas encore d'articles
@@ -100,6 +118,14 @@ fr:
                 link: flux RSS
                 url: /flux.xml
     social:
+        CodePen:
+            title: Voir Stylos choisis dans CodePen.io
+            iconTitle: CodePen.io logo
+            iconDesc: Le logo abrégé Codepen est un cube géométrique 3d transparent.
+        Facebook:
+            title: Suis-moi sur Facebook
+            iconTitle: Facebook logo
+            iconDesc: Le logo abrégé de Facebook est son «f» initial en minuscules, en blanc sur un fond bleu foncé.
         GitHub:
             title: Voir mes projets sur GitHub.com
             iconTitle: Logo GitHub
@@ -108,19 +134,15 @@ fr:
             title: Voir mes projets sur GitLab.com
             iconTitle: Logo GitLab
             iconDesc: L'image de marque GitLab est une combinaison de triangles dans trois tons orange qui forment la silhouette d'un renard.
-        Twitter:
-            title: Suis-moi sur Twitter
-            iconTitle: Twitter logo
-            iconDesc: L'image du logo de Twitter est la silhouette de son petit oiseau de couleur bleu ciel, inspiré par l'espèce 'Merlebleu azuré'.
-        CodePen:
-            title: Voir Stylos choisis dans CodePen.io
-            iconTitle: CodePen.io logo
-            iconDesc: Le logo abrégé Codepen est un cube géométrique 3d transparent.
         LinkedIn:
             title: Suis-moi sur LinkedIn
             iconTitle: LinkedIn logo
             iconDesc: Le logo LinkedIn sont les lettres «in» en minuscules, blanches sur un fond bleu clair.
-        Facebook:
-            title: Suis-moi sur Facebook
-            iconTitle: Facebook logo
-            iconDesc: Le logo abrégé de Facebook est son «f» initial en minuscules, en blanc sur un fond bleu foncé.
+        StackOverflow:
+            title: Voir mes contributions sur Stack Overflow
+            iconTitle: Stack Overflow logo
+            iconDesc: Le logo Stack Overflow se compose de cinq lignes orange empilées les unes sur les autres comme un éventail sur une parenthèse inversée grise, comme si simulant cinq livres de longe d'orange tombant sur un plateau gris.
+        Twitter:
+            title: Suis-moi sur Twitter
+            iconTitle: Twitter logo
+            iconDesc: L'image du logo de Twitter est la silhouette de son petit oiseau de couleur bleu ciel, inspiré par l'espèce 'Merlebleu azuré'.
