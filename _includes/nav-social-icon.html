@@ -8,17 +8,8 @@
                 {% capture classname %}
                     svg--{{ red.name }}
                 {% endcapture %}
-                {% capture idName %}
-                    {{red.name}}--{{ include.iconid }}
-                {% endcapture %}
-                {% capture idTitle %}
-                    {{red.name}}Title--{{ include.iconid }}
-                {% endcapture %}
-                {% capture idDesc %}
-                    {{red.name}}Desc--{{ include.iconid }}
-                {% endcapture %}
             <li class="svg-icon {{ classname | strip }}">
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname idn=idName idt=idTitle idd=idDesc id=svgid %}</a>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname id=svgid %}</a>
             </li>
             {% endfor %}
         {% endif %}
@@ -30,17 +21,8 @@
                 {% capture classname %}
                     svg--{{ red.name }}
                 {% endcapture %}
-                {% capture idName %}
-                    {{red.name}}--{{ include.iconid }}
-                {% endcapture %}
-                {% capture idTitle %}
-                    {{red.name}}Title--{{ include.iconid }}
-                {% endcapture %}
-                {% capture idDesc %}
-                    {{red.name}}Desc--{{ include.iconid }}
-                {% endcapture %}
             <li class="svg-icon {{ classname | strip }}">
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname idn=idName idt=idTitle idd=idDesc id=svgid %}</a>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname id=svgid %}</a>
                 </li>
             {% endfor %}
         {% endif %}
