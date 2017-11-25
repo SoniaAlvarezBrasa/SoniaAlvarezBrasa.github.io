@@ -30,6 +30,22 @@ Saltw:
                 name: twitter
                 url: https://twitter.com/
                 username: SaltwDAW
+            -   title: Pinterest
+                name: pinterest
+                url: https://www.pinterest.es/
+                username: Saltw
+            -   title: Instagram
+                name: instagram
+                url: https://www.instagram.com/
+                username: Saltw
+            -   title: DeviantArt
+                name: deviantart
+                url: https://www.deviantart.com/
+                username: Saltw
+            -   title: Youtube
+                name: youtube
+                url: https://www.youtube.com/
+                username: user/Saltw
         me:
             -   title: LinkedIn
                 name: linkedin
@@ -39,3 +55,7 @@ Saltw:
                 name: facebook
                 url: https://www.facebook.com/
                 username: SoniaAlvarezBrasa
+            -   title: GooglePlus
+                name: googleplus
+                url: https://plus.google.com/
+                username: salty

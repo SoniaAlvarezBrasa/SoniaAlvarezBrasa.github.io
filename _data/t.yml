@@ -23,6 +23,10 @@ es:
             title: Ver mis proyectos elegidos en CodePen.io
             iconTitle: Logo CodePen.io
             iconDesc: El logotipo abreviado de Codepen es un cubo geométrico 3d transparente.
+        DeviantArt:
+            title:
+            iconTitle:
+            iconDesc:
         Facebook:
             title: Sígueme en Facebook
             iconTitle: Logo de Facebook
@@ -35,10 +39,22 @@ es:
             title: Ver mis proyectos en GitLab
             iconTitle: Logo de GitLab
             iconDesc: La imágen de marca de GitLab es una combinación de triángulos en tres tonos naranja que forman la silueta de un zorro.
+        GooglePlus:
+            title: Sígueme en Google+
+            iconTitle: Logo de Google+
+            iconDesc: El logo abreviado de Google Plus es su inicial G en mayúscula seguido del sigo de suma, ambos en color rojo.
+        Instagram:
+            title:
+            iconTitle:
+            iconDesc:
         LinkedIn:
             title: Sígueme en LinkedIn
             iconTitle: Logo de LinkedIn
             iconDesc: El logo de LinkedIn son las letras 'in' en minúsculas, en color blanco sobre fondo azul claro.
+        Pinterest:
+            title: Sígueme en Pinterest
+            iconTitle: Logo de Pinterest
+            iconDesc: El logo de Pinterest es un círculo rojo con una P blanca en el centro.
         StackOverflow:
             title: Ver mis contribuciones en Stack Overflow
             iconTitle: Logo de Stack Overflow
@@ -46,7 +62,11 @@ es:
         Twitter:
             title: Sígueme en Twitter
             iconTitle: Logo de Twitter
-            iconDesc: la imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulejo de las montañas'
+            iconDesc: la imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulejo de las montañas'.
+        Youtube:
+            title:
+            iconTitle:
+            iconDesc:
 en:
     menu:
         iconTitle: Main Menu
@@ -73,6 +93,10 @@ en:
             title: See Picked Pens in CodePen.io
             iconTitle: CodePen.io logo
             iconDesc: The Codepen abbreviated logo is a transparent 3d geometric cube.
+        DeviantArt:
+            title:
+            iconTitle:
+            iconDesc:
         Facebook:
             title: Follow me on Facebook
             iconTitle: Facebook logo
@@ -85,10 +109,22 @@ en:
             title: See my projects on GitLab.com
             iconTitle: GitLab.com logo
             iconDesc: The GitLab brand image is a combination of triangles in three orange shades that form the silhouette of a fox.
+        GooglePlus:
+            title: Follow me on Google+
+            iconTitle: Google+ logo
+            iconDesc: The abbreviated logo of Google Plus is its initial G in capital letters followed by the addition sign, both in red.
+        Instagram:
+            title:
+            iconTitle:
+            iconDesc:
         LinkedIn:
             title: Follow me on LinkedIn
             iconTitle: LinkedIn logo
             iconDesc: The LinkedIn abbreviated logo are the letters 'in' in lowercase, white on a light blue background.
+        Pinterest:
+            title: Follow me on Pinterest
+            iconTitle: Pinterest logo
+            iconDesc: The Pinterest logo is a red circle with a white scripted 'P' in the middle.
         StackOverflow:
             title: See my contributions in Stack Overflow
             iconTitle: Stack Overflow logo
@@ -122,6 +158,10 @@ fr:
             title: Voir Stylos choisis dans CodePen.io
             iconTitle: CodePen.io logo
             iconDesc: Le logo abrégé Codepen est un cube géométrique 3d transparent.
+        DeviantArt:
+            title:
+            iconTitle:
+            iconDesc:
         Facebook:
             title: Suis-moi sur Facebook
             iconTitle: Facebook logo
@@ -134,10 +174,22 @@ fr:
             title: Voir mes projets sur GitLab.com
             iconTitle: Logo GitLab
             iconDesc: L'image de marque GitLab est une combinaison de triangles dans trois tons orange qui forment la silhouette d'un renard.
+        GooglePlus:
+            title: Suis-moi sur Google+
+            iconTitle: Google+ logo
+            iconDesc: Le logo abrégé de Google Plus est son l'initiale G en lettres majuscules suivi du signe d'addition, tous les deux en rouge.
+        Instagram:
+            title:
+            iconTitle:
+            iconDesc:
         LinkedIn:
             title: Suis-moi sur LinkedIn
             iconTitle: LinkedIn logo
             iconDesc: Le logo LinkedIn sont les lettres «in» en minuscules, blanches sur un fond bleu clair.
+        Pinterest:
+            title: Suis-moi sur Pinterest
+            iconTitle: Pinterest logo
+            iconDesc: Le logo Pinterest est un cercle rouge avec une lettre P manuscrite de couleur blanche au centre.
         StackOverflow:
             title: Voir mes contributions sur Stack Overflow
             iconTitle: Stack Overflow logo

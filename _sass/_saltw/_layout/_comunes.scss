@@ -20,7 +20,8 @@ $mapHoverCssBorderUnderlineFromRightMini:(
 
 // li.svg / a / span.svg--name / svg.svg--name
 .svg {
-    @include sociales-svg-box;
+    // @include sociales-svg-li-box;
+    @include sociales-svg-li-box((brand: fillBlack)...);
     @include hoverCss-border-underline-from-right ($mapHoverCssBorderUnderlineFromRightMini...);
 
     & > a {
@@ -49,7 +50,11 @@ $mapHoverCssBorderUnderlineFromRightMini:(
     padding: $padding-icon;
     border-radius: $border-radius;
     overflow: hidden;
-    @include sociales-svg-li-box-inverso;
+    // Default brand == 1
+    // Se inicia con fondo corporativo y texto transparente
+    // (En iconos monocromos)
+    @include sociales-svg-li-box;
+    // @include sociales-svg-li-box((brand: fillBlack)...);
 
     & svg {
         display: -webkit-inline-box;
