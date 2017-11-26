@@ -13,22 +13,32 @@
 {% endif %}
 {% if site.seo.author %}
     "sameAs": [
-{% for red in site.seo.sameAs %}
-    {% assign sameas = red.username | prepend: red.url %}
-        "{{ sameas | join: ","}}"
-{% endfor %}
+    {% assign assignSameas = "" %}
+    {% for red in site.seo.sameAs %}
+        {% capture sameas %}
+        "{{ red.username | prepend: red.url }}"
+        {% endcapture %}
+        {% assign assignSameas= assignSameas | append: sameas | append: "|||" %}
+    {% endfor %}
+        {% assign assignSameas = assignSameas | split: "|||" %}
+        {{ assignSameas | join: "," }}
     ],
     "author": {
         "@type": "Person",
         "name": "{{ site.data.people.[site.seo.author].name }}",
         "sameAs": [
-    {% for red in site.data.people[site.seo.author].social.jobs %}
+        {% for red in site.data.people[site.seo.author].social.jobs %}
             "{{ red.username | prepend: red.url }}",
-    {% endfor %}
-    {% for red in site.data.people[site.seo.author].social.me %}
-        {% assign me = red.username | prepend: red.url %}
-    {% endfor %}
-            "{{ me | join: ","}}"
+        {% endfor %}
+        {% assign assignMe = "" %}
+        {% for red in site.data.people[site.seo.author].social.me %}
+            {% capture me %}
+            "{{ red.username | prepend: red.url }}"
+            {% endcapture %}
+        {% assign assignMe = assignMe | append: me | append: "|||" %}
+        {% endfor %}
+            {% assign assignMe = assignMe | split: "|||" %}
+            {{ assignMe | join: "," | strip_newlines | strip }}
         ]
     },
 {% endif %}
