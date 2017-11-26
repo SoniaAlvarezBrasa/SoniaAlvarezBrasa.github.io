@@ -38,4 +38,45 @@ include: ["_pages"]
 # permalink: /:title/
 permalink: /blog/:title.html
 
-# Translate
+# ld+json
+seo:
+    type: WebSite
+    name: Saltw
+    author: Saltw
+    sameAs:
+        -   title: GitHub
+            name: github
+            url: https://github.com/
+            username: SoniaAlvarezBrasa
+        -   title: GitLab
+            name: gitlab
+            url: https://gitlab.com/
+            username: Saltw
+        -   title: CodePen
+            name: codepen
+            url: https://codepen.io/
+            username: saltw
+        -   title: StackOverflow
+            name: stackoverflow
+            url: https://es.stackoverflow.com/
+            username: users/43210/saltw
+        -   title: Twitter
+            name: twitter
+            url: https://twitter.com/
+            username: SaltwDAW
+        -   title: Pinterest
+            name: pinterest
+            url: https://www.pinterest.es/
+            username: Saltw
+        -   title: Instagram
+            name: instagram
+            url: https://www.instagram.com/
+            username: Saltw
+        -   title: DeviantArt
+            name: deviantart
+            url: https://www.deviantart.com/
+            username: Saltw
+        -   title: Youtube
+            name: youtube
+            url: https://www.youtube.com/
+            username: user/Saltw

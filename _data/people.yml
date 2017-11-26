@@ -1,9 +1,14 @@
 Saltw:
     tradename: Saltw
+    name: Sonia Álvarez
     legalname: Sonia Álvarez Brasa
     darlingname: Salty
     avatar:
     email: sonia.alvarez.brasa@gmail.com
+    alias:
+        es: Sonia Álvarez Técnicas Web
+        en: Sonia Álvarez Techniques for Web
+        fr: Sonia Alvarez Techniques pour le Web
     about:
         en: /about.html
         fr: /a-propos.html
@@ -59,3 +64,20 @@ Saltw:
                 name: googleplus
                 url: https://plus.google.com/
                 username: salty
+        contact:
+            -   title: Facebook
+                name: facebook
+                url: https://www.facebook.com/
+                username: SoniaAlvarezBrasa
+            -   title: Twitter
+                name: twitter
+                url: https://twitter.com/
+                username: SaltwDAW
+            -   title: GooglePlus
+                name: googleplus
+                url: https://plus.google.com/
+                username: salty
+            -   title: Instagram
+                name: instagram
+                url: https://www.instagram.com/
+                username: Saltw

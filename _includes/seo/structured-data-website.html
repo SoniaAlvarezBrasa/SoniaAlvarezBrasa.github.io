@@ -1,0 +1,41 @@
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "{{ site.seo.type }}",
+    "url": "{{ site.url }}",
+    "name": "{{ site.seo.name }}",
+{% if site.data.people.[site.seo.name].alias.[page.lang] %}
+    "alternateName": "{{ site.data.people.[site.seo.name].alias.[page.lang] }}",
+{% endif %}
+    "description": "{{ site.description[page.lang] }}",
+{% if site.legalname %}
+    "legalName": "{{ site.legalname }}",
+{% endif %}
+{% if site.seo.author %}
+    "sameAs": [
+{% for red in site.seo.sameAs %}
+    {% assign sameas = red.username | prepend: red.url %}
+        "{{ sameas | join: ","}}"
+{% endfor %}
+    ],
+    "author": {
+        "@type": "Person",
+        "name": "{{ site.data.people.[site.seo.author].name }}",
+        "sameAs": [
+    {% for red in site.data.people[site.seo.author].social.jobs %}
+            "{{ red.username | prepend: red.url }}",
+    {% endfor %}
+    {% for red in site.data.people[site.seo.author].social.me %}
+        {% assign me = red.username | prepend: red.url %}
+    {% endfor %}
+            "{{ me | join: ","}}"
+        ]
+    },
+{% endif %}
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ site.url }}?s={search_term}",
+        "query-input": "required name=search_term"
+    }
+}
+</script>

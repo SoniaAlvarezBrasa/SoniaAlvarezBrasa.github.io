@@ -1,4 +1,8 @@
 es:
+    home:
+        title: Webs simples y usables
+        subtitle: satisfacción de usuario, arquitectura de información, estrategia, diseño y desarrollo
+        description:
     menu:
         iconTitle: Menú Principal
         iconDesc: La imágen del menú desplegable son tres líneas horizontales apiladas una encima de la otra, como si fuera un signo de igual con una raya extra.
@@ -68,6 +72,25 @@ es:
             iconTitle:
             iconDesc:
 en:
+    home:
+        title: Simple & usable websites
+        subtitle: user experience, info architecture, strategy, design, and development
+        p1:
+            line1:
+                l1a: Hello! My name’s
+                strong1: Saltw
+                i1: (acrónimo de Sonia Álvarez Técnicas Web)
+                l1end: and I love to make complicated things simple.
+            line2:
+                l2a: I
+                strong1: design and build products and prototypes
+                i1: subjectively fun and functional digital experiences
+                l2b: for
+                strong2: people
+                i2: who like things that feel good and work well and are not frustrating
+                l2end: .
+        a:
+            about: read more about me
     menu:
         iconTitle: Main Menu
         iconDesc: The image of the drop-down menu is three horizontal lines stacked on top of each other, as if it were an equal sign with an extra line.
@@ -134,6 +157,15 @@ en:
             iconTitle: Twitter logo
             iconDesc: The logo image of Twitter is the silhouette of its little bird in sky blue color, inspired by the species 'Mountain bluebird'.
 fr:
+    home:
+        title: Webs simples y usables
+        subtitle: satisfacción de usuario, arquitectura de información, estrategia, diseño y desarrollo
+        p1:
+            line1:
+                l1a: Hello! My name’s
+                strong1: Saltw
+                i1: acrónimo de Sonia Álvarez Técnicas Web
+                l1b: and I love to make complicated things simple.
     menu:
         iconTitle: Menu Principal
         iconDesc: L'image du menu déroulant est constituée de trois lignes horizontales empilées les unes sur les autres, comme s'il s'agissait d'un signe égal avec une ligne supplémentaire.

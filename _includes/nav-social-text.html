@@ -1,3 +1,7 @@
+<!-- Puede recibir 3 clases de redes sociales -->
+    <!-- sjobs == recoge los data.people.jobs -->
+    <!-- sme == recoge los data.people.me -->
+    <!-- ssite == recoge los site.seo.sameAs -->
 <nav>
     <ul>
         {% if include.sjobs == 1 %}
@@ -28,6 +32,22 @@
                 <a href="{{ red.username | prepend: red.url }}" target="_blank" class="{{ include.aclass }} underlineFromRightMini">
                     <span class="{{ include.aclass }} {{ classname | strip }}">{% include svg/icon-{{ red.name }}.svg hidden='true' iconclass=classname id=svgid %}</span>
                     {{ red.title }}/{{ site.data.people[include.webuser].darlingname }}
+                </a>
+            </li>
+            {% endfor %}
+        {% endif %}
+        {% if include.ssameAs == 1 %}
+            {% for red in site.seo.sameAs %}
+                {% capture svgid %}
+                    {{ include.iconid }}
+                {% endcapture %}
+                {% capture classname %}
+                    svg--{{ red.name }}
+                {% endcapture %}
+            <li class="svg">
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" class="{{ include.aclass }} underlineFromRightMini">
+                    <span class="{{ include.aclass }} {{ classname | strip }}">{% include svg/icon-{{ red.name }}.svg hidden='true' iconclass=classname id=svgid %}</span>
+                    {{ red.title }}/{{ site.tradename }}
                 </a>
             </li>
             {% endfor %}

@@ -4,8 +4,30 @@ ref: index
 lang: en
 ---
 
-{% include paginate.html %}
-
 <article class="">
+    <header>
+        <h2>{{ site.data.t[page.lang].home.title }}</h2>
+        <p>{{ site.data.t[page.lang].home.subtitle }}</p>
+        <nav></nav>
+    </header>
+    <p>Hello! My name’s <strong></strong></p>
+    <p>{{ site.data.t[page.lang].home.p1.line1.l1a }}
+        <strong>{{ site.data.t[page.lang].home.p1.line1.strong1 }}
+            <i>{{ site.data.t[page.lang].home.p1.line1.i1 }}</i>
+        </strong>
+        {{ site.data.t[page.lang].home.p1.line1.l1end }}
+        {{ site.data.t[page.lang].home.p1.line2.l2a }}
+        <strong>{{ site.data.t[page.lang].home.p1.line2.strong1 }}
+            <i>{{ site.data.t[page.lang].home.p1.line2.i1 }}</i>
+        </strong>
+        {{ site.data.t[page.lang].home.p1.line2.l2b }}
+        <strong>
+            {{ site.data.t[page.lang].home.p1.line2.strong2 }}
+            <i>{{ site.data.t[page.lang].home.p1.line2.i2 }}</i>
+        </strong>
+        {{ site.data.t[page.lang].home.p1.line2.l2end }}
+    </p>
 
 </article>
+
+{% include paginate.html %}

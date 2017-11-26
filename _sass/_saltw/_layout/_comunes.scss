@@ -17,10 +17,12 @@ $mapHoverCssBorderUnderlineFromRightMini:(
     selector: underlineFromRightMini,
     ss: $ss-icon
 );
+//----------- fin de HOVERS ---------------------
+
+// ---------- Stilos enlaces redes sociales --------
 
 // li.svg / a / span.svg--name / svg.svg--name
 .svg {
-    // @include sociales-svg-li-box;
     @include sociales-svg-li-box((brand: fillBlack)...);
     @include hoverCss-border-underline-from-right ($mapHoverCssBorderUnderlineFromRightMini...);
 
@@ -51,10 +53,7 @@ $mapHoverCssBorderUnderlineFromRightMini:(
     border-radius: $border-radius;
     overflow: hidden;
     // Default brand == 1
-    // Se inicia con fondo corporativo y texto transparente
-    // (En iconos monocromos)
     @include sociales-svg-li-box;
-    // @include sociales-svg-li-box((brand: fillBlack)...);
 
     & svg {
         display: -webkit-inline-box;
@@ -65,3 +64,4 @@ $mapHoverCssBorderUnderlineFromRightMini:(
         vertical-align: middle;
     }
 }
+// ---------- fin de Stilos enlaces redes sociales --------
