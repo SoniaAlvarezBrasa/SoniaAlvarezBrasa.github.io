@@ -4,9 +4,6 @@
     "@type": "{{ site.seo.type }}",
     "url": "{{ site.url }}",
     "name": "{{ site.tradename }}",
-{% if site.data.people.[site.seo.name].alias.[page.lang] %}
-    "alternateName": "{{ site.data.people.[site.seo.name].alias.[page.lang] }}",
-{% endif %}
     "description": "{{ site.description[page.lang] }}",
 {% if site.legalname %}
     "legalName": "{{ site.legalname }}",
