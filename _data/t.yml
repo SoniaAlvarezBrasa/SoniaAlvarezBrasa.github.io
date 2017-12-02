@@ -2,7 +2,6 @@ es:
     home:
         title: Webs simples y usables
         subtitle: satisfacción de usuario, arquitectura de información, estrategia, diseño y desarrollo
-        description:
     menu:
         iconTitle: Menú Principal
         iconDesc: La imágen del menú desplegable son tres líneas horizontales apiladas una encima de la otra, como si fuera un signo de igual con una raya extra.
@@ -20,77 +19,133 @@ es:
             feed:
                 title: Abrir el canal web
                 texto: Suscribirse
-                link: via RSS
+                link: vía RSS
                 url: /feed.xml
     social:
         CodePen:
             title: Ver mis proyectos elegidos en CodePen.io
-            iconTitle: Logo CodePen.io
+            iconTitle: Logo de CodePen.io
             iconDesc: El logotipo abreviado de Codepen es un cubo geométrico 3d transparente.
         DeviantArt:
-            title:
-            iconTitle:
-            iconDesc:
+            title: Ver mi actividad artística en DeviantArt
+            iconTitle: Logo de DeviantArt
+            iconDesc: El logo de DeviantArt son dos letras 'A' (de Art, en color verde) mayúsculas seguidas, la primera invertida, seccionadas a 62º en el centro de tal forma que si se combina consigo mismo a 180º puede leerse su A mayúscula, normal o invertida hasta el infinito.
         Facebook:
-            title: Sígueme en Facebook
+            title: Siga-me no Facebook
             iconTitle: Logo de Facebook
             iconDesc: El logo abreviado de Facebook es su inicial 'f' en minúscula, en color blanco sobre un fondo azul de tono oscuro.
         GitHub:
             title: Ver mis proyectos en GitHub
             iconTitle: Logo de GitHub
-            iconDesc: La imágen de Marca de GitHub es la silueta en blanco y negro de su mascota 'Octocat' que tiene cabeza de gato y ocho tentáculos de pulpo aunque en el dibujo sólo se ven 5. Dos que hacen de piernas, dos de brazos y el que se ve en la silueta como su cola.
+            iconDesc: La imágen de Marca de GitHub es la silueta en blanco y negro de su mascota 'Octocat' que tiene cabeza de gato y cuerpo de pulpo aunque en sus dibujos nunca se verán más de cinco tentáculos. Dos que hacen de piernas, dos de brazos y el que se ve en la silueta como su cola.
         GitLab:
             title: Ver mis proyectos en GitLab
             iconTitle: Logo de GitLab
-            iconDesc: La imágen de marca de GitLab es una combinación de triángulos en tres tonos naranja que forman la silueta de un zorro.
+            iconDesc: La imágen de marca de GitLab es una combinación de siete triángulos en tres tonos naranja que dibujan un zorro.
         GooglePlus:
-            title: Sígueme en Google+
+            title: Siga-me no Google+
             iconTitle: Logo de Google+
-            iconDesc: El logo abreviado de Google Plus es su inicial G en mayúscula seguido del sigo de suma, ambos en color rojo.
+            iconDesc: El logo abreviado de GooglePlus es su inicial G en mayúscula seguido del signo de suma (G+), ambos en color rojo.
         Instagram:
-            title:
-            iconTitle:
-            iconDesc:
+            title: Siga-me no Instagram
+            iconTitle: Logo de Instagram
+            iconDesc: La imágen de marca de Instagram combina un círculo pequeño dentro de un cuadrado con un punto en su parte superior derecha para que simule una cámara de fotos. El fondo combina un degradado de colores rojos, naranjas, amarillos, azules y violetas como un arco iris.
         LinkedIn:
-            title: Sígueme en LinkedIn
+            title: Siga-me no LinkedIn
             iconTitle: Logo de LinkedIn
             iconDesc: El logo de LinkedIn son las letras 'in' en minúsculas, en color blanco sobre fondo azul claro.
         Pinterest:
-            title: Sígueme en Pinterest
+            title: Siga-me no Pinterest
             iconTitle: Logo de Pinterest
             iconDesc: El logo de Pinterest es un círculo rojo con una P blanca en el centro.
         StackOverflow:
-            title: Ver mis contribuciones en Stack Overflow
+            title: Ver mi actividad en Stack Overflow
             iconTitle: Logo de Stack Overflow
             iconDesc: El logo de Stack Overflow son cinco líneas de color naranja apiladas una encima de otra en abanico sobre un paréntesis boca arriba de color gris, como simulando cinco libros de lomo naranja cayendo en una bandeja gris.
         Twitter:
-            title: Sígueme en Twitter
+            title: Siga-me no Twitter
             iconTitle: Logo de Twitter
-            iconDesc: la imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulejo de las montañas'.
+            iconDesc: La imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulillo pálido'.
         Youtube:
-            title:
-            iconTitle:
-            iconDesc:
+            title: Siga-me no Youtube
+            iconTitle: Logo de Youtube
+            iconDesc: La imágen de marca de youtube es un triángulo blanco dentro de un rectángulo rojo simulando el botón inicio de un reproductor.
+gl:
+    home:
+        title: Webs simples e usables
+        subtitle: satisfacción do usuario, arquitectura da información, estratexia, deseño mais desenrolo
+    menu:
+        iconTitle: Menú Principal
+        iconDesc: A icona de abrir/pechar o menú, son tres liñas horizontais apiladas unha eriba da outra, coma se fose o sinal do igual (=) cunha liña a maiores.
+    paginate:
+        heading: Últimos artigos
+        else: Non hai artigos aínda
+        show:
+            title: Ir ó artigo
+            link: Ler o artigo todo
+            x: por
+        index:
+            blogs:
+                title:
+                url:
+            feed:
+                title: Abrir o canal web
+                texto: Suscribirse
+                link: vía RSS
+                url: /feed.xml
+    social:
+        CodePen:
+            title: Verme por CodePen.io
+            iconTitle: Logo do CodePen.io
+            iconDesc: O logo abreviado do Codepen é un cubo xeométrico transparente en 3d.
+        DeviantArt:
+            title: Verme por DeviantArt
+            iconTitle: Logo do DeviantArt
+            iconDesc: O logo do DeviantArt son dous 'A' seguidos (de Art, en cor verde) en letra capital, o primeiro do revés, cortados a 62º no medio, de xeito tal que si se combina consigo mesmo a 180º pode lerse o seu A capital, ó dereito e o revés ate o infinito.
+        Facebook:
+            title: Sígueme en Facebook
+            iconTitle: Logo do Facebook
+            iconDesc: O logo abreviado do Facebook é o seu inicial 'f' en minúscula, en cor branca con fondo azul escuro.
+        GitHub:
+            title: Verme por GitHub
+            iconTitle: Logo do GitHub
+            iconDesc: A imaxe de marca do GitHub é a silueta en branco e negro da súa mascota 'Octocat', que ten cabeza cabeza de gato e corpo de polvo do que nunca verás máis de cinco tentáculos. Dous que fan de pernas, dous de brazos e o que se ve na icona coma rabo.
+        GitLab:
+            title: Verme por GitLab
+            iconTitle: Logo do GitLab
+            iconDesc: A imaxe de marca do GilLab é unha combinación de sete triángulos en tres tonos laranxa que dibuxan a súa raposa.
+        GooglePlus:
+            title: Sígueme en Google+
+            iconTitle: Logo do Google+
+            iconDesc: O logo abreviado do GooglePlus é o seu inicial 'G' en letra capital seguido do signo da suma (G+), os dous en vermello.
+        Instagram:
+            title: Sígueme en Instagram
+            iconTitle: Logo do Instagram
+            iconDesc: A imaxe de marca do Instagram combina un círculo dentro dun cadrado cun punto no canto superior dereito pra que semelle unha cámara de fotos. O fondo combina un gradiente de cores vermellos, alaranxadas, marelas, azuis e violetas coma o arco da vella.
+        LinkedIn:
+            title: Sígueme en LinkedIn
+            iconTitle: Logo do LinkedIn
+            iconDesc: O logo abreviado do linkedIn son as letras 'in' en minúsculas de cor branco con fondo azul celeste.
+        Pinterest:
+            title: Sígueme en Pinterest
+            iconTitle: Logo do Pinterest
+            iconDesc: O logo do Pinterest é un círculo vermello cun P branco no centro.
+        StackOverflow:
+            title: Verme por Stack Overflow
+            iconTitle: Logo do Stack Overflow
+            iconDesc: O logo do Stack Overflow son cinco liñas de cor laranxa apiladas unha por riba da outra en abanico sobor dun paréntese gris boca arriba coma a semellar cinco libros de lomo laranxa a caer nunha bandexa gris.
+        Twitter:
+            title: Sígueme en Twitter
+            iconTitle: Logo do Twitter
+            iconDesc: A imaxe de marca do Twitter é a silueta do seu paxariño en azul celeste, inspirado na especie Sialia currucoides
+        Youtube:
+            title: Sígueme en Youtube
+            iconTitle: Logo do Youtube
+            iconDesc: A imaxe de marca do Youtube é un triángulo branco dentro dun rectángulo vermello coma un botón de inicio dun reproductor.
 en:
     home:
         title: Simple & usable websites
         subtitle: user experience, info architecture, strategy, design, and development
-        p1:
-            line1:
-                l1a: Hello! My name’s
-                strong1: Saltw
-                i1: (acrónimo de Sonia Álvarez Técnicas Web)
-                l1end: and I love to make complicated things simple.
-            line2:
-                l2a: I
-                strong1: design and build products and prototypes
-                i1: subjectively fun and functional digital experiences
-                l2b: for
-                strong2: people
-                i2: who like things that feel good and work well and are not frustrating
-                l2end: .
-        a:
-            about: read more about me
     menu:
         iconTitle: Main Menu
         iconDesc: The image of the drop-down menu is three horizontal lines stacked on top of each other, as if it were an equal sign with an extra line.
@@ -117,9 +172,9 @@ en:
             iconTitle: CodePen.io logo
             iconDesc: The Codepen abbreviated logo is a transparent 3d geometric cube.
         DeviantArt:
-            title:
-            iconTitle:
-            iconDesc:
+            title: More of me in DeviantArt
+            iconTitle: DeviantArt logo
+            iconDesc: The DeviantArt logo are two capital letters 'A' (from Art, in green), the first reversed, sectioned at 62º in the center so that if it is combined with itself at 180º its upper, normal or inverted A can be read to infinity.
         Facebook:
             title: Follow me on Facebook
             iconTitle: Facebook logo
@@ -137,9 +192,9 @@ en:
             iconTitle: Google+ logo
             iconDesc: The abbreviated logo of Google Plus is its initial G in capital letters followed by the addition sign, both in red.
         Instagram:
-            title:
-            iconTitle:
-            iconDesc:
+            title: Follow me on Instagram
+            iconTitle: Instagram logo
+            iconDesc: The Instagram image combines a small circle inside a square with a dot on the top right to simulate a camera. The background combines a gradient of red, orange, yellow, blue and violet colors like a rainbow.
         LinkedIn:
             title: Follow me on LinkedIn
             iconTitle: LinkedIn logo
@@ -156,16 +211,86 @@ en:
             title: Follow me on Twitter
             iconTitle: Twitter logo
             iconDesc: The logo image of Twitter is the silhouette of its little bird in sky blue color, inspired by the species 'Mountain bluebird'.
+        Youtube:
+            title: Follow me on Youtube
+            iconTitle: Youtube logo
+            iconDesc: The youtube brand image is a white triangle inside a red rectangle simulating the play button.
+pt:
+    home:
+        title: Sites simples e utilizáveis
+        subtitle: satisfação do usuário, arquitetura da informação, estratégia, design e desenvolvimento
+    menu:
+        iconTitle: Menu Principal
+        iconDesc: O ícone de abrir/fechar do menu, consiste de três linhas horizontais empilhadas uma sobre a outra, como se fosse um sinal de igual com uma linha extra.
+    paginate:
+        heading: Últimos artigos
+        else: Nenhum artigo
+        show:
+            title: Vá para o artigo
+            link: Leia o artigo completo
+            x: por
+        index:
+            blogs:
+                title:
+                url:
+            feed:
+                title: Abrir o canal web
+                texto: Inscreva-se
+                link: via RSS
+                url: /feed.xml
+    social:
+        CodePen:
+            title: Veja-me por CodePen.io
+            iconTitle: Logotipo do CodePen.io
+            iconDesc: O logotipo abreviado do Codepen é um cubo geométrico transparente em 3d.
+        DeviantArt:
+            title: Veja-me por DeviantArt
+            iconTitle: Logotipo do DeviantArt
+            iconDesc: O logotipo do DeviantArt é duas letras 'A' (de Art, em cor verde) seguidas, a primeira invertida, seccionadas a 62º no centro, de tal forma que se for combinada a si mesma a 180º pode ser lida seu capital A, normal ou invertida, para o infinito.
+        Facebook:
+            title: Sígueme em Facebook
+            iconTitle: Logotipo do Facebook
+            iconDesc: O logotipo abreviado do Facebook é seu 'f' inicial em minúsculas, em cor branca con um fundo azul escuro.
+        GitHub:
+            title: Veja-me por GitHub
+            iconTitle: Logotipo do GitHub
+            iconDesc: A imagem de marca do GitHub é a silhueta em preto e branco de seu animal de estimaçao 'Octocat', que tem uma cabeça de gato e corpo de polvo, do qual você nunca verá mais de cinco tentáculos. Dois que fazem pernas, dois braços e o visto na silhueta como sua cauda.
+        GitLab:
+            title: Veja-me por GitLab
+            iconTitle: Logotipo do GitLab
+            iconDesc: A imagem do GilLab é uma combinação de sete triângulos em três tons de laranja que desenham uma raposa.
+        GooglePlus:
+            title: Sígueme em Google+
+            iconTitle: Logotipo do Google+
+            iconDesc: O logotipo abreviado do GooglePlus é o inicial G em maiúscula seguido do sinal de mais (G +), ambos em vermelho.
+        Instagram:
+            title: Sígueme em Instagram
+            iconTitle: Logotipo do Instagram
+            iconDesc: A imagem do Instagram combina um círculo dentro de um quadrado com um ponto no canto superior direito para simular uma câmera. O fundo combina um gradiente de cores vermelhas, alaranjadas, amarelas, azuis e violetas como um arco-íris.
+        LinkedIn:
+            title: Sígueme em LinkedIn
+            iconTitle: Logotipo do LinkedIn
+            iconDesc: O logotipo abreviado do linkedIn consiste nas letras minúsculas 'in', brancas em um fundo azul claro.
+        Pinterest:
+            title: Sígueme em Pinterest
+            iconTitle: Logotipo do Pinterest
+            iconDesc: O logotipo do Pinterest é um círculo vermelho com um P branco no centro.
+        StackOverflow:
+            title: Veja-me por Stack Overflow
+            iconTitle: Logotipo do Stack Overflow
+            iconDesc: O logotipo do Stack Overflow consiste de cinco linhas de laranja empilhadas uma sobre a outra em um fã  sobre um parêntese de cabeça para baixo, como se simulassem cinco livros de lombo de laranja caídos em uma bandeja de cinza.
+        Twitter:
+            title: Sígueme em Twitter
+            iconTitle: Logotipo do Twitter
+            iconDesc: A imagem do logotipo do Twitter é a silhueta de seu pequeno passarinho em azul, inspirado pela espécie Sialia currucoides.
+        Youtube:
+            title: Sígueme em Youtube
+            iconTitle: Logotipo do Youtube
+            iconDesc: A imagem Youtube é um triângulo branco dentro de um retângulo vermelho simulando o botâo de inicio de um reproductor.
 fr:
     home:
-        title: Webs simples y usables
-        subtitle: satisfacción de usuario, arquitectura de información, estrategia, diseño y desarrollo
-        p1:
-            line1:
-                l1a: Hello! My name’s
-                strong1: Saltw
-                i1: acrónimo de Sonia Álvarez Técnicas Web
-                l1b: and I love to make complicated things simple.
+        title: Sites simples et utilisables
+        subtitle: satisfaction des utilisateurs, architecture de l'information, stratégie, conception et développement
     menu:
         iconTitle: Menu Principal
         iconDesc: L'image du menu déroulant est constituée de trois lignes horizontales empilées les unes sur les autres, comme s'il s'agissait d'un signe égal avec une ligne supplémentaire.
@@ -191,9 +316,9 @@ fr:
             iconTitle: CodePen.io logo
             iconDesc: Le logo abrégé Codepen est un cube géométrique 3d transparent.
         DeviantArt:
-            title:
-            iconTitle:
-            iconDesc:
+            title: Plus de moi à DeviantArt
+            iconTitle: DeviantArt logo
+            iconDesc: Le logo de DeviantArt sont deux lettres «A» (d'Art, en couleur verte) capitalisées et suivies, la première inversée, sectionnée à 62º dans le centre de telle sorte que si elle est combinée à 180º elle peut lire son capital A, normal ou inversé à l'infini.
         Facebook:
             title: Suis-moi sur Facebook
             iconTitle: Facebook logo
@@ -211,9 +336,9 @@ fr:
             iconTitle: Google+ logo
             iconDesc: Le logo abrégé de Google Plus est son l'initiale G en lettres majuscules suivi du signe d'addition, tous les deux en rouge.
         Instagram:
-            title:
-            iconTitle:
-            iconDesc:
+            title: Suis-moi sur Instagram
+            iconTitle: Instagram logo
+            iconDesc: L'image Instagram combine un petit cercle à l'intérieur d'un carré avec un point en haut à droite pour simuler une caméra. L'arrière-plan combine un dégradé de couleurs rouge, orange, jaune, bleu et violet comme un arc-en-ciel.
         LinkedIn:
             title: Suis-moi sur LinkedIn
             iconTitle: LinkedIn logo
@@ -230,3 +355,7 @@ fr:
             title: Suis-moi sur Twitter
             iconTitle: Twitter logo
             iconDesc: L'image du logo de Twitter est la silhouette de son petit oiseau de couleur bleu ciel, inspiré par l'espèce 'Merlebleu azuré'.
+        Youtube:
+            title: Suis-moi sur Youtube
+            iconTitle: Youtube logo
+            iconDesc: L'image de marque youtube est un triangle blanc à l'intérieur d'un rectangle rouge simulant le bouton de démarrage d'un lecteur audio ou vidéo

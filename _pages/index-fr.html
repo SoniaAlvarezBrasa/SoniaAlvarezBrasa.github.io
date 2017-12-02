@@ -3,10 +3,16 @@ layout: default
 permalink: /accueil.html
 ref: index
 lang: fr
+description: Slogan de votre Marque Personnelle pour les moteurs de recherche, la description de votre site sur RSS et pour votre public en général (156 caractères pour Google -115 pour mobile-)
 ---
 
-{% include paginate.html %}
-
-<article class="">
-
+<article>
+    <header>
+        <h2>{{ site.title[page.lang] }}</h2>
+        <p>{{ site.subtitle[page.lang] }}</p>
+        <nav></nav>
+    </header>
+    <p>Salut! Je suis <strong>Saltw <i>acronyme de Sonia Álvarez Techniques pour le Web </i></strong>et j'adore simplifier des choses compliquées. Je <strong>conçois et construis des produits et des sites Web <i>des expériences amusantes et efficaces </i></strong> por les <strong>gents <i>qui aiment les choses qui les font se sentir bien, qui travaillent bien et ne sont pas frustrants</i>. </strong><a href="#">lire plus à propos de moi </a> ou <a href="#">salue-moi</a>
 </article>
+
+{% include paginate.html %}

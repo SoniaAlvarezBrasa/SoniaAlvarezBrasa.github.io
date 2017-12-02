@@ -3,7 +3,8 @@
     "@context": "http://schema.org",
     "@type": "{{ site.seo.type }}",
     "url": "{{ site.url }}",
-    "name": "{{ site.seo.name }}",
+    "name": "{{ site.tradename }}",
+{% if site.data.people.[site.seo.name].alias.[page.lang] %}
 {% if site.data.people.[site.seo.name].alias.[page.lang] %}
     "alternateName": "{{ site.data.people.[site.seo.name].alias.[page.lang] }}",
 {% endif %}
@@ -13,32 +14,35 @@
 {% endif %}
 {% if site.seo.author %}
     "sameAs": [
-    {% assign assignSameas = "" %}
+    {% assign assignSameSite = "" %}
     {% for red in site.seo.sameAs %}
         {% capture sameas %}
         "{{ red.username | prepend: red.url }}"
         {% endcapture %}
-        {% assign assignSameas= assignSameas | append: sameas | append: "|||" %}
+        {% assign assignSameSite= assignSameSite | append: sameas | append: "|||" %}
     {% endfor %}
-        {% assign assignSameas = assignSameas | split: "|||" %}
-        {{ assignSameas | join: "," }}
+        {% assign assignSameSite = assignSameSite | split: "|||" %}
+        {{ assignSameSite | join: "," }}
     ],
     "author": {
         "@type": "Person",
         "name": "{{ site.data.people.[site.seo.author].name }}",
         "sameAs": [
+        {% assign assignSamePerson = "" %}
         {% for red in site.data.people[site.seo.author].social.jobs %}
-            "{{ red.username | prepend: red.url }}",
+            {% capture jobs %}
+            "{{ red.username | prepend: red.url }}"
+            {% endcapture %}
+            {% assign assignSamePerson = assignSamePerson | append: jobs | append: "|||" %}
         {% endfor %}
-        {% assign assignMe = "" %}
         {% for red in site.data.people[site.seo.author].social.me %}
             {% capture me %}
             "{{ red.username | prepend: red.url }}"
             {% endcapture %}
-        {% assign assignMe = assignMe | append: me | append: "|||" %}
+            {% assign assignSamePerson = assignSamePerson | append: me | append: "|||" %}
         {% endfor %}
-            {% assign assignMe = assignMe | split: "|||" %}
-            {{ assignMe | join: "," | strip_newlines | strip }}
+            {% assign assignSamePerson = assignSamePerson | split: "|||" %}
+            {{ assignSamePerson | join: "," }}
         ]
     },
 {% endif %}

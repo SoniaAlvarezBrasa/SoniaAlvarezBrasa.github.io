@@ -2,32 +2,16 @@
 layout: default
 ref: index
 lang: en
+description: Slogan of your Personal Brand for search engines, the description of your site in RSS and for your general public (156 characters for Google -115 for mobile-)
 ---
 
-<article class="">
+<article>
     <header>
-        <h2>{{ site.data.t[page.lang].home.title }}</h2>
-        <p>{{ site.data.t[page.lang].home.subtitle }}</p>
+        <h2>{{ site.title[page.lang] }}</h2>
+        <p>{{ site.subtitle[page.lang] }}</p>
         <nav></nav>
     </header>
-    <p>Hello! My name’s <strong></strong></p>
-    <p>{{ site.data.t[page.lang].home.p1.line1.l1a }}
-        <strong>{{ site.data.t[page.lang].home.p1.line1.strong1 }}
-            <i>{{ site.data.t[page.lang].home.p1.line1.i1 }}</i>
-        </strong>
-        {{ site.data.t[page.lang].home.p1.line1.l1end }}
-        {{ site.data.t[page.lang].home.p1.line2.l2a }}
-        <strong>{{ site.data.t[page.lang].home.p1.line2.strong1 }}
-            <i>{{ site.data.t[page.lang].home.p1.line2.i1 }}</i>
-        </strong>
-        {{ site.data.t[page.lang].home.p1.line2.l2b }}
-        <strong>
-            {{ site.data.t[page.lang].home.p1.line2.strong2 }}
-            <i>{{ site.data.t[page.lang].home.p1.line2.i2 }}</i>
-        </strong>
-        {{ site.data.t[page.lang].home.p1.line2.l2end }}
-    </p>
-
+    <p>Hello! My name’s <strong>Saltw <i>acronym of Sonia Álvarez Técnicas Web </i></strong>and I love to make complicated things simple. I <strong>design and build products & web sites <i>subjectively fun and functional digital experiences </i></strong>for <strong>people <i>who like things that feel good and work well and are not frustrating</i></strong>.<a href="#"> read more about me</a> or <a href="#">say hello!</a></p>
 </article>
 
 {% include paginate.html %}

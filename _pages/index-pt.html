@@ -1,0 +1,18 @@
+---
+layout: default
+permalink: /benvida.html
+ref: index
+lang: pt
+description: Slogan da sua Marca Pessoal para motores de busca, a descrição do seu site em RSS e para o seu público em geral (156 caracteres para o Google -115 para celular)
+---
+
+<article>
+    <header>
+        <h2>{{ site.title[page.lang] }}</h2>
+        <p>{{ site.subtitle[page.lang] }}</p>
+        <nav></nav>
+    </header>
+    <p>Oi! Eu sou <strong>{{ site.tradename }}<i> sigla para {{ site.alternatename[page.lang] }}</i></strong> e adoro simplificar coisas complicadas. <strong>Design e crie produtos, protótipos e sites <i>de experiências digitais divertidas e eficazes </i></strong> para <strong>pessoas <i>que gostam de encontrar o que querem onde se sentem bem e sem frustração</i>. </strong><a href="#">¡leia mais sobre mim! </a> o <a href="#">diga oi!</a>
+</article>
+
+{% include paginate.html %}

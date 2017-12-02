@@ -1,12 +1,13 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
+lang: en
 ref: welcome
 date:   2016-02-29 09:48:44 +0100
 autor: Saltw
 categories: principal
-lang: en
 description: This article explains the general functioning of the Blog and how to start publishing your articles on your website, as well as the links to the general documentation and the help pages.
+metaDescription: La meta-descripción muestra en los resultados lo que ofreces y da motivos al usuario para visitar tu página. Haz este texto persuasivo, sin falsear ni exagerar.
 ---
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.

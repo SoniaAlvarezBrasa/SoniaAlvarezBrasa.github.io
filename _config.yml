@@ -7,16 +7,14 @@
 
 # Site settings
 tradename: Saltw
-legalname: Sonia Álvarez Brasa <sup><small>TM</small></sup>
-
-# Index
-title:
-    en: Your awesome title
-    fr: Votre titre génial
+legalname: Sonia Álvarez Brasa
+alternatename:
+    es: Sonia Álvarez Técnicas Web
+    gl: Sonia Álvarez Técnicas Web
+    en: Sonia Álvarez Techniques for Web
+    pt: Sonia Álvarez Techniques para o Web
+    fr: Sonia Alvarez Techniques pour le Web
 email: sonia.alvarez.brasa@gmail.com
-description:
-    en: Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-    fr: Écrivez une super description de votre nouveau site ici. Vous pouvez modifier cette ligne dans _config.yml. Elle apparaîtra dans la balise meta description (pour les résultats sur Google) et dans le fil RSS feed.xml.
 index:
     en:
     fr: accueil.html
@@ -28,20 +26,35 @@ feed:
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://soniaalvarezbrasa.github.io" # the base hostname & protocol for your site
 
-# Social links
+# Site default
+prefix: " | Saltw"
+title:
+    es: Tu sensacional título
+    gl: O teu fabuloso título
+    en: Your awesome title
+    pt: Seu título fantástico
+    fr: Votre titre génial
+subtitle:
+    es: Tu frase de Marca Personal complementaria que se repetirá como pié de firma a lo largo de tu web.
+    gl: Reforzo do teu título de Marca persoal que será repetido coma un pe de altar ó longo da túa web.
+    en: Reinforcement of your Personal Brand title that will be repeated as a foot signature in different blocks of your website.
+    pt: Reforço do título de sua Marca Pessoal que será repetido como um pé de assinatura em várias partes do seu site.
+    fr: Complétez votre titre de marque personnelle avec cette phrase qui sera répétée comme un pied de signature sur plusieurs blocs de votre site Web.
+description:
+    es: Escribe aquí la sensacional descripción para tu nuevo sitio web. Puedes editar esta línea en _config.yml. Aparecerá oculta en el meta del html (para los resultados de búsqueda de Google) y en la descripción del sitio de feed.xml.
+    en: Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    gl: Escribe acó a fabulosa descrición do teu novo sitio web. Poderáse mudar esta liña no _config.yml. Aparecerá oculta no encabezado do documento (para os robots de busca de Google) e na descrición do sitio no feed.xml.
+    pt: Escreva uma descrição incrível para o seu novo site aqui. Você pode editar esta linha em _config.yml. Ele aparecerá no alvo do cabeçalho do documento (para resultados de pesquisa do Google) e na descrição do site feed.xml.
+    fr: Écrivez une super description de votre nouveau site ici. Vous pouvez modifier cette ligne dans _config.yml. Elle apparaîtra dans la balise meta description (pour les résultats sur Google) et dans le fil RSS feed.xml.
+
+# Site Social links
 github_username: SoniaAlvarezBrasa
 twitter_username: jekyllrb
 
-# Build settings
-markdown: kramdown
-include: ["_pages"]
-# permalink: /:title/
-permalink: /blog/:title.html
-
-# ld+json
+# metadata
 seo:
     type: WebSite
-    name: Saltw
+    # name: Saltw
     author: Saltw
     sameAs:
         -   title: GitHub
@@ -80,3 +93,23 @@ seo:
             name: youtube
             url: https://www.youtube.com/
             username: user/Saltw
+alternate:
+    default: es
+    hreflang:
+        en: en-US
+        es: es-ES
+        fr: fr-FR
+        gl: gl-ES
+        pt: pt-BR
+    oglocale:
+        en: en_US
+        es: es_ES
+        fr: fr_FR
+        gl: gl_ES
+        pt: pt_BR
+
+# Build settings
+markdown: kramdown
+include: ["_pages"]
+# permalink: /:title/
+permalink: /blog/:title.html
