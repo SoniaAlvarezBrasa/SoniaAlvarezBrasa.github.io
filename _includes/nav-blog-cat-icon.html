@@ -4,8 +4,11 @@
     {% endcapture %}
     <ul class="{{ include.ulclass }}">
         {% for cat in site.categories %}
-        {% assign temp=null %}
-        {% assign posts=cat[1] | where:"lang", page.lang %}
+            {% capture svgid %}
+                {{ include.iconid }}--{{ forloop.index }}
+            {% endcapture %}
+            {% assign temp=null %}
+            {% assign posts=cat[1] | where:"lang", page.lang %}
             {% for post in posts %}
                 {% capture temp %}{{ post.content }}{% endcapture%}
             {% endfor %}
