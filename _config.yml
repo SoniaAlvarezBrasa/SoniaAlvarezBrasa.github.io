@@ -113,3 +113,7 @@ markdown: kramdown
 include: ["_pages"]
 # permalink: /:title/
 permalink: /blog/:title.html
+future: true
+
+# Blog categories
+#collections:

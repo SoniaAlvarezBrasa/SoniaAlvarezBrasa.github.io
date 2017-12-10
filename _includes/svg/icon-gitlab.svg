@@ -2,8 +2,8 @@
     width="256" height="236" viewBox="0 0 256 236"
     aria-labelledby="gitlabTitle--{{ include.id | strip }} gitlabDesc--{{ include.id | strip }}"
     id="gitlab--{{ include.id | strip }}" class='{{ include.iconclass | strip }}'>
-    <title id="gitlabTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].social.GitLab.iconTitle }}</title>
-    <desc id="gitlabDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].social.GitLab.iconDesc }}</desc>
+    <title id="gitlabTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.GitLab.iconTitle }}</title>
+    <desc id="gitlabDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.GitLab.iconDesc }}</desc>
     <style type="text/css">
       .a--gitlab {
         fill:#E24329;

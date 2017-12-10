@@ -1,0 +1,158 @@
+{% if include.pageref == "page" %}
+    {% if page.lang == 'en' %}
+        {{ page.date | date: "%b %-d, %Y" }}
+    {% elsif page.lang == 'es' %}
+        {% assign m = page.date | date: "%-m" %}
+        {{ page.date | date: "%-d de" }}
+        {% case m %}
+            {% when '1' %}enero
+            {% when '2' %}febrero
+            {% when '3' %}marzo
+            {% when '4' %}abril
+            {% when '5' %}mayo
+            {% when '6' %}junio
+            {% when '7' %}julio
+            {% when '8' %}agosto
+            {% when '9' %}septiembre
+            {% when '10' %}octubre
+            {% when '11' %}noviembre
+            {% when '12' %}diciembre
+        {% endcase %}
+        {{ page.date | date: "de %Y" }}
+    {% elsif page.lang == 'gl' %}
+        {% assign m = page.date | date: "%-m" %}
+        {{ page.date | date: "%-d de" }}
+        {% case m %}
+            {% when '1' %}xaneiro
+            {% when '2' %}antroido
+            {% when '3' %}marzal
+            {% when '4' %}abril
+            {% when '5' %}maio
+            {% when '6' %}xuño
+            {% when '7' %}xullo
+            {% when '8' %}agosto
+            {% when '9' %}setembro
+            {% when '10' %}outono
+            {% when '11' %}novembro
+            {% when '12' %}nadal
+        {% endcase %}
+        {{ page.date | date: "do %Y" }}
+    {% elsif page.lang == 'fr' %}
+        {% assign m = page.date | date: "%-m" %}
+        {{ page.date | date: "%-d " }}
+        {% case m %}
+            {% when '1' %}janvier
+            {% when '2' %}février
+            {% when '3' %}mars
+            {% when '4' %}avril
+            {% when '5' %}mai
+            {% when '6' %}juin
+            {% when '7' %}juillet
+            {% when '8' %}août
+            {% when '9' %}septembre
+            {% when '10' %}octobre
+            {% when '11' %}novembre
+            {% when '12' %}décembre
+        {% endcase %}
+        {{ page.date | date: "%Y" }}
+    {% elsif page.lang == 'pt' %}
+        {% assign m = page.date | date: "%-m" %}
+        {{ page.date | date: "%-d de" }}
+        {% case m %}
+            {% when '1' %}janeiro
+            {% when '2' %}fevereiro
+            {% when '3' %}março
+            {% when '4' %}abril
+            {% when '5' %}maio
+            {% when '6' %}junho
+            {% when '7' %}julho
+            {% when '8' %}agosto
+            {% when '9' %}setembro
+            {% when '10' %}octubro
+            {% when '11' %}novembro
+            {% when '12' %}dezembro
+        {% endcase %}
+        {{ page.date | date: "de %Y" }}
+    {% else %}
+        {{ page.date | date: "%Y-%m-%d" }}
+    {% endif %}
+{% elsif include.pageref == "post" %}
+    {% if post.lang == 'en' %}
+        {{ post.date | date: "%b %-d, %Y" }}
+    {% elsif post.lang == 'es' %}
+        {% assign m = post.date | date: "%-m" %}
+        {{ post.date | date: "%-d de" }}
+        {% case m %}
+            {% when '1' %}enero
+            {% when '2' %}febrero
+            {% when '3' %}marzo
+            {% when '4' %}abril
+            {% when '5' %}mayo
+            {% when '6' %}junio
+            {% when '7' %}julio
+            {% when '8' %}agosto
+            {% when '9' %}septiembre
+            {% when '10' %}octubre
+            {% when '11' %}noviembre
+            {% when '12' %}diciembre
+        {% endcase %}
+        {{ post.date | date: "de %Y" }}
+    {% elsif post.lang == 'gl' %}
+        {% assign m = post.date | date: "%-m" %}
+        {{ post.date | date: "%-d de" }}
+        {% case m %}
+            {% when '1' %}xaneiro
+            {% when '2' %}antroido
+            {% when '3' %}marzal
+            {% when '4' %}abril
+            {% when '5' %}maio
+            {% when '6' %}xuño
+            {% when '7' %}xullo
+            {% when '8' %}agosto
+            {% when '9' %}setembro
+            {% when '10' %}outono
+            {% when '11' %}novembro
+            {% when '12' %}nadal
+        {% endcase %}
+        {{ post.date | date: "do %Y" }}
+    {% elsif post.lang == 'fr' %}
+        {% assign m = post.date | date: "%-m" %}
+        {{ post.date | date: "%-d " }}
+        {% case m %}
+            {% when '1' %}janvier
+            {% when '2' %}février
+            {% when '3' %}mars
+            {% when '4' %}avril
+            {% when '5' %}mai
+            {% when '6' %}juin
+            {% when '7' %}juillet
+            {% when '8' %}août
+            {% when '9' %}septembre
+            {% when '10' %}octobre
+            {% when '11' %}novembre
+            {% when '12' %}décembre
+        {% endcase %}
+        {{ post.date | date: "%Y" }}
+    {% elsif post.lang == 'pt' %}
+        {% assign m = post.date | date: "%-m" %}
+        {{ post.date | date: "%-d de" }}
+        {% case m %}
+            {% when '1' %}janeiro
+            {% when '2' %}fevereiro
+            {% when '3' %}março
+            {% when '4' %}abril
+            {% when '5' %}maio
+            {% when '6' %}junho
+            {% when '7' %}julho
+            {% when '8' %}agosto
+            {% when '9' %}setembro
+            {% when '10' %}octubro
+            {% when '11' %}novembro
+            {% when '12' %}dezembro
+        {% endcase %}
+        {{ post.date | date: "de %Y" }}
+    {% else %}
+        {{ post.date | date: "%Y-%m-%d" }}
+    {% endif %}
+
+{% endif %}

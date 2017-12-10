@@ -5,7 +5,9 @@ layout: default
 
   <header class="post-header">
     <h2 class="post-title" itemprop="name headline">{{ page.title }}</h2>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+    <small class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{% include date.html pageref="page" %}</time> &nbsp;&#8594;&nbsp;</small>
+    {% if page.autor %}<small class="post-meta" itemprop="author" itemscope itemtype="http://schema.org/Person"><strong itemprop="name">{{ page.autor }}</strong></small>{% endif %}
+    {% include nav-page-tags.html iconid="post-show" ulclass="main-fin" aclass="cross-centro" %}
   </header>
 
   <div class="post-content" itemprop="articleBody">

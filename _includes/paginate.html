@@ -13,7 +13,7 @@
             <small>{{ post.date | date: "%b %-d, %Y" }} {{ site.data.t.[page.lang].paginate.show.x }} <strong><a href="{{ site.data.people[post.autor].about[page.lang] | prepend: site.baseurl }}">{{ post.autor }}</a></strong></small>
         </header>
         <!-- <p>{{ post.content | strip_html | truncatewords:65 }} </p> -->
-        <p class="underlineFromRight"><a href="{{ post.url }}" title="{{ site.data.t.[page.lang].paginate.show.title}} '{{ post.title }}'">{{ post.description }}</a></p>
+        <p class="underlineFromRight"><a href="{{ post.url }}" title="{{ site.data.t.[page.lang].paginate.show.title}} '{{ post.title }}'">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endif %}</a></p>
     </article>
     {% endfor %}
     <footer>

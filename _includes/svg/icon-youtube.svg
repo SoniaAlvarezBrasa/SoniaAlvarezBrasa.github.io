@@ -2,8 +2,8 @@
     width="50" height="50" viewBox="0 0 48 48"
     aria-labelledby="youtubeTitle--{{ include.id | strip }} youtubeDesc--{{ include.id | strip }}"
     id="youtube--{{ include.id | strip }}" class='{{ include.iconclass | strip }}'>
-    <title id="youtubeTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].social.Youtube.iconTitle }}</title>
-    <desc id="youtubeDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].social.Youtube.iconDesc }}</desc>
+    <title id="youtubeTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.Youtube.iconTitle }}</title>
+    <desc id="youtubeDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.Youtube.iconDesc }}</desc>
     <style type="text/css">
         .a--youtube {
             fill: rgb(255,0,0);

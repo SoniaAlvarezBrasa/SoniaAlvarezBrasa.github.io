@@ -4,7 +4,7 @@ title:  "Bienvenue sur Jekyll !"
 ref: welcome
 date:   2016-02-29 09:48:44 +0100
 autor: Saltw
-categories: principal
+categories: jekyll
 lang: fr
 description: Cet article explique le fonctionnement général du Blog et comment commencer à publier vos articles sur votre site Web, ainsi que les liens vers la documentation générale et les pages d'aide.
 ---

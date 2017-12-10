@@ -2,8 +2,8 @@
     width="120" height="120" viewBox="0 0 120 120"
     aria-labelledby="stackoverflowTitle--{{ include.id | strip }} stackoverflowDesc--{{ include.id | strip }}"
     id="stackoverflow--{{ include.id | strip }}" class='{{ include.iconclass | strip }}'>
-    <title id="stackoverflowTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].social.StackOverflow.iconTitle }}</title>
-    <desc id="stackoverflowDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].social.StackOverflow.iconDesc }}</desc>
+    <title id="stackoverflowTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.StackOverflow.iconTitle }}</title>
+    <desc id="stackoverflowDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.StackOverflow.iconDesc }}</desc>
 <style type="text/css">
 	.st0--stackoverflow{fill:#bcbbbb;}
 	.invertir--stackoverflow {fill:#f48023;}

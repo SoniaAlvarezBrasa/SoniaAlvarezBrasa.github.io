@@ -2,8 +2,8 @@
     width="29" height="29" viewBox="0 0 24 24"
     aria-labelledby="instagramTitle--{{ include.id | strip }} instagramDesc--{{ include.id | strip }}"
     id="instagram--{{ include.id | strip }}" class='{{ include.iconclass | strip }}'>
-    <title id="instagramTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].social.Instagram.iconTitle }}</title>
-    <desc id="instagramDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].social.Instagram.iconDesc }}</desc>
+    <title id="instagramTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.Instagram.iconTitle }}</title>
+    <desc id="instagramDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.Instagram.iconDesc }}</desc>
     <defs>
         <linearGradient
             id="instagram-linearGradient--{{ include.id | strip }}"

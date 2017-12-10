@@ -2,8 +2,8 @@
     width="18" height="15" viewBox="0 0 18 15"
     aria-labelledby="menuTitle--{{ include.id | strip }} menuDesc--{{ include.id | strip }}"
     id="menu--{{ include.id | strip }}">
-    <title id="menuTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].menu.iconTitle }}</title>
-    <desc id="menuDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].menu.iconDesc }}</desc>
+    <title id="menuTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.Menu.iconTitle }}</title>
+    <desc id="menuDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.Menu.iconDesc }}</desc>
 <style>
   .a {
     fill:#424242;

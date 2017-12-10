@@ -9,7 +9,7 @@
                     svg--{{ red.name }}
                 {% endcapture %}
             <li class="svg-icon {{ classname | strip }}">
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname id=svgid %}</a>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].icons.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname id=svgid %}</a>
             </li>
             {% endfor %}
         {% endif %}
@@ -22,7 +22,7 @@
                     svg--{{ red.name }}
                 {% endcapture %}
             <li class="svg-icon {{ classname | strip }}">
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname id=svgid %}</a>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].icons.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname id=svgid %}</a>
                 </li>
             {% endfor %}
         {% endif %}
@@ -35,7 +35,7 @@
                     svg--{{ red.name }}
                 {% endcapture %}
             <li class="svg-icon {{ classname | strip }}">
-                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].social.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname id=svgid %}</a>
+                <a href="{{ red.username | prepend: red.url }}" target="_blank" title="{{ site.data.t.[page.lang].icons.[red.title].title }}" class="{{ include.aclass }}">{% include svg/icon-{{ red.name }}.svg hidden='false' iconclass=classname id=svgid %}</a>
                 </li>
             {% endfor %}
         {% endif %}

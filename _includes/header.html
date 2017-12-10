@@ -21,7 +21,7 @@
     <a class="site-title" href="{{ site.baseurl }}/{{ site.index[page.lang] }}">{{ site.title[page.lang] }}</a>
 
     <nav class="site-nav">
-      <a href="#" class="menu-icon" title>
+      <a href="#" class="menu-icon" title="{{ site.data.t.[page.lang].icons.Menu.title }}">
           {% include svg/icon-menu.svg id='header' hidden='false' %}
       </a>
 
