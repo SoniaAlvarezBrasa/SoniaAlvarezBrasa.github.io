@@ -1,4 +1,31 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="851px" height="315px" viewBox="0 0 851 315">
+
+<svg role="img" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve" aria-hidden="{{ include.hidden }}"
+    width="120" height="120" viewBox="0 0 120 120"
+    aria-labelledby="stackoverflowTitle--{{ include.id | strip }} stackoverflowDesc--{{ include.id | strip }}"
+    id="stackoverflow--{{ include.id | strip }}" class='{{ include.iconclass | strip }}'>
+    <title id="stackoverflowTitle--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.StackOverflow.iconTitle }}</title>
+    <desc id="stackoverflowDesc--{{ include.id | strip }}">{{ site.data.t.[page.lang].icons.StackOverflow.iconDesc }}</desc>
+
+    <style type="text/css">
+        <![CDATA[
+    	.st0--stackoverflow{fill:#bcbbbb;}
+    	.invertir--stackoverflow {fill:#f48023;}
+        linktag {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            -webkit-transition: all 2s ease;
+                    transition: all 2s ease;
+        }
+        .linktag:hover {
+            -webkit-transform: scale(1.5);
+                    transform: scale(1.5);
+            overflow: hidden;
+        }
+        ]]>
+    </style>
+
+
     <clipPath id="cp2">
         <path d="M 0,0 L 851,0 L851,315 L 0,315 z M 0,0 L 1065,0 L 1065,395 L 0,395 z" fill-rule="evenodd">
         </path>
@@ -7,12 +34,12 @@
     </g>
     <rect x="0" y="0" width="1065" height="395" opacity="1" fill="black" stroke="none"></rect>
 
-    <text x="-74.03196716308594" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#60a831" stroke="none" transform="translate(424, 158)">Cuál es el origen</text>
-    <text x="-73.36058807373047" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#314ed4" stroke="none" transform="translate(424, 182)">Dónde conseguir</text>
-    <text x="-65.3368911743164" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#9000a8" stroke="none" transform="translate(506, 158) rotate(-80.25158370456423)">Para qué sirve</text>
-    <text x="-60.82176971435547" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#9000a8" stroke="none" transform="translate(412, 134)">Lorem Ipsum</text>
-    <text x="-51.60693359375" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#9000a8" stroke="none" transform="translate(352, 112) rotate(-35.87495259530472)">Kramdown</text>
-    <text x="-52.42986297607422" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#9d4040" stroke="none" transform="translate(424, 206)">Markdown</text>
-    <text x="-29.571624755859375" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#314ed4" stroke="none" transform="translate(412, 110)">Qué es</text>
-    <text x="-28.640403747558594" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#31a5d4" stroke="none" transform="translate(472, 106)">lipsum</text>
+    <text x="-74.03196716308594" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#60a831" stroke="none" transform="translate(424, 158)" class="linktag">Cuál es el origen</text>
+    <text x="-73.36058807373047" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#314ed4" stroke="none" transform="translate(424, 182)" class="linktag">Dónde conseguir</text>
+    <text x="-65.3368911743164" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#9000a8" stroke="none" transform="translate(506, 158) rotate(-80.25158370456423)" class="linktag">Para qué sirve</text>
+    <text x="-60.82176971435547" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#9000a8" stroke="none" transform="translate(412, 134)" class="linktag">Lorem Ipsum</text>
+    <text x="-51.60693359375" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#9000a8" stroke="none" transform="translate(352, 112) rotate(-35.87495259530472)" class="linktag">Kramdown</text>
+    <text x="-52.42986297607422" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#9d4040" stroke="none" transform="translate(424, 206)" class="linktag">Markdown</text>
+    <text x="-29.571624755859375" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#314ed4" stroke="none" transform="translate(412, 110)" class="linktag">Qué es</text>
+    <text x="-28.640403747558594" y="2.1660843750000005" style="font: italic 21.660843750000005px Crimson Text" text-anchor="start" dy="8.561598320158106" opacity="1" fill="#31a5d4" stroke="none" transform="translate(472, 106)" class="linktag">lipsum</text>
 </svg>

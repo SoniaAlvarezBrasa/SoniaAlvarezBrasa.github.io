@@ -1,8 +1,8 @@
 ---
 layout: default
 ref: index
-lang: en
-description: Slogan of your Personal Brand for search engines, the description of your site in RSS and for your general public (156 characters for Google -115 for mobile-)
+lang: es
+metaDescription: Eslogan de tu Marca Personal para buscadores, la descripción de tu sitio en rss y para tu público en general (156 caracteres para Google -115 para móvil-)
 ---
 
 <article>
@@ -11,7 +11,7 @@ description: Slogan of your Personal Brand for search engines, the description o
         <p>{{ site.subtitle[page.lang] }}</p>
         <nav></nav>
     </header>
-    <p>Hello! My name’s <strong>Saltw <i>acronym of Sonia Álvarez Técnicas Web </i></strong>and I love to make complicated things simple. I <strong>design and build products & web sites <i>subjectively fun and functional digital experiences </i></strong>for <strong>people <i>who like things that feel good and work well and are not frustrating</i></strong>.<a href="#"> read more about me</a> or <a href="#">say hello!</a></p>
+    <p>¡Hola! Soy <strong>{{ site.tradename }}<i> acrónimo de {{ site.alternatename[page.lang] }}</i></strong> y me encanta simplificar cosas complicadas. <strong>Diseño y construyo productos, prototipos y sitios web <i>experiencias digitales divertidas y eficaces </i></strong> para las <strong>personas <i>a las que les guste encontrar lo que buscan donde se sientan bien y sin frustraciones</i>. </strong><a href="#">¡lee más sobre mí! </a> o <a href="#">dime ¡hola!</a>
 </article>
 
 {% include paginate.html %}
