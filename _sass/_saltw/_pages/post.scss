@@ -1,0 +1,43 @@
+.post {
+    padding-bottom: 10vmin;
+
+    & > header {
+        padding: 3em 0 1em 0;
+        margin-bottom: 4em;
+        border-bottom: $border-default;
+
+        h2 { margin-bottom: 3em; }
+        h2, h3, h4, h5, h6 {width: 100%;}
+
+        & a span { padding: 0; float: left; }
+
+        & small { color: $color-small; }
+        & svg path { fill: $color-small ; }
+
+        & small,
+        & li {
+            padding-right: 1em;
+            &:only-of-type,
+            &:last-child,
+            &:only-child {
+                padding-right: 0;
+            }
+
+            a { color: $color-small; }
+
+            &:hover, &:focus, &:target {
+                a { color: $color-b; }
+                & span {
+                    & svg path {
+                        fill: $color-b;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.paginate,
+.cat-index {
+    h4 { margin: 0; }
+}

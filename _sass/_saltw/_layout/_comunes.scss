@@ -1,22 +1,32 @@
+h2 {
+    width: 100%;
+}
 //----------- HOVERS ---------------------
-// HoverUnderline links del sitio
+// HoverUnderline links website
 
-// .underlineFromRight
-$mapHoverCssBorderUnderlineFromRight:(
+// .underlineFromCenter blocks
+$mapHoverCssBorderUnderlineFromCenter:(
     px: 2px,
-    bg: $bg-body,
-    borde: colorea($bg-box-t1, l5),
-    selector: underlineFromRight
+    borde: colorea($color-b, l5),
+    selector: a
 );
 
-// .underlineFromRightMini
-$mapHoverCssBorderUnderlineFromRightMini:(
+// .underlineFromCenterMini inlines
+$mapHoverCssBorderUnderlineFromCenterMini:(
     px: 2px,
-    bg: $bg-body,
-    borde: colorea($bg-box-t1, l5),
-    selector: underlineFromRightMini,
+    borde: colorea($color-b, l5),
+    selector: a,
     ss: $ss-icon
 );
+
+.underlineFCxl {
+    @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenter...);
+}
+
+.underlineFCxs {
+    @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenterMini...);
+}
+
 //----------- fin de HOVERS ---------------------
 
 // ---------- Stilos enlaces redes sociales --------
@@ -24,7 +34,7 @@ $mapHoverCssBorderUnderlineFromRightMini:(
 // li.svg / a / span.svg--name / svg.svg--name
 .svg {
     @include sociales-svg-li-box((brand: fillBlack)...);
-    @include hoverCss-border-underline-from-right ($mapHoverCssBorderUnderlineFromRightMini...);
+    @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenterMini...);
 
     & > a {
         & > span {
@@ -48,6 +58,8 @@ $mapHoverCssBorderUnderlineFromRightMini:(
 
 // li.svg--icon.svg--$name / a / svg.svg--$name
 .svg-icon {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
     padding: $padding-icon;
     border-radius: $border-radius;
@@ -65,3 +77,124 @@ $mapHoverCssBorderUnderlineFromRightMini:(
     }
 }
 // ---------- fin de Stilos enlaces redes sociales --------
+
+// ------------------ TagClouds --------------------
+
+.section-tagcloud {
+    padding: 10vmin 0;
+}
+
+.tagcloud-flexbox {
+    @include tagcloud-bores-flexbox;
+    & li {
+        a {
+            background: $bg-tag;
+        }
+
+        &:hover, &:target, &:focus {
+            & a {
+                background: transparent;
+            }
+        }
+    }
+}
+
+.tagcloud-color-tags {
+    @include tagcloud-color-tags;
+}
+
+.tagcloud-flexbox-buttons {
+    & li {
+        // transition: all 0.15s linear;
+
+        & a {
+            & span {
+                transition: opacity 0.15s linear;
+                opacity: 0;
+            }
+        }
+
+        &:hover, &:target, &:focus {
+            & a {
+                opacity: 1;
+
+                & span {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    & ul {
+        @include tagcloud-flexbox-buttons;
+    }
+}
+
+.tagcloud-bores-flexbox {
+
+    & li {
+        $map:(bg: colorea($color-b, l2), selector: a);
+        @include hoverCss-background-sweep-to-left ($map...);
+
+        color: $color-body;
+        transition: all $ss-item linear;
+
+        & a {
+            & span {
+                transition: opacity $ss-item linear;
+                opacity: 0;
+            }
+        }
+
+        &:hover, &:target, &:focus {
+            & a {
+                opacity: 1;
+
+                & span {
+                    opacity: 1;
+                }
+
+                &:before {
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+
+    & ul {
+        @include tagcloud-bores-flexbox;
+    }
+}
+
+.tagcloud-livejournal {
+    background: #e1e1e1;
+    @include tagcloud-livejournal;
+
+    & li {
+        -webkit-transition: all $ss-item ease;
+        & span {
+            opacity: 0;
+        }
+        &:hover, &:target, &:focus {
+            &, & a {
+                color: $color-title;
+                opacity: 1;
+                -webkit-transform: scale(1.5);
+                        transform: scale(1.5);
+                -webkit-transition: all $ss-item ease;
+                transition: all $ss-item ease;
+                z-index: 99;
+            }
+            & a span {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.list-unchecked {
+    $map:(selector: entradilla);
+    @include label-check;
+}
+
+// ------------------ fin de TagClouds --------------------

@@ -1,0 +1,10 @@
+<article class="list-unchecked">
+    <input id="{{ include.id | strip }}" type="checkbox">
+    <label for="{{ include.id | strip }}"><span class="{{ include.aclass }} svg--folder">{% include svg/icon-folder.svg hidden='true' iconclass='svg--folder' id=svgid %}</span></label>
+    <header class="underlineFCxl main-inicio cross-centro">
+        <h4><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
+        <small><strong>&nbsp;&#8594;&nbsp;{{ post.autor }}</strong></small>
+        <small class="post-date">&nbsp;·&nbsp;{% include date.html pageref="post" %}</small>
+    </header>
+    <p class="underlineFCxl entradilla"><a href="{{ post.url }}">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endif %}</a></p>
+</article>

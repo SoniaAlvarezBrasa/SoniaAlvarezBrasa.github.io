@@ -130,6 +130,7 @@
     $color: colorea($color-t1, l4),
     $color--hover: $bg-body,
     $rgba: #000,
+    $border-bottom: 1pt solid $color-borde,
     $ss: 0.15s
 ){
     $bg-hover: colorea($bg, l1);
@@ -138,7 +139,7 @@
 
     position:relative;
     top: 0px;
-    // white-space: nowrap;
+    white-space: nowrap;
     cursor: pointer;
 
     border-radius:$border-radius;
@@ -151,7 +152,7 @@
 
     background: linear-gradient(to bottom, $bg 0%, colorea($bg, d2) 100%); // W3C
     color: $color;
-    border-bottom: 1pt solid $color-borde;
+    border-bottom: $border-bottom;
 
     &:hover, &:focus, &:target {
         top:-2px;

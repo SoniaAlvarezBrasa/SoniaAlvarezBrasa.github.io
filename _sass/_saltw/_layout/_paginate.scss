@@ -1,34 +1,4 @@
 .paginate {
-    h2, h3 {
-        text-align: left;
-    }
-    h3 {
-        display: flex;
-        margin: 0;
-    }
-
-    article {
-        header {
-            small {
-                color: #828282;
-            }
-        }
-
-        & > p {
-            @include responsive-font-size (0.6rem, 1.2rem, 10rem, 100rem);
-            padding: 1em;
-            font-style: italic;
-        }
-
-        &:hover, &:focus, &:target {
-            h3 {
-                a {
-                    color: $color-t1;
-                }
-            }
-        }
-        @include hoverCss-border-underline-from-right ($mapHoverCssBorderUnderlineFromRight...);
-    }
 
     footer {
         ul {
@@ -40,6 +10,5 @@
                 }
             }
         }
-        @include hoverCss-border-underline-from-right ($mapHoverCssBorderUnderlineFromRightMini...);
     }
 }

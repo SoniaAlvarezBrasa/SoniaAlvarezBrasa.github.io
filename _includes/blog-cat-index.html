@@ -5,18 +5,16 @@
         {% capture temp %}{{ post.content }}{% endcapture%}
     {% endfor %}
 {% if temp %}
-<section class="tags-expo-section">
-    <h3 id="{{ cat[0] | slugify }}--cat-index">{{ cat[0] | capitalize }}</h3>
+<section class="cat-index">
+    <h3 id="{{ cat[0] | slugify }}--cat-index-{{ forloop.index }}">{{ cat[0] | capitalize }}</h3>
     {% for post in posts %}
-    <article class="">
-        <header class="underlineFromRight main-inicio cross-centro">
-            <h4><a class="post-title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
-            <small><strong>&nbsp;&#8594;&nbsp;{{ post.autor }}</strong></small>
-            <small class="post-date">&nbsp;·&nbsp;{% include date.html pageref="post" %}</small>
-        </header>
-        <p class="underlineFromRight"><a href="{{ post.url }}">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endif %}</a></p>
-    </article>
+        {% capture inputid %}
+            {{ cat[0] | slugify }}--post{{ forloop.index }}--{{ post.id | slugify }}
+        {% endcapture %}
+        {% include posts.html id=inputid %}
     {% endfor %}
 </section>
 {% endif %}
 {% endfor %}
+
+{% include tagcloud.html %}

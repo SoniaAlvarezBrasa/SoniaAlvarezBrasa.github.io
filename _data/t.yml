@@ -18,6 +18,8 @@ es:
                 texto: Suscribirse
                 link: vía RSS
                 url: /feed.xml
+        tags:
+            titleLink: Artículos sobre
     icons:
         CodePen:
             title: Ver mis proyectos elegidos en CodePen.io

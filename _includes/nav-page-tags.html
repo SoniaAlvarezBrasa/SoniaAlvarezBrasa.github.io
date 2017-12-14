@@ -8,7 +8,7 @@
                 {{ include.iconid }}--{{ forloop.index }}
             {% endcapture %}
         <li class="svg">
-            <a href="#" class="{{ include.aclass }} underlineFromRightMini">
+            <a href="#">
                 <span class="{{ include.aclass }} svg--folder">{% include svg/icon-folder.svg hidden='true' iconclass='svg--folder' id=svgid %}</span>{{ cat | capitalize }}
             </a>
         </li>
@@ -20,7 +20,7 @@
                 {{ include.iconid }}--{{ forloop.index }}
             {% endcapture %}
         <li class="svg">
-            <a href="#" class="{{ include.aclass }} underlineFromRightMini">
+            <a href="#">
                 <span class="{{ include.aclass }} svg--tag">{% include svg/icon-tag.svg hidden='true' iconclass='svg--tag' id=svgid %}</span>{{ etiq | capitalize }}
             </a>
         </li>

@@ -11,9 +11,7 @@ description: Kramdown es una librería en Ruby para convertir Markdown a XHTML. 
 ---
 
 
-## ¿Qué es Kramdown?
-
-[**Kramdown**](https://kramdown.gettalong.org/) es una librería en [Ruby](https://www.ruby-lang.org/es/) para procesar y convertir **Markdown** a HTML. La libreria, ademas de Kramdown, puede interpretar Markdown, [Github Flavored Markdown](https://guides.github.com/features/mastering-markdown/) y HTML
+[**Kramdown**](https://kramdown.gettalong.org/) es una librería en [Ruby](https://www.ruby-lang.org/es/) para procesar y convertir **Markdown** a HTML. La librería, ademas de Kramdown, puede interpretar Markdown, [Github Flavored Markdown](https://guides.github.com/features/mastering-markdown/) y HTML
 
 
 ## ¿Qué es Markdown?

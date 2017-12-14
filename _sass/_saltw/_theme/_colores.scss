@@ -1,9 +1,11 @@
 // Variables del sitio
-$color-b: #006699;
-$color-t1: #971F1F;
-$color-t2: #009933;
+$color-b: #971F1F;
+$color-t1: #d35400;
+$color-t2: #006699;
 $negro: #000000;
 $blanco: #ffffff;
+
+
 
 // FUNCION COLOREA
 // lx = light nivel
@@ -157,12 +159,15 @@ $blanco: #ffffff;
 $bg-corp: #c4b59d;
 
 
-//----------- BACKGROUND-COLOR -----------//
+//----------- BACKGROUND-COLORS -----------//
 // transparent | color | inherit
 
 // $bg-body: colorea(#cfeed9, l1);
 // $bg-body: #c6d3db !default;
 $bg-body: #f9f9f9;
+
+$bg-tag: #eee;
+$bg-boton-simple: #eee;
 
 
 //----------- TIPOGRAFIA COLOR -----------//
@@ -170,8 +175,10 @@ $bg-body: #f9f9f9;
 
 $base: analogos($color-t2, a2);
 // $color-body       : colorea(gold, l2);
-$color-body       : #333 !default;
+// $color-body       : #333 !default;
+$color-body       : #666 !default;
 // $color-body       : $color-b;
+$color-small: #adadad;
 
 // color configuracion.comercial//
 $color-header: $color-b;
@@ -200,6 +207,9 @@ $color--error: #DD2C00;
 //----------- COLOR EFECTOS SOMBRAS -----------//
 
 //----------- TEXT-SHADOWs -----------//
+$border-default: 0.0625em solid rgba($color-body, 0.2);
+
+//----------- TEXT-SHADOWs -----------//
 // Color del text-shadow vs body
 $color-text-shadow-title: rgba(#fff, 0.2);
 $color-text-shadow-header: #bbb;
@@ -209,6 +219,8 @@ $color-text-shadow-header: #bbb;
 
 $rgba-70: rgba(#000, .7);
 $rgba-80: rgba(#000, .8);
+$bs2250: 2px 2px 5px 0 rgba(#000, 0.25);
+$bs-tag: #e1e1e1;
 
 
 //----------- BACKGROUND-COLOR IMG/ITEM -----------//
@@ -217,7 +229,6 @@ $bg-img: linear-gradient(-45deg, colorea($color-t1, d1) 0%, colorea($color-t1, l
 $bg-img-rect: linear-gradient(colorea($color-t1, l2), transparent);
 $bg-img-circle: linear-gradient(-45deg, colorea($color-t1, d1) 0%, colorea($color-t1, l1) 100%);
 
-$bg-boton-simple: #eee;
 
 
 // Unifica box-shadow-cover genérico

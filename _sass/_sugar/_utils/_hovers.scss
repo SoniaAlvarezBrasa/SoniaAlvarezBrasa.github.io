@@ -494,12 +494,12 @@
 // Faltan border-fade, hollw, trim, ripple-out, ripple-in
 // outline-out, outline-in, round-corners y reveal (puro)
 
-@mixin hoverCss-border-base ($bg, $selector, $ss, $curva, $z) {
+// links
+@mixin hoverCss-border-base ($selector, $ss, $curva, $z) {
     #{$selector},
     .#{$selector} {
         position: relative;
         overflow: hidden;
-        background: $bg;
 
         &:before {
             position: absolute;
@@ -524,7 +524,6 @@
     $z: 0
 ){
     $curl:(
-        bg: $bg,
         selector: $selector,
         ss: $ss,
         curva: $curva,
@@ -535,8 +534,8 @@
     #{$selector},
     .#{$selector} {
         &:before {
-            left: 100%;
-            right: 0;
+            left: 0;
+            right: 100%;
             bottom: 0;
             height: $px;
             background: $borde;
@@ -566,7 +565,6 @@
     $z: 0
 ){
     $curl:(
-        bg: $bg,
         selector: $selector,
         ss: $ss,
         curva: $curva,
@@ -577,8 +575,8 @@
     #{$selector},
     .#{$selector} {
         &:before {
-            left: 0;
-            right: 100%;
+            left: 100%;
+            right: 0;
             bottom: 0;
             height: $px;
             background: $borde;
@@ -608,7 +606,6 @@
     $z: 0
 ){
     $curl:(
-        bg: $bg,
         selector: $selector,
         ss: $ss,
         curva: $curva,
@@ -651,7 +648,6 @@
     $z: 0
 ){
     $curl:(
-        bg: $bg,
         selector: $selector,
         ss: $ss,
         curva: $curva,
@@ -700,7 +696,6 @@
     $z: 0
 ){
     $curl:(
-        bg: $bg,
         selector: $selector,
         ss: $ss,
         curva: $curva,
@@ -742,7 +737,6 @@
     $z: 0
 ){
     $curl:(
-        bg: $bg,
         selector: $selector,
         ss: $ss,
         curva: $curva,
@@ -784,7 +778,6 @@
     $z: 0
 ){
     $curl:(
-        bg: $bg,
         selector: $selector,
         ss: $ss,
         curva: $curva,
@@ -827,7 +820,6 @@
     $z: 0
 ){
     $curl:(
-        bg: $bg,
         selector: $selector,
         ss: $ss,
         curva: $curva,

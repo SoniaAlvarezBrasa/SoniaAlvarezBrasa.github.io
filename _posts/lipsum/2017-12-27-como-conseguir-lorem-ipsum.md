@@ -6,7 +6,7 @@ ref: donde-lipsum
 date: 2017-12-27 09:54:44 +0100
 autor: Saltw
 categories: lipsum
-tags: [de dónde viene, lorem ipsum, texto simulado]
+tags: [cómo conseguir, lorem ipsum, texto simulado]
 metaDescription: Resume aquí el contenido de este artículo con las palabras clave que se tratarán más detalladamente. Se trata de atraerlos a tu web sin falsear ni exagerar.
 ---
 

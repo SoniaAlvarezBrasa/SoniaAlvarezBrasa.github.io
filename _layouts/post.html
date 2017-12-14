@@ -3,15 +3,27 @@ layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h2 class="post-title" itemprop="name headline">{{ page.title }}</h2>
-    <small class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{% include date.html pageref="page" %}</time> &nbsp;&#8594;&nbsp;</small>
-    {% if page.autor %}<small class="post-meta" itemprop="author" itemscope itemtype="http://schema.org/Person"><strong itemprop="name">{{ page.autor }}</strong></small>{% endif %}
-    {% include nav-page-tags.html iconid="post-show" ulclass="main-fin" aclass="cross-centro" %}
-  </header>
+    <header class="justify">
+        <h2 itemprop="name headline">{{ page.title }}</h2>
 
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
+        <p class="main-start cross-center">
+            <small><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{% include date.html pageref="page" %}</time> &nbsp;&nbsp;</small>
+        {% if page.autor %}
+            {% capture svgid %}
+                post-show--{{ page.autor }}
+            {% endcapture %}
+            <strong itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <small itemprop="name" class="svg cross-centro"><a href="#"><span class="cross-centro svg--user">{% include svg/icon-user.svg hidden='true' iconclass='svg--user' id=svgid %}</span>{{ page.autor }}</a></small>
+            </strong>
+        {% endif %}
+        </p>
+
+
+        {% include nav-page-tags.html iconid="post-show" ulclass="main-fin" aclass="cross-centro" %}
+    </header>
+
+    <div itemprop="articleBody">
+        {{ content }}
+    </div>
 
 </article>
