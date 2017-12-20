@@ -1,20 +1,31 @@
 {% for cat in site.categories %}
+    {% capture prefixid %}
+        {{ include.origin | strip }}-{{ page.lang | upcase }}--cat-{{ forloop.index }}
+    {% endcapture %}
     {% assign temp=null %}
     {% assign posts=cat[1] | where:"lang", page.lang %}
     {% for post in posts %}
-        {% capture temp %}{{ post.content }}{% endcapture%}
+        {% capture temp %}{{ post.content }}{% endcapture %}
     {% endfor %}
 {% if temp %}
 <section class="cat-index">
-    <h3 id="{{ cat[0] | slugify }}--cat-index-{{ forloop.index }}">{{ cat[0] | capitalize }}</h3>
+    <h3 id="{{ cat[0]| slugify }}--{{ prefixid | strip }}">{{ cat[0] | capitalize }}</h3>
     {% for post in posts %}
-        {% capture inputid %}
-            {{ cat[0] | slugify }}--post{{ forloop.index }}--{{ post.id | slugify }}
+        {% capture postid %}
+            {{ prefixid | strip }}--post-{{ forloop.index }}
         {% endcapture %}
-        {% include posts.html id=inputid %}
+        {% capture inputid %}
+            {{ postid | strip }}--{{ post.id | slugify }}
+        {% endcapture %}
+        <!-- posts[] -->
+        {% include posts.html id=postid labelid=inputid labelspanflex='cross-end' labelsvg='folder' headerflex='justify' hpclass='aHoverXl' hlevel=4 usersvg='user' usersmallflex='cross-centro' tagshow='tag' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' tagsvg='tag' %}
+        <!-- inline nav post.tags -->
+        {% include nav-page-tags.html show="tag" ulclass="tagcloud-flex" lielse="aHoverXl" iconid=postid spanclass="fl" tagsvg="tag" %}
     {% endfor %}
 </section>
 {% endif %}
 {% endfor %}
-
-{% include tagcloud.html %}
+<!-- site.tags -->
+<aside class="section-tagcloud">
+    {% include nav-site-tags.html origin=prefixid ulclass="tagcloud-bores-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="tag" %}
+</aside>

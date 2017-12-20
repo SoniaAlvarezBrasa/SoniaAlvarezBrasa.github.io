@@ -1,0 +1,30 @@
+<nav>
+    <ul class="{{ include.ulclass }}">
+        {% for cat in site.categories %}
+            {% capture prefixid %}
+                {{ include.origin | strip }}-{{ page.lang | upcase }}--cat-{{ forloop.index }}
+            {% endcapture %}
+            {% assign temp=null %}
+            {% assign posts=cat[1] | where:"lang", page.lang %}
+            {% for post in posts %}
+                {% capture temp %}{{ post.content }}{% endcapture%}
+            {% endfor %}
+    {% if temp %}
+        {% if include.svg %}
+            {% capture iconclass %}
+                svg--{{ include.svg }}
+            {% endcapture %}
+        <li class="{{ include.liclasssvg }}">
+            <a href="#{{ cat[0]| slugify }}--{{ prefixid | strip }}">
+                <span class="{{ include.spanclass }} {{ iconclass | strip }}">{% include svg/icon-{{include.svg}}.svg hidden='true' iconclass=iconclass id=prefixid %}</span>{{ cat[0] | capitalize }}
+            </a>
+        </li>
+        {% else %}
+        <li class="{{ include.liclasselse }}">
+            <a href="#{{ cat[0]| slugify }}--{{ prefixid | strip }}">{{ cat[0] | capitalize }}</a>
+        </li>
+        {% endif %}
+    {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

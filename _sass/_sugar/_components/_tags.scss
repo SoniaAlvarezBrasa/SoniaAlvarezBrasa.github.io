@@ -382,53 +382,91 @@
     }
 }
 
-@mixin tagcloud-flexbox (
+@mixin tagcloud-flex (
     $item: li,
     $aire: 0.25em,
-    $bg: #eee,
+    $bg: $bg-tag,
+    $ta: center,
+    $td: none,
     $br: 3px
 ){
     // Container
 
     display: -webkit-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
+    // -webkit-flex-flow: row wrap;
+    // flex-flow: row wrap;
 
     & #{$item},
     & .#{$item} {
-        -webkit-flex: 1 auto;
-        flex: 1 auto;
+        // -webkit-flex: 1 auto;
+        // -webkit-box-flex: 1;
+        //     -ms-flex: 1 auto;
+        //         flex: 1 auto;
         padding: $aire;
-        text-align: center;
+        text-align: $ta;
 
         & a {
             width: 100%;
             height: 100%;
             padding: $aire 2*$aire;
             background: $bg;
-            text-decoration: none;
+            -webkit-text-decoration: $td;
+                    text-decoration: $td;
             border-radius: $br;
         }
     }
 }
 
-@mixin tagcloud-bores-flexbox (
+@mixin tagcloud-flex-wrap (
     $item: li,
     $aire: 0.25em,
-    $bgtag: #eee,
-    $bgbore: $bg-body,
-    $bs: 2px 2px 5px 0 rgba(#000, 0.25),
+    $bg: $bg-tag,
+    $ta: center,
+    $td: none,
     $br: 3px
 ){
-    @include tagcloud-flexbox($item, $aire, $bgtag, $br);
+    @include tagcloud-flex($item, $aire, $bg, $ta, $td, $br);
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+
+@mixin tagcloud-flex-auto (
+    $item: li,
+    $aire: 0.25em,
+    $bg: $bg-tag,
+    $ta: center,
+    $td: none,
+    $br: 3px
+){
+    @include tagcloud-flex-wrap($item, $aire, $bg, $ta, $td, $br);
+
+    & #{$item},
+    & .#{$item} {
+        -webkit-flex: 1 auto;
+        -webkit-box-flex: 1;
+            -ms-flex: 1 auto;
+                flex: 1 auto;
+    }
+}
+
+@mixin tagcloud-bores (
+    $item: li,
+    $aire: 0.25em,
+    $bgbore: $bg-body,
+    $bs: $bs2250
+){
 
     #{$item},
     .#{$item} {
-        position: relative;
         & a {
+            position: relative;
             margin-right: 4*$aire;
-            box-shadow: $bs;
+            -webkit-box-shadow: $bs;
+                    box-shadow: $bs;
             &:after {
                 position: absolute;
                 display: inline-block;
@@ -438,11 +476,40 @@
                 width: 2*$aire;
                 height: 2*$aire;
                 border-radius: 100%;
-                box-shadow: $bs inset;
+                -webkit-box-shadow: $bs inset;
+                        box-shadow: $bs inset;
                 background: $bgbore;
             }
         }
     }
+}
+
+@mixin tagcloud-bores-flex (
+    $item: li,
+    $aire: 0.25em,
+    $bgtag: $bg-tag,
+    $bgbore: $bg-body,
+    $bs: $bs2250,
+    $ta: center,
+    $td: none,
+    $br: 3px
+){
+    @include tagcloud-flex-wrap($item, $aire, $bgtag, $ta, $td, $br);
+    @include tagcloud-bores($item, $aire, $bgbore, $bs);
+}
+
+@mixin tagcloud-bores-flex-auto (
+    $item: li,
+    $aire: 0.25em,
+    $bgtag: $bg-tag,
+    $bgbore: $bg-body,
+    $bs: $bs2250,
+    $ta: center,
+    $td: none,
+    $br: 3px
+){
+    @include tagcloud-flex-auto($item, $aire, $bgtag, $ta, $td, $br);
+    @include tagcloud-bores($item, $aire, $bgbore, $bs);
 }
 
 @mixin tagcloud-flexbox-buttons (
@@ -453,7 +520,7 @@
     $bs: #e1e1e1,
     $br: 3px
     ){
-    @include tagcloud-bores-flexbox($item, $aire, $bgtag, $bgbore, $bs, $br);
+    @include tagcloud-bores-flex-auto($item, $aire, $bgtag, $bgbore, $bs, $br);
 
     #{$item},
     .#{$item} {
@@ -465,7 +532,8 @@
         &:hover, &:focus, &:target {
             & a {
                 &:after {
-                    box-shadow: 2pt 2pt 5pt 0pt rgba(#000, 0.25) inset;
+                    -webkit-box-shadow: 2pt 2pt 5pt 0pt rgba(#000, 0.25) inset;
+                            box-shadow: 2pt 2pt 5pt 0pt rgba(#000, 0.25) inset;
                 }
             }
         }

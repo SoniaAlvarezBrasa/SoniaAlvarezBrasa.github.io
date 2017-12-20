@@ -6,6 +6,7 @@ ref: welcome
 date:   2016-02-29 09:48:44 +0100
 autor: Saltw
 categories: jekyll
+tags: [jekyll]
 description: This article explains the general functioning of the Blog and how to start publishing your articles on your website, as well as the links to the general documentation and the help pages.
 metaDescription: La meta-descripción muestra en los resultados lo que ofreces y da motivos al usuario para visitar tu página. Haz este texto persuasivo, sin falsear ni exagerar.
 ---

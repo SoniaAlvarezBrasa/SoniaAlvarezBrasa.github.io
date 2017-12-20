@@ -4,6 +4,65 @@ h2 {
 //----------- HOVERS ---------------------
 // HoverUnderline links website
 
+@mixin hoverColorSvg ($color1: $color-small, $color2: $color-b) {
+    & small,
+    & li {
+        & span {
+            & svg path {
+                fill: $color1;
+            }
+        }
+
+        &:hover, &:focus, &:target {
+            a { color: $color-b; }
+            & span {
+                & svg path {
+                    fill: $color2;
+                }
+            }
+        }
+    }
+}
+
+@mixin hoverOpacitySpan ($ss: $ss-item) {
+    & li {
+        -webkit-transition: all $ss linear;
+        transition: all $ss linear;
+
+        & a {
+            & span {
+                -webkit-transition: opacity $ss linear;
+                transition: opacity $ss linear;
+                opacity: 0;
+            }
+        }
+
+        &:hover, &:target, &:focus {
+            & a {
+                opacity: 1;
+
+                & span {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@mixin hoverBgLinkTag ($color1: $bg-tag, $color2: transparent) {
+    & li {
+        a {
+            background: $color1;
+        }
+
+        &:hover, &:target, &:focus {
+            & a {
+                background: $color2;
+            }
+        }
+    }
+}
+
 // .underlineFromCenter blocks
 $mapHoverCssBorderUnderlineFromCenter:(
     px: 2px,
@@ -27,6 +86,15 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
     @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenterMini...);
 }
 
+.aHoverXl {
+    @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenter...);
+}
+
+.aHoverXs {
+    @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenterMini...);
+}
+
+
 //----------- fin de HOVERS ---------------------
 
 // ---------- Stilos enlaces redes sociales --------
@@ -43,6 +111,14 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
             border-radius: $border-radius;
             overflow: hidden;
             z-index: 1;
+
+            &.svg--user {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                float: left;
+                padding: 0;
+            }
         }
     }
 
@@ -53,6 +129,16 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
         width: $icon-x;
         height: $icon-y;
         vertical-align: middle;
+    }
+
+    // Para span svg flotante a la izq y centrado
+    .fl {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        float: left;
+        padding-right: 0;
+        margin-right: 0;
     }
 }
 
@@ -80,24 +166,40 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 
 // ------------------ TagClouds --------------------
 
+
 .section-tagcloud {
     padding: 10vmin 0;
+    & li { height: 2.5em; }
 }
 
-.tagcloud-flexbox {
-    @include tagcloud-bores-flexbox;
-    & li {
-        a {
-            background: $bg-tag;
-        }
-
-        &:hover, &:target, &:focus {
-            & a {
-                background: transparent;
-            }
-        }
-    }
+.tagcloud-flex,
+.tagcloud-bores-flexbox {
+    @include hoverOpacitySpan;
+    @include hoverColorSvg;
 }
+
+.tagcloud-flex,
+.tagcloud-flexbox,
+.tagcloud-bores-flexbox {
+    @include hoverBgLinkTag;
+}
+.tagcloud-bores-flexbox {
+    @include hoverColorSvg;
+}
+
+.tagcloud-flex {
+    @include tagcloud-bores-flex;
+    & li a { padding-right: 3vmin; }
+}
+
+.tagcloud-flexbox,
+.tagcloud-bores-flexbox {
+    @include tagcloud-bores-flex-auto;
+}
+
+// .tagcloud-bores-flexbox {
+//     @include tagcloud-bores-flex-auto;
+// }
 
 .tagcloud-color-tags {
     @include tagcloud-color-tags;
@@ -109,6 +211,7 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 
         & a {
             & span {
+                -webkit-transition: opacity 0.15s linear;
                 transition: opacity 0.15s linear;
                 opacity: 0;
             }
@@ -130,41 +233,7 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
     }
 }
 
-.tagcloud-bores-flexbox {
 
-    & li {
-        $map:(bg: colorea($color-b, l2), selector: a);
-        @include hoverCss-background-sweep-to-left ($map...);
-
-        color: $color-body;
-        transition: all $ss-item linear;
-
-        & a {
-            & span {
-                transition: opacity $ss-item linear;
-                opacity: 0;
-            }
-        }
-
-        &:hover, &:target, &:focus {
-            & a {
-                opacity: 1;
-
-                & span {
-                    opacity: 1;
-                }
-
-                &:before {
-                    border-radius: 3px;
-                }
-            }
-        }
-    }
-
-    & ul {
-        @include tagcloud-bores-flexbox;
-    }
-}
 
 .tagcloud-livejournal {
     background: #e1e1e1;
@@ -194,7 +263,8 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 
 .list-unchecked {
     $map:(selector: entradilla);
-    @include label-check;
+    // @include label-check;
+    @include label-check($map...);
 }
 
 // ------------------ fin de TagClouds --------------------

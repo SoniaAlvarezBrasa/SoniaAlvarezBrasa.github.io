@@ -1,10 +1,47 @@
 <article class="list-unchecked">
-    <input id="{{ include.id | strip }}" type="checkbox">
-    <label for="{{ include.id | strip }}"><span class="{{ include.aclass }} svg--folder">{% include svg/icon-folder.svg hidden='true' iconclass='svg--folder' id=svgid %}</span></label>
-    <header class="underlineFCxl main-inicio cross-centro">
-        <h4><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
-        <small><strong>&nbsp;&#8594;&nbsp;{{ post.autor }}</strong></small>
-        <small class="post-date">&nbsp;·&nbsp;{% include date.html pageref="post" %}</small>
+    {% capture labelsvgid %}
+        label-{{ include.id | strip }}
+    {% endcapture %}
+{% if include.labelsvg %}
+    {% capture labelsvg %}
+        svg--{{ include.labelsvg }}
+    {% endcapture %}
+    <input id="{{ include.labelid | strip }}" type="checkbox">
+    <label for="{{ include.labelid | strip }}"><span class="{{ include.labelspanflex }} {{ labelsvg | strip }}">{% include svg/icon-{{ include.labelsvg }}.svg hidden='false' iconclass=labelsvg id=labelsvgid %}</span></label>
+{% endif %}
+    <header class="{{ include.headerflex }}">
+        {% if include.hlevel == 3 %}<h3 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>{% elsif include.hlevel == 4 %}
+        <h4 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
+        {% endif %}
+        <!-- <p class="cross-center"> -->
+            <small><time>{% include date.html pageref="post" %}</time></small>
+    {% if post.autor %}
+        {% if include.usersvg %}
+            {% capture usersvg %}
+                svg--{{ include.usersvg }}
+            {% endcapture %}
+            <strong>
+                <small class="svg {{ include.usersmallflex }}"><a href="#"><span class="{{ usersvg | strip }}">{% include svg/icon-{{ include.usersvg }}.svg hidden='true' iconclass=usersvg id=include.id %}</span>{{ post.autor }}</a></small>
+            </strong>
+        {% else %}
+            <strong>
+                <small><a href="#">{{ post.autor }}</a></small>
+            </strong>
+        {% endif %}
+    {% endif %}
     </header>
-    <p class="underlineFCxl entradilla"><a href="{{ post.url }}">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endif %}</a></p>
+    <!-- excerpt -->
+    <p class="{{ include.hpclass }} entradilla"><a href="{{ post.url }}">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endif %}</a></p>
+
+    <!-- nav page.tags & page.categories -->
+{% if include.tagshow %}
+    {% if include.catsvg and include.tagsvg %}
+        {% include nav-page-tags.html show=include.tagshow ulclass=include.tagulclass iconid=include.id spanclass=include.tagspanclass catsvg=include.catsvg tagsvg=include.tagsvg %}
+    {% elsif include.tagsvg %}
+        {% include nav-page-tags.html show=include.tagshow ulclass=include.tagulclass iconid=include.id spanclass=include.tagspanclass tagsvg=include.tagsvg %}
+    {% else %}
+        {% include nav-page-tags.html show=include.tagshow ulclass=include.tagulclass lielse=include.taglielse %}
+    {% endif %}
+{% endif %}
+
 </article>

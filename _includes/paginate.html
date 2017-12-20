@@ -1,14 +1,23 @@
 {% assign posts=site.posts | where:"lang", page.lang %}
 {% unless posts.blank? %}
+
 <section class="paginate">
     <header>
         <h2>{{ site.data.t.[page.lang].paginate.heading }}</h2>
     </header>
     {% for post in posts limit: 10 %}
-        {% capture inputid %}
-            post{{ forloop.index }}--{{ post.id | slugify }}
+        {% capture prefixid %}
+            paginate-{{ page.lang | upcase }}
         {% endcapture %}
-        {% include posts.html id=inputid %}
+        {% capture postid %}
+            {{ prefixid | strip }}--post-{{ forloop.index }}
+        {% endcapture %}
+        {% capture inputid %}
+            {{ postid | strip }}--{{ post.id | slugify }}
+        {% endcapture %}
+        <!-- posts[] -->
+        {% include posts.html id=postid labelid=inputid labelspanflex='cross-end' labelsvg='folder' headerflex='justify' hpclass='aHoverXl' hlevel=3 usersvg='user' usersmallflex='cross-centro' tagshow='both' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' catsvg='folder' tagsvg='tag' %}
+
     {% endfor %}
     <footer>
         <nav>

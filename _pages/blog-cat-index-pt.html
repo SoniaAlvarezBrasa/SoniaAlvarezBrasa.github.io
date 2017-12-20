@@ -1,16 +1,18 @@
 ---
 layout: default
 title: Categorias
-permalink: /blog/categorial/
+permalink: /blog/classificaçao/
 ref: cat-index
 lang: pt
 ---
 
-<section>
+<article class="post">
     <header>
         <h2>{{ page.title }}</h2>
-        {% include nav-blog-cat-icon.html iconid="cat-index" ulclass="distribute" aclass="cross-centro" %}
+        <!-- nav site.categories -->
+        {% include nav-site-cats.html origin="cat-index" ulclass="tagcloud-flexbox" spanclass="fl" liclasssvg="svg" liclasselse="aHoverXl" svg="folder"%}
     </header>
-    {% include blog-cat-index.html %}
-
-</section>
+    <!-- section categories.posts[] -->
+    <!-- include site.tags-->
+    {% include blog-cat-index.html origin="cat-index" %}
+</article>
