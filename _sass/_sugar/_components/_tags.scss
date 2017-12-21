@@ -111,9 +111,9 @@
     $h: auto,
     $p: 5%,
     $changecolor: 1,
-    $bg: #eee,
-    $color1: $color-body,
-    $color2: $color-subtitle,
+    $bg: $bg-tag,
+    $color1: $color-small,
+    $color2: $color-link,
     $ss: 15s
 ){
 
@@ -248,6 +248,7 @@
         height: $h;
         margin: auto;
         padding: $p;
+        background: $bg;
         overflow: hidden;
         // background-image: linear-gradient(to bottom, $color, transparent 15%, transparent 85%, $color 100%), linear-gradient(to right, $color, transparent 5%, transparent 95%, $color 100%);
         // color: $color;

@@ -175,16 +175,16 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 .tagcloud-flex,
 .tagcloud-bores-flexbox {
     @include hoverOpacitySpan;
-    @include hoverColorSvg;
 }
 
 .tagcloud-flex,
 .tagcloud-flexbox,
 .tagcloud-bores-flexbox {
     @include hoverBgLinkTag;
+    @include hoverColorSvg;
 }
 .tagcloud-bores-flexbox {
-    @include hoverColorSvg;
+    // @include hoverColorSvg;
 }
 
 .tagcloud-flex {
@@ -236,27 +236,58 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 
 
 .tagcloud-livejournal {
-    background: #e1e1e1;
+    // background: #e1e1e1;
+    margin: 4em 0;
     @include tagcloud-livejournal;
+    // background: $bg-body;
+    // box-shadow: $bs44100;
 
-    & li {
-        -webkit-transition: all $ss-item ease;
-        & span {
-            opacity: 0;
+    & ul {
+        padding: 10% 5%;
+        border-radius: 10px;
+
+        position: relative;
+        -webkit-box-shadow: $bs44100;
+                box-shadow: $bs44100;
+        &:after {
+            position: absolute;
+            display: inline-block;
+            content: "";
+            top: 3vmin;
+            right: 3vmin;
+            width: 4vmin;
+            height: 4vmin;
+            border-radius: 100%;
+            -webkit-box-shadow: $bs44100 inset;
+                    box-shadow: $bs44100 inset;
+            background: $bg-body;
         }
+
+        & li {
+            display: inline-flex;
+            -webkit-transition: all $ss-item ease;
+            // & a { color: $bg-body; }
+            & span {
+                opacity: 0;
+            }
+            &:hover, &:target, &:focus {
+                &, & a {
+                    color: $color-title;
+                    opacity: 1;
+                    -webkit-transform: scale(1.5);
+                            transform: scale(1.5);
+                    -webkit-transition: all $ss-item ease;
+                    transition: all $ss-item ease;
+                    z-index: 99;
+                }
+                & a span {
+                    opacity: 1;
+                }
+            }
+        }
+
         &:hover, &:target, &:focus {
-            &, & a {
-                color: $color-title;
-                opacity: 1;
-                -webkit-transform: scale(1.5);
-                        transform: scale(1.5);
-                -webkit-transition: all $ss-item ease;
-                transition: all $ss-item ease;
-                z-index: 99;
-            }
-            & a span {
-                opacity: 1;
-            }
+            background: $bg-body;
         }
     }
 }

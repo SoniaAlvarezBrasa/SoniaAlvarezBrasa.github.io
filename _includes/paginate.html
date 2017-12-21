@@ -7,7 +7,7 @@
     </header>
     {% for post in posts limit: 10 %}
         {% capture prefixid %}
-            paginate-{{ page.lang | upcase }}
+            {{ page.ref }}-paginate-{{ page.lang | upcase }}
         {% endcapture %}
         {% capture postid %}
             {{ prefixid | strip }}--post-{{ forloop.index }}
@@ -17,8 +17,13 @@
         {% endcapture %}
         <!-- posts[] -->
         {% include posts.html id=postid labelid=inputid labelspanflex='cross-end' labelsvg='folder' headerflex='justify' hpclass='aHoverXl' hlevel=3 usersvg='user' usersmallflex='cross-centro' tagshow='both' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' catsvg='folder' tagsvg='tag' %}
-
     {% endfor %}
+
+    <!-- site.tags -->
+    <aside class="tagcloud-livejournal">
+        {% include nav-site-tags.html origin=prefixid ulclass="" spanclass="fl" liclasselse="aHoverXl" %}
+    </aside>
+
     <footer>
         <nav>
             <ul>
