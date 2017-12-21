@@ -16,7 +16,8 @@
             {{ postid | strip }}--{{ post.id | slugify }}
         {% endcapture %}
         <!-- posts[] -->
-        {% include posts.html id=postid labelid=inputid labelspanflex='cross-end' labelsvg='folder' headerflex='justify' hpclass='aHoverXl' hlevel=3 usersvg='user' usersmallflex='cross-centro' tagshow='both' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' catsvg='folder' tagsvg='tag' %}
+        <!-- include posts.html id=postid labelid=inputid labelsvg='info' labelspanflex='cross-end' headerflex='justify' hpclass='aHoverXl' hlevel=3 usersvg='user' usersmallflex='cross-centro' tagshow='both' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' catsvg='folder' tagsvg='tag' -->
+        {% include posts.html id=postid labelid=inputid headerflex='justify' hpclass='aHoverXl' hlevel=3 usersvg='user' usersmallflex='cross-centro' tagshow='both' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' catsvg='folder' tagsvg='tag' %}
     {% endfor %}
 
     <!-- site.tags -->

@@ -45,8 +45,8 @@
 @mixin icon-abrirCerrar (
     $cerrado: "\25b6",
     $abierto: "\25bc",
-    $color-cerrado: darkseagreen,
-    $color-abierto: darkred
+    $color-abierto: darkseagreen,
+    $color-cerrado: darkred
 ){
 
     & > input:checked + label {

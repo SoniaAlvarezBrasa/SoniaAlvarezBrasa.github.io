@@ -2,19 +2,21 @@
     {% capture labelsvgid %}
         label-{{ include.id | strip }}
     {% endcapture %}
+    <input id="{{ include.labelid | strip }}" type="checkbox">
+    <label for="{{ include.labelid | strip }}">
 {% if include.labelsvg %}
     {% capture labelsvg %}
         svg--{{ include.labelsvg }}
     {% endcapture %}
-    <input id="{{ include.labelid | strip }}" type="checkbox">
-    <label for="{{ include.labelid | strip }}"><span class="{{ include.labelspanflex }} {{ labelsvg | strip }}">{% include svg/icon-{{ include.labelsvg }}.svg hidden='false' iconclass=labelsvg id=labelsvgid %}</span></label>
+        <span class="{{ include.labelspanflex }} {{ labelsvg | strip }}">{% include svg/icon-{{ include.labelsvg }}.svg hidden='false' iconclass=labelsvg id=labelsvgid %}</span>
 {% endif %}
+    </label>
     <header class="{{ include.headerflex }}">
         {% if include.hlevel == 3 %}<h3 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>{% elsif include.hlevel == 4 %}
         <h4 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
         {% endif %}
         <!-- <p class="cross-center"> -->
-            <small><time datetime="{{ post.date | date_to_xmlschema | strip }}">{% include date.html pageref="post" %}</time></small>
+            <small><time datetime="{{ post.date | date_to_xmlschema }}">{% include date.html pageref="post" %}</time></small>
     {% if post.autor %}
         {% if include.usersvg %}
             {% capture usersvg %}

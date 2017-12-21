@@ -293,6 +293,7 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 }
 
 .list-unchecked {
+    @include icon-abrirCerrar;
     $map:(selector: entradilla);
     // @include label-check;
     @include label-check($map...);

@@ -31,14 +31,18 @@
 
 .paginate,
 .cat-index {
+    padding-bottom: 4em;
     .list-unchecked {
+        padding-bottom: 2em;
         & > label {
             display: inline-flex;
-            background: lime;
+            float: left;
+            width: 0.25em;
             & svg {
                 width: 3vmin;
                 height: 3vmin;
             }
+            &:before { bottom: 0.25em; }
         }
         & > header {
             h3, h4 {
