@@ -86,31 +86,31 @@ Se usa la almohadilla para indicar el nivel del titulo.
 
 Escribiendo esto
 
->   # Ejemplo de encabezado h1 (Título del sitio web)\\
->   ## Ejemplo de encabezado h2 (Título de la página)\\
->   ### Ejemplo de encabezado h3 (Sección de página)\\
->   #### Ejemplo de encabezado h4 (Subsección)\\
->   ##### Ejemplo de encabezado h5 (Subsub)\\
->   ###### Ejemplo de encabezado h6 (subsubsub)
+>   # Encabezado h1 (Título del sitio web)\\
+>   ## Encabezado h2 (Título de la página)\\
+>   ### Encabezado h3 (Sección de página)\\
+>   #### Encabezado h4 (Subsección)\\
+>   ##### Encabezado h5 (Subsub)\\
+>   ###### Encabezado h6 (subsubsub)
 
 ... tus usuarios ven ...
 
-> # Ejemplo de encabezado h1 (Título del sitio web)
-> ## Ejemplo de encabezado h2 (Título de la página)
-> ### Ejemplo de encabezado h3 (Sección de página)
-> #### Ejemplo de encabezado h4 (Subsección)
-> ##### Ejemplo de encabezado h5 (Subsub)
-> ###### Ejemplo de encabezado h6 (subsubsub)
+``` Encabezado h1 (Título del sitio web) -anulado. Nivel superior -```
+## Encabezado h2 (Título de la página)
+### Encabezado h3 (Sección de página)
+#### Encabezado h4 (Subsección)
+##### Encabezado h5 (Subsub)
+###### Encabezado h6 (subsubsub)
 
 ... y se programa así
 
 ``` html
-<h1>Ejemplo de encabezado h1 (Título del sitio web)</h1>
-<h2>Ejemplo de encabezado h2 (Título de la página)</h2>
-<h3>Ejemplo de encabezado h3 (Sección de página)</h3>
-<h4>Ejemplo de encabezado h4 (Subsección)</h4>
-<h5>Ejemplo de encabezado h5 (Subsub)</h5>
-<h6>Ejemplo de encabezado h6 (subsubsub)</h6>
+<h1>Encabezado h1 (Título del sitio web)</h1>
+<h2>Encabezado h2 (Título de la página)</h2>
+<h3>Encabezado h3 (Sección de página)</h3>
+<h4>Encabezado h4 (Subsección)</h4>
+<h5>Encabezado h5 (Subsub)</h5>
+<h6>Encabezado h6 (subsubsub)</h6>
 ```
 
 
@@ -506,6 +506,7 @@ Escribiendo esto
 > `| cell 4a | cell 4b | cell 4c |`\\
 > `|=====`\\
 > `| Footer A | Footer B | Footer C`\\
+> `{: rules="groups"}`
 
 ... tus usuarios ven ...
 
@@ -518,11 +519,12 @@ Escribiendo esto
 | cell 4a | cell 4b | cell 4c |
 |=====
 | Footer A | Footer B | Footer C
+{: rules="groups"}
 
 ... y se programa así
 
 ``` html
-<table>
+<table rules="groups">
   <thead>
     <tr>
       <th style="text-align: left"> Header A </th>
