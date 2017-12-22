@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Search Engine -->
     <title>{% if page.ref == 'index' %}{{ site.title.[page.lang] }}{% elsif page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}</title>
-    <meta name="description" content="{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description | append: page.categories }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
+    <meta name="description" content="{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
     <meta property="og:type" content="{% if page.ref == 'index' %}{{ 'website' }}{% else %}{{ 'article' }}{% endif %}" />
     <meta property="og:title" content="{% if page.ref == 'index' %}{{ site.title.[page.lang] }}{% elsif page.ogTitle %}{{ page.ogTitle | append: site.prefix }}{% elsif page.title %}{{ page.title | append: site.prefix }}{% else %}{{ site.title[page.lang] | append: site.prefix }}{% endif %}" />
