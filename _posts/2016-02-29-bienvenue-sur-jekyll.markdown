@@ -8,6 +8,7 @@ categories: jekyll
 lang: fr
 tags: [jekyll]
 description: Cet article explique le fonctionnement général du Blog et comment commencer à publier vos articles sur votre site Web, ainsi que les liens vers la documentation générale et les pages d'aide.
+robots: NoIndex, Follow
 ---
 
 Cet article se situe dans le dossier `_posts`. Allez l'éditer, et générez votre site à nouveau pour voir les modifications. Vous pouvez générer le site de différentes façons, mais le plus efficace est de lancer la commande `jekyll serve`, qui crée un serveur web et génère automatiquement votre site à chaque fois qu'un fichier est modifié.

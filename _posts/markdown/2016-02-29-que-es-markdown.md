@@ -8,6 +8,7 @@ autor: Saltw
 categories: markdown
 tags: [Kramdown, Markdown]
 description: Kramdown es una librería en Ruby para convertir Markdown a XHTML. Guía de sintáxis de Markdown para convertir fácilmente tus publicaciones en código web semántico.
+robots: NoIndex, Follow
 ---
 
 
