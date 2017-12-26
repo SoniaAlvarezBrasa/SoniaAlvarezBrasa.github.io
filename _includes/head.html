@@ -12,6 +12,8 @@
     <meta property="og:type" content="{% if page.ref == 'index' %}{{ 'website' }}{% else %}{{ 'article' }}{% endif %}" />
     <meta property="og:title" content="{% if page.ref == 'index' %}{{ site.title.[page.lang] }}{% elsif page.ogTitle %}{{ page.ogTitle | append: site.prefix }}{% elsif page.title %}{{ page.title | append: site.prefix }}{% else %}{{ site.title[page.lang] | append: site.prefix }}{% endif %}" />
     <meta property="og:url" content="{{ page.url | prepend: site.url }}" />
+    <meta property="og:image" content="{{ site.url }}/assets/img{{ page.imgPortada }}" />
+    <meta property="og:image" content="{{ site.url }}/assets/img{{ page.img2 }}" />
     <meta property="og:image" content="{{ page.imgPortada | prepend: site.url }}" />
     <meta property="og:image" content="{{ page.img2 | prepend: site.url }}" />
     <meta property="og:description" content="{% if page.metaOgDescription %}{{ page.metaOgDescription }}{% elsif page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
