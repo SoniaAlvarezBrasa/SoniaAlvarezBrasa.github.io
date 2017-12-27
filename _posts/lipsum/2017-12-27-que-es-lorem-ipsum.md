@@ -8,7 +8,7 @@ autor: Saltw
 categories: lipsum
 tags: [qué es, lorem ipsum, texto simulado]
 metaDescription: Qué es lo-que-sea?.  Resume aquí las excelencias de lo-que-sea a tus clientes potenciales para que sepan que aquí hay buen contenido sobre qué es lo-que-sea
-imgPortada: /blog/lipsum_letras-fragmento-texto-imprenta-reves_1920x1275.jpg
+images: [/blog/lipsum_letras-fragmento-texto-imprenta-reves_1920x1275.jpg, /about/eva-torrijas_1920x1462.jpg]
 img2: /about/eva-torrijas_1920x1462.jpg
 ---
 

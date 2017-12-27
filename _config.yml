@@ -46,6 +46,8 @@ description:
     gl: Escribe acó a fabulosa descrición do teu novo sitio web. Poderáse mudar esta liña no _config.yml. Aparecerá oculta no encabezado do documento (para os robots de busca de Google) e na descrición do sitio no feed.xml.
     pt: Escreva uma descrição incrível para o seu novo site aqui. Você pode editar esta linha em _config.yml. Ele aparecerá no alvo do cabeçalho do documento (para resultados de pesquisa do Google) e na descrição do site feed.xml.
     fr: Écrivez une super description de votre nouveau site ici. Vous pouvez modifier cette ligne dans _config.yml. Elle apparaîtra dans la balise meta description (pour les résultats sur Google) et dans le fil RSS feed.xml.
+image: /website.jpg
+ogImage: /website.jpg
 
 # Site Social links
 github_username: SoniaAlvarezBrasa
