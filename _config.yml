@@ -16,8 +16,11 @@ alternatename:
     fr: Sonia Alvarez Techniques pour le Web
 email: sonia.alvarez.brasa@gmail.com
 index:
-    en:
+    es:
+    en: home.html
     fr: accueil.html
+    gl: lar.html
+    pt: benvida.html
 feed:
     en: /feed.xml
     fr: /flux.xml

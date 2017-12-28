@@ -7,22 +7,33 @@
     <title>{% if page.ref == 'index' %}{{ site.title.[page.lang] }}{% elsif page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}</title>
     <meta name="description" content="{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
     <!--meta name="robots" content="{% if page.robots %}{{ page.robots }}{% else %}Index, Follow{% endif %}"-->
-    <meta name="robots" content="NoIndex, NoFollow" />
+    <meta name="robots" content="Index, Follow" />
     <meta name=”google” content=”nositelinkssearchbox” />
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
     <meta property="og:title" content="{% if page.ref == 'index' %}{{ site.title.[page.lang] }}{% elsif page.ogTitle %}{{ page.ogTitle | append: site.prefix }}{% elsif page.title %}{{ page.title | append: site.prefix }}{% else %}{{ site.title[page.lang] | append: site.prefix }}{% endif %}" />
-    <meta property="og:type" content="{% if page.ref == 'index' %}{{ 'website' }}{% else %}{{ 'article' }}{% endif %}" />
     <meta property="og:url" content="{{ page.url | prepend: site.url }}" />
-    {% if page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />{% endif %}
-    {% if page.images %}{% for img in page.images %}
+{% if page.ref == 'index' %}
+    <meta property="og:type" content="website" />
+{% else %}
+    <meta property="og:type" content="article" />
+    {% if page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+    <meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}" />{% endif %}
+    <meta property="article:modified_time" content="{{ site.time | date_to_xmlschema }}" />
+    <meta itemprop="dateModified" content="{{ site.time | date_to_xmlschema }}" />
+    <meta property="og:updated_time" content="{{ site.time | date_to_xmlschema }}" />
+{% endif %}
+{% if page.categories %}{% for category in page.categories limit:1 %}
+    <meta property="article:section" content="{{ category }}" />{% endfor %}{% endif %}{% if page.tags %}{% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag }}" />{% endfor %}{% endif %}
+{% if page.images %}{% for img in page.images %}
     <meta property="og:image" content="{{ site.url }}/assets/img{{ img }}" />{% endfor %}
     {% elsif site.ogImage %}<meta property="og:image" content="{{ site.url }}/assets/img{{ site.ogImage }}" />{% elsif site.image %}}<meta property="og:image" content="{{ site.url }}/assets/img{{ site.image }}" />{% else %}<meta property="og:image" content="{{ site.url }}/assets/img/default.jpg" />{% endif %}
     <meta property="og:description" content="{% if page.metaOgDescription %}{{ page.metaOgDescription }}{% elsif page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
     <meta property="og:site_name" content="{{ site.tradename }}" />
     <meta property="og:locale" content="{{ site.alternate.oglocale.[page.lang] }}" />
-    {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}{% for post in posts %}{% if post.lang != page.lang %}
+{% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}{% for post in posts %}{% if post.lang != page.lang %}
     <meta property="og:locale:alternate" content="{{ site.alternate.oglocale.[post.lang] }}" />{% endif %}{% endfor %}
-    {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}{% for pag in pages %}{% if pag.lang != page.lang %}
+{% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}{% for pag in pages %}{% if pag.lang != page.lang %}
     <meta property="og:locale:alternate" content="{{ site.alternate.oglocale.[pag.lang] }}" />{% endif %}{% endfor %}
 
     <!-- <link rel="stylesheet" href="{{ "css/main.css" | prepend: site.baseurl }}"> -->

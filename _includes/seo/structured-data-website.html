@@ -5,9 +5,6 @@
     "url": "{{ site.url }}",
     "name": "{{ site.tradename }}",
     "description": "{{ site.description[page.lang] }}",
-{% if site.legalname %}
-    "legalName": "{{ site.legalname }}",
-{% endif %}
 {% if site.seo.author %}
     "sameAs": [
     {% assign assignSameSite = "" %}

@@ -1,9 +1,9 @@
 {% if include.pageref == "page" %}
     {% if page.lang == 'en' %}
-        {{ page.date | date: "%b %-d, %Y" }}
+        {{ include.date | date: "%b %-d, %Y" }}
     {% elsif page.lang == 'es' %}
-        {% assign m = page.date | date: "%-m" %}
-        {{ page.date | date: "%-d de" }}
+        {% assign m = include.date | date: "%-m" %}
+        {{ include.date | date: "%-d de" }}
         {% case m %}
             {% when '1' %}enero
             {% when '2' %}febrero
@@ -18,10 +18,10 @@
             {% when '11' %}noviembre
             {% when '12' %}diciembre
         {% endcase %}
-        {{ page.date | date: "de %Y" }}
+        {{ include.date | date: "de %Y" }}
     {% elsif page.lang == 'gl' %}
-        {% assign m = page.date | date: "%-m" %}
-        {{ page.date | date: "%-d de" }}
+        {% assign m = include.date | date: "%-m" %}
+        {{ include.date | date: "%-d de" }}
         {% case m %}
             {% when '1' %}xaneiro
             {% when '2' %}antroido
@@ -36,10 +36,10 @@
             {% when '11' %}novembro
             {% when '12' %}nadal
         {% endcase %}
-        {{ page.date | date: "do %Y" }}
+        {{ include.date | date: "do %Y" }}
     {% elsif page.lang == 'fr' %}
-        {% assign m = page.date | date: "%-m" %}
-        {{ page.date | date: "%-d " }}
+        {% assign m = include.date | date: "%-m" %}
+        {{ include.date | date: "%-d " }}
         {% case m %}
             {% when '1' %}janvier
             {% when '2' %}février
@@ -54,10 +54,10 @@
             {% when '11' %}novembre
             {% when '12' %}décembre
         {% endcase %}
-        {{ page.date | date: "%Y" }}
+        {{ include.date | date: "%Y" }}
     {% elsif page.lang == 'pt' %}
-        {% assign m = page.date | date: "%-m" %}
-        {{ page.date | date: "%-d de" }}
+        {% assign m = include.date | date: "%-m" %}
+        {{ include.date | date: "%-d de" }}
         {% case m %}
             {% when '1' %}janeiro
             {% when '2' %}fevereiro
@@ -72,9 +72,9 @@
             {% when '11' %}novembro
             {% when '12' %}dezembro
         {% endcase %}
-        {{ page.date | date: "de %Y" }}
+        {{ include.date | date: "de %Y" }}
     {% else %}
-        {{ page.date | date: "%Y-%m-%d" }}
+        {{ include.date | date: "%Y-%m-%d" }}
     {% endif %}
 {% elsif include.pageref == "post" %}
     {% if post.lang == 'en' %}
