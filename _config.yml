@@ -15,6 +15,22 @@ alternatename:
     pt: Sonia Álvarez Techniques para o Web
     fr: Sonia Alvarez Techniques pour le Web
 email: sonia.alvarez.brasa@gmail.com
+contact: # Person | Organization
+    email: sonia.alvarez.brasa@gmail.com
+address:
+    street: ejemplo, 27 - Casa - Parroquia
+    locality: Ayuntamiento
+    region: Provincia
+    cp: 27003
+    country: ES
+    geo:
+        latitude: 43.0323297
+        longitude: -7.5728379
+        hasMap: https://www.google.es/maps/place/Cei+Nodus+Concello+de+Lugo/@43.0323579,-7.5746377,17z/data=!3m1!4b1!4m5!3m4!1s0xd31ce573c76fd33:0x85ecfa7c43c03b84!8m2!3d43.0323579!4d-7.572449
+
+# Config settings
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://soniaalvarezbrasa.github.io" # the base hostname & protocol for your site
 index:
     es:
     en: home.html
@@ -25,18 +41,14 @@ feed:
     en: /feed.xml
     fr: /flux.xml
 
-# Config settings
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://soniaalvarezbrasa.github.io" # the base hostname & protocol for your site
-
 # Site default
 prefix: " | Saltw"
 title:
-    es: Tu sensacional título
-    gl: O teu fabuloso título
-    en: Your awesome title
-    pt: Seu título fantástico
-    fr: Votre titre génial
+    es: Saltw | Estrategia, Diseño y Productos Web
+    gl: Saltw | Estratexia, Deseño e Produtos Web
+    en: Saltw | Strategy, Design and Web Products
+    pt: Saltw | Estratégia, Desenho e Produtos do Web
+    fr: Saltw | Stratégie, design et produits Web
 subtitle:
     es: Tu frase de Marca Personal complementaria que se repetirá como pié de firma a lo largo de tu web.
     gl: Reforzo do teu título de Marca persoal que será repetido coma un pe de altar ó longo da túa web.
@@ -98,6 +110,26 @@ seo:
             name: youtube
             url: https://www.youtube.com/
             username: user/Saltw
+    logo:
+        url: /img/logo.png
+        w: 144
+        h: 144
+    contactPoint: # Person | Organization
+        -   type: customer service # customer service | technical support | billing support | bill payment | sales | reservations | credit card support | emergency | baggage tracking | roadside assistance | package tracking
+            tel: +34-610-981-928
+            email: sonia.alvarez.brasa@gmail.com
+            fax: +34-982-555-666
+        -   type: technical support
+            tel: +34-610-981-928
+            email: sonia.alvarez.brasa@gmail.com
+    organization:
+        date: 2017
+        founders:
+            -   name: Sonia Álvarez
+                type: Person
+            -   name:
+                type: Person
+
 alternate:
     default: es
     hreflang:
