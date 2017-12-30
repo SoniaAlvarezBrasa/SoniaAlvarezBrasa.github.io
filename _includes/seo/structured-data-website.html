@@ -5,12 +5,6 @@
     "url": "{{ site.url }}",
     "name": "{{ site.title[page.lang] }}",
     "description": "{{ site.description[page.lang] }}",
-    "logo": {
-        "@type": "ImageObject",
-        "url": "{{ site.seo.logo.url | prepend: site.url }}",
-        "width": "{{ site.seo.logo.w }}",
-        "height": "{{ site.seo.logo.h }}"
-    },
     "image": {
         "@type": "ImageObject",
         "url": "{{ site.seo.logo.url | prepend: site.url }}",
@@ -22,16 +16,6 @@
         "{{ red.username | prepend: red.url }}"{% endcapture %}
         {% assign assignSameSite= assignSameSite | append: sameas | append: "|||" %}
     {% endfor %} {% assign assignSameSite = assignSameSite | split: "|||" %} {{ assignSameSite | join: "," }}
-    ], {% endif %}
-{% if site.seo.contactPoint %} {% assign assignContact = "" %}
-    "contactPoint": [ {% for contact in site.seo.contactPoint %} {% capture point %}
-        {
-        "@type": "contactPoint",
-        "contactType": "{{ contact.type }}",
-        "telephone": "{{ contact.tel }}",
-        "email": "{{ contact.email }}"
-        }{% endcapture %}
-    {% assign assignContact = assignContact | append: point | append: "|||" %} {% endfor %} {% assign assignContact = assignContact | split: "|||" %} {{ assignContact | join: "," }}
     ], {% endif %}
 {% if site.seo.author %}
     "author": {
@@ -127,17 +111,11 @@
                 "width": "{{ site.seo.logo.w }}",
                 "height": "{{ site.seo.logo.h }}"
             },
-        {% if site.seo.contactPoint %} {% assign assignContact = "" %}
-            "contactPoint": [ {% for contact in site.seo.contactPoint %} {% capture point %}
-                {
-                "@type": "contactPoint",
-                "contactType": "{{ contact.type }}",
-                "telephone": "{{ contact.tel }}", {% if contact.fax %}
-                "faxNumber": "{{ contact.fax }}", {% endif %}
-                "email": "{{ contact.email }}"
-                }{% endcapture %}
-            {% assign assignContact = assignContact | append: point | append: "|||" %} {% endfor %} {% assign assignContact = assignContact | split: "|||" %} {{ assignContact | join: "," }}
-            ], {% endif %}
+        {% if site.seo.contactPoint %} {% for contact in site.seo.contactPoint %} {% if contact.type == "customer service" %} {% if contact.tel %}
+            "telephone": "{{ contact.tel }}", {% endif %} {% if contact.email %}
+            "email": "{{ contact.email }}", {% endif %} {% if contact.fax %}
+            "faxNumber": "{{ contact.fax }}", {% endif %}
+        {% endif %}  {% endfor %}{% endif %}
             "url": "{{ site.url }}"
         }, {% endif %}
     {% endif %}
