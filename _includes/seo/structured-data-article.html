@@ -20,8 +20,13 @@
     "image": "{{ site.url }}/assets/img{{ site.ogImage }}", {% else %}
     "image": "{{ site.url }}/assets/img/default.jpg", {% endif %}
 {% if page.categories %}{% for category in page.categories limit:1 %}
-    "genre": "{{ category }}", {% endfor %}{% endif %}{% if page.tags %}{% for tag in page.tags %}
-    "keywords": "{{ tag }}", {% endfor %}{% endif %}
+    "genre": "{{ category }}", {% endfor %}{% endif %}{% if page.tags %}
+    "keywords": [ {% assign assignKw = "" %} {% for tag in page.tags %} {% capture kw %}
+        "{{ tag }}"{% endcapture %}
+    {% assign assignKw = assignKw | append: kw | append: "|||" %}
+    {% endfor %} {% assign assignKw = assignKw | split: "|||" %} {{ assignKw | join: "," }}
+    ], {% endif %}
+
     "articleBody": "{{ page.content | strip_newlines | strip_html }}",
     "mainEntityOfPage":{
         "@type":"WebPage",
