@@ -9,7 +9,7 @@
         "image": "{{ site.data.people.[include.person].image }}", {% else %} {% for image in site.static_files %} {% if image.path contains '/assets/img/profiles/'{{include.person | downcase }} %} {% capture profile %}{{ image.path }}{% endcapture %} {% endif %}{% endfor %} {% if profile %}
         "image": "{{ site.url }}{{ profile }}", {% else %}
         "image": "{{ site.url }}/assets/img/profiles.default.jpg", {% endif %} {% endif %} {% if site.data.people.[include.person].email %}
-        "email": "{{ site.data.people.[include.person].email "}}" {% endif %} {% if site.data.people.[include.person].tel %}
+        "email": "{{ site.data.people.[include.person].email "}}", {% endif %} {% if site.data.people.[include.person].tel %}
         "telephone": "{{ site.data.people.[include.person].tel"}}" {% endif %} {% if site.data.people.[include.person].contactPoint %} {% assign assignContact = "" %}
         "contactPoint": [ {% for contact in site.seo.contactPoint %} {% capture point %}
             {
