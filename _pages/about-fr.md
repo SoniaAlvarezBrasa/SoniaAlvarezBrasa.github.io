@@ -1,8 +1,9 @@
 ---
 layout: page
-title: À propos
-permalink: /a-propos.html
-ref: about
+title: À propos de Saltw
+permalink: /a-propos-de-saltw.html
+ref: about-saltw
+person: Saltw
 lang: fr
 ---
 

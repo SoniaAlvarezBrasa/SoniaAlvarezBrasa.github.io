@@ -13,7 +13,7 @@
     </label>
     <header class="{{ include.headerflex }}">
         {% if include.hlevel == 3 %}<h3 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>{% elsif include.hlevel == 4 %}
-        <h4 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
+        <h4 itemprop="itemListElement" class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
         {% endif %}
         <!-- <p class="cross-center"> -->
             <small><time datetime="{{ post.date | date_to_xmlschema }}">{% include date.html pageref="post" %}</time></small>
