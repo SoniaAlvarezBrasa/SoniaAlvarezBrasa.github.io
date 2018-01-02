@@ -1,8 +1,9 @@
 ---
 layout: page
-title: Nosotros
-permalink: /sobre-mi.html
-ref: about
+title: Curiosidades y perfil de Saltw
+permalink: /sobre-saltw.html
+ref: about-saltw
+person: Saltw
 lang: es
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "¿Qué es Lorem Ipsum?"
+subtitle: "La explicación definitiva en dos minutos de qué es Lorem Ipsum, desde cuando existe y para qué sirve"
 lang: es
 ref: que-es-lipsum
 date: 2017-12-27 09:48:44 +0100

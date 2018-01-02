@@ -1,0 +1,38 @@
+"@type": "Person",
+        "name": "{{ site.data.people.[include.person].name }}", {% if site.data.people.[include.person].jobTitle %}{% for title in site.data.people.[include.person].jobTitle %}
+        "jobTitle": "{{ title.name }}", {% endfor %} {% endif %} {% if site.data.people.[include.person].url %}
+        "url": {{ site.data.people.[include.person].url }}, {% endif %} {% if site.data.people.[include.person].image %}
+        "image": "{{ site.data.people.[include.person].image }}", {% else %} {% for image in site.static_files %} {% if image.path contains '/assets/img/profiles/'{{include.person | downcase }} %} {% capture profile %}{{ image.path }}{% endcapture %} {% endif %}{% endfor %} {% if profile %}
+        "image": "{{ site.url }}{{ profile }}", {% else %}
+        "image": "{{ site.url }}/assets/img/profiles.default.jpg", {% endif %} {% endif %} {% if site.data.people.[include.person].email %}
+        "email": "{{ site.data.people.[include.person].email "}}" {% endif %} {% if site.data.people.[include.person].tel %}
+        "telephone": "{{ site.data.people.[include.person].tel"}}" {% endif %} {% if site.data.people.[include.person].contactPoint %} {% assign assignContact = "" %}
+        "contactPoint": [ {% for contact in site.seo.contactPoint %} {% capture point %}
+            {
+            "@type": "contactPoint",
+            "contactType": "{{ contact.type }}",
+            "telephone": "{{ contact.tel }}",
+            "email": "{{ contact.email }}"
+            }{% endcapture %}
+        {% assign assignContact = assignContact | append: point | append: "|||" %} {% endfor %} {% assign assignContact = assignContact | split: "|||" %} {{ assignContact | join: "," }}
+        ], {% endif %} {% if site.data.people.[include.person].address %}
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ site.data.people.[include.person].address.street }}",
+            "addressLocality": "{{ site.data.people.[include.person].address.locality }}",
+            "addressRegion": "{{ site.data.people.[include.person].address.region }}",
+            "postalCode": "{{ site.data.people.[include.person].address.cp }}",
+            "addressCountry": "{{ site.data.people.[include.person].address.country }}"
+        }, {% endif %} {% if site.data.people[include.person].social %}
+        "sameAs": [ {% assign assignSamePerson = "" %} {% if include.job == 1 %}{% for red in site.data.people[include.person].social.jobs %} {% capture jobs %}
+            "{{ red.username | prepend: red.url }}" {% endcapture %}
+            {% assign assignSamePerson = assignSamePerson | append: jobs | append: "|||" %}
+        {% endfor %} {% endif %} {% if include.me == 1 %} {% for red in site.data.people[include.person].social.me %} {% capture me %}
+            "{{ red.username | prepend: red.url }}" {% endcapture %}
+            {% assign assignSamePerson = assignSamePerson | append: me | append: "|||" %}
+        {% endfor %} {% endif %} {% if include.contact == 1 %} {% for red in site.data.people[include.person].social.contact %} {% capture contact %}
+            "{{ red.username | prepend: red.url }}" {% endcapture %}
+            {% assign assignSamePerson = assignSamePerson | append: contact | append: "|||" %}
+        {% endfor %} {% endif %}
+        {% assign assignSamePerson = assignSamePerson | split: "|||" %} {{ assignSamePerson | join: "," }}
+        ] {% endif %}

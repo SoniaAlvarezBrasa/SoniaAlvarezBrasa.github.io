@@ -1,0 +1,31 @@
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org", {% if page.path contains '_posts/' %}
+    "@type":"Article", {% else %}
+    "@type":"WebPage", {% endif %}
+    "@id":"{{ page.url | prepend: site.url }}"
+    "url": "{{ page.url | prepend: site.url }}",
+    "headline": "{{ page.title }}", {% if page.subtitle %}
+    "alternativeHeadline": "{{ page.subtitle }}", {% endif %} {% if page.date %}
+    "datePublished": "{{ page.date | date_to_xmlschema }}", {% endif %}
+    "dateModified": "{{ site.time | date_to_xmlschema }}",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", {% if page.autor %}
+    "author": {
+        {% include seo/structured-data-person.html person=page.autor job=1 me=0 contact=0 %}
+    }, {% endif %}
+    "publisher": {
+        {% include seo/structured-data-publisher.html %}
+    }, {% if page.images %}{% for img in page.images %}
+    "image": "{{ site.url }}/assets/img{{ img }}", {% endfor %} {% elsif site.ogImage %}
+    "image": "{{ site.url }}/assets/img{{ site.ogImage }}", {% else %}
+    "image": "{{ site.url }}/assets/img/default.jpg", {% endif %}
+{% if page.categories %}{% for category in page.categories limit:1 %}
+    "genre": "{{ category }}", {% endfor %}{% endif %}{% if page.tags %}{% for tag in page.tags %}
+    "keywords": "{{ tag }}", {% endfor %}{% endif %}
+    "articleBody": "{{ page.content | strip_newlines | strip_html }}",
+    "mainEntityOfPage":{
+        "@type":"WebPage",
+        "@id":"{{ page.url | prepend: site.url }}"
+    }
+}
+</script>

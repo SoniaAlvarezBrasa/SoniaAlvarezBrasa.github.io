@@ -1,7 +1,7 @@
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "@type": "website",
+    "@type": "WebSite",
     "url": "{{ site.url }}",
     "name": "{{ site.title[page.lang] }}",
     "description": "{{ site.description[page.lang] }}",
@@ -10,116 +10,17 @@
         "url": "{{ site.seo.logo.url | prepend: site.url }}",
         "width": "{{ site.seo.logo.w }}",
         "height": "{{ site.seo.logo.h }}"
-    },
-{% if site.seo.sameAs %}
+    }, {% if site.seo.sameAs %}
     "sameAs": [{% assign assignSameSite = "" %} {% for red in site.seo.sameAs %} {% capture sameas %}
         "{{ red.username | prepend: red.url }}"{% endcapture %}
         {% assign assignSameSite= assignSameSite | append: sameas | append: "|||" %}
     {% endfor %} {% assign assignSameSite = assignSameSite | split: "|||" %} {{ assignSameSite | join: "," }}
-    ], {% endif %}
-{% if site.seo.author %}
+    ], {% endif %} {% if site.seo.author %}
     "author": {
-        "@type": "Person",
-        "name": "{{ site.data.people.[site.seo.author].name }}",
-        "sameAs": [ {% assign assignSamePerson = "" %} {% for red in site.data.people[site.seo.author].social.jobs %} {% capture jobs %}
-            "{{ red.username | prepend: red.url }}" {% endcapture %}
-            {% assign assignSamePerson = assignSamePerson | append: jobs | append: "|||" %}
-        {% endfor %} {% for red in site.data.people[site.seo.author].social.me %} {% capture me %}
-            "{{ red.username | prepend: red.url }}" {% endcapture %}
-            {% assign assignSamePerson = assignSamePerson | append: me | append: "|||" %}
-        {% endfor %} {% assign assignSamePerson = assignSamePerson | split: "|||" %} {{ assignSamePerson | join: "," }}
-        ]
+        {% include seo/structured-data-person.html person=site.seo.author job=1 me=0 contact=0 %}
     }, {% endif %}
     "publisher": {
-        "@type": "Organization",
-        "name": "{{ site.tradename }}",
-        "legalname": "{{ site.legalname }}",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "{{ site.seo.logo.url | prepend: site.url }}",
-            "width": "{{ site.seo.logo.w }}",
-            "height": "{{ site.seo.logo.h }}"
-        },
-        "image": {
-            "@type": "ImageObject",
-            "url": "{{ site.seo.logo.url | prepend: site.url }}",
-            "width": "{{ site.seo.logo.w }}",
-            "height": "{{ site.seo.logo.h }}"
-        },
-    {% if site.seo.sameAs %}
-        "sameAs": [{% assign assignSameSite = "" %} {% for red in site.seo.sameAs %} {% capture sameas %}
-            "{{ red.username | prepend: red.url }}"{% endcapture %}
-            {% assign assignSameSite= assignSameSite | append: sameas | append: "|||" %}
-        {% endfor %} {% assign assignSameSite = assignSameSite | split: "|||" %} {{ assignSameSite | join: "," }}
-        ], {% endif %}
-    {% if site.seo.contactPoint %} {% assign assignContact = "" %}
-        "contactPoint": [ {% for contact in site.seo.contactPoint %} {% capture point %}
-            {
-            "@type": "contactPoint",
-            "contactType": "{{ contact.type }}",
-            "telephone": "{{ contact.tel }}",
-            "email": "{{ contact.email }}"
-            }{% endcapture %}
-        {% assign assignContact = assignContact | append: point | append: "|||" %} {% endfor %} {% assign assignContact = assignContact | split: "|||" %} {{ assignContact | join: "," }}
-        ], {% endif %}
-    {% if site.seo.organization %}
-        "foundingDate": "{{ site.seo.organization.date }}",
-    {% if site.seo.organization.founders %} {% assign assignFounders = "" %}
-        "founders": [ {% for founder in site.seo.organization.founders %} {% capture itemFounder %}
-            {
-            "@type": "{{ founder.type }}",
-            "name": "{{ founder.name }}"
-            }{% endcapture %}
-            {% assign assignFounders = assignFounders | append: itemFounder | append: "|||" %} {% endfor %} {% assign assignFounders = assignFounders | split: "|||" %} {{ assignFounders | join: "," }}
-        ], {% endif %}
-    {% if site.address.street %}
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "{{ site.address.street }}",
-            "addressLocality": "{{ site.address.locality }}",
-            "addressRegion": "{{ site.address.region }}",
-            "postalCode": "{{ site.address.cp }}",
-            "addressCountry": "{{ site.address.country }}"
-        },
-        "location": { {% if site.address.geo %}
-            "@type": "Place", {% if site.address.geo.hasMap %}
-            "hasMap": "{{ site.address.geo.hasMap }}", {% endif %} {% if site.address.geo.latitude %}
-            "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "{{ site.address.geo.latitude }}",
-                "longitude": "{{ site.address.geo.longitude }}"
-            }, {% endif %}
-            {% else %}"@type": "PostalAddress", {% endif %}
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "{{ site.address.street }}",
-                "addressLocality": "{{ site.address.locality }}",
-                "addressRegion": "{{ site.address.region }}",
-                "postalCode": "{{ site.address.cp }}",
-                "addressCountry": "{{ site.address.country }}"
-            },
-            "name": "{{ site.tradename }}",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "{{ site.seo.logo.url | prepend: site.url }}",
-                "width": "{{ site.seo.logo.w }}",
-                "height": "{{ site.seo.logo.h }}"
-            },
-            "image": {
-                "@type": "ImageObject",
-                "url": "{{ site.seo.logo.url | prepend: site.url }}",
-                "width": "{{ site.seo.logo.w }}",
-                "height": "{{ site.seo.logo.h }}"
-            },
-        {% if site.seo.contactPoint %} {% for contact in site.seo.contactPoint %} {% if contact.type == "customer service" %} {% if contact.tel %}
-            "telephone": "{{ contact.tel }}", {% endif %} {% if contact.email %}
-            "email": "{{ contact.email }}", {% endif %} {% if contact.fax %}
-            "faxNumber": "{{ contact.fax }}", {% endif %}
-        {% endif %}  {% endfor %}{% endif %}
-            "url": "{{ site.url }}"
-        }, {% endif %}
-    {% endif %}
-        "url": "{{ site.url }}"
+        {% include seo/structured-data-publisher.html %}
     },
     "potentialAction": {
         "@type": "SearchAction",

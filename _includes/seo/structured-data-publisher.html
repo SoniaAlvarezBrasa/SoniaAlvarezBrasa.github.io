@@ -1,0 +1,82 @@
+"@type": "Organization",
+        "name": "{{ site.tradename }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.seo.logo.url | prepend: site.url }}",
+            "width": "{{ site.seo.logo.w }}",
+            "height": "{{ site.seo.logo.h }}"
+        },
+        "image": {
+            "@type": "ImageObject",
+            "url": "{{ site.seo.logo.url | prepend: site.url }}",
+            "width": "{{ site.seo.logo.w }}",
+            "height": "{{ site.seo.logo.h }}"
+        }, {% if site.seo.sameAs %}
+        "sameAs": [{% assign assignSameSite = "" %} {% for red in site.seo.sameAs %} {% capture sameas %}
+            "{{ red.username | prepend: red.url }}"{% endcapture %}
+            {% assign assignSameSite= assignSameSite | append: sameas | append: "|||" %}
+        {% endfor %} {% assign assignSameSite = assignSameSite | split: "|||" %} {{ assignSameSite | join: "," }}
+        ], {% endif %} {% if site.seo.contactPoint %} {% assign assignContact = "" %}
+        "contactPoint": [ {% for contact in site.seo.contactPoint %} {% capture point %}
+            {
+            "@type": "contactPoint",
+            "contactType": "{{ contact.type }}",
+            "telephone": "{{ contact.tel }}",
+            "email": "{{ contact.email }}"
+            }{% endcapture %}
+        {% assign assignContact = assignContact | append: point | append: "|||" %} {% endfor %} {% assign assignContact = assignContact | split: "|||" %} {{ assignContact | join: "," }}
+        ], {% endif %}
+    {% if site.seo.organization %}
+        "foundingDate": "{{ site.seo.organization.date }}", {% if site.seo.organization.founders %} {% assign assignFounders = "" %}
+        "founders": [ {% for founder in site.seo.organization.founders %} {% capture itemFounder %}
+            {
+            "@type": "{{ founder.type }}",
+            "name": "{{ founder.name }}"
+            }{% endcapture %}
+            {% assign assignFounders = assignFounders | append: itemFounder | append: "|||" %} {% endfor %} {% assign assignFounders = assignFounders | split: "|||" %} {{ assignFounders | join: "," }}
+        ], {% endif %} {% if site.address.street %}
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ site.address.street }}",
+            "addressLocality": "{{ site.address.locality }}",
+            "addressRegion": "{{ site.address.region }}",
+            "postalCode": "{{ site.address.cp }}",
+            "addressCountry": "{{ site.address.country }}"
+        }, {% endif %}
+    {% if site.address %}
+        "location": { {% if site.address.geo %}
+            "@type": "Place", {% if site.address.geo.hasMap %}
+            "hasMap": "{{ site.address.geo.hasMap }}", {% endif %} {% if site.address.geo.latitude %}
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "{{ site.address.geo.latitude }}",
+                "longitude": "{{ site.address.geo.longitude }}"
+            }, {% endif %} {% else %}
+            "@type": "PostalAddress", {% endif %} {% if site.address.street %}
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "{{ site.address.street }}",
+                "addressLocality": "{{ site.address.locality }}",
+                "addressRegion": "{{ site.address.region }}",
+                "postalCode": "{{ site.address.cp }}",
+                "addressCountry": "{{ site.address.country }}"
+            }, {% endif %}
+            "name": "{{ site.tradename }}",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{{ site.seo.logo.url | prepend: site.url }}",
+                "width": "{{ site.seo.logo.w }}",
+                "height": "{{ site.seo.logo.h }}"
+            },
+            "image": {
+                "@type": "ImageObject",
+                "url": "{{ site.seo.logo.url | prepend: site.url }}",
+                "width": "{{ site.seo.logo.w }}",
+                "height": "{{ site.seo.logo.h }}"
+            }, {% if site.seo.contactPoint %} {% for contact in site.seo.contactPoint %} {% if contact.type == "customer service" %} {% if contact.tel %}
+            "telephone": "{{ contact.tel }}", {% endif %} {% if contact.fax %}
+            "faxNumber": "{{ contact.fax }}", {% endif %}
+            {% endif %} {% endfor %} {% endif %}
+            "url": "{{ site.url }}"
+        }, {% endif %} {% endif %}
+        "url": "{{ site.url }}"

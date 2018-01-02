@@ -3,16 +3,29 @@ Saltw:
     name: Sonia Álvarez
     legalname: Sonia Álvarez Brasa
     darlingname: Salty
-    avatar:
-    email: sonia.alvarez.brasa@gmail.com
     alias:
         es: Sonia Álvarez Técnicas Web
         en: Sonia Álvarez Techniques for Web
         fr: Sonia Alvarez Techniques pour le Web
+    jobTitle:
+        -   name: Web Developer
+        -   name: title2
+        -   name: title3
+    email: sonia.alvarez.brasa@gmail.com
+    url: https://soniaalvarezbrasa.github.io/sobre-saltw.html
+    contactPoint: # Person | Organization
+        -   type: customer service # customer service | technical support | billing support | bill payment | sales | reservations | credit card support | emergency | baggage tracking | roadside assistance | package tracking
+            tel: +34-610-981-928
+            email: sonia.alvarez.brasa@gmail.com
+            fax: +34-982-555-666
+        -   type: technical support
+            tel: +34-610-981-928
+            email: sonia.alvarez.brasa@gmail.com
     about:
         en: /about.html
         fr: /a-propos.html
     social:
+        fbid: 100012485085316 # Id para compartir en Facebook
         ## Recuerda añadir tantas traducciones como enlaces sociales
         jobs:
             -   title: GitHub
