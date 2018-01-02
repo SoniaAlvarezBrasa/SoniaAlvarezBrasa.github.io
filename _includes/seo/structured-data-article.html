@@ -26,7 +26,7 @@
     {% assign assignKw = assignKw | append: kw | append: "|||" %}
     {% endfor %} {% assign assignKw = assignKw | split: "|||" %} {{ assignKw | join: "," }}
     ], {% endif %}
-    "articleBody": ["{{ page.content | strip_newlines | strip_html }}"],
+    "articleBody": "{{ page.content | strip_newlines | strip_html | escape_once }}",
     "mainEntityOfPage":{
         "@type":"WebPage",
         "@id":"{{ page.url | prepend: site.url }}"
