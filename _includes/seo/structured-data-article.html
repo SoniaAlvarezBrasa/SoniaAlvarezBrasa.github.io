@@ -3,7 +3,7 @@
     "@context": "http://schema.org", {% if page.path contains '_posts/' %}
     "@type":"Article", {% else %}
     "@type":"WebPage", {% endif %}
-    "@id":"{{ page.url | prepend: site.url }}"
+    "@id":"{{ page.url | prepend: site.url }}", 
     "url": "{{ page.url | prepend: site.url }}",
     "headline": "{{ page.title }}", {% if page.subtitle %}
     "alternativeHeadline": "{{ page.subtitle }}", {% endif %} {% if page.date %}

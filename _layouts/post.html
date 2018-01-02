@@ -1,10 +1,10 @@
 ---
 layout: default
 ---
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post">
 
     <header class="justify">
-        <h2 itemprop="name headline">{{ page.title }}</h2>
+        <h2>{{ page.title }}</h2>
         <figure>
 
         </figure>
@@ -15,8 +15,8 @@ layout: default
             {% capture svgid %}
                 post-show--{{ page.autor }}
             {% endcapture %}
-            <strong itemprop="author" itemscope itemtype="http://schema.org/Person">
-                <small itemprop="name" class="svg cross-centro"><a href="#"><span class="cross-centro svg--user">{% include svg/icon-user.svg hidden='true' iconclass='svg--user' id=svgid %}</span>{{ page.autor }}</a></small>
+            <strong>
+                <small class="svg cross-centro"><a href="#"><span class="cross-centro svg--user">{% include svg/icon-user.svg hidden='true' iconclass='svg--user' id=svgid %}</span>{{ page.autor }}</a></small>
             </strong>
         {% endif %}
         </p>
@@ -25,8 +25,8 @@ layout: default
 
     </header>
 
-    <div itemprop="articleBody">
+    <!-- <div itemprop="articleBody"> -->
         {{ content }}
-    </div>
+    <!-- </div> -->
 
 </article>

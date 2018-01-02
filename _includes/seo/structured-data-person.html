@@ -1,6 +1,10 @@
 "@type": "Person",
-        "name": "{{ site.data.people.[include.person].name }}", {% if site.data.people.[include.person].jobTitle %}{% for title in site.data.people.[include.person].jobTitle %}
-        "jobTitle": "{{ title.name }}", {% endfor %} {% endif %} {% if site.data.people.[include.person].url %}
+        "name": "{{ site.data.people.[include.person].name }}", {% if site.data.people.[include.person].jobTitle %}
+        "jobTitle": [ {% assign assignTitle = "" %} {% for title in site.data.people.[include.person].jobTitle %} {% capture titulacion %}
+            "{{ title.name }}"{% endcapture %}
+            {% assign assignTitle = assignTitle | append: titulacion | append: "|||" %}
+        {% endfor %} {% assign assignTitle = assignTitle | split: "|||" %} {{ assignTitle | join: "," }}
+        ], {% endif %} {% if site.data.people.[include.person].url %}
         "url": {{ site.data.people.[include.person].url }}, {% endif %} {% if site.data.people.[include.person].image %}
         "image": "{{ site.data.people.[include.person].image }}", {% else %} {% for image in site.static_files %} {% if image.path contains '/assets/img/profiles/'{{include.person | downcase }} %} {% capture profile %}{{ image.path }}{% endcapture %} {% endif %}{% endfor %} {% if profile %}
         "image": "{{ site.url }}{{ profile }}", {% else %}
