@@ -1,14 +1,14 @@
 <script type="application/ld+json">
 {
     "@context": "http://schema.org", {% if page.path contains '_posts/' %}
-    "@type":"BlogPosting",
+    "@type":"Article",
     "articleBody": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
     "mainEntityOfPage":{
-        "@type":"WebPage",
+        "@type":"Blog",
         "@id":"{{ page.url | prepend: site.url }}"
     }, {% elsif page.person %}
     "@type":"AboutPage",
-    "articleBody": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
+    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
     "mainEntityOfPage":{
         "@type":"WebPage",
         "@id":"{{ page.url | prepend: site.url }}"
