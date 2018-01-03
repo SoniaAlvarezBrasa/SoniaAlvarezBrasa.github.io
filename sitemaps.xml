@@ -19,7 +19,7 @@ permalink: /sitemaps.xml
     {% endif %}
     {% endfor %}
     {% for page in site.pages %}
-    {% if page.id contains "404" %}{% else %}
+    {% if page.id contains "404" %}{% elsif page.lang %}
     <url>
         <loc>{{ site.url }}{{ page.url }}</loc>
         {% assign versions=site.pages | where:"ref", page.ref %}
