@@ -7,12 +7,25 @@
         "@type":"Blog",
         "@id":"{{ page.url | prepend: site.url }}"
     }, {% elsif page.person %}
+    "@type":"ProfilePage",
+    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
+    "mainEntityOfPage":{
+        "@type":"WebPage",
+        "@id":"{{ page.url | prepend: site.url }}"
+    }, {% elsif page.ref == 'about' %}
     "@type":"AboutPage",
     "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
     "mainEntityOfPage":{
         "@type":"WebPage",
         "@id":"{{ page.url | prepend: site.url }}"
-    }, {% else %}
+    }, {% elsif page.ref == 'contact' %}
+    "@type":"ContactPage",
+    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
+    "mainEntityOfPage":{
+        "@type":"WebPage",
+        "@id":"{{ page.url | prepend: site.url }}"
+    }, 
+    {% else %}
     "@type":"WebPage", {% endif %}
     "@id":"{{ page.url | prepend: site.url }}",
     "url": "{{ page.url | prepend: site.url }}",

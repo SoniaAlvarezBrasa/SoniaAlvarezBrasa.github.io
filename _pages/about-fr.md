@@ -2,7 +2,7 @@
 layout: page
 title: À propos de Saltw
 permalink: /a-propos-de-saltw.html
-ref: about-saltw
+ref: profile-saltw
 person: Saltw
 lang: fr
 ---

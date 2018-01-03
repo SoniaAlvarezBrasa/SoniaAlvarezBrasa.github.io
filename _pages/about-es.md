@@ -2,7 +2,7 @@
 layout: page
 title: Curiosidades y perfil de Saltw
 permalink: /sobre-saltw.html
-ref: about-saltw
+ref: profile-saltw
 person: Saltw
 lang: es
 ---

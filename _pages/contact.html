@@ -1,0 +1,22 @@
+---
+layout: page
+title: Contacto
+permalink: /contacto/
+ref: contact
+lang: es
+metaDescription: "Describe en 115 caracteres lo que tus usuarios pueden encontrar en tu página de contacto. "
+metaOgDescription: "Describe en 200 caracteres lo que tus usuarios pueden encontrar en tu página de contacto. "
+---
+
+<article class="post">
+    <header>
+        <h2>{{ page.title }}</h2>
+        <p>{{ site.title[page.lang] }}</p>
+        <!-- nav site.categories -->
+        {% include nav-site-cats.html origin=page.ref ulclass="tagcloud-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="folder" %}
+    {% include nav-site-tags.html origin=prefixid ulclass="tagcloud-bores-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="tag" %}
+    </header>
+    {% include nav-social-text.html webuser=site.tradename sjobs=1 sme=1 iconid="footer1" aclass="cross-centro" %}
+    {% include nav-social-icon.html webuser=site.tradename sjobs=1 sme=1 iconid="footer2" aclass="cross-centro" %}
+    <p>{{ site.description[page.lang] }}</p>
+</article>
