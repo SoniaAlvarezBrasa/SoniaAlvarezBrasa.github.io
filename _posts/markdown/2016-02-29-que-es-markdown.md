@@ -407,16 +407,16 @@ Se puede crear un enlace simple rodeando el texto con corchetes y el enlace URL 
 
 Escribiendo esto
 
-> `Practica con textos [Lorem Ipsum]({{ "https://mi-sitio-web.ext/blog/que-es-lorem-ipsum.html" | append: site.baseurl }}) los ejemplos de esta guía básica.`
+> `Practica con textos [Lorem Ipsum](http://www.loremipsum.es/) los ejemplos de esta guía básica.`
 
 ... tus usuarios ven ...
 
-Practica con textos [Lorem Ipsum]({{ "/blog/que-es-lorem-ipsum.html" | append: site.baseurl }}) los ejemplos de esta guía básica.
+Practica con textos [Lorem Ipsum](http://www.loremipsum.es/) los ejemplos de esta guía básica.
 
 ... y se programa así
 
 ``` html
-<p>Practica con textos <a href="/blog/que-es-lorem-ipsum.html">Lorem Ipsum</a> los ejemplos de esta guía básica.</p>
+<p>Practica con textos <a href="http://www.loremipsum.es/">Lorem Ipsum</a> los ejemplos de esta guía básica.</p>
 ```
 
 #### Enlaces internos

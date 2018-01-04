@@ -1,0 +1,50 @@
+---
+layout:
+permalink: /sitemaps/images.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  {% for post in site.posts %}
+  {% if post.fotos %}
+  <url>
+      <loc>{{ site.url }}{{ post.url }}</loc>
+{% for imgs in post.fotos %}
+    <image:image>
+        {% for data in imgs %}{% if data.url %}
+        <image:loc>{{ site.url }}/assets/img{{ data.url }}</image:loc>
+        {% endif %} {% if data.caption %}
+        <image:caption>{{ data.caption }}</image:caption>
+        {% endif %} {% if data.title %}
+        <image:title>{{ data.title }}</image:title>
+        {% endif %} {% if data.location %}
+        <image:geo_location>{{ data.location }}</image:geo_location>
+        {% endif %} {% if data.license %}
+        <image:license>{{ data.license }}</image:license>
+        {% endif %} {% endfor %}
+    </image:image> {% endfor %}
+  </url>
+  {% endif %}
+  {% endfor %}
+  {% for page in site.pages %}
+  {% if page.fotos %}
+  <url>
+      <loc>{{ site.url }}{{ page.url }}</loc>
+{% for imgs in page.fotos %}
+    <image:image>
+        {% for data in imgs %}{% if data.url %}
+        <image:loc>{{ site.url }}/assets/img{{ data.url }}</image:loc>
+        {% endif %} {% if data.caption %}
+        <image:caption>{{ data.caption }}</image:caption>
+        {% endif %} {% if data.title %}
+        <image:title>{{ data.title }}</image:title>
+        {% endif %} {% if data.location %}
+        <image:geo_location>{{ data.location }}</image:geo_location>
+        {% endif %} {% if data.license %}
+        <image:license>{{ data.license }}</image:license>
+        {% endif %} {% endfor %}
+    </image:image> {% endfor %}
+  </url>
+  {% endif %}
+  {% endfor %}
+  </urlset>

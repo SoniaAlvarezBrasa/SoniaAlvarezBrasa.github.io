@@ -9,12 +9,25 @@ autor: Saltw
 categories: lipsum
 tags: [qué es, lorem ipsum, texto simulado]
 metaDescription: Qué es lo-que-sea?.  Resume aquí las excelencias de lo-que-sea a tus clientes potenciales para que sepan que aquí hay buen contenido sobre qué es lo-que-sea
-images: [/blog/lipsum_letras-fragmento-texto-imprenta-reves_1920x1275.jpg, /about/eva-torrijas_1920x1462.jpg]
-img2: /about/eva-torrijas_1920x1462.jpg
+fotos:
+    foto1:
+        url: /blog/lipsum_letras-fragmento-texto-imprenta-reves_1920x1275.jpg
+        alt: Detalle de plantilla de una página de imprenta donde se observa el texto reflejado.
+        caption: Página de imprenta Lorem Ipsum en alemán.
+        title: Detalle de una página de imprenta en Lorem Ipsum
+        license: CC0 Creative Commons
+    foto2:
+        url: /about/eva-torrijas_1920x1462.jpg
+        alt: Foto de nuestra repostera Eva con una apetecible bandeja de torrijas recién hechas
+        caption: Eva y sus famosas torrijas
+        title: Una bandeja de las famosas torrijas de Eva recién hechas
+        license: CC0 Creative Commons
+        location: Lugo, España
 ---
 
 **Lorem Ipsum** es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor _(N. del T. persona que se dedica a la imprenta)_ desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
 
+{{ page.fotos.foto1.url }}
 
 No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
 

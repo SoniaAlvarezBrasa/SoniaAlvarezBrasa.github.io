@@ -22,8 +22,9 @@
 {% if page.categories %}{% for category in page.categories limit:1 %}
     <meta property="article:section" content="{{ category }}" />{% endfor %}{% endif %}{% if page.tags %}{% for tag in page.tags %}
     <meta property="article:tag" content="{{ tag }}" />{% endfor %}{% endif %}
-{% if page.images %}{% for img in page.images %}
-    <meta property="og:image" content="{{ site.url }}/assets/img{{ img }}" />{% endfor %} {% elsif site.ogImage %}
+{% if page.fotos %}{% for imgs in page.fotos %}{% for img in imgs %}{% if img.url %}
+    <meta property="og:image" content="{{ site.url }}/assets/img{{ img.url }}" /> {% endif %} {% if img.alt %}
+    <meta property="og:image:alt" content="{{ img.alt}}" /> {% endif %}{% endfor %}{% endfor %}{% elsif site.ogImage %}
     <meta property="og:image" content="{{ site.url }}/assets/img{{ site.ogImage }}" />{% elsif site.image %}
     <meta property="og:image" content="{{ site.url }}/assets/img{{ site.image }}" />{% else %}
     <meta property="og:image" content="{{ site.url }}/assets/img/default.jpg" />{% endif %}
