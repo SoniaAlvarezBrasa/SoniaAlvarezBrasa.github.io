@@ -1,8 +1,9 @@
 ---
 layout: page
-title: Nosotros
-permalink: /nosotros.html
-ref: about
+title: Curiosidades y perfil de Sonia Álvarez
+permalink: /nosotros/saltw.html
+ref: profile-saltw
+person: Sonia Alvarez
 lang: es
 ---
 
@@ -23,8 +24,3 @@ Vous pouvez trouver le code source de ce nouveau thème Jekyll sur :
 Enfin, le code source de Jekyll est présenté sur
 {% include icon-github.html username="jekyll" %} /
 [jekyll](https://github.com/jekyll/jekyll)
-
-
-### La Comuna
-
-#### Sonia Alvarez

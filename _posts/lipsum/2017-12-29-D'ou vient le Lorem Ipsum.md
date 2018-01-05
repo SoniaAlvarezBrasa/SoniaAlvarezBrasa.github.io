@@ -3,7 +3,7 @@ layout: post
 title:  "D'où vient le Lorem Ipsum?"
 lang: fr
 ref: origen-lipsum
-date: 2017-12-27 09:52:44 +0100
+date: 2017-12-29 09:52:44 +0100
 autor: Saltw
 categories: lipsum
 tags: [d'où vient, lorem ipsum, texte simulé]

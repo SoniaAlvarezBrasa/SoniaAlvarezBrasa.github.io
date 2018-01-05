@@ -299,4 +299,57 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
     @include label-check($map...);
 }
 
+.sitemap {
+    & h2 { padding-top: 3em; }
+    & h3 {
+        color: $color-title;
+        font-style: bold;
+        & a {
+            padding-right: 1em;
+            color: inherit;
+        }
+    }
+
+    .principal {
+        & ul { padding-left: 3em; }
+        &, & ul {
+            width: 100%;
+            & li {
+                &, & small, & a { line-height: 1.5rem; }
+                & time { padding-right: 1em; }
+                width: 100%;
+                @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenter...);
+
+                & a small { color: $color-small; }
+            }
+        }
+        & a {
+            padding: 0 1em;
+        }
+    }
+}
+
+.idiomas {
+    .es:lang(es),
+    .en:lang(en),
+    .gl:lang(gl),
+    .pt:lang(pt),
+    .fr:lang(fr) {
+        font-weight: bold;
+    }
+    padding: 0 2em;
+    & li {
+        // padding: 0 0.2em;
+        font-style: italic;
+        & a, & span {
+            display: block;
+            padding: 0 0.2em;
+        }
+
+        & span { color: $color-small; }
+    }
+
+}
+
+
 // ------------------ fin de TagClouds --------------------

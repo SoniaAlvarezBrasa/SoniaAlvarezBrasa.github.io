@@ -613,8 +613,8 @@
     );
     @include hoverCss-border-base ($curl...);
 
-    #{$selector},
-    .#{$selector} {
+    & > #{$selector},
+    & > .#{$selector} {
         &:before {
             left: 50%;
             right: 50%;
@@ -629,8 +629,8 @@
     }
 
     &:hover, &:focus, &:target {
-        #{$selector}:before,
-        .#{$selector}:before {
+        & > #{$selector}:before,
+        & > .#{$selector}:before {
             left: 0;
             right: 0;
         }

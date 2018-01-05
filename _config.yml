@@ -149,7 +149,7 @@ alternate:
 markdown: kramdown
 include: ["_pages"]
 # permalink: /:title/
-permalink: /blog/:title.html
+permalink: /blog/:slug.html
 future: true
 
 # Blog categories

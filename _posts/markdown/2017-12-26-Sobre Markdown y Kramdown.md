@@ -3,7 +3,7 @@ layout: post
 title:  "Kramdown"
 lang: es
 ref: markdown
-date: 2016-02-29 09:48:44 +0100
+date: 2017-12-26 09:48:44 +0100
 autor: Saltw
 categories: markdown
 tags: [Kramdown, Markdown]

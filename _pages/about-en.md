@@ -1,9 +1,8 @@
 ---
 layout: page
-title: About Saltw
-permalink: /about-saltw.html
-ref: profile-saltw
-person: Saltw
+title: About
+permalink: /about.html
+ref: about
 lang: en
 ---
 
@@ -20,3 +19,8 @@ You can find the original source code for the Jekyll new theme at:
 You can find the source code for Jekyll at
 {% include icon-github.html username="jekyll" %} /
 [jekyll](https://github.com/jekyll/jekyll)
+
+
+### Knights of the round table
+
+#### Sonia Alvarez

@@ -3,7 +3,7 @@ layout: post
 title:  "Why use Lorem Ipsum?"
 lang: en
 ref: por-que-lipsum
-date: 2017-12-27 09:50:44 +0100
+date: 2017-12-28 09:50:44 +0100
 autor: Saltw
 categories: lipsum
 tags: [why, lorem ipsum, simulated text]

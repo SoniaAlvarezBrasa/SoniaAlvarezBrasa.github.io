@@ -1,0 +1,12 @@
+<nav class="idiomas {{ include.navclass }}">
+    <ul class="{{ include.ulclass }}">
+        {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
+        {% for post in posts %} {% if post.lang == page.lang %}
+        <li class="{{ include.liclass }}"><span>{{ post.lang }}</span></li>{% else %}
+        <li class="{{ include.liclass }}"><a href="{{ post.url | prepend: site.baseurl }}" class="{{ post.lang }}" title="{% if post.lang == 'es'%}Cambiar a Español{% elsif post.lang == 'en'%}Switch to English{% elsif post.lang == 'gl'%}Mudar ó Galego {% elsif post.lang == 'fr' %}Passer ou Français{% elsif post.lang == 'pt'%}Mudar para português{% endif %}">{{ post.lang }}</a></li>{% endif %}{% endfor %}
+        {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
+        {% for pag in pages %} {% if pag.lang == page.lang %}
+        <li class="{{ include.liclass }}"><span>{{ pag.lang }}</span></li>{% else %}
+        <li class="{{ include.liclass }}"><a href="{{ pag.url }}" class="{{ pag.lang }}"title="{% if pag.lang == 'es'%}Cambiar a Español{% elsif pag.lang == 'en'%}Switch to English{% elsif pag.lang == 'gl'%}Mudar ó Galego {% elsif pag.lang == 'fr' %}Passer ou Français{% elsif pag.lang == 'pt'%}Mudar para português{% endif %}">{{ pag.lang }}</a></li>{% endif %}{% endfor %}
+    </ul>
+</nav>

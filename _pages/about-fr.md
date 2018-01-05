@@ -1,9 +1,8 @@
 ---
 layout: page
-title: À propos de Saltw
-permalink: /a-propos-de-saltw.html
-ref: profile-saltw
-person: Saltw
+title: Nous
+permalink: /nous.html
+ref: about
 lang: fr
 ---
 
@@ -20,3 +19,8 @@ Vous pouvez trouver le code source de ce nouveau thème Jekyll sur :
 Enfin, le code source de Jekyll est présenté sur
 {% include icon-github.html username="jekyll" %} /
 [jekyll](https://github.com/jekyll/jekyll)
+
+
+### Notre petit comité
+
+#### Sonia Alvarez
