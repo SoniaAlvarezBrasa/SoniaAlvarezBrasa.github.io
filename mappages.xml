@@ -18,11 +18,11 @@ permalink: /sitemaps/pages.xml
     </url>
     {% endif %}
     {% endfor %}
-    {% for page in site.pages %}
-    {% if page.id contains "404" %}{% elsif page.lang %}
+    {% for pag in site.pages %}
+    {% if pag.nomap or pag.id contains "404" %}{% elsif pag.lang %}
     <url>
-        <loc>{{ site.url }}{{ page.url }}</loc>
-        {% assign versions=site.pages | where:"ref", page.ref %}
+        <loc>{{ site.url }}{{ pag.url }}</loc>
+        {% assign versions=site.pages | where:"ref", pag.ref %}
         {% for version in versions %}
         <xhtml:link rel="alternate" hreflang="{{ version.lang }}" href="{{ site.url }}{{ version.url }}" /> {% if version.lang == 'es'%}
         <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ version.url }}" />{% endif %}
