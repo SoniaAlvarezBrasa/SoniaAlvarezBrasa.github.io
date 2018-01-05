@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://soniaalvarezbrasa.github.io/sitemap.xml
