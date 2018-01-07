@@ -65,7 +65,7 @@
         {
         "@type": "ListItem",
         "position": "{{ forloop.index}}",
-        "headline": "{{ cat[0] | capitalize }}",
+        "name": "{{ cat[0] | capitalize | append: site.prefix }}",
         "nextItem": [ {% assign assignItems = "" %}
         {% for post in posts %} {% capture item %}
             {
