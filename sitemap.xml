@@ -1,13 +1,12 @@
 ---
 layout:
-permalink: /sitemap.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <sitemap>
-      <loc>{{ site.url }}/mappages.xml</loc>
+      <loc>{{ site.url }}/sitemap/pages.xml</loc>
    </sitemap>
    <sitemap>
-      <loc>{{ site.url }}/mapimages.xml</loc>
+      <loc>{{ site.url }}/sitemap/images.xml</loc>
    </sitemap>
 </sitemapindex>
