@@ -2,10 +2,28 @@
 {
     "@context": "http://schema.org",
     "@type":"CollectionPage",
-    "name": "{{ include.name | capitalize | append: site.prefix }}",
+    "name": "Blog | {{ page.title }} | {{ include.name | capitalize }}",
     "url": "{{ page.url | prepend: site.url }}",
     "mainEntity":{
         "@type":"ItemList",
+        "itemListElement": [ {% assign assignItems = "" %}
+            {% for post in include.cat %} {% capture item %}
+            {
+            "@type": "ListItem",
+            "position": "{{ forloop.index}}",
+            "item":
+                {
+                "@type": "NewsArticle",
+                "@id": "{{ post.url | prepend: site.url }}",
+                "mainEntityOfPage": "{{ post.url | prepend: site.url }}",
+                {% include seo/structured-data-article.html pageref=post %}
+                }
+            }{% endcapture %}
+            {% assign assignItems= assignItems | append: item | append: "|||" %} {% endfor %} {% assign assignItems = assignItems | split: "|||" %} {{ assignItems | join: "," }}
+        ]
+    },
+    "mainEntityOfPage":{
+        "@type":"WebPageElement",
         "name": "{% if page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}",
         "description": "{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}",
         "publisher": {
@@ -13,21 +31,6 @@
         },
         "@id":"{{ page.url | prepend: site.url }}"
     },
-    "itemListElement": [ {% assign assignItems = "" %}
-        {% for post in include.cat %} {% capture item %}
-        {
-        "@type": "ListItem",
-        "position": "{{ forloop.index}}",
-        "item":
-            {
-            "@type": "NewsArticle",
-            "@id": "{{ post.url | prepend: site.url }}",
-            "mainEntityOfPage": "{{ post.url | prepend: site.url }}",
-            {% include seo/structured-data-article.html pageref=post %}
-            }
-        }{% endcapture %}
-        {% assign assignItems= assignItems | append: item | append: "|||" %} {% endfor %} {% assign assignItems = assignItems | split: "|||" %} {{ assignItems | join: "," }}
-    ],
     "@id": "{{ page.url | prepend: site.url }}#{{ page.permalink | slugify }}--cat-{{ cat[0]| slugify }}"
 }
 </script>
