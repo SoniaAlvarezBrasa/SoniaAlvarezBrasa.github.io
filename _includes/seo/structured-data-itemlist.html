@@ -4,7 +4,7 @@
     "@type":"CollectionPage",
     "name": "{{ include.name | capitalize | append: site.prefix }}",
     "url": "{{ page.url | prepend: site.url }}",
-    "mainEntityOfPage":{
+    "mainEntity":{
         "@type":"ItemList",
         "name": "{% if page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}",
         "description": "{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}",
