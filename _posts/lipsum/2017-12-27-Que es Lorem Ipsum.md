@@ -21,7 +21,7 @@ fotos:
         alt: Foto de nuestra repostera Eva con una apetecible bandeja de torrijas recién hechas
         caption: Eva y sus famosas torrijas
         title: Una bandeja de las famosas torrijas de Eva recién hechas
-        license: CC0 Creative Commons
+        license: https://wiki.creativecommons.org/wiki/CC0
         location: Lugo, España
 ---
 
