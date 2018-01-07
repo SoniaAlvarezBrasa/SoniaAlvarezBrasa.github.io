@@ -70,13 +70,13 @@
             {% for post in posts %} {% capture item %}
                 {
                 "@type": "ListItem",
-                "position": "{{ forloop.index}}"
+                "position": "{{ forloop.index}}",
                 "item":
                     {
                     "@type": "NewsArticle",
+                    "@id": "{{ post.url | prepend: site.url }}",
                     "mainEntityOfPage": "{{ post.url | prepend: site.url }}",
-                        {% include seo/structured-data-article.html pageref=post %}
-                    "@id": "{{ post.url | prepend: site.url }}"
+                    {% include seo/structured-data-article.html pageref=post %}
                     }
                 }{% endcapture %}
                 {% assign assignItems= assignItems | append: item | append: "|||" %} {% endfor %} {% assign assignItems = assignItems | split: "|||" %} {{ assignItems | join: "," }}
