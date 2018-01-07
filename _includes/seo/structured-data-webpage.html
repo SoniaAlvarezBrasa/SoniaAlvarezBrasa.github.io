@@ -43,10 +43,10 @@
         "@id":"{{ page.url | prepend: site.url }}"
     },
     {% include seo/structured-data-article.html pageref=page %} {% elsif page.ref == 'cat-index' %}
-    "@type":"ItemList",
+    "@type":"CollectionPage",
     "url": "{{ page.url | prepend: site.url }}",
     "mainEntityOfPage":{
-        "@type":"CollectionPage",
+        "@type":"ItemList",
         "name": "{% if page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}",
         "description": "{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}",
         "publisher": {
