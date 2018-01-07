@@ -15,7 +15,7 @@ fotos:
         alt: Detalle de plantilla de una página de imprenta donde se observa el texto reflejado.
         caption: Página de imprenta Lorem Ipsum en alemán.
         title: Detalle de una página de imprenta en Lorem Ipsum
-        license: CC0 Creative Commons
+        license: https://wiki.creativecommons.org/wiki/CC0
     foto2:
         url: /about/eva-torrijas_1920x1462.jpg
         alt: Foto de nuestra repostera Eva con una apetecible bandeja de torrijas recién hechas
