@@ -1,0 +1,93 @@
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org", {% if page.path contains '_posts/' %}
+    "@type":"Article",
+    "articleBody": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
+    "mainEntityOfPage":{
+        "@type":"Blog",
+        "name": "{% if page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}",
+        "description": "{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}",
+        "publisher": {
+            {% include seo/structured-data-publisher.html %}
+        },
+        "@id":"{{ page.url | prepend: site.url }}"
+    },
+    {% include seo/structured-data-article.html pageref=page %} {% elsif page.person %}
+    "@type":"ProfilePage",
+    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
+    "mainEntityOfPage":{
+        "@type":"WebPage",
+        "name": "{% if page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}",
+        "description": "{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}",
+        "@id":"{{ page.url | prepend: site.url }}"
+    },
+    {% include seo/structured-data-article.html pageref=page %} {% elsif page.ref == 'about' %}
+    "@type":"AboutPage",
+    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
+    "mainEntityOfPage":{
+        "@type":"WebPage",
+        "name": "{% if page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}",
+        "description": "{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}",
+        "@id":"{{ page.url | prepend: site.url }}"
+    },
+    {% include seo/structured-data-article.html pageref=page %} {% elsif page.ref == 'contact' %}
+    "@type":"ContactPage",
+    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
+    "mainEntityOfPage":{
+        "@type":"WebPage",
+        "name": "{% if page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}",
+        "description": "{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}",
+        "publisher": {
+            {% include seo/structured-data-publisher.html %}
+        },
+        "@id":"{{ page.url | prepend: site.url }}"
+    },
+    {% include seo/structured-data-article.html pageref=page %} {% elsif page.ref == 'cat-index' %}
+    "@type":"ItemList",
+    "url": "{{ page.url | prepend: site.url }}",
+    "mainEntityOfPage":{
+        "@type":"CollectionPage",
+        "name": "{% if page.title %}{{ page.title | append: site.prefix | escape }}{% else %}{{ site.title[page.lang] | append: site.prefix | escape }}{% endif %}",
+        "description": "{% if page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}",
+        "publisher": {
+            {% include seo/structured-data-publisher.html %}
+        },
+        "@id":"{{ page.url | prepend: site.url }}"
+    },
+    "itemListElement": [ {% assign assignCats = "" %}
+{% for cat in site.categories %}
+    {% assign temp=null %}
+    {% assign posts=cat[1] | where:"lang", page.lang %}
+    {% for post in posts %}
+        {% capture temp %}{{ post.content }}{% endcapture %}
+    {% endfor %}
+{% if temp %} {% capture itemlist %}
+        {
+        "@type": "ItemList",
+        "position": "{{ forloop.index}}",
+        "headline": "{{ cat[0] | capitalize }}",
+            "itemListElement": [ {% assign assignItems = "" %}
+            {% for post in posts %} {% capture item %}
+                {
+                "@type": "ListItem",
+                "position": "{{ forloop.index}}"
+                "item":
+                    {
+                    "@type": "NewsArticle",
+                    "mainEntityOfPage": "{{ post.url | prepend: site.url }}",
+                        {% include seo/structured-data-article.html pageref=post %}
+                    "@id": "{{ post.url | prepend: site.url }}"
+                    }
+                }{% endcapture %}
+                {% assign assignItems= assignItems | append: item | append: "|||" %} {% endfor %} {% assign assignItems = assignItems | split: "|||" %} {{ assignItems | join: "," }}
+            ],
+        "@id": "{{ page.url | prepend: site.url }}#{{ page.permalink | slugify }}--cat-{{ cat[0]| slugify }}"
+        }{% endcapture %}
+        {% assign assignCats= assignCats | append: itemlist | append: "|||" %} {% endif %} {% endfor %} {% assign assignCats = assignCats | split: "|||" %} {{ assignCats | join: "," }}
+    ],
+    "@id":"{{ page.url | prepend: site.url }}"
+    {% else %}
+    "@type":"WebPage",
+    {% include seo/structured-data-article.html pageref=page %} {% endif %}
+}
+</script>

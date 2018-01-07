@@ -19,8 +19,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:updated_time" content="{{ site.time | date_to_xmlschema }}" />
 {% endif %}
-{% if page.categories %}{% for category in page.categories limit:1 %}
-    <meta property="article:section" content="{{ category }}" />{% endfor %}{% endif %}{% if page.tags %}{% for tag in page.tags %}
+{% if page.tags %}{% for tag in page.tags %}
     <meta property="article:tag" content="{{ tag }}" />{% endfor %}{% endif %}
 {% if page.fotos %}{% for imgs in page.fotos %}{% for img in imgs %}{% if img.url %}
     <meta property="og:image" content="{{ site.url }}/assets/img{{ img.url }}" /> {% endif %} {% if img.alt %}
@@ -50,6 +49,6 @@
     <!-- <link rel="alternate" type="application/rss+xml" title="{{ site.title[page.lang] }}" href="{{ site.feed[page.lang] | prepend: site.baseurl | prepend: site.url }}"> -->
     {% include seo/structured-data-website.html %}
     {% if page.ref != 'index' %}
-    {% include seo/structured-data-article.html %}
+    {% include seo/structured-data-webpage.html %}
     {% endif %}
 </head>

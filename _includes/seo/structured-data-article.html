@@ -1,54 +1,27 @@
-<script type="application/ld+json">
-{
-    "@context": "http://schema.org", {% if page.path contains '_posts/' %}
-    "@type":"Article",
-    "articleBody": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
-    "mainEntityOfPage":{
-        "@type":"Blog",
-        "@id":"{{ page.url | prepend: site.url }}"
-    }, {% elsif page.person %}
-    "@type":"ProfilePage",
-    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
-    "mainEntityOfPage":{
-        "@type":"WebPage",
-        "@id":"{{ page.url | prepend: site.url }}"
-    }, {% elsif page.ref == 'about' %}
-    "@type":"AboutPage",
-    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
-    "mainEntityOfPage":{
-        "@type":"WebPage",
-        "@id":"{{ page.url | prepend: site.url }}"
-    }, {% elsif page.ref == 'contact' %}
-    "@type":"ContactPage",
-    "text": "{{ page.content | markdownify | strip_html | strip_newlines | escape_once }}",
-    "mainEntityOfPage":{
-        "@type":"WebPage",
-        "@id":"{{ page.url | prepend: site.url }}"
-    }, 
-    {% else %}
-    "@type":"WebPage", {% endif %}
-    "@id":"{{ page.url | prepend: site.url }}",
-    "url": "{{ page.url | prepend: site.url }}",
-    "headline": "{{ page.title }}", {% if page.subtitle %}
-    "alternativeHeadline": "{{ page.subtitle }}", {% endif %} {% if page.date %}
-    "datePublished": "{{ page.date | date_to_xmlschema }}", {% endif %}
-    "dateModified": "{{ site.time | date_to_xmlschema }}", {% if page.autor %}
+{% assign pag = include.pageref %}
+    "url": "{{ pag.url | prepend: site.url }}",
+    "headline": "{{ pag.title }}", {% if pag.subtitle %}
+    "alternativeHeadline": "{{ pag.subtitle }}", {% endif %}
+    "description": "{% if pag.metaDescription %}{{ pag.metaDescription }}{% elsif pag.description %}{{ pag.description }}{% elsif pag.excerpt %}{{ pag.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[pag.lang] }}{% endif %}", {% if pag.date %}
+    "datePublished": "{{ pag.date | date_to_xmlschema }}", {% endif %}
+    "dateModified": "{{ site.time | date_to_xmlschema }}", {% if pag.autor %}
     "author": {
-        {% include seo/structured-data-person.html person=page.autor job=1 me=0 contact=0 %}
+        {% include seo/structured-data-person.html person=pag.autor job=1 me=0 contact=0 %}
+    }, {% elsif site.seo.author %}
+    "author": {
+        {% include seo/structured-data-person.html person=site.seo.author job=1 me=0 contact=0 %}
     }, {% endif %}
     "publisher": {
         {% include seo/structured-data-publisher.html %}
-    }, {% if page.images %}{% for img in page.images limit:1 %}
+    }, {% if pag.images %}{% for img in pag.images limit:1 %}
     "image": "{{ site.url }}/assets/img{{ img }}", {% endfor %} {% elsif site.ogImage %}
     "image": "{{ site.url }}/assets/img{{ site.ogImage }}", {% else %}
     "image": "{{ site.url }}/assets/img/default.jpg", {% endif %}
-{% if page.categories %}{% for category in page.categories limit:1 %}
-    "genre": "{{ category }}", {% endfor %}{% endif %}{% if page.tags %}
-    "keywords": [ {% assign assignKw = "" %} {% for tag in page.tags %} {% capture kw %}
+{% if pag.categories %}{% for category in pag.categories limit:1 %}
+    "articleSection": "{{ category }}", {% endfor %}{% endif %}{% if pag.tags %}
+    "keywords": [ {% assign assignKw = "" %} {% for tag in pag.tags %} {% capture kw %}
         "{{ tag }}"{% endcapture %}
     {% assign assignKw = assignKw | append: kw | append: "|||" %}
     {% endfor %} {% assign assignKw = assignKw | split: "|||" %} {{ assignKw | join: "," }}
     ], {% endif %}
-    "inLanguage": "{{ page.lang }}"
-}
-</script>
+    "inLanguage": "{{ pag.lang }}"
