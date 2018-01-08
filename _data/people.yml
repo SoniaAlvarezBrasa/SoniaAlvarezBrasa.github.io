@@ -25,7 +25,8 @@ Saltw:
         en: /about/saltw.html
         fr: /nous/saltw.html
     social:
-        fbid: 100012485085316 # Id para compartir en Facebook
+        fbadmin: 100012485085316 # Id para compartir en Facebook
+        fbapp: 1635683343144334 # Id para compartir en Facebook
         ## Recuerda añadir tantas traducciones como enlaces sociales
         jobs:
             -   title: GitHub
