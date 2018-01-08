@@ -3,7 +3,7 @@ layout: page
 title: Curiosidades y perfil de Sonia Álvarez
 permalink: /nosotros/saltw.html
 ref: profile-saltw
-person: Sonia Alvarez
+person: Saltw
 lang: es
 ---
 

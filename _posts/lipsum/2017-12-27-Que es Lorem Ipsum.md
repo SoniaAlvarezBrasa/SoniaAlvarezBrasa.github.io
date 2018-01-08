@@ -8,7 +8,7 @@ date: 2017-12-27 09:48:44 +0100
 autor: Saltw
 categories: lipsum
 tags: [qué es, lorem ipsum, texto simulado]
-metaDescription: Qué es lo-que-sea?.  Resume aquí las excelencias de lo-que-sea a tus clientes potenciales para que sepan que aquí hay buen contenido sobre qué es lo-que-sea
+metaDescription: Qué es lo-que-sea?. Resume aquí las excelencias de lo-que-sea a tus clientes potenciales para que sepan que aquí hay buen contenido sobre qué es lo-que-sea
 fotos:
     foto1:
         url: /blog/lipsum_letras-fragmento-texto-imprenta-reves_1920x1275.jpg
@@ -27,7 +27,6 @@ fotos:
 
 **Lorem Ipsum** es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor _(N. del T. persona que se dedica a la imprenta)_ desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.
 
-{{ page.fotos.foto1.url }}
 
 No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.
 

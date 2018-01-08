@@ -12,7 +12,6 @@ Saltw:
         -   name: title2
         -   name: title3
     email: sonia.alvarez.brasa@gmail.com
-    url: https://soniaalvarezbrasa.github.io/sobre-saltw.html
     contactPoint: # Person | Organization
         -   type: customer service # customer service | technical support | billing support | bill payment | sales | reservations | credit card support | emergency | baggage tracking | roadside assistance | package tracking
             tel: +34-610-981-928
@@ -22,8 +21,9 @@ Saltw:
             tel: +34-610-981-928
             email: sonia.alvarez.brasa@gmail.com
     about:
-        en: /about.html
-        fr: /a-propos.html
+        es: /nosotros/saltw.html
+        en: /about/saltw.html
+        fr: /nous/saltw.html
     social:
         fbid: 100012485085316 # Id para compartir en Facebook
         ## Recuerda añadir tantas traducciones como enlaces sociales

@@ -3,7 +3,7 @@ layout: page
 title: Sonia Álvarez Profile Information
 permalink: /about/saltw.html
 ref: profile-saltw
-person: Sonia Alvarez
+person: Saltw
 lang: en
 ---
 
