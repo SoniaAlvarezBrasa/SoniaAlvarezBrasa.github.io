@@ -26,7 +26,8 @@ Saltw:
         fr: /nous/saltw.html
     social:
         fbadmin: 100012485085316 # Id para compartir en Facebook
-        fbapp: 1635683343144334 # Id para compartir en Facebook
+        # fbapp: 1635683343144334 # Id de la app Saltw First App
+        fbapp: 145634995501895 # Graph API Explorer
         ## Recuerda añadir tantas traducciones como enlaces sociales
         jobs:
             -   title: GitHub
