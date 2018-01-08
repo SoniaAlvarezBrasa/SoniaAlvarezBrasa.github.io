@@ -36,9 +36,9 @@ layout: default
     <nav>
         <ul>
             <li class="compartir"><a class="facebook" href="http://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url }}" target="_blank">Facebook</a></li>
-            <li class="compartir"><a class="twitter" href="http://twtter.com/intent/tweet?url={{ page.url | prepend: site.url }}&text={{ page.title | url_encode }}&via={{ usertwitter }}" target="_blank">Tweet</a></li>
+            <li class="compartir"><a class="twitter" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}&text={{ page.title | url_encode }}&via={{ usertwitter }}" target="_blank">Tweet</a></li>
             <li class="compartir"><a class="googleplus" href="https://plus.google.com/share?url={{ page.url | prepend: site.url }}" target="_blank">Google+</a></li>
-            <li class="compartir"><a class="pinterest" href="https://pinterest.com/pin/create/button/?url={{ page.url | prepend: site.url }}&media={{ page.fotos.foto1.url }}" target="_blank">Pinterest</a></li>
+            <li class="compartir"><a class="pinterest" href="https://pinterest.com/pin/create/button/?url={{ page.url | prepend: site.url }}&media={{ site.url }}/assets/img{{ page.fotos.foto1.url }}" target="_blank">Pinterest</a></li>
         </ul>
     </nav>
 
