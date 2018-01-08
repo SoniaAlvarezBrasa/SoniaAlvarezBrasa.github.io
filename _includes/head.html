@@ -9,9 +9,22 @@
     <!--meta name="robots" content="{% if page.robots %}{{ page.robots }}{% else %}Index, Follow{% endif %}"-->
     <meta name="robots" content="Index, Follow" />
     <meta name=”google” content=”nositelinkssearchbox” />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary">
+    <meta name=”twitter:title” content="{% if page.ref == 'index' %}{{ site.title.[page.lang] }}{% elsif page.ogTitle %}{{ page.ogTitle | append: site.prefix }}{% elsif page.title %}{{ page.title | append: site.prefix }}{% else %}{{ site.title[page.lang] | append: site.prefix }}{% endif %}" />
+    <meta name=”twitter:url” content="{{ page.url | prepend: site.url }}" />
+    <meta name=”twitter:site” content="@{{ site.tradename }}" />
+    <meta name=”twitter:description” content="{% if page.metaOgDescription %}{{ page.metaOgDescription }}{% elsif page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
+    <meta name="twitter:creator" content="{% if page.autor %}@{{ page.autor }}{% else %}@{{ site.seo.author }}{% endif %}" /> {% if page.fotos %}{% for imgs in page.fotos limit: 1 %}{% for img in imgs %}{% if img.url %}
+    <meta name="twitter:image" content="{{ site.url }}/assets/img{{ img.url }}" /> {% endif %}{% endfor %}{% endfor %} {% elsif site.ogImage %}
+    <meta name="twitter:image" content="{{ site.url }}/assets/img{{ site.ogImage.url }}" /> {% elsif site.image %}
+    <meta name="twitter:image" content="{{ site.url }}/assets/img{{ site.image.url }}" />{% else %}
+    <meta name="twitter:image" content="{{ site.url }}/assets/img/default.jpg" />{% endif %}
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
     <meta property="og:title" content="{% if page.ref == 'index' %}{{ site.title.[page.lang] }}{% elsif page.ogTitle %}{{ page.ogTitle | append: site.prefix }}{% elsif page.title %}{{ page.title | append: site.prefix }}{% else %}{{ site.title[page.lang] | append: site.prefix }}{% endif %}" />
     <meta property="og:url" content="{{ page.url | prepend: site.url }}" />
+    <meta property="og:site_name" content="{{ site.tradename }}" />
+    <meta property="og:description" content="{% if page.metaOgDescription %}{{ page.metaOgDescription }}{% elsif page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
     <meta property="fb:app_id" content="{{ site.data.people.[page.person].social.fbid }}" />
 {% if page.ref == 'index' %}
     <meta property="og:type" content="website" /> {% elsif page.person %}
@@ -24,17 +37,16 @@
 {% if page.fotos %}{% for imgs in page.fotos %}{% for img in imgs %}{% if img.url %}
     <meta property="og:image" content="{{ site.url }}/assets/img{{ img.url }}" /> {% endif %} {% if img.alt %}
     <meta property="og:image:alt" content="{{ img.alt}}" /> {% endif %}{% endfor %}{% endfor %}{% elsif site.ogImage %}
-    <meta property="og:image" content="{{ site.url }}/assets/img{{ site.ogImage }}" />{% elsif site.image %}
-    <meta property="og:image" content="{{ site.url }}/assets/img{{ site.image }}" />{% else %}
+    <meta property="og:image" content="{{ site.url }}/assets/img{{ site.ogImage.url }}" />
+    <meta property="og:image:alt" content="{{ site.ogImage.alt }}" /> {% elsif site.image %}
+    <meta property="og:image" content="{{ site.url }}/assets/img{{ site.image.url }}" />
+    <meta property="og:image:alt" content="{{ site.image.alt }}" /> {% else %}
     <meta property="og:image" content="{{ site.url }}/assets/img/default.jpg" />{% endif %}
-    <meta property="og:description" content="{% if page.metaOgDescription %}{{ page.metaOgDescription }}{% elsif page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
-    <meta property="og:site_name" content="{{ site.tradename }}" />
     <meta property="og:locale" content="{{ site.alternate.oglocale.[page.lang] }}" />
 {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}{% for post in posts %}{% if post.lang != page.lang %}
     <meta property="og:locale:alternate" content="{{ site.alternate.oglocale.[post.lang] }}" />{% endif %}{% endfor %}
 {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}{% for pag in pages %}{% if pag.lang != page.lang %}
     <meta property="og:locale:alternate" content="{{ site.alternate.oglocale.[pag.lang] }}" />{% endif %}{% endfor %}
-
     <!-- <link rel="stylesheet" href="{{ "css/main.css" | prepend: site.baseurl }}"> -->
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | append: site.baseurl }}">
     <!-- <link rel="stylesheet" href="{{ "css/application.css" | prepend: site.baseurl }}"> -->
