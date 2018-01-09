@@ -22,35 +22,35 @@ es:
             titleLink: Artículos sobre
     icons:
         CodePen:
-            title: Ver mis proyectos elegidos en CodePen.io
+            title: Saltw en Codepen
             iconTitle: Logo de CodePen.io
             iconDesc: El logotipo abreviado de Codepen es un cubo geométrico 3d transparente.
         DeviantArt:
-            title: Ver mi actividad artística en DeviantArt
+            title: Saltw en DeviantArt
             iconTitle: Logo de DeviantArt
             iconDesc: El logo de DeviantArt son dos letras 'A' (de Art, en color verde) mayúsculas seguidas, la primera invertida, seccionadas a 62º en el centro de tal forma que si se combina consigo mismo a 180º puede leerse su A mayúscula, normal o invertida hasta el infinito.
         Facebook:
-            title: Sígueme en Facebook
+            title: Saltw en Facebook
             iconTitle: Logo de Facebook
             iconDesc: El logo abreviado de Facebook es su inicial 'f' en minúscula, en color blanco sobre un fondo azul de tono oscuro.
         GitHub:
-            title: Ver mis proyectos en GitHub
+            title: Saltw en GitHub
             iconTitle: Logo de GitHub
             iconDesc: La imágen de Marca de GitHub es la silueta en blanco y negro de su mascota 'Octocat' que tiene cabeza de gato y cuerpo de pulpo aunque en sus dibujos nunca se verán más de cinco tentáculos. Dos que hacen de piernas, dos de brazos y el que se ve en la silueta como su cola.
         GitLab:
-            title: Ver mis proyectos en GitLab
+            title: Saltw en GitLab
             iconTitle: Logo de GitLab
             iconDesc: La imágen de marca de GitLab es una combinación de siete triángulos en tres tonos naranja que dibujan un zorro.
         GooglePlus:
-            title: Sígueme en Google+
+            title: Saltw en Google +
             iconTitle: Logo de Google+
             iconDesc: El logo abreviado de GooglePlus es su inicial G en mayúscula seguido del signo de suma (G+), ambos en color rojo.
         Instagram:
-            title: Sígueme en Instagram
+            title: Saltw en Instagram
             iconTitle: Logo de Instagram
             iconDesc: La imágen de marca de Instagram combina un círculo pequeño dentro de un cuadrado con un punto en su parte superior derecha para que simule una cámara de fotos. El fondo combina un degradado de colores rojos, naranjas, amarillos, azules y violetas como un arco iris.
         LinkedIn:
-            title: Sígueme en LinkedIn
+            title: Saltw en Linkedin
             iconTitle: Logo de LinkedIn
             iconDesc: El logo de LinkedIn son las letras 'in' en minúsculas, en color blanco sobre fondo azul claro.
         Menu:
@@ -58,22 +58,22 @@ es:
             iconTitle: Menú Principal
             iconDesc: La imágen del menú desplegable son tres líneas horizontales apiladas una encima de la otra, como si fuera un signo de igual con una raya extra.
         Pinterest:
-            title: Sígueme en Pinterest
+            title: Saltw en Pinterest
             iconTitle: Logo de Pinterest
             iconDesc: El logo de Pinterest es un círculo rojo con una P blanca en el centro.
         StackOverflow:
-            title: Ver mi actividad en Stack Overflow
+            title: Saltw en Stack Overflow
             iconTitle: Logo de Stack Overflow
             iconDesc: El logo de Stack Overflow son cinco líneas de color naranja apiladas una encima de otra en abanico sobre un paréntesis boca arriba de color gris, como simulando cinco libros de lomo naranja cayendo en una bandeja gris.
         Tag:
             iconTitle: Etiqueta
             iconDesc: La imágen es el icono típico de las etiquetas en la web. Simula la silueta de una etiqueta antigua donde se escribía a mano la descripción del contenido de un paquete. La parte superior acabada en punta con un agujero por el que se pasaba una goma o cordel que la sujetaba a su caja.
         Twitter:
-            title: Sígueme en Twitter
+            title: Saltw en Twitter
             iconTitle: Logo de Twitter
             iconDesc: La imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulillo pálido'.
         Youtube:
-            title: Sígueme en Youtube
+            title: Saltw en Youtube
             iconTitle: Logo de Youtube
             iconDesc: La imágen de marca de youtube es un triángulo blanco dentro de un rectángulo rojo simulando el botón inicio de un reproductor.
 gl:

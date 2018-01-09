@@ -144,6 +144,7 @@ $mapSocialSimple:(
     $filter-bw-after: none,
     $filter-color-before: brightness(999%),
     $filter-color-after: none,
+    $selector: svg--,
     $ss: $ss-icon
 ){
     // li.svg / a / span.svg--name / svg.svg--name
@@ -153,8 +154,8 @@ $mapSocialSimple:(
         // Se inicia con fondo corporativo y texto transparente
         @each $name, $icon in $mapSocialSimple {
             // (li.svg--$name | li.svg--icon) + svg.svg--$name
-            &.svg--#{$name},
-            & .svg--#{$name} {
+            &.#{$selector}#{$name},
+            & .#{$selector}#{$name} {
                 @if map-get($icon, bg) {
                     fill: $bg;
                     background: map-get($icon, bg);
@@ -165,21 +166,21 @@ $mapSocialSimple:(
                     }
                 } @else {
                     background: map-get($icon, bg-light);
-                    & svg.svg--#{$name} {
+                    & svg.#{$selector}#{$name} {
                         .invertir--#{$name} {
                             fill: $bg;
                         }
                     }
                 }
                 @if map-get($icon, fill) == propio {
-                    & svg.svg--#{$name} {
+                    & svg.#{$selector}#{$name} {
                         -webkit-filter: $filter-color-before;
                         filter: $filter-color-before;
                     }
                 }
 
-                -webkit-transition: all $ss-icon ease;
-                transition: all $ss-icon ease;
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
             }
         }
 
@@ -187,8 +188,8 @@ $mapSocialSimple:(
         &:hover, &:focus, &:target {
             @each $name, $icon in $mapSocialSimple {
                 // (li.svg--$name | li.svg--icon) + svg.svg--$name
-                &.svg--#{$name},
-                & .svg--#{$name} {
+                &.#{$selector}#{$name},
+                & .#{$selector}#{$name} {
                     background: $bg;
 
                     @if map-get($icon, bg) {
@@ -198,14 +199,14 @@ $mapSocialSimple:(
                             fill: map-get($icon, fill);
                         }
                     } @else {
-                        & svg.svg--#{$name} {
+                        & svg.#{$selector}#{$name} {
                             .invertir--#{$name} {
                                 fill: map-get($icon, bg-light);
                             }
                         }
                     }
                     @if map-get($icon, fill) == propio {
-                        & svg.svg--#{$name} {
+                        & svg.#{$selector}#{$name} {
                             -webkit-filter: $filter-color-after;
                             filter: $filter-color-after;
                         }
@@ -220,8 +221,8 @@ $mapSocialSimple:(
         // Se inicia con fondo transparente y texto corporativo
         @each $name, $icon in $mapSocialSimple {
             // (li.svg--$name | li.svg--icon) + svg.svg--$name
-            &.svg--#{$name},
-            & .svg--#{$name} {
+            &.#{$selector}#{$name},
+            & .#{$selector}#{$name} {
                 background: $bg;
 
                 @if map-get($icon, bg) {
@@ -231,23 +232,23 @@ $mapSocialSimple:(
                         fill: map-get($icon, fill);
                     }
                 } @else {
-                    & svg.svg--#{$name} {
+                    & svg.#{$selector}#{$name} {
                         .invertir--#{$name} {
                             fill: map-get($icon, bg-light);
                         }
                     }
                 }
 
-                -webkit-transition: all $ss-icon ease;
-                transition: all $ss-icon ease;
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
             }
         }
         // Invirtiendo a fondo corporativo y texto transparente
         &:hover, &:focus, &:target {
             @each $name, $icon in $mapSocialSimple {
                 // (li.svg--$name | li.svg--icon) + svg.svg--$name
-                &.svg--#{$name},
-                & .svg--#{$name} {
+                &.#{$selector}#{$name},
+                & .#{$selector}#{$name} {
                     @if map-get($icon, bg) {
                         fill: $bg;
                         background: map-get($icon, bg);
@@ -258,14 +259,14 @@ $mapSocialSimple:(
                         }
                     } @else {
                         background: map-get($icon, bg-light);
-                        & svg.svg--#{$name} {
+                        & svg.#{$selector}#{$name} {
                             .invertir--#{$name} {
                                 fill: $bg;
                             }
                         }
                     }
                     @if map-get($icon, fill) == propio {
-                        & svg.svg--#{$name} {
+                        & svg.#{$selector}#{$name} {
                             & path {
                                 fill: $bg;
                             }
@@ -281,8 +282,8 @@ $mapSocialSimple:(
         // Convirtiendo los fill svg a nuestro sitio B/W (color/bg)
         @each $name, $icon in $mapSocialSimple {
             // (li.svg--$name | li.svg--icon) + svg.svg--$name
-            &.svg--#{$name},
-            & .svg--#{$name} {
+            &.#{$selector}#{$name},
+            & .#{$selector}#{$name} {
 
                 background: $bg;
                 @if map-get($icon, fill) == none {
@@ -303,8 +304,8 @@ $mapSocialSimple:(
             // Invirtiendo los fill a W y background a su brand color
             @each $name, $icon in $mapSocialSimple {
                 // (li.svg--$name | li.svg--icon) + svg.svg--$name
-                &.svg--#{$name},
-                & .svg--#{$name} {
+                &.#{$selector}#{$name},
+                & .#{$selector}#{$name} {
                     @if map-get($icon, bg) {
                         background: map-get($icon, bg);
                         @if map-get($icon, gradient) {
@@ -314,7 +315,7 @@ $mapSocialSimple:(
                         }
                     } @else {
                         background: map-get($icon, bg-light);
-                        & svg.svg--#{$name} {
+                        & svg.#{$selector}#{$name} {
                             .invertir--#{$name} {
                                 fill: $bg;
                             }

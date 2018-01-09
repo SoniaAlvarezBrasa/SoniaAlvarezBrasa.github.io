@@ -7,6 +7,6 @@
         {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}
         {% for pag in pages %} {% if pag.lang == page.lang %}
         <li class="{{ include.liclass }}"><span>{{ pag.lang }}</span></li>{% else %}
-        <li class="{{ include.liclass }}"><a href="{{ pag.url }}" class="{{ pag.lang }}"title="{% if pag.lang == 'es'%}Cambiar a Español{% elsif pag.lang == 'en'%}Switch to English{% elsif pag.lang == 'gl'%}Mudar ó Galego {% elsif pag.lang == 'fr' %}Passer ou Français{% elsif pag.lang == 'pt'%}Mudar para português{% endif %}">{{ pag.lang }}</a></li>{% endif %}{% endfor %}
+        <li class="{{ include.liclass }}"><a href="{{ pag.url }}" class="{{ pag.lang }}" title="{% if pag.lang == 'es'%}Cambiar a Español{% elsif pag.lang == 'en'%}Switch to English{% elsif pag.lang == 'gl'%}Mudar ó Galego {% elsif pag.lang == 'fr' %}Passer ou Français{% elsif pag.lang == 'pt'%}Mudar para português{% endif %}">{{ pag.lang }}</a></li>{% endif %}{% endfor %}
     </ul>
 </nav>

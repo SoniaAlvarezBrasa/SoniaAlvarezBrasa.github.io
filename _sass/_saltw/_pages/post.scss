@@ -28,37 +28,40 @@
         h2, h3, h4, h5, h6 {width: 100%;}
     }
 
-    & .compartir {
-        border-top: 0;
-        margin-top: 0;
-        padding-top: 0;
+    & .pepe {
+        @include sociales-svg-li-box((selector: pepe--, ss: $ss-item)...);
 
-        & a {
-            display: inline-block;
-            color: white;
-            padding: 0 1em;
-            line-height: 2em;
-            margin: 0.1em;
+        & li {
+            margin: 1em;
+            border-radius: 5px;
+
+            & a {
+                width: 1px;
+                padding: 0 0.5em;
+                overflow: hidden;
+                color: transparent;
+                transition: width $ss-item ease;
+            }
+
+            & > span {
+                padding-left: 0.5em;
+            }
 
             &:hover, &:focus, &:target {
-                padding: 0 1.5em;
-                text-decoration: none;
+                & a {
+                    width: 100%;
+                    color: $color-title;
+                }
             }
-            &.facebook {
-                background: #3b5998;
-            }
+        }
 
-            &.twitter {
-                background: #55acee;
-            }
-
-            &.googleplus {
-                background: #dd4b39;
-            }
-
-            &.pinterest {
-                background: #cc2127;
-            }
+        & svg {
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            width: $icon-x;
+            height: $icon-y;
+            vertical-align: middle;
         }
     }
 }
@@ -85,5 +88,131 @@
             }
             & > small { color: $color-small; }
         }
+    }
+}
+
+.contenedor-redes-sociales {
+    $ah: 1.6em;
+    $am: 0.3em;
+    margin: 20px 0;
+    padding: 20px;
+    text-align: center;
+
+    & a {
+        position: relative;
+        display: inline-block;
+        width: 8em;
+        height: 1.6em;
+        line-height: 1.5em;
+        margin: 0.3em;
+        padding: 0;
+        color: #fff;
+        border-radius: 50px;
+        background: #fff;
+        text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+
+
+        & span.titulo,
+        & span.titulo-hover {
+            position: absolute;
+            margin: 0 auto;
+            font-size: 1em;
+            text-align: center;
+            // font-weight: 400;
+            transition: $ss-item;
+        }
+
+        & span.titulo {
+            right: 1em;
+        }
+
+        & span.titulo-hover {
+            opacity: 0;
+            left: 1em;
+        }
+
+        & span.circulo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            float: left;
+            width: 1.35em;
+            height: 1.3em;
+            // line-height: 30px;
+            margin: 1px;
+            color: #fff;
+            border-radius: 50%;
+            transition: all $ss-item;
+
+            & svg {
+                display: -webkit-inline-box;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                width: 0.8em;
+                height: auto;
+                padding-bottom: 0.15em;
+                // vertical-align: middle;
+                vertical-align: sub;
+            }
+        }
+
+        &:hover, &:focus, &:target {
+            & span.circulo {
+                left: 101%;
+                overflow: hidden;
+                margin-left: -1.5em;
+                background: #fff;
+            }
+            & span.titulo {
+                opacity: 0;
+            }
+            & span.titulo-hover {
+                opacity: 1;
+                color: #fff;
+            }
+        }
+    }
+    // ----- Brand colors -----
+    @each $name, $icon in $mapSocialSimple {
+        & .#{$name} {
+            @if map-get($icon, bg) {
+                border: 2px solid map-get($icon, bg);
+            }
+
+            & span.circulo,
+            &:hover, &:focus, &:target {
+                @if map-get($icon, bg) {
+                    background: map-get($icon, bg);
+                    & svg {
+                        fill: $bg-body;
+                    }
+                }
+
+                & span.circulo {
+                    @if map-get($icon, bg) {
+                        color: map-get($icon, bg);
+                        & svg {
+                            fill: map-get($icon, bg);
+                        }
+                    }
+                }
+            }
+            & span.titulo {
+                @if map-get($icon, bg) {
+                    color: map-get($icon, bg);
+                }
+            }
+        }
+    }
+}
+    /*--------------Mediaqueries--------------*/
+
+@media screen and (max-width: 480px) {
+    .contenedor-redes-sociales a {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
     }
 }

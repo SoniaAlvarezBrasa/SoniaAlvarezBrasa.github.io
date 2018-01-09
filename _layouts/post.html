@@ -24,22 +24,37 @@ layout: default
         {% include nav-page-tags.html show="both" ulclass="main-end" lielse="aHoverXl" iconid="post-show" spanclass="fl" catsvg="folder" tagsvg="tag" %}
 
     </header>
-
-    <!-- <div itemprop="articleBody"> -->
-        {{ content }}
-    <!-- </div> -->
     {% for user in site.data.people[page.autor].social.jobs %}
         {% if user.title == 'Twitter' %} {% capture usertwitter %} {{ user.username }} {% endcapture %} {% endif %}
     {% endfor %}
-    <span>{{ usertwitter }}</span>
+
+    {{ content }}
 
     <nav>
-        <ul>
-            <li class="compartir"><a class="facebook" href="http://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url }}" target="_blank">Facebook</a></li>
-            <li class="compartir"><a class="twitter" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}&text={{ page.title | url_encode }}&via={{ usertwitter }}" target="_blank">Tweet</a></li>
-            <li class="compartir"><a class="googleplus" href="https://plus.google.com/share?url={{ page.url | prepend: site.url }}" target="_blank">Google+</a></li>
-            <li class="compartir"><a class="pinterest" href="https://pinterest.com/pin/create/button/?url={{ page.url | prepend: site.url }}&media={{ site.url }}/assets/img{{ page.fotos.foto1.url }}" target="_blank">Pinterest</a></li>
+        <ul class="abcenter pepe">
+            <li class="pepe--facebook abcentro aHoverXl"><span class="cross-centro">{% include svg/icon-facebook.svg hidden='true' iconclass='svg--facebook' id='pepe-post' %}</span><a href="http://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url }}" target="_blank">Compartir</a></li>
+            <li class="pepe--twitter abcentro aHoverXl"><span class="cross-centro">{% include svg/icon-twitter.svg hidden='true' iconclass='svg--twitter' id='pepe-post' %}</span><a href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}&text={{ page.title | url_encode }}&via={{usertwitter}}" target="_blank">Tweet</a></li>
+            <li class="pepe--googleplus abcentro aHoverXl"><span class="cross-centro">{% include svg/icon-googleplus.svg hidden='true' iconclass='svg--googleplus' id='pepe-post' %}</span><a href="https://plus.google.com/share?url={{ page.url | prepend: site.url }}" target="_blank">Google+</a></li>
+            <li class="pepe--pinterest abcentro aHoverXl"><span class="cross-centro">{% include svg/icon-pinterest.svg hidden='true' iconclass='svg--pinterest' id='pepe-post' %}</span><a href="https://pinterest.com/pin/create/button/?url={{ page.url | prepend: site.url }}&media={{ site.url }}/assets/img{{ page.fotos.foto1.url }}" target="_blank">Pinterest</a></li>
         </ul>
+    </nav>
+
+    <nav class="abcenter contenedor-redes-sociales">
+        <a class="facebook" href="https://www.facebook.com/FormandoLaWeb" target="_blank">
+            <span class="circulo">{% include svg/icon-facebook.svg hidden='true' iconclass='svg--facebook' id='pepe-post' %}</span>
+            <span class="titulo">Facebook</span>
+            <span class="titulo-hover">Compartir</span>
+        </a>
+        <a class="twitter" href="https://www.twitter.com/FormandoLaWeb" target="_blank">
+            <span class="circulo">{% include svg/icon-twitter.svg hidden='true' iconclass='svg--twitter' id='pepe-post' %}</span>
+            <span class="titulo">Twitter</span>
+            <span class="titulo-hover">Twittear</span>
+        </a>
+        <a class="googleplus" href="https://plus.google.com/114090693030000856714" target="_blank">
+            <span class="circulo">{% include svg/icon-googleplus.svg hidden='true' iconclass='svg--googleplus' id='pepe-post' %}</span>
+            <span class="titulo">Google+</span>
+            <span class="titulo-hover"> + 1 </span>
+        </a>
     </nav>
 
 </article>
