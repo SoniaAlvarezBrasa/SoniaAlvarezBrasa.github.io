@@ -337,6 +337,16 @@ $mapSocialSimple:(
     }
 }
 
+@mixin sociales-svg-a-span-box-left-right (
+    $span1: circulo,
+    $span2: titulo,
+    $span3: titulo-hover,
+
+){
+
+}
+
+
 // todo: crear un map de los colores sociales y un mixin con los parámetros
 // Para escoger los colores del map o definir colores propios.
 // Además de personalizar el estilo (vertical, redondo, cuadrado, ...)

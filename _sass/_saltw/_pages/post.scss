@@ -103,11 +103,11 @@
         display: inline-block;
         width: 8em;
         height: 1.6em;
-        line-height: 1.5em;
+        // line-height: 1.5em;
         margin: 0.3em;
         padding: 0;
         color: #fff;
-        border-radius: 50px;
+        border-radius: 3em;
         background: #fff;
         text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
         box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
@@ -136,10 +136,10 @@
             position: absolute;
             top: 0;
             left: 0;
-            display: block;
+            // display: block;
             float: left;
-            width: 1.35em;
-            height: 1.35em;
+            width: 1.33em;
+            height: calc(1.6em - 6px);
             // line-height: 30px;
             margin: 1px;
             color: #fff;
