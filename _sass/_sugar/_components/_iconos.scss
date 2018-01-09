@@ -337,13 +337,128 @@ $mapSocialSimple:(
     }
 }
 
-@mixin sociales-svg-a-span-box-left-right (
-    $span1: circulo,
-    $span2: titulo,
-    $span3: titulo-hover,
-
+@mixin sociales-svg-a-box-left-right (
+    $selector: a,
+    $span-svg: circulo,
+    $span-front: titulo,
+    $span-hover: titulo-hover,
+    $h: 1.6em,
+    $w: $h*5,
+    $margin: 0.3em,
+    $fontsize: 1em,
+    $left: 1em,
+    $px: 2px,
+    $color: $bg-body,
+    $ts: $px $px rgba(0, 0, 0, 0.1),
+    $bs1: 0 0 $px rgba(0, 0, 0, 0.12),
+    $bs2: 0 $px 2*$px rgba(0, 0, 0, 0.24),
+    $ss: $ss-item
 ){
+    #{$selector},
+    .#{$selector} {
+        position: relative;
+        display: inline-block;
+        width: $w;
+        height: $h;
+        margin: $margin;
+        padding: 0;
+        color: $color;
+        background: $color;
+        border-radius: 3em;
+        text-shadow: $ts;
+        box-shadow: $bs1, $bs2;
 
+
+        .#{$span-front},
+        .#{$span-hover} {
+            position: absolute;
+            margin: 0 auto;
+            font-size: $fontsize;
+            text-align: center;
+            transition: $ss-item;
+        }
+
+        .#{$span-front} {
+            right: $left,
+        }
+
+        .#{$span-hover} {
+            opacity: 0;
+            left: $left;
+        }
+
+        .#{$span-svg} {
+            position: absolute;
+            top: 0;
+            left: 0;
+            float: left;
+            width: ($h - $margin + 0.03em);
+            height: calc(#{$h} - 4*#{$px});
+            margin: $px;
+            color: $color;
+            border-radius: 50%;
+            transition: all $ss-item;
+
+            & svg {
+                display: -webkit-inline-box;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                width: $h/2;
+                height: auto;
+                padding-bottom: $margin/2;
+                // vertical-align: middle;
+                vertical-align: sub;
+            }
+        }
+
+        &:hover, &:focus, &:target {
+            .#{$span-svg} {
+                left: calc(100% - (#{$h} - #{$margin}));
+                overflow: hidden;
+                margin-left: -1*($margin/2);
+                background: $color;
+            }
+            .#{$span-front} {
+                opacity: 0;
+            }
+            .#{$span-hover} {
+                opacity: 1;
+                color: $color;
+            }
+        }
+    }
+    // ----- Brand colors -----
+    @each $name, $icon in $mapSocialSimple {
+        & .#{$name} {
+            @if map-get($icon, bg) {
+                border: $px solid map-get($icon, bg);
+            }
+
+            .#{$span-svg},
+            &:hover, &:focus, &:target {
+                @if map-get($icon, bg) {
+                    background: map-get($icon, bg);
+                    & svg {
+                        fill: $bg-body;
+                    }
+                }
+
+                .#{$span-svg} {
+                    @if map-get($icon, bg) {
+                        color: map-get($icon, bg);
+                        & svg {
+                            fill: map-get($icon, bg);
+                        }
+                    }
+                }
+            }
+            .#{$span-front} {
+                @if map-get($icon, bg) {
+                    color: map-get($icon, bg);
+                }
+            }
+        }
+    }
 }
 
 

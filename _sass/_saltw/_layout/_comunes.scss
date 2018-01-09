@@ -67,8 +67,7 @@ h2 {
 $mapHoverCssBorderUnderlineFromCenter:(
     px: 2px,
     borde: colorea($color-b, l5),
-    selector: a,
-    curva: linear
+    selector: a
 );
 
 // .underlineFromCenterMini inlines

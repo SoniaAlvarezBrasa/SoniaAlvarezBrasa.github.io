@@ -30,7 +30,7 @@ layout: default
 
     {{ content }}
     <nav >
-        <ul class="abcenter contenedor-redes-sociales">
+        <ul class="abcenter compartir">
             <li>
                 <a class="facebook" href="http://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url }}" target="_blank">
                         <span class="circulo">{% include svg/icon-facebook.svg hidden='true' iconclass='svg--facebook' id='pepe-post' %}</span>
@@ -44,7 +44,7 @@ layout: default
                     <span class="titulo-hover">Compartir</span>
                 </a></li>
             <li>
-                <a class="twitter" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}&text={{ site.tradename }}:{{ page.title | url_encode }}{% if page.subtitle %}. {{ page.subtitle }}{% endif %}&via={{ usertwitter }}" target="_blank">
+                <a class="twitter" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}&text={{ site.tradename }}:{{ page.title | url_encode }}{% if page.subtitle %}. {{ page.subtitle }}{% endif %}&via={{ usertwitter | strip }}" target="_blank">
                     <span class="circulo">{% include svg/icon-twitter.svg hidden='true' iconclass='svg--twitter' id='pepe-post' %}</span>
                     <span class="titulo">Twitter</span>
                     <span class="titulo-hover">Tweet</span>

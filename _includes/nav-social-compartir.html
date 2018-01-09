@@ -1,0 +1,34 @@
+<nav>
+    <ul class="abcenter compartir">
+        <li>
+            <a class="facebook" href="http://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url }}" target="_blank">
+                    <span class="circulo">{% include svg/icon-facebook.svg hidden='true' iconclass='svg--facebook' id='pepe-post' %}</span>
+                    <span class="titulo">Facebook</span>
+                    <span class="titulo-hover">Me gusta</span>
+                </a></li>
+        <li>
+            <a class="linkedin" href="http://www.linkedin.com/shareArticle?url={{ page.url | prepend: site.url }}&source={{ site.url | remove: 'https://' | remove: 'http://'}}" target="_blank">
+                <span class="circulo">{% include svg/icon-linkedin.svg hidden='true' iconclass='svg--linkedin' id='pepe-post' %}</span>
+                <span class="titulo">LinkedIn</span>
+                <span class="titulo-hover">Compartir</span>
+            </a></li>
+        <li>
+            <a class="twitter" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}&text={{ site.tradename }}:{{ page.title | url_encode }}{% if page.subtitle %}. {{ page.subtitle }}{% endif %}&via={{ usertwitter | strip }}" target="_blank">
+                <span class="circulo">{% include svg/icon-twitter.svg hidden='true' iconclass='svg--twitter' id='pepe-post' %}</span>
+                <span class="titulo">Twitter</span>
+                <span class="titulo-hover">Tweet</span>
+            </a></li>
+        <li>
+            <a class="cross-centro pinterest" href="https://pinterest.com/pin/create/button/?url={{ page.url | prepend: site.url }}&media={{ site.url }}/assets/img{{ page.fotos.foto1.url }}&description={{ page.fotos.foto1.alt }}" target="_blank">
+                <span class="circulo">{% include svg/icon-pinterest.svg hidden='true' iconclass='svg--pinterest' id='pepe-post' %}</span>
+                <span class="titulo">Pinterest</span>
+                <span class="titulo-hover">Pin</span>
+            </a></li>
+        <li>
+            <a class="googleplus" href="https://plus.google.com/share?url={{ page.url | prepend: site.url }}&text={{ site.tradename }}:_{{ page.title | url_encode }}{% if page.subtitle %}. {{ page.subtitle }}{% endif %}" target="_blank">
+                <span class="circulo">{% include svg/icon-googleplus.svg hidden='true' iconclass='svg--googleplus' id='pepe-post' %}</span>
+                <span class="titulo">Google+</span>
+                <span class="titulo-hover"> + 1 </span>
+            </a></li>
+    </ul>
+</nav>
