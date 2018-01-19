@@ -106,7 +106,6 @@ share:
     -   title: Google +
         name: googleplus
         url: https://plus.google.com/share?url
-        t: true
         hover:
             es: + 1
             en: + 1
@@ -127,8 +126,8 @@ share:
     -   title: Tumblr
         name: tumblr
         url: http://www.tumblr.com/share/link?url
-        text: true
-        description: true
+        # text: true
+        # description: true
         hover:
             es: Compartir
             en: Share
