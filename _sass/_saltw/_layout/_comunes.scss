@@ -1,7 +1,7 @@
 h2 {
     width: 100%;
 }
-//----------- HOVERS ---------------------
+//--------------- HOVERS ---------------------
 // HoverUnderline links website
 
 @mixin hoverColorSvg ($color1: $color-small, $color2: $color-b) {
@@ -34,6 +34,9 @@ h2 {
                 -webkit-transition: opacity $ss linear;
                 transition: opacity $ss linear;
                 opacity: 0;
+                @media print {
+                    opacity: 1;
+                }
             }
         }
 
@@ -47,6 +50,12 @@ h2 {
             }
         }
     }
+    // @media print {
+    //     & li {
+    //         & a span { opacity: 1; }
+    //     }
+    //
+    // }
 }
 
 @mixin hoverBgLinkTag ($color1: $bg-tag, $color2: transparent) {
@@ -93,18 +102,17 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 .aHoverXs {
     @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenterMini...);
 }
-
-
-//----------- fin de HOVERS ---------------------
+//--------------- fin de HOVERS ---------------------
 
 // ---------- Stilos enlaces redes sociales --------
 
 // li.svg / a / span.svg--name / svg.svg--name
 .svg {
-    @include sociales-svg-li-box((brand: fillBlack)...);
+    @include social-brand-colors;
     @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenterMini...);
 
     & > a {
+        padding: 0 0.3em;
         & > span {
             padding: $padding-icon;
             margin-right: $padding-icon;
@@ -142,25 +150,126 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
     }
 }
 
-// li.svg--icon.svg--$name / a / svg.svg--$name
+// li.svg-icon a.name svg
 .svg-icon {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    padding: $padding-icon;
-    border-radius: $border-radius;
-    overflow: hidden;
-    // Default brand == 1
-    @include sociales-svg-li-box;
+    display: inline-block;
+    // Default brand == bg
+    @include social-brand-colors((brand: bgGrey)...);
+
+    & a {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+
+        // para que se cubra con el brand color
+        padding: $padding-icon;
+        border-radius: $border-radius;
+        overflow: hidden;
+    }
 
     & svg {
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
         width: $icon-x;
         height: $icon-y;
-        vertical-align: middle;
     }
+}
+
+// nav contenedor de los links a Redes Sociales
+// con un header > span icon visual title
+.sociales {
+    $mapHoverSociales:(
+        px: 2px,
+        borde: colorea($color-b, l5),
+        selector: header
+    );
+    @include hoverCss-border-underline-from-center ($mapHoverSociales...);
+
+    & header {
+        margin: $padding 0;
+        & h4 {
+            margin: 0;
+        }
+        // span svg visual title
+        & > span {
+            & svg {
+                display: -webkit-inline-box;
+                display: -ms-inline-flexbox;
+                display: inline-flex;
+                width: 1.6em;
+                height: 1.6em;
+                fill: $color-body;
+                polyline {
+                    stroke: $color-body;
+                    transition: all $ss-item;
+                }
+                transition: all $ss-item;
+                // vertical-align: middle;
+            }
+        }
+    }
+
+    &:hover, &:target, &:focus {
+        & header {
+            & > span {
+                & svg {
+                    fill: $color-b;
+                    polyline {
+                        stroke: $color-b;
+                    }
+                }
+            }
+        }
+        & h4 {
+            color: $color-b;
+        }
+    }
+}
+
+// li de botonera de Redes Sociales (seguir o compartir)
+.share,
+.follow {
+    & a {
+        display: flex;
+    }
+}
+.share {
+    @include circulo-svg-left-right;
+    // $brand indica los colores de inicio (antes de hover)
+    // --- Por defecto brand: bg. Fondo brand color, texto e icon blanco
+        // @include social-brand-colors;
+        // @include social-brand-border;
+        // @include social-brand-text-hover;
+        // @include social-brand-colors-span ((brand: color)...);
+    // --- social-brand-colors-span es el negativo de social-brand-colors:
+        // social-brand-colors se aplica directam- al link
+        // social-brando-colors-span se aplica a box hijos del link
+        // que contienen el svg y texto/s
+    @include social-brand-colors ((brand: color)...);
+    @include social-brand-border; // Default brand: color
+    @include social-brand-text-hover ((brand: color)...);
+    @include social-brand-colors-span;
+}
+.follow {
+    $mf:(w: 9.1em, left: 0.5em);
+    @include circulo-svg-left-right ($mf...);
+    // $brand indica los colores de inicio (antes de hover)
+    // --- Por defecto brand: bg. Fondo brand color, texto e icon blanco
+        // @include social-brand-colors;
+        // @include social-brand-border;
+        // @include social-brand-text-hover;
+        // @include social-brand-colors-span ((brand: color)...);
+    // --- social-brand-colors-span es el negativo de social-brand-colors:
+        // social-brand-colors se aplica directam- al link
+        // social-brando-colors-span se aplica a box hijos del link
+        // que contienen el svg y texto/
+    @include social-brand-colors ((brand: colorGrey)...);
+    @include social-brand-border ((brand: colorGrey)...);
+    @include social-brand-text-hover ((brand: colorGrey)...);
+    @include social-brand-colors-span ((brand: bgGrey)...);
 }
 // ---------- fin de Stilos enlaces redes sociales --------
 
@@ -233,8 +342,6 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
     }
 }
 
-
-
 .tagcloud-livejournal {
     // background: #e1e1e1;
     margin: 4em 0;
@@ -291,44 +398,13 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
         }
     }
 }
+// ------------------ fin de TagClouds --------------------
 
-.list-unchecked {
-    @include icon-abrirCerrar;
-    $map:(selector: entradilla);
-    // @include label-check;
-    @include label-check($map...);
+.pl {
+    padding-left: $padding;
 }
 
-.sitemap {
-    & h2 { padding-top: 3em; }
-    & h3 {
-        color: $color-title;
-        font-style: bold;
-        & a {
-            padding-right: 1em;
-            color: inherit;
-        }
-    }
-
-    .principal {
-        & ul { padding-left: 3em; }
-        &, & ul {
-            width: 100%;
-            & li {
-                &, & small, & a { line-height: 1.5rem; }
-                & time { padding-right: 1em; }
-                width: 100%;
-                @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenter...);
-
-                & a small { color: $color-small; }
-            }
-        }
-        & a {
-            padding: 0 1em;
-        }
-    }
-}
-
+// site.header.nav de idiomas del site
 .idiomas {
     .es:lang(es),
     .en:lang(en),
@@ -348,8 +424,4 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 
         & span { color: $color-small; }
     }
-
 }
-
-
-// ------------------ fin de TagClouds --------------------

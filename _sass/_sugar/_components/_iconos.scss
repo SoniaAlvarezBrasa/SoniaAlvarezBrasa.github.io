@@ -11,7 +11,6 @@
     margin-right: 0.2em;
 }
 
-
 .icon-verde{
     @include rwd-font-size (2rem, 3rem, 40rem, 75rem, 0.5rem);
     color: lime;
@@ -74,399 +73,11 @@
     }
 }
 
-// ================== $maps Redes Sociales ===================
-// Por orden alfabético
-
-// ----- Brand colors -----
-$mapSocialSimple:(
-    codepen :(
-        bg: #000, fill: #fff
-    ),
-    deviantart :(
-        bg: #05cc47, fill: #fff
-    ),
-    facebook :(
-        bg: #3b5998, fill: #fff
-    ),
-    github :(
-        bg: #24292e , fill: #fff
-    ),
-    gitlab :(
-        bg: #30353e, fill: none
-    ),
-    googleplus :(
-        bg: #dd4b39, fill: #fff
-    ),
-    instagram :(
-        bg: #c32aa3,
-        gradient: linear-gradient(-135deg, #1400c8, #b900b4, #f50000),
-        fill: propio
-    ),
-    linkedin :(
-        bg: #0077b5, fill: #fff
-    ),
-    pinterest :(
-        bg: #bd081c, fill: #fff
-    ),
-    stackoverflow :(
-        bg-dark: #222426, bg-light: #f48023, fill: none
-    ),
-    twitter :(
-        bg: #1da1f2 , fill: #fff
-    ),
-    youtube :(
-        bg: #292929, fill: none
-    ),
-);
-
-// ================== fin maps Redes Sociales ===================
-
-
-// Para svg.svg--$name hijo de un <box>,
-// P.ej.: span.svg--$name / svg.svg--$name.
-// span.svg--$name con padding, margin-r,
-// border-radius ... prev definidos
-// Causa: CSS no puede leer hacia arriba
-
-// Para svg.svg--$name hijo de un <a> y nieto de un <box>
-// P.ej.: li.svg--$name / a / svg.svg--$name
-// li.svg--$name con padding, margin-r,
-// border-radius ... prev definidos
-// Causa: CSS no puede leer hacia arriba,
-// ------ el <a> no tiene texto: sólo title y el icono
-// ------ y <a> debe ser display *block para IE
-
-@mixin sociales-svg-li-box (
-    $brand: bg,
-    $bg: $bg-body,
-    $color: $color-body,
-    $filter-bw-before: grayscale(1),
-    $filter-bw-after: none,
-    $filter-color-before: brightness(999%),
-    $filter-color-after: none,
-    $selector: svg--,
-    $ss: $ss-icon
-){
-    // li.svg / a / span.svg--name / svg.svg--name
-    // li.svg--icon.svg--$name / a / svg.svg--$name
-
-    @if $brand == bg {
-        // Se inicia con fondo corporativo y texto transparente
-        @each $name, $icon in $mapSocialSimple {
-            // (li.svg--$name | li.svg--icon) + svg.svg--$name
-            &.#{$selector}#{$name},
-            & .#{$selector}#{$name} {
-                @if map-get($icon, bg) {
-                    fill: $bg;
-                    background: map-get($icon, bg);
-                    @if map-get($icon, gradient) {
-                        background: -o-#{map-get($icon, gradient)};
-                        background: -moz-#{map-get($icon, gradient)};
-                        background: -webkit-#{map-get($icon, gradient)};
-                    }
-                } @else {
-                    background: map-get($icon, bg-light);
-                    & svg.#{$selector}#{$name} {
-                        .invertir--#{$name} {
-                            fill: $bg;
-                        }
-                    }
-                }
-                @if map-get($icon, fill) == propio {
-                    & svg.#{$selector}#{$name} {
-                        -webkit-filter: $filter-color-before;
-                        filter: $filter-color-before;
-                    }
-                }
-
-                -webkit-transition: all $ss ease;
-                transition: all $ss ease;
-            }
-        }
-
-        // Invirtiendo a fondo transparente y texto corporativo
-        &:hover, &:focus, &:target {
-            @each $name, $icon in $mapSocialSimple {
-                // (li.svg--$name | li.svg--icon) + svg.svg--$name
-                &.#{$selector}#{$name},
-                & .#{$selector}#{$name} {
-                    background: $bg;
-
-                    @if map-get($icon, bg) {
-                        @if map-get($icon, fill) == #fff {
-                            fill: map-get($icon, bg);
-                        } @else {
-                            fill: map-get($icon, fill);
-                        }
-                    } @else {
-                        & svg.#{$selector}#{$name} {
-                            .invertir--#{$name} {
-                                fill: map-get($icon, bg-light);
-                            }
-                        }
-                    }
-                    @if map-get($icon, fill) == propio {
-                        & svg.#{$selector}#{$name} {
-                            -webkit-filter: $filter-color-after;
-                            filter: $filter-color-after;
-                        }
-                    }
-                }
-            }
-        }
-
-    // li.svg / a / span.svg--name / svg.svg--name
-    // li.svg--icon.svg--$name / a / svg.svg--$name
-    } @elseif $brand == color {
-        // Se inicia con fondo transparente y texto corporativo
-        @each $name, $icon in $mapSocialSimple {
-            // (li.svg--$name | li.svg--icon) + svg.svg--$name
-            &.#{$selector}#{$name},
-            & .#{$selector}#{$name} {
-                background: $bg;
-
-                @if map-get($icon, bg) {
-                    @if map-get($icon, fill) == #fff {
-                        fill: map-get($icon, bg);
-                    } @else {
-                        fill: map-get($icon, fill);
-                    }
-                } @else {
-                    & svg.#{$selector}#{$name} {
-                        .invertir--#{$name} {
-                            fill: map-get($icon, bg-light);
-                        }
-                    }
-                }
-
-                -webkit-transition: all $ss ease;
-                transition: all $ss ease;
-            }
-        }
-        // Invirtiendo a fondo corporativo y texto transparente
-        &:hover, &:focus, &:target {
-            @each $name, $icon in $mapSocialSimple {
-                // (li.svg--$name | li.svg--icon) + svg.svg--$name
-                &.#{$selector}#{$name},
-                & .#{$selector}#{$name} {
-                    @if map-get($icon, bg) {
-                        fill: $bg;
-                        background: map-get($icon, bg);
-                        @if map-get($icon, gradient) {
-                            background: -o-#{map-get($icon, gradient)};
-                            background: -moz-#{map-get($icon, gradient)};
-                            background: -webkit-#{map-get($icon, gradient)};
-                        }
-                    } @else {
-                        background: map-get($icon, bg-light);
-                        & svg.#{$selector}#{$name} {
-                            .invertir--#{$name} {
-                                fill: $bg;
-                            }
-                        }
-                    }
-                    @if map-get($icon, fill) == propio {
-                        & svg.#{$selector}#{$name} {
-                            & path {
-                                fill: $bg;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-    // li.svg / a / span.svg--name / svg.svg--name
-    // li.svg--icon.svg--$name / a / svg.svg--$name
-    } @elseif $brand == fillBlack {
-        // Convirtiendo los fill svg a nuestro sitio B/W (color/bg)
-        @each $name, $icon in $mapSocialSimple {
-            // (li.svg--$name | li.svg--icon) + svg.svg--$name
-            &.#{$selector}#{$name},
-            & .#{$selector}#{$name} {
-
-                background: $bg;
-                @if map-get($icon, fill) == none {
-                    -webkit-filter: $filter-bw-before;
-                    filter: $filter-bw-before;
-                } @elseif map-get($icon, fill) == propio {
-                    & path {
-                        fill: $color;
-                    }
-                } @else {
-                    fill: $color;
-                }
-                -webkit-transition: all $ss ease;
-                transition: all $ss ease;
-            }
-        }
-        &:hover, &:focus, &:target {
-            // Invirtiendo los fill a W y background a su brand color
-            @each $name, $icon in $mapSocialSimple {
-                // (li.svg--$name | li.svg--icon) + svg.svg--$name
-                &.#{$selector}#{$name},
-                & .#{$selector}#{$name} {
-                    @if map-get($icon, bg) {
-                        background: map-get($icon, bg);
-                        @if map-get($icon, gradient) {
-                            background: -o-#{map-get($icon, gradient)};
-                            background: -moz-#{map-get($icon, gradient)};
-                            background: -webkit-#{map-get($icon, gradient)};
-                        }
-                    } @else {
-                        background: map-get($icon, bg-light);
-                        & svg.#{$selector}#{$name} {
-                            .invertir--#{$name} {
-                                fill: $bg;
-                            }
-                        }
-                    }
-                    @if map-get($icon, fill) == none {
-                        -webkit-filter: $filter-bw-after;
-                        filter: $filter-bw-after;
-                    } @elseif map-get($icon, fill) == propio {
-                        & path {
-                            fill: $bg;
-                        }
-                    } @else {
-                        fill: $bg;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@mixin sociales-svg-a-box-left-right (
-    $selector: a,
-    $span-svg: circulo,
-    $span-front: titulo,
-    $span-hover: titulo-hover,
-    $h: 1.6em,
-    $w: $h*5,
-    $margin: 0.3em,
-    $fontsize: 1em,
-    $left: 1em,
-    $px: 2px,
-    $color: $bg-body,
-    $ts: $px $px rgba(0, 0, 0, 0.1),
-    $bs1: 0 0 $px rgba(0, 0, 0, 0.12),
-    $bs2: 0 $px 2*$px rgba(0, 0, 0, 0.24),
-    $ss: $ss-item
-){
-    #{$selector},
-    .#{$selector} {
-        position: relative;
-        display: inline-block;
-        width: $w;
-        height: $h;
-        margin: $margin;
-        padding: 0;
-        color: $color;
-        background: $color;
-        border-radius: 3em;
-        text-shadow: $ts;
-        box-shadow: $bs1, $bs2;
-
-
-        .#{$span-front},
-        .#{$span-hover} {
-            position: absolute;
-            margin: 0 auto;
-            font-size: $fontsize;
-            text-align: center;
-            transition: $ss-item;
-        }
-
-        .#{$span-front} {
-            right: $left,
-        }
-
-        .#{$span-hover} {
-            opacity: 0;
-            left: $left;
-        }
-
-        .#{$span-svg} {
-            position: absolute;
-            top: 0;
-            left: 0;
-            float: left;
-            width: ($h - $margin + 0.03em);
-            height: calc(#{$h} - 4*#{$px});
-            margin: $px;
-            color: $color;
-            border-radius: 50%;
-            transition: all $ss-item;
-
-            & svg {
-                display: -webkit-inline-box;
-                display: -ms-inline-flexbox;
-                display: inline-flex;
-                width: $h/2;
-                height: auto;
-                padding-bottom: $margin/2;
-                // vertical-align: middle;
-                vertical-align: sub;
-            }
-        }
-
-        &:hover, &:focus, &:target {
-            .#{$span-svg} {
-                left: calc(100% - (#{$h} - #{$margin}));
-                overflow: hidden;
-                margin-left: -1*($margin/2);
-                background: $color;
-            }
-            .#{$span-front} {
-                opacity: 0;
-            }
-            .#{$span-hover} {
-                opacity: 1;
-                color: $color;
-            }
-        }
-    }
-    // ----- Brand colors -----
-    @each $name, $icon in $mapSocialSimple {
-        & .#{$name} {
-            @if map-get($icon, bg) {
-                border: $px solid map-get($icon, bg);
-            }
-
-            .#{$span-svg},
-            &:hover, &:focus, &:target {
-                @if map-get($icon, bg) {
-                    background: map-get($icon, bg);
-                    & svg {
-                        fill: $bg-body;
-                    }
-                }
-
-                .#{$span-svg} {
-                    @if map-get($icon, bg) {
-                        color: map-get($icon, bg);
-                        & svg {
-                            fill: map-get($icon, bg);
-                        }
-                    }
-                }
-            }
-            .#{$span-front} {
-                @if map-get($icon, bg) {
-                    color: map-get($icon, bg);
-                }
-            }
-        }
-    }
-}
-
-
 // todo: crear un map de los colores sociales y un mixin con los parámetros
 // Para escoger los colores del map o definir colores propios.
 // Además de personalizar el estilo (vertical, redondo, cuadrado, ...)
 
-.social {
+.social-old {
     display: table;
     a {
         display: inline-block;
@@ -490,3 +101,691 @@ $mapSocialSimple:(
         }
     }
 }
+
+// ================== $maps Redes Sociales ===================
+// Por orden alfabético
+
+// ----- Brand colors -----
+$mapSocial:(
+    codepen :(
+        bg: #000, fill: #fff
+    ),
+    deviantart :(
+        bg: #05cc47, fill: #fff
+    ),
+    facebook :(
+        bg: #3b5998, fill: #fff
+    ),
+    github :(
+        bg: #24292e , fill: #fff
+    ),
+    gitlab :(
+        bg: #30353e, fill: none, invert: blanco
+    ),
+    googleplus :(
+        bg: #dd4b39, fill: #fff
+    ),
+    instagram :(
+        bg: #c32aa3,
+        gradient: linear-gradient(-135deg, #1400c8, #b900b4, #f50000),
+        fill: propio, invert: blanco
+    ),
+    linkedin :(
+        bg: #0077b5, fill: #fff
+    ),
+    pinterest :(
+        bg: #bd081c, fill: #fff
+    ),
+    reddit :(
+        bg: #0077D6, fill: #fff, ellipse: #ff4500
+    ),
+    stackoverflow :(
+        bg-dark: #222426, bg-light: #f48023, fill: none
+    ),
+    telegram: (
+        bg: #0088cc, fill: #fff
+    ),
+    tumblr :(
+        bg: #35465c, fill: #fff
+    ),
+    twitter :(
+        bg: #1da1f2, fill: #fff
+    ),
+    whatsapp :(
+        bg: #25D366, fill: #fff
+    ),
+    youtube :(
+        bg: #292929, fill: none, invert: negro
+    ),
+);
+// ================== fin maps Redes Sociales ===================
+
+// ====================== mixin B/W  =======================
+
+%f-negro {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+}
+%f-blanco {
+    -webkit-filter: brightness(999%);
+    filter: brightness(999%);
+}
+%f-none {
+    -webkit-filter: none;
+    filter: none;
+}
+@mixin filter-bw ($filter) {
+    @extend %f-#{$filter};
+}
+// ====================== fin de mixin B/W  =======================
+
+// ===================== mixins Brand Colors ======================
+
+// Bg brand color e icon transparente
+@mixin social-brand-color-bg ($bg, $icon, $name)
+{
+    @if map-get($icon, bg) {
+        fill: $bg;
+        background: map-get($icon, bg);
+        @if map-get($icon, gradient) {
+            background: -o-#{map-get($icon, gradient)};
+            background: -moz-#{map-get($icon, gradient)};
+            background: -webkit-#{map-get($icon, gradient)};
+        }
+        & ellipse {
+            fill: map-get($icon, ellipse);
+            stroke: map-get($icon, ellipse);
+        }
+    } @else {
+        background: map-get($icon, bg-light);
+        .invertir--#{$name} {
+            fill: $bg;
+        }
+    }
+    @if map-get($icon, fill) == propio {
+        & svg {
+            @include filter-bw (map-get($icon, invert));
+        }
+    } @else {
+        @include filter-bw (none);
+    }
+}
+
+// Bg gris e icon transparente
+@mixin social-grey-color-bg ($bg, $color, $icon, $name)
+{
+    background: $color;
+
+    @if map-get($icon, bg) {
+        @if map-get($icon, fill) == #fff {
+            fill: $bg;
+            & ellipse {
+                fill: transparent;
+                stroke: transparent;
+            }
+        } @elseif map-get($icon, invert) {
+            & svg {
+                @include filter-bw (map-get($icon, invert));
+            }
+        } @else {
+            fill: map-get($icon, fill);
+        }
+    } @else {
+        .invertir--#{$name} {
+            fill: $bg;
+        }
+    }
+}
+
+// Bg transparente e icon brand color
+@mixin social-brand-color-icon ($bg, $icon, $name)
+{
+    background: $bg;
+
+    @if map-get($icon, bg) {
+        @if map-get($icon, fill) == #fff {
+            fill: map-get($icon, bg);
+            & ellipse {
+                fill: transparent;
+                stroke: transparent;
+            }
+        } @elseif map-get($icon, invert) {
+            & svg {
+                @include filter-bw (none);
+            }
+        } @else {
+            fill: map-get($icon, fill);
+        }
+    } @else {
+        .invertir--#{$name} {
+            fill: map-get($icon, bg-light);
+        }
+    }
+    @if map-get($icon, fill) == propio {
+        & svg {
+            @include filter-bw (none);
+        }
+    }
+}
+
+// Bg trasparente e icon gris
+@mixin social-grey-color-icon ($bg, $color, $icon)
+{
+    background: $bg;
+
+    @if map-get($icon, fill) == none {
+        @include filter-bw (negro);
+    } @elseif map-get($icon, fill) == propio {
+        & path {
+            fill: $color;
+        }
+    } @else {
+        fill: $color;
+        & ellipse {
+            fill: transparent;
+            stroke: transparent;
+        }
+    }
+}
+
+
+// -- Contenedor directo a.$name
+// $brand == bg.
+    // Se inicia con bg brand color e icon blanco
+    // Hover a bg blanco e icon brand color
+// $brand == color.
+    // Se inicia con bg blanco e icon brand color
+    // Hover a bg brand color e icon blanco
+// $brand == colorGrey
+    // Se inicia con bg blanco e icon gris
+    // Hover a bg brand color e icon blanco
+// $brand == bgGrey
+    // Se inicia con bg gris e icon blanco
+    // Hover a bg blanco e icon brand color
+
+@mixin social-brand-colors (
+    $brand: bg,
+    $bg: $bg-body,
+    $color: $color-body,
+    $ss: $ss-icon
+){
+    @if $brand == bg {
+        // Se inicia con bg brand color e icon transparente
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name},
+            & .#{$name} {
+                @include social-brand-color-bg ($bg, $icon, $name);
+
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
+            }
+        }
+
+        // Invirtiendo a bg transparente e icon brand color
+        &:hover, &:focus, &:target {
+            @each $name, $icon in $mapSocial {
+            // Contenedor del social svg
+                &.#{$name},
+                & .#{$name} {
+                    @include social-brand-color-icon ($bg, $icon, $name);
+                }
+            }
+        }
+
+    } @elseif $brand == color {
+        // Se inicia con bg transparente e icon brand color
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name},
+            & .#{$name} {
+                @include social-brand-color-icon ($bg, $icon, $name);
+
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
+            }
+        }
+        // Invirtiendo a bg brand color e icon transparente
+        &:hover, &:focus, &:target {
+            @each $name, $icon in $mapSocial {
+                // Contenedor del svg
+                &.#{$name},
+                & .#{$name} {
+                    @include social-brand-color-bg ($bg, $icon, $name);
+                }
+            }
+        }
+
+    } @elseif $brand == colorGrey {
+        // Se inicia con bg transparente e icon gris
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name},
+            & .#{$name} {
+                @include social-grey-color-icon ($bg, $color, $icon);
+
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
+            }
+        }
+        &:hover, &:focus, &:target {
+            // Invirtiendo a bg brand color e icon transparente (anula filtro y fill previo)
+            @each $name, $icon in $mapSocial {
+                // Contenedor del svg
+                &.#{$name},
+                & .#{$name} {
+                    @include social-brand-color-bg ($bg, $icon, $name);
+                }
+            }
+        }
+    } @elseif $brand == bgGrey {
+        // Se inicia con bg gris e icon transparente
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name},
+            & .#{$name} {
+                @include social-grey-color-bg ($bg, $color, $icon, $name);
+
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
+            }
+        }
+        &:hover, &:focus, &:target {
+            // Invirtiendo a bg transparente e icon brand color
+            @each $name, $icon in $mapSocial {
+                // Contenedor del svg
+                &.#{$name},
+                & .#{$name} {
+                    @include social-brand-color-icon ($bg, $icon, $name);
+                }
+            }
+        }
+    }
+}
+
+// -- Contenedor $selector, hijo de a.$name
+// $brand == bg.
+    // Se inicia con bg brand color e icon blanco
+    // Hover a bg blanco e icon brand color
+// $brand == color.
+    // Se inicia con bg blanco e icon brand color
+    // Hover a bg brand color e icon blanco
+// $brand == colorGrey
+    // Se inicia con bg blanco e icon gris
+    // Hover a bg brand color e icon blanco
+// $brand == bgGrey
+    // Se inicia con bg gris e icon blanco
+    // Hover a bg blanco e icon brand color
+
+@mixin social-brand-colors-span (
+    $selector: circulo,
+    $brand: bg,
+    $bg: $bg-body,
+    $color: $color-body,
+    $ss: $ss-icon
+){
+    @if $brand == bg {
+        // Se inicia con bg brand color e icon transparente
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name} .#{$selector}, .#{$name} #{$selector},
+            & .#{$name} .#{$selector}, .#{$name} #{$selector} {
+                @include social-brand-color-bg ($bg, $icon, $name);
+
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
+            }
+        }
+
+        // Invirtiendo a bg transparente e icon brand color
+        &:hover, &:focus, &:target {
+            @each $name, $icon in $mapSocial {
+            // Contenedor del social svg
+                &.#{$name} .#{$selector}, .#{$name} #{$selector},
+                & .#{$name} .#{$selector}, .#{$name} #{$selector} {
+                    @include social-brand-color-icon ($bg, $icon, $name);
+                }
+            }
+        }
+
+    } @elseif $brand == color {
+        // Se inicia con bg transparente e icon brand color
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name} .#{$selector}, .#{$name} #{$selector},
+            & .#{$name} .#{$selector}, .#{$name} #{$selector} {
+                @include social-brand-color-icon ($bg, $icon, $name);
+
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
+            }
+        }
+        // Invirtiendo a bg brand color e icon transparente
+        &:hover, &:focus, &:target {
+            @each $name, $icon in $mapSocial {
+                // Contenedor del svg
+                &.#{$name} .#{$selector}, .#{$name} #{$selector},
+                & .#{$name} .#{$selector}, .#{$name} #{$selector} {
+                    @include social-brand-color-bg ($bg, $icon, $name);
+                }
+            }
+        }
+
+    } @elseif $brand == colorGrey {
+        // Se inicia con bg transparente e icon gris
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name} .#{$selector}, .#{$name} #{$selector},
+            & .#{$name} .#{$selector}, .#{$name} #{$selector} {
+                @include social-grey-color-icon ($bg, $color, $icon);
+
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
+            }
+        }
+        &:hover, &:focus, &:target {
+            // Invirtiendo a bg brand color e icon transparente (anula filtro y fill previo)
+            @each $name, $icon in $mapSocial {
+                // Contenedor del svg
+                &.#{$name} .#{$selector}, .#{$name} #{$selector},
+                & .#{$name} .#{$selector}, .#{$name} #{$selector} {
+                    @include social-brand-color-bg ($bg, $icon, $name);
+                }
+            }
+        }
+    } @elseif $brand == bgGrey {
+        // Se inicia con bg gris e icon transparente
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name} .#{$selector}, .#{$name} #{$selector},
+            & .#{$name} .#{$selector}, .#{$name} #{$selector} {
+                @include social-grey-color-bg ($bg, $color, $icon, $name);
+
+                -webkit-transition: all $ss ease;
+                transition: all $ss ease;
+            }
+        }
+        &:hover, &:focus, &:target {
+            // Invirtiendo a bg transparente e icon brand color
+            @each $name, $icon in $mapSocial {
+                // Contenedor del svg
+                &.#{$name} .#{$selector}, .#{$name} #{$selector},
+                & .#{$name} .#{$selector}, .#{$name} #{$selector} {
+                    @include social-brand-color-icon ($bg, $icon, $name);
+                }
+            }
+        }
+    }
+}
+
+
+// -- Sólo borde
+// $brand == color
+    // Se inicia con border a brand color
+    // No hay hover
+// $brand == gris
+    // Se inicia con border a gris
+    // Hover a brand color
+@mixin social-brand-border (
+    $brand: color,
+    $a: a,
+    $color: $color-body,
+    $px: 2px
+){
+    @if $brand == color {
+        @each $name, $icon in $mapSocial {
+            // Contenedor del svg
+            &.#{$name},
+            & .#{$name} {
+                @if map-get($icon, bg) {
+                    border: $px solid map-get($icon, bg);
+                    // color: map-get($icon, bg);
+
+                } @else {
+                    border: $px solid map-get($icon, bg-light);
+                    // color: map-get($icon, bg-light);
+                }
+            }
+        }
+    } @elseif $brand == colorGrey {
+        &.#{$a}, #{$a}, .#{$a} {
+            border: $px solid $color;
+        }
+        &:hover, &:focus, &:target {
+            @each $name, $icon in $mapSocial {
+                // Contenedor del svg
+                &.#{$name},
+                & .#{$name} {
+                    @if map-get($icon, bg) {
+                        border: $px solid map-get($icon, bg);
+                        // color: map-get($icon, bg);
+
+                    } @else {
+                        border: $px solid map-get($icon, bg-light);
+                        // color: map-get($icon, bg-light);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Sólo texto de color mapSocial
+@mixin social-brand-text (
+    $span-front: claseinexistente1,
+    $span-hover: claseinexistente2
+){
+    @each $name, $icon in $mapSocial {
+        // a.redSocial e hijos contenedores de texto a juego
+        &.#{$name},
+        & .#{$name} {
+            @if map-get($icon, bg) {
+                color: map-get($icon, bg);
+
+            } @else {
+                color: map-get($icon, bg-light);
+            }
+            & #{$span-front}, .#{$span-front},
+            & #{$span-hover}, .#{$span-hover} {
+                @if map-get($icon, bg) {
+                    color: map-get($icon, bg);
+
+                } @else {
+                    color: map-get($icon, bg-light);
+                }
+            }
+        }
+    }
+}
+
+// -- Box de texto: el propio link y un par de span
+// $brand == bg.
+    // Se inicia con texto blanco
+    // Hover a texto brand color
+// $brand == color.
+    // Se inicia con texto brand color
+    // Hover a texto blanco
+// $brand == colorGrey
+    // Se inicia con texto gris
+    // Hover a texto blanco
+
+@mixin social-brand-text-hover (
+    $brand: bg,
+    $a: a,
+    $span-front: titulo,
+    $span-hover: titulo-hover,
+    $bg: $bg-body,
+    $color: $color-body,
+    $ss: $ss-icon
+){
+    // Se inicia con bg brand color y texto blanco
+    @if $brand == bg {
+        &.#{$a}, #{$a}, .#{$a},
+        & #{$span-front}, .#{$span-front},
+        & #{$span-hover}, .#{$span-hover} {
+            color: $bg;
+        }
+        // Invirtiendo a bg blanco y texto brand color
+        &:hover, &:focus, &:target {
+            @include social-brand-text ($span-front, $span-hover);
+        }
+    // Se inicia con bg blanco y texto brand color
+    } @elseif $brand == color {
+        @include social-brand-text ($span-front, $span-hover);
+        // Invirtiendo a bg brand color y texto blanco
+        &:hover, &:focus, &:target {
+            &.#{$a}, #{$a}, .#{$a},
+            & #{$span-front}, .#{$span-front},
+            & #{$span-hover}, .#{$span-hover} {
+                color: $bg;
+            }
+        }
+    // Se inicia con bg blanco y texto gris
+    } @elseif $brand == colorGrey {
+        &.#{$a}, #{$a}, .#{$a},
+        & #{$span-front}, .#{$span-front},
+        & #{$span-hover}, .#{$span-hover} {
+            color: $color;
+        }
+
+        // Invirtiendo a bg brand color y texto blanco
+        &:hover, &:focus, &:target {
+            &.#{$a}, #{$a}, .#{$a},
+            & #{$span-front}, .#{$span-front},
+            & #{$span-hover}, .#{$span-hover} {
+                color: $bg;
+            }
+        }
+    }
+}
+// ===================== fin de mixins Brand Colors ======================
+
+// ================== mixins para iconos Sin Colores =====================
+
+// Efecto interruptor con un circulo que contiene el icon svg
+@mixin circulo-svg-left-right (
+    $direction: r,
+    $selector: a,
+    $span-svg: circulo,
+    $span-front: titulo,
+    $span-hover: titulo-hover,
+    $h: 1.6em,
+    $w: $h*5,
+    $margin: 0.3em,
+    $fontsize: 1em,
+    $right: 1em,
+    $left: 1em,
+    $px: 2px,
+    $color: $bg-body,
+    $ts: 1px 1px rgba(0, 0, 0, 0.1),
+    $bs1: 0 0 $px rgba(0, 0, 0, 0.12),
+    $bs2: 0 $px 2*$px rgba(0, 0, 0, 0.24),
+    $ss: $ss-item
+){
+    #{$selector},
+    .#{$selector} {
+        position: relative;
+        width: $w;
+        height: $h;
+        margin: $margin;
+        padding: 0;
+        border-radius: 3em;
+        text-shadow: $ts;
+        -webkit-box-shadow: $bs1, $bs2;
+                box-shadow: $bs1, $bs2;
+
+        #{$span-front},
+        #{$span-hover},
+        .#{$span-front},
+        .#{$span-hover} {
+            position: absolute;
+            margin: 0 auto;
+            font-size: $fontsize;
+            text-align: center;
+            -webkit-transition: $ss-item;
+            transition: $ss-item;
+        }
+
+        #{$span-front},
+        .#{$span-front} {
+            @if $direction == r {
+                right: $right,
+            } @else {
+                left: $left;
+            }
+        }
+
+        #{$span-hover},
+        .#{$span-hover} {
+            opacity: 0;
+            @if $direction == r {
+                left: $left;
+            } @else {
+                right: $right,
+            }
+        }
+
+        #{$span-svg},
+        .#{$span-svg} {
+            position: absolute;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -ms-flex-line-pack: center;
+                align-content: center;
+            text-align: center;
+
+            @if $direction == r {
+                left: 0;
+                float: left;
+            } @else {
+                right: 0;
+                float: right;
+            }
+
+            top: 0;
+            width: ($h - $margin + 0.03em);
+            height: calc(#{$h} - 4*#{$px});
+            margin: $px;
+            border-radius: 50%;
+            -webkit-transition: all $ss-item;
+            transition: all $ss-item;
+
+            & svg {
+                width: $h/2;
+                height: auto;
+            }
+        }
+    }
+
+    &:hover, &:focus, &:target {
+        #{$span-svg},
+        .#{$span-svg} {
+            @if $direction == r {
+                left: calc(100% - (#{$h} - #{$margin}));
+                margin-left: -1*($margin/2);
+            } @else {
+                right: calc(100% - (#{$h} - #{$margin}));
+                margin-right: -1*($margin/2);
+            }
+            overflow: hidden;
+        }
+        #{$span-front},
+        .#{$span-front} {
+            opacity: 0;
+        }
+        #{$span-hover},
+        .#{$span-hover} {
+            opacity: 1;
+            // color: $color;
+        }
+    }
+}
+
+// ================== fin de mixins para iconos Sin Colores =====================
