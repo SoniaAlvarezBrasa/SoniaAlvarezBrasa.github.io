@@ -126,8 +126,6 @@ share:
     -   title: Tumblr
         name: tumblr
         url: http://www.tumblr.com/share/link?url
-        # text: true
-        # description: true
         hover:
             es: Compartir
             en: Share
