@@ -25,6 +25,10 @@ Enfin, le code source de Jekyll est présenté sur
 [jekyll](https://github.com/jekyll/jekyll)
 
 
+<section markdown="1">
+
 ### La Comuna
 
-#### Sonia Alvarez
+{% include users.html %}
+
+</section>

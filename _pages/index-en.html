@@ -13,6 +13,10 @@ description: Slogan of your Personal Brand for search engines, the description o
         <nav></nav>
     </header>
     <p>Hello! My name’s <strong>Saltw <i>acronym of Sonia Álvarez Técnicas Web </i></strong>and I love to make complicated things simple. I <strong>design and build products & web sites <i>subjectively fun and functional digital experiences </i></strong>for <strong>people <i>who like things that feel good and work well and are not frustrating</i></strong>.<a href="#"> read more about me</a> or <a href="#">say hello!</a></p>
-</article>
 
-{% include paginate.html %}
+    {% include paginate.html %}
+
+    <aside class="tagcloud-livejournal">
+        {% include ul-site-tags.html origin=prefixid ulclass="" spanclass="fl" liclasselse="aHoverXl" %}
+    </aside>
+</article>

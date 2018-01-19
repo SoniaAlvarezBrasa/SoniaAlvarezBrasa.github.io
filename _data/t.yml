@@ -2,6 +2,15 @@ es:
     home:
         title: Webs simples y usables
         subtitle: satisfacción de usuario, arquitectura de información, estrategia, diseño y desarrollo
+    menu:
+        -   name: Contacto
+            url: /contacto.html
+        -   name: Nosotros
+            url: /nosotros.html
+        -   name: Blog
+            url: /blog/categorias.html
+        -   name: Sobre Saltw
+            url: /nosotros/saltw.html
     paginate:
         heading: Últimos artículos
         else: No hay artículos.
@@ -20,37 +29,40 @@ es:
                 url: /feed.xml
         tags:
             titleLink: Artículos sobre
+    page:
+        compartir: Comparte
+        seguir: en
     icons:
         CodePen:
-            title: Saltw en Codepen
+            title: Trabajos en CodePen
             iconTitle: Logo de CodePen.io
             iconDesc: El logotipo abreviado de Codepen es un cubo geométrico 3d transparente.
         DeviantArt:
-            title: Saltw en DeviantArt
+            title: Obras en DeviantArt
             iconTitle: Logo de DeviantArt
             iconDesc: El logo de DeviantArt son dos letras 'A' (de Art, en color verde) mayúsculas seguidas, la primera invertida, seccionadas a 62º en el centro de tal forma que si se combina consigo mismo a 180º puede leerse su A mayúscula, normal o invertida hasta el infinito.
         Facebook:
-            title: Saltw en Facebook
+            title: Publicaciones en Facebook
             iconTitle: Logo de Facebook
             iconDesc: El logo abreviado de Facebook es su inicial 'f' en minúscula, en color blanco sobre un fondo azul de tono oscuro.
         GitHub:
-            title: Saltw en GitHub
+            title: Proyectos en GitHub
             iconTitle: Logo de GitHub
             iconDesc: La imágen de Marca de GitHub es la silueta en blanco y negro de su mascota 'Octocat' que tiene cabeza de gato y cuerpo de pulpo aunque en sus dibujos nunca se verán más de cinco tentáculos. Dos que hacen de piernas, dos de brazos y el que se ve en la silueta como su cola.
         GitLab:
-            title: Saltw en GitLab
+            title: Proyectos en GitLab
             iconTitle: Logo de GitLab
             iconDesc: La imágen de marca de GitLab es una combinación de siete triángulos en tres tonos naranja que dibujan un zorro.
         GooglePlus:
-            title: Saltw en Google +
+            title: Publicaciones en Google +
             iconTitle: Logo de Google+
             iconDesc: El logo abreviado de GooglePlus es su inicial G en mayúscula seguido del signo de suma (G+), ambos en color rojo.
         Instagram:
-            title: Saltw en Instagram
+            title: Publicaciones en Instagram
             iconTitle: Logo de Instagram
             iconDesc: La imágen de marca de Instagram combina un círculo pequeño dentro de un cuadrado con un punto en su parte superior derecha para que simule una cámara de fotos. El fondo combina un degradado de colores rojos, naranjas, amarillos, azules y violetas como un arco iris.
         LinkedIn:
-            title: Saltw en Linkedin
+            title: Artículos en Linkedin
             iconTitle: Logo de LinkedIn
             iconDesc: El logo de LinkedIn son las letras 'in' en minúsculas, en color blanco sobre fondo azul claro.
         Menu:
@@ -58,22 +70,22 @@ es:
             iconTitle: Menú Principal
             iconDesc: La imágen del menú desplegable son tres líneas horizontales apiladas una encima de la otra, como si fuera un signo de igual con una raya extra.
         Pinterest:
-            title: Saltw en Pinterest
+            title: Publicaciones en Pinterest
             iconTitle: Logo de Pinterest
             iconDesc: El logo de Pinterest es un círculo rojo con una P blanca en el centro.
         StackOverflow:
-            title: Saltw en Stack Overflow
+            title: Soluciones en Stack Overflow
             iconTitle: Logo de Stack Overflow
             iconDesc: El logo de Stack Overflow son cinco líneas de color naranja apiladas una encima de otra en abanico sobre un paréntesis boca arriba de color gris, como simulando cinco libros de lomo naranja cayendo en una bandeja gris.
         Tag:
             iconTitle: Etiqueta
             iconDesc: La imágen es el icono típico de las etiquetas en la web. Simula la silueta de una etiqueta antigua donde se escribía a mano la descripción del contenido de un paquete. La parte superior acabada en punta con un agujero por el que se pasaba una goma o cordel que la sujetaba a su caja.
         Twitter:
-            title: Saltw en Twitter
+            title: Noticias en Twitter
             iconTitle: Logo de Twitter
             iconDesc: La imágen de logo de Twitter es la silueta de su pajarito en color azul, inspirado en la especie 'Azulillo pálido'.
         Youtube:
-            title: Saltw en Youtube
+            title: Vídeos en Youtube
             iconTitle: Logo de Youtube
             iconDesc: La imágen de marca de youtube es un triángulo blanco dentro de un rectángulo rojo simulando el botón inicio de un reproductor.
 gl:
@@ -96,6 +108,9 @@ gl:
                 texto: Suscribirse
                 link: vía RSS
                 url: /feed.xml
+    page:
+        compartir: Comparte
+        seguir: no
     icons:
         CodePen:
             title: Verme por CodePen.io
@@ -172,37 +187,40 @@ en:
                 texto: Suscribe
                 link: via RSS
                 url: /feed.xml
+    page:
+        compartir: Shares
+        seguir: on
     icons:
         CodePen:
-            title: See Picked Pens in CodePen.io
+            title: Works on CodePen.io
             iconTitle: CodePen.io logo
             iconDesc: The Codepen abbreviated logo is a transparent 3d geometric cube.
         DeviantArt:
-            title: More of me in DeviantArt
+            title: ArtWorks on DeviantArt
             iconTitle: DeviantArt logo
             iconDesc: The DeviantArt logo are two capital letters 'A' (from Art, in green), the first reversed, sectioned at 62º in the center so that if it is combined with itself at 180º its upper, normal or inverted A can be read to infinity.
         Facebook:
-            title: Follow me on Facebook
+            title: Posts on Facebook
             iconTitle: Facebook logo
             iconDesc: The abbreviated logo of Facebook is its initial 'f' in lowercase, in white on a dark blue background.
         GitHub:
-            title: See my projects on GitHub.com
+            title: Projects on GitHub.com
             iconTitle: GitHub.com logo
             iconDesc: The GitHub mark is the black and white silhouette of their pet 'Octocat' which has a cat's head and eight octopus tentacles although in the drawing only 5 are seen. Two that make its legs, two arms, and which is seen in the silhouette as its tail.
         GitLab:
-            title: See my projects on GitLab.com
+            title: Projects on GitLab.com
             iconTitle: GitLab.com logo
             iconDesc: The GitLab brand image is a combination of triangles in three orange shades that form the silhouette of a fox.
         GooglePlus:
-            title: Follow me on Google+
+            title: Posts on Google+
             iconTitle: Google+ logo
             iconDesc: The abbreviated logo of Google Plus is its initial G in capital letters followed by the addition sign, both in red.
         Instagram:
-            title: Follow me on Instagram
+            title: Posts on Instagram
             iconTitle: Instagram logo
             iconDesc: The Instagram image combines a small circle inside a square with a dot on the top right to simulate a camera. The background combines a gradient of red, orange, yellow, blue and violet colors like a rainbow.
         LinkedIn:
-            title: Follow me on LinkedIn
+            title: Articles in LinkedIn
             iconTitle: LinkedIn logo
             iconDesc: The LinkedIn abbreviated logo are the letters 'in' in lowercase, white on a light blue background.
         Menu:
@@ -210,22 +228,22 @@ en:
             iconTitle: Main Menu
             iconDesc: The image of the drop-down menu is three horizontal lines stacked on top of each other, as if it were an equal sign with an extra line.
         Pinterest:
-            title: Follow me on Pinterest
+            title: Posts on Pinterest
             iconTitle: Pinterest logo
             iconDesc: The Pinterest logo is a red circle with a white scripted 'P' in the middle.
         StackOverflow:
-            title: See my contributions in Stack Overflow
+            title: Contributions in Stack Overflow
             iconTitle: Stack Overflow logo
             iconDesc: The Stack Overflow logo consists of five orange lines stacked one on top of the other in a fan on a gray upside-down parenthesis, as if simulating five books of orange loin falling on a gray tray.
         Twitter:
-            title: Follow me on Twitter
+            title: News on Twitter
             iconTitle: Twitter logo
             iconDesc: The logo image of Twitter is the silhouette of its little bird in sky blue color, inspired by the species 'Mountain bluebird'.
         Tag:
             iconTitle: Tag
             iconDesc: The image is the typical icon of the web tags. Simulates the silhouette of an old label where the description of the contents of a package was written by hand. The upper part finished in a point with a hole through which a rubber or cord that held it to its box was passed.
         Youtube:
-            title: Follow me on Youtube
+            title: Videos on Youtube
             iconTitle: Youtube logo
             iconDesc: The youtube brand image is a white triangle inside a red rectangle simulating the play button.
 pt:
@@ -248,6 +266,9 @@ pt:
                 texto: Inscreva-se
                 link: via RSS
                 url: /feed.xml
+    page:
+        compartir: Compartilha
+        seguir: no
     icons:
         CodePen:
             title: Veja-me por CodePen.io
@@ -324,6 +345,10 @@ fr:
                 texto: Suivre le
                 link: flux RSS
                 url: /flux.xml
+    page:
+        compartir: Partage
+        seguir: sur
+
     icons:
         CodePen:
             title: Voir Stylos choisis dans CodePen.io

@@ -1,0 +1,8 @@
+{% capture ury %}{{ include.original }}{% endcapture %}
+{% assign tilde = "Ã À Á Ä Â È É Ë Ê Ì Í Ï Î Ò Ó Ö Ô Ù Ú Ü Û ã à á ä â è é ë ê ì í ï î ò ó ö ô ù ú ü û Ñ ñ Ç ç" %}
+{% assign char = "A A A A A E E E E I I I I O O O O U U U U a a a a a e e e e i i i i o o o o u u u u n n c c" %}
+{% assign tildes = tilde | split: ' '%}
+{% assign chars = char | split: ' '%}
+    {% for letra in tildes %}
+        {% capture ury %}{{ ury | replace: tildes[forloop.index], chars[forloop.index] }} {% endcapture %}
+    {% endfor %}

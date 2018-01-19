@@ -1,14 +1,22 @@
 ---
 layout: default
 ---
-<article class="post">
+<article class="page">
+    <header>
+        <h2>{{ page.title }}</h2>
+    </header>
 
-  <header>
-    <h2>{{ page.title }}</h2>
-  </header>
-
-  <div>
     {{ content }}
-  </div>
 
+    <footer>
+        {% if page.compartir %}
+        <nav class="sociales">
+            <header class="abcenter">
+                <h4>{{ site.data.t[page.lang].page.compartir }} <b class="pechado">{{ page.title }}</b></h4><span class="cross-center pl">{% include svg/icon-share.svg hidden='true' id='page-share--' %}</span>
+            </header>
+            <ul class="abcenter">
+                {% include ul-social.html ul="share" liclass="share" spansvg="circulo" spant="titulo" spanth="titulo-hover" %}
+            </ul>
+        </nav> {% endif %}
+    </footer>
 </article>

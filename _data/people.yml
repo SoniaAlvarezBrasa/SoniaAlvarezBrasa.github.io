@@ -3,6 +3,12 @@ Saltw:
     name: Sonia Álvarez
     legalname: Sonia Álvarez Brasa
     darlingname: Salty
+    slogan:
+        es: Frase de Marca Personal de Saltw
+        en: Personal Brand Phrase of Saltw
+        fr: Phrase personnelle de Saltw
+        gl: Frase da Marca Persoal de Saltw
+        pt: Frase de Marca Pessoal de Saltw
     alias:
         es: Sonia Álvarez Técnicas Web
         en: Sonia Álvarez Techniques for Web
@@ -44,6 +50,7 @@ Saltw:
                 username: saltw
             -   title: StackOverflow
                 name: stackoverflow
+                abbr: SO
                 url: https://es.stackoverflow.com/
                 username: users/43210/saltw
             -   title: Twitter
@@ -57,9 +64,10 @@ Saltw:
             -   title: Instagram
                 name: instagram
                 url: https://www.instagram.com/
-                username: Saltw
+                username: saltw.photos
             -   title: DeviantArt
                 name: deviantart
+                abbr: DA
                 url: https://www.deviantart.com/
                 username: Saltw
             -   title: Youtube
@@ -75,7 +83,7 @@ Saltw:
                 name: facebook
                 url: https://www.facebook.com/
                 username: SoniaAlvarezBrasa
-            -   title: GooglePlus
+            -   title: Google +
                 name: googleplus
                 url: https://plus.google.com/
                 username: salty

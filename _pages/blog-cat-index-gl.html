@@ -1,19 +1,25 @@
 ---
 layout: default
-title: Categorías
+title: Sumario
 permalink: /blog/clasificador.html
 ref: cat-index
 lang: gl
+metaDescription: "Describe en 115 caracteres o que os teus usuarios poden atopar no Sumario de artigos do teu Blog."
+metaOgDescription: "Describe en 200 caracteres o que os teus usuarios poden atopar no Sumario de artigos do teu Blog."
 nomap: 1
 ---
 
-<article class="post">
+<article class="page">
     <header>
         <h2>{{ page.title }}</h2>
-        <!-- nav site.categories -->
-        {% include nav-site-cats.html origin="cat-index" ulclass="tagcloud-flexbox" spanclass="fl" liclasssvg="svg" liclasselse="aHoverXl" svg="folder"%}
+        <nav>
+            {% include ul-site-cats.html origin=page.ref ulclass="tagcloud-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="folder" %}
+        </nav>
+        <nav>
+            {% include ul-site-tags.html origin=prefixid ulclass="tagcloud-bores-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="tag" %}
+        </nav>
     </header>
-    <!-- section categories.posts[] -->
-    <!-- include site.tags-->
-    {% include blog-cat-index.html origin="cat-index" %}
+    <p>Seccións de contidos por Categorías ou Etiquetas de tódolos artigos do Blog de {{ site.tradename }} pra chegares rápidamente ó contido que che interesa. Por fecha de actualización, autor, temática o etiquetado facilitámosche o acceso directo ó artigo que buscas.</p>
+
+    {% include blog-cat-index.html origin=page.ref seccion1='Categorías' seccion2='Etiquetas' %}
 </article>

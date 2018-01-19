@@ -1,0 +1,9 @@
+{% for users in site.data.people %}{% for user in users %}
+<article class="">
+    <header>
+        <h4>{{ user.name }}</h4>
+        <p>{{ user.slogan.[page.lang] }}</p>
+    </header>
+</article>
+
+{% endfor %}{% endfor %}

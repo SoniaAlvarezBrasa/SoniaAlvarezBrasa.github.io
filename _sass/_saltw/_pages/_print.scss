@@ -1,0 +1,108 @@
+@media print {
+    // Layout
+    body {
+        background: transparent !important;
+        background-image: none;
+        text-shadow: none !important;
+        -ms-filter: none !important;
+            filter: none !important;
+        main {
+            & > article {
+                margin: 0;
+                padding: 0;
+                & > section + section {
+                    page-break-before: always;
+                }
+            }
+        }
+        h2, h3 {
+            page-break-after: avoid;
+        }
+        h2 ~ section,
+        h2 ~ article,
+        h3 ~ section,
+        h3 ~ article {
+            page-break-inside: avoid;
+        }
+        header {
+            page-break-before: avoid;
+            page-break-inside: avoid;
+        }
+        input, label {
+            page-break-after: avoid;
+            page-break-before: avoid;
+        }
+
+        p {
+            // text-indent: 2cm;
+        }
+
+        a, a:visited {
+            text-decoration: underline;
+        }
+        pre, blockquote {
+            border: 1px solid #999; page-break-inside: avoid;
+        }
+        thead {
+            display: table-header-group;
+        }
+        tr, img {
+            page-break-inside: avoid;
+        }
+        img {
+            max-width: 100% !important;
+        }
+        * {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            transition: none;
+            -moz-transition: none;
+            -webkit-transition: none;
+        }
+    }
+
+    // Stilos
+    .post {
+        padding-bottom: 0;
+        & > p {
+            text-indent: 2cm;
+        }
+        & > footer {
+            display: none;
+        }
+    }
+    .list-unchecked {
+        page-break-inside: avoid;
+    }
+    .cat-index {
+        & > h3 {
+            page-break-after: avoid;
+        }
+    }
+    .idiomas {
+        padding: 0;
+        & li {
+            & span { color: #000; }
+            & a {
+                color: #ddd;
+                text-decoration: none;
+            }
+        }
+    }
+    .tagcloud-flex,
+    .tagcloud-flexbox,
+    .tagcloud-bores-flexbox {
+        & li {
+            // height: 1em;
+            line-height: 1;
+
+            & a {
+                font-size: 0.7em;
+                height: auto;
+                color: #999;
+                border: 1px solid #999;
+                & span:nth-child(1) { display: none; }
+            }
+        }
+    }
+}

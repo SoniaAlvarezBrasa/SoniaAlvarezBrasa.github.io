@@ -204,8 +204,10 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
                 fill: $color-body;
                 polyline {
                     stroke: $color-body;
+                    -webkit-transition: all $ss-item;
                     transition: all $ss-item;
                 }
+                -webkit-transition: all $ss-item;
                 transition: all $ss-item;
                 // vertical-align: middle;
             }
@@ -233,7 +235,9 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 .share,
 .follow {
     & a {
-        display: flex;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
     }
 }
 .share {
@@ -371,6 +375,8 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
         }
 
         & li {
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
             display: inline-flex;
             -webkit-transition: all $ss-item ease;
             // & a { color: $bg-body; }

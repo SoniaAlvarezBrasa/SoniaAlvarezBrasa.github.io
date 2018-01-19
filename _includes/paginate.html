@@ -6,25 +6,18 @@
         <h2>{{ site.data.t.[page.lang].paginate.heading }}</h2>
     </header>
     {% for post in posts limit: 10 %}
-        {% capture prefixid %}
-            {{ page.ref }}-paginate-{{ page.lang | upcase }}
-        {% endcapture %}
-        {% capture postid %}
-            {{ prefixid | strip }}--post-{{ forloop.index }}
-        {% endcapture %}
-        {% capture inputid %}
-            {{ postid | strip }}--{{ post.id | slugify }}
-        {% endcapture %}
-        <!-- posts[] -->
-        <!-- include posts.html id=postid labelid=inputid labelsvg='info' labelspanflex='cross-end' headerflex='justify' hpclass='aHoverXl' hlevel=3 usersvg='user' usersmallflex='cross-centro' tagshow='both' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' catsvg='folder' tagsvg='tag' -->
+            {% capture prefixid %}
+                {{ page.ref }}-paginate-{{ page.lang | upcase }}
+            {% endcapture %}
+            {% capture postid %}
+                {{ prefixid | strip }}--post-{{ forloop.index }}
+            {% endcapture %}
+            {% capture inputid %}
+                {{ postid | strip }}--{{ post.id | slugify }}
+            {% endcapture %}
+
         {% include posts.html id=postid labelid=inputid headerflex='justify' hpclass='aHoverXl' hlevel=3 usersvg='user' usersmallflex='cross-centro' tagshow='both' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' catsvg='folder' tagsvg='tag' %}
     {% endfor %}
-
-    <!-- site.tags -->
-    <aside class="tagcloud-livejournal">
-        {% include nav-site-tags.html origin=prefixid ulclass="" spanclass="fl" liclasselse="aHoverXl" %}
-    </aside>
-
     <footer>
         <nav>
             <ul>

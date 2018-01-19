@@ -13,6 +13,10 @@ description: Slogan da sua Marca Pessoal para motores de busca, a descrição do
         <nav></nav>
     </header>
     <p>Oi! Eu sou <strong>{{ site.tradename }}<i> sigla para {{ site.alternatename[page.lang] }}</i></strong> e adoro simplificar coisas complicadas. <strong>Design e crie produtos, protótipos e sites <i>de experiências digitais divertidas e eficazes </i></strong> para <strong>pessoas <i>que gostam de encontrar o que querem onde se sentem bem e sem frustração</i>. </strong><a href="#">¡leia mais sobre mim! </a> o <a href="#">diga oi!</a>
-</article>
 
-{% include paginate.html %}
+    {% include paginate.html %}
+
+    <aside class="tagcloud-livejournal">
+        {% include ul-site-tags.html origin=prefixid ulclass="" spanclass="fl" liclasselse="aHoverXl" %}
+    </aside>
+</article>

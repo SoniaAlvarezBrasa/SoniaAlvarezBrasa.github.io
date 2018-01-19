@@ -1,0 +1,33 @@
+---
+# Stilos para medios paginados
+---
+@page {
+    size: auto;
+    margin-top: 3cm;
+    margin-bottom: 2cm;
+}
+
+@page :left {
+    margin-left: 3cm;
+    margin-right: 4cm;
+    margin-right: 4cm;
+    p {
+        text-align: left;
+    }
+    @bottom-left {
+        content: counter(page)" / "counter(pages);
+    }
+}
+@page :right {
+    margin-left: 4cm;
+    margin-right: 3cm;
+    p {
+        text-align: right !important;
+    }
+    @bottom-right {
+        content: counter(page)" / "counter(pages);
+    }
+}
+@page rotada {
+    size: landscape;
+}

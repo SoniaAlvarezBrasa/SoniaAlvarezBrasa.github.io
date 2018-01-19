@@ -1,6 +1,9 @@
 <nav class="justify">
     <h3 class="aHoverXl"><a class="site-title" href="{{ site.baseurl }}/{{ site.index[page.lang] }}">{{ site.title[page.lang] }}</a></h3>
-    {% include nav-languages.html navclass="cross-center" ulclass="main-end" liclass="aHoverXs" %}
+
+    <nav class="idiomas">
+        {% include ul-page-langs.html ulclass="main-end" liclass="aHoverXs" %}
+    </nav>
 
     <ul class="main-start principal">{% assign pages=site.pages | where:"lang", page.lang %}
         {% for pag in pages %}{% if pag.layout != null and pag.ref != 'index' and pag.ref != 'cat-index' and pag.person == null and pag.ref != 'archives' %}
@@ -22,7 +25,7 @@
         {% if temp %}
                 <li><a href="{{ pag.url | prepend: site.url }}#{{ pag.permalink | slugify }}--cat-{{ cat[0]| slugify }}">{{ cat[0] | capitalize }} <small>({{ posts.size }} {{ include.ud }}{% if posts.size > 1 %}s{% endif %})</small></a>
                     <ul> {% for post in posts %}
-                        <li class="cross-center"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><small class="cross-center"><time datetime="{{ post.date | date_to_xmlschema }}">{% include date.html pageref="page" date=post.date %}</time></small>{% if post.fotos.size > 0 %}<small class="cross-center">Images ({{post.fotos.size}})</small>{% endif %}</li>{% endfor %}
+                        <li class="cross-center"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><small class="cross-center"><time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date.html pageref="page" date=post.date %}</time></small>{% if post.fotos.size > 0 %}<small class="cross-center">Images ({{post.fotos.size}})</small>{% endif %}</li>{% endfor %}
                     </ul>
                 </li> {% endif %} {% endfor %}
             </ul>

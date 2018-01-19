@@ -3,8 +3,13 @@
 {% include head.html %}
 
 <body>
-
-    {% include header.html %}
+    <header>
+        <h1 class="pechado">{{ site.title[page.lang] | escape }}</h1>
+        <nav class="idiomas">
+            {% include ul-page-langs.html ulclass="main-end" liclass="aHoverXs" %}
+        </nav>
+    </header>
+    {% include menu.html person='Sobre ' %}
 
     <main>
         {{ content }}
@@ -12,10 +17,5 @@
     <footer>
         {% include footer.html %}
     </footer>
-
-    <!-- <div class="page-content"> -->
-        <!-- <div class="wrapper"> -->
-        <!-- </div> -->
-    <!-- </div> -->
 </body>
 </html>

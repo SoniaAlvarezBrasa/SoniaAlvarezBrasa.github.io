@@ -1,0 +1,32 @@
+{% assign caturl = null %}
+{% assign ury = null %}
+    {% capture t %}{{ include.lab }}{% endcapture %}
+    {% include filters/replace-tildes.html original = t %}
+    {% assign ury = ury %}
+{% if include.iconid %}
+            {% capture svgid %}
+                {{ include.iconid | strip }}--tag{{ forloop.index | strip }}
+            {% endcapture %}
+            {% capture iconclass %}
+                svg--{{ include.tagsvg }}
+            {% endcapture %}
+        <li class="svg">
+    {% if page.ref == "cat-index" %} <!-- href relativo -->
+        <a href="#{{ page.permalink | slugify }}--tag-{{ ury | slugify }}">
+    {% else %} <!-- href absoluto -->
+            {% assign pags=site.pages | where:"ref", "cat-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.permalink | slugify }}--tag-{{ ury | slugify }}{% endcapture %}{% endfor %}
+        <a href="{{ caturl | prepend: site.url }}">
+    {% endif %}
+            <span class="{{ include.spanclass }} {{ iconclass | strip }}">{% include svg/icon-{{include.tagsvg}}.svg hidden='true' iconclass=iconclass id=svgid %}</span>{{ include.lab | capitalize }}
+        </a>
+        </li>
+{% else %}
+        <li class="{{ include.lielse }}">
+    {% if page.ref == "cat-index" %} <!-- href relativo -->
+        <a href="#{{ page.permalink | slugify }}--tag-{{ ury | slugify }}">{{ include.lab | capitalize }}</a>
+    {% else %} <!-- href absoluto -->
+            {% assign pags=site.pages | where:"ref", "cat-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.permalink | slugify }}--tag-{{ ury | slugify }}{% endcapture %}{% endfor %}
+        <a href="{{ caturl | prepend: site.url }}">{{ include.lab | capitalize }}</a>
+    {% endif %}
+        </li>
+{% endif %}

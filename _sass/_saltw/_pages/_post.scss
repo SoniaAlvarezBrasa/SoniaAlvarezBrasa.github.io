@@ -1,0 +1,90 @@
+.blank,
+.post {
+    & > header {
+        padding: 3em 0 1em 0;
+    }
+}
+
+.post {
+    padding-bottom: 10vmin;
+
+    & > header {
+        margin-bottom: 4em;
+        border-bottom: $border-default;
+
+        h2 { margin-bottom: 3em; }
+        h2, h3, h4, h5, h6 {width: 100%;}
+
+        & > p,
+        & > nav {
+            @include hoverColorSvg;
+        }
+    }
+}
+
+.blank {
+    // & h2 { padding-top: 3em; }
+    & h3 {
+        color: $color-title;
+        font-style: bold;
+        & a {
+            padding-right: 1em;
+            color: inherit;
+        }
+    }
+    // lista anidadas de las pages del site
+    .principal {
+        & ul { padding-left: 3em; }
+        &, & ul {
+            width: 100%;
+            & li {
+                &, & small, & a { line-height: 1.5rem; }
+                & time { padding-right: 1em; }
+                width: 100%;
+                @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenter...);
+
+                & a small { color: $color-small; }
+            }
+        }
+        & a {
+            padding: 0 1em;
+        }
+    }
+}
+
+.paginate,
+.cat-index {
+    padding-bottom: 4em;
+    .list-unchecked {
+        padding-bottom: 2em;
+        & > label {
+            // display: inline-flex;
+            float: left;
+            width: 0.25em;
+            padding-left: 1.25em;
+            & svg {
+                width: 3vmin;
+                height: 3vmin;
+            }
+            &:before { bottom: 0.25em; }
+        }
+        & > header {
+            h3, h4 {
+                margin: 0;
+                text-align: left;
+            }
+            & > small { color: $color-small; }
+            & strong {
+                @include hoverColorSvg;
+            }
+        }
+    }
+}
+
+
+// Sucesión de articles con input label
+.list-unchecked {
+    @include icon-abrirCerrar;
+    $map:(selector: entradilla);
+    @include label-check($map...);
+}

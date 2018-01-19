@@ -72,6 +72,100 @@ ogImage:
 github_username: SoniaAlvarezBrasa
 twitter_username: jekyllrb
 
+share:
+    -   title: Facebook
+        name: facebook
+        url: http://www.facebook.com/sharer/sharer.php?u
+        hover:
+            es: Me gusta
+            en: Like
+            gl: Gústame
+            fr: J'aime
+            pt: Curtir
+    -   title: LinkedIn
+        name: linkedin
+        url: http://www.linkedin.com/shareArticle?url
+        source: true
+        hover:
+            es: Compartir
+            en: Share
+            gl: Comparte
+            fr: Partager
+            pt: Compartilhar
+    -   title: Twitter
+        name: twitter
+        url: http://twitter.com/intent/tweet?url
+        text: true
+        via: true
+        hover:
+            es: Twittear
+            en: Tweet
+            gl: Chiar
+            fr: Tweetez
+            pt: Tweetar
+    -   title: Google +
+        name: googleplus
+        url: https://plus.google.com/share?url
+        hover:
+            es: + 1
+            en: + 1
+            gl: + 1
+            fr: + 1
+            pt: + 1
+    -   title: Reddit
+        name: reddit
+        url: http://www.reddit.com/share/link?url
+        text: true
+        description: true
+        hover:
+            es: Compartir
+            en: Share
+            gl: Comparte
+            fr: Partager
+            pt: Compartilhar
+    -   title: Tumblr
+        name: tumblr
+        url: http://www.tumblr.com/share/link?url
+        text: true
+        description: true
+        hover:
+            es: Compartir
+            en: Share
+            gl: Comparte
+            fr: Partager
+            pt: Compartilhar
+    -   title: Pinterest
+        name: pinterest
+        url: https://pinterest.com/pin/create/button/?url
+        media: true
+        hover:
+            es: Guardar
+            en: Save
+            gl: Gardar
+            fr: Enregistrer
+            pt: Salvar
+    -   title: WhatsApp
+        name: whatsapp
+        url: whatsapp://send?text
+        whatsapp-action: true
+        hover:
+            es: Enviar
+            en: Send
+            gl: Enviar
+            fr: Envoyer
+            pt: Enviar
+    -   title: Telegram
+        name: telegram
+        url: tg://msg_url?url
+        text: true
+        hover:
+            es: Enviar
+            en: Send
+            gl: Enviar
+            fr: Envoyer
+            pt: Enviar
+
+
 # metadata
 seo:
     type: WebSite

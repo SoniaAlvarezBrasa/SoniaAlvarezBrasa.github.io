@@ -51,6 +51,7 @@
 {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}{% for pag in pages %}{% if pag.lang != page.lang %}
     <meta property="og:locale:alternate" content="{{ site.alternate.oglocale.[pag.lang] }}" />{% endif %}{% endfor %}
     <!-- <link rel="stylesheet" href="{{ "css/main.css" | prepend: site.baseurl }}"> -->
+    <link rel="stylesheet" href="{{ "/assets/css/page.css" | append: site.baseurl }}">
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | append: site.baseurl }}">
     <link rel="stylesheet" href="{{ "/assets/css/application.css" | append: site.baseurl }}">
     <!-- <link rel="stylesheet" href="{{ "css/application.css" | prepend: site.baseurl }}"> -->

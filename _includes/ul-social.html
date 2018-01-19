@@ -1,0 +1,83 @@
+<!-- ************************************** -->
+<!-- links para compartir en Redes Sociales -->
+<!-- ************************************** -->
+{% if include.ul == 'share' %}
+        {% capture svgid %}
+            share--{{ page.id | slugify }}
+        {% endcapture %}
+        {% for user in site.data.people[page.autor].social.jobs %}
+            {% if user.title == 'Twitter' %} {% capture usertwitter %} {{ user.username }} {% endcapture %} {% endif %}
+        {% endfor %}
+{% for red in site.share %}
+    <li class="{{ include.liclass }}">
+        <a class="{{ red.name }} {{ include.aclass }}" target="_blank" href="{{ red.url }}={{ page.url | prepend: site.url }}{% if red.name == 'googleplus' %}={{ site.tradename }}{% if include.baseref %}+{{ include.baseref }}{% endif %}:+{{ page.title | url_encode }}{% if page.subtitle %}.+{{ page.subtitle | url_encode }}{% endif %}{% endif %}{% if red.source %}&source={{ site.url | remove: 'https://' | remove: 'http://' }}{% endif %}{% if red.text %}&text={{ site.tradename }}{% if include.baseref %}+{{ include.baseref }}{% endif %}:+{{ page.title | url_encode }}{% if page.subtitle %}.+{{ page.subtitle | url_encode }}{% endif %}{% endif %}{% if red.via %}&via={{ usertwitter | strip }}{% endif %}{% if red.media %}&media={{ site.url }}/assets/img{{ page.fotos.foto1.url }}&description={{ page.fotos.foto1.alt }}{% endif %}{% if red.description %}&description={% if page.metaDescription %}{{ page.metaDescription | url_encode }}{% elsif page.description %}{{ page.description | url_encode }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 | url_encode }}{% else %}{{ site.description[page.lang] | url_encode }}{% endif %}{% endif %}" {% if red.whatsapp-action %} data-action="share/whatsapp/share"{% endif %}>
+        {% if include.spansvg %}
+            <span class="{{ include.spansvg }}">{% include svg/icon-{{ red.name }}.svg hidden='true' id=svgid %}</span>
+        {% elsif include.iconid %} {% include svg/icon-{{ red.name }}.svg hidden='false' id=svgid %}
+        {% endif %} {% if include.spant %}
+            <span class="{{ include.spant }}">{{ red.title }}</span>
+        {% endif %} {% if include.spanth %}
+            <span class="{{ include.spanth }}">{{ red.hover.[page.lang] }}</span>
+        {% endif %}
+        </a>
+    </li>
+{% endfor %} {% endif %}
+<!-- ******************************************************* -->
+<!-- ********* links para Ver más en Redes Sociales ******** -->
+<!-- Puede recibir 3 clases de follows en redes sociales -->
+    <!-- sjobs=true Recorre los data.people.jobs -->
+    <!-- sme=true Recorre los data.people.me -->
+    <!-- ssite=true Recorre los site.seo.sameAs -->
+<!-- include.webuser indica a quien seguiremos (site o autor) -->
+<!-- ******************************************************** -->
+{% if include.ul == 'follow' %}
+        {% capture svgid %}
+            {{ include.iconid }}
+        {% endcapture %}
+
+{% if include.sjobs %} {% for red in site.data.people[include.webuser].social.jobs %}
+    <li class="{{ include.liclass }}">
+        <a class="{{ red.name }} {{ include.aclass }}" target="_blank" href="{{ red.username | prepend: red.url }}"{% unless include.spant %} title="{{ site.data.t.[page.lang].icons.[red.title].title }}"{% endunless %}>
+        {% if include.spansvg %}
+            <span class="{{ include.spansvg }}">{% include svg/icon-{{ red.name }}.svg hidden='true' id=svgid %}</span>
+        {% elsif include.iconid %} {% include svg/icon-{{ red.name }}.svg hidden='false' id=svgid %}
+        {% endif %} {% if include.spant %}
+            <span class="{{ include.spant }}">{{ red.title }}{% if include.username %}<small>/{{ red.username }}</small>{% endif %}</span>
+            {% elsif include.iconid == null %}{{ red.title }}{% if include.username %}<small>/{{ red.username }}</small>{% endif %}
+        {% endif %} {% if include.spanth %}
+            <span class="{{ include.spanth }}">{{ include.hover | strip }}{% if red.abbr %} {{ red.abbr }}{% else %} {{ red.title }}{% endif %}</span>
+        {% endif %}
+        </a>
+    </li>
+{% endfor %} {% endif %}
+{% if include.sme %} {% for red in site.data.people[include.webuser].social.me %}
+    <li class="{{ include.liclass }}">
+        <a class="{{ red.name }} {{ include.aclass }}" target="_blank" href="{{ red.username | prepend: red.url }}"{% unless include.spant %} title="{{ site.data.t.[page.lang].icons.[red.title].title }}"{% endunless %}>
+        {% if include.spansvg %}
+            <span class="{{ include.spansvg }}">{% include svg/icon-{{ red.name }}.svg hidden='true' id=svgid %}</span>
+        {% elsif include.iconid %} {% include svg/icon-{{ red.name }}.svg hidden='false' id=svgid %}
+        {% endif %} {% if include.spant %}
+            <span class="{{ include.spant }}">{{ red.title }}{% if include.username %}<small>/{{ red.username }}</small>{% endif %}</span>
+            {% elsif include.iconid == null %}{{ red.title }}{% if include.username %}<small>/{{ red.username }}</small>{% endif %}
+        {% endif %} {% if include.spanth %}
+            <span class="{{ include.spanth }}">{{ include.hover | strip }}{% if red.abbr %} {{ red.abbr }}{% else %} {{ red.title }}{% endif %}</span>
+        {% endif %}
+        </a>
+    </li>
+{% endfor %} {% endif %}
+{% if include.ssite %} {% for red in site.seo.sameAs %}
+    <li class="{{ include.liclass }}">
+        <a class="{{ red.name }} {{ include.aclass }}" target="_blank" href="{{ red.username | prepend: red.url }}"{% unless include.spant %} title="{{ site.data.t.[page.lang].icons.[red.title].title }}"{% endunless %}>
+        {% if include.spansvg %}
+            <span class="{{ include.spansvg }}">{% include svg/icon-{{ red.name }}.svg hidden='true' id=svgid %}</span>
+        {% elsif include.iconid %} {% include svg/icon-{{ red.name }}.svg hidden='false' id=svgid %}
+        {% endif %} {% if include.spant %}
+            <span class="{{ include.spant }}">{{ red.title }}{% if include.username %}<small>/{{ red.username }}</small>{% endif %}</span>
+            {% elsif include.iconid == null %}{{ red.title }}{% if include.username %}<small>/{{ red.username }}</small>{% endif %}
+        {% endif %} {% if include.spanth %}
+            <span class="{{ include.spanth }}">{{ include.hover | strip }}{% if red.abbr %} {{ red.abbr }}{% else %} {{ red.title }}{% endif %}</span>
+        {% endif %}
+        </a>
+    </li>
+{% endfor %} {% endif %}
+{% endif %}

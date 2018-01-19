@@ -6,9 +6,9 @@
 
 //----------- COLORES -----------
 body {
-  background  : $bg-body;
-  font-family : $font-family-body;
-  color       : $color-body;
+    background  : $bg-body;
+    font-family : $font-family-body;
+    color       : $color-body;
 }
 
 header,
@@ -17,34 +17,34 @@ footer {
 }
 
 a {
-  color           : $color-link;
-  font-family: $font-family-subtitle;
-  font-style: italic;
+    color           : $color-link;
+    font-family: $font-family-subtitle;
+    font-style: italic;
 
     // Para IE. Con dos cojones
     display: inline-block;
 
-  &:hover, &:focus, &:target {
-      color: $color-b;
-      text-decoration : none;
-  }
+    &:hover, &:focus, &:target {
+        color: $color-b;
+        text-decoration : none;
+    }
 }
 
 //----------- MARGIN ----------- //
 p, blockquote, li {
-  // word-spacing: $word-spacing;
+    // word-spacing: $word-spacing;
 }
 
 // Margin al final de cada párrafo
 // excepto el final
 p {
-  margin : 0 0 $margin-p 0;
+    margin : 0 0 $margin-p 0;
 
-  &:only-of-type,
-  &:last-child,
-  &:only-child {
-      margin-bottom: 0;
-  }
+    &:only-of-type,
+    &:last-child,
+    &:only-child {
+        margin-bottom: 0;
+    }
 }
 
 ul {
@@ -75,10 +75,10 @@ h2 {
 }
 
 h3, h4, h5, h6 {
-  font-family    : $font-family-subtitle;
-  font-weight    : $font-weight-subtitle;
-  text-align: center;
-  color: $color-subtitle;
+    font-family    : $font-family-subtitle;
+    font-weight    : $font-weight-subtitle;
+    text-align: center;
+    color: $color-subtitle;
 }
 
 // Font-style
@@ -101,7 +101,7 @@ figcaption {
 
 // h1, svg {
 h1 {
-     @include responsive-font-size (1.3rem, 2.2rem, 20rem, 100rem);
+    @include responsive-font-size (1.3rem, 2.2rem, 20rem, 100rem);
 }
 
 h2 {

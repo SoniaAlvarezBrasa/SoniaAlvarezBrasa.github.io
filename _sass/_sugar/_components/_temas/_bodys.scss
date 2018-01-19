@@ -208,7 +208,7 @@
 // salt.io
 @mixin bodySaltw {
     body {
-        & > header {
+        & > nav {
             position: fixed;
             top: 0;
             left: 0;
@@ -216,27 +216,39 @@
             width: $height-header;
             height: 100%;
 
-            & > nav {
-                & > ul {
-                    position: absolute;
-                    top: $height-menu/2;
-                    left: $height-menu/2;
-                    padding: $padding-menu;
+            & > ul {
+                position: absolute;
+                top: $height-menu/2;
+                left: $height-menu/2;
+                padding: $padding-menu;
 
-                    & > li {
-                        width: $height-menu;
-                    }
-
+                & > li {
+                    width: $height-menu;
                 }
-
             }
         }
 
+        & > header,
         & main,
         & > footer {
             width: calc(100% - #{$height-header});
             margin-left: $height-header;
             padding-right: $height-header/3;
+        }
+    }
+
+    @media print {
+        body {
+            & > nav,
+            & > footer {
+                display: none !important;
+            }
+            & > header,
+            main {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
         }
     }
 }

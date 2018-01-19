@@ -116,6 +116,9 @@
     $color2: $color-link,
     $ss: 15s
 ){
+    @media print {
+        display: none;
+    }
 
     @-webkit-keyframes change-bicolor {
         0% {
@@ -418,6 +421,14 @@
                     text-decoration: $td;
             border-radius: $br;
         }
+        @media print {
+            #{$item},
+            .#{$item} {
+                & a {
+                    background: #eee;
+                }
+            }
+        }
     }
 }
 
@@ -460,7 +471,6 @@
     $bgbore: $bg-body,
     $bs: $bs2250
 ){
-
     #{$item},
     .#{$item} {
         & a {
@@ -480,6 +490,18 @@
                 -webkit-box-shadow: $bs inset;
                         box-shadow: $bs inset;
                 background: $bgbore;
+            }
+        }
+    }
+    @media print {
+        #{$item},
+        .#{$item} {
+            & a {
+                -webkit-box-shadow: none;
+                        box-shadow: none;
+                &:after {
+                    display: none;
+                }
             }
         }
     }

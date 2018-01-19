@@ -13,6 +13,10 @@ description: Slogan de votre Marque Personnelle pour les moteurs de recherche, l
         <nav></nav>
     </header>
     <p>Salut! Je suis <strong>Saltw <i>acronyme de Sonia Álvarez Techniques pour le Web </i></strong>et j'adore simplifier des choses compliquées. Je <strong>conçois et construis des produits et des sites Web <i>des expériences amusantes et efficaces </i></strong> por les <strong>gents <i>qui aiment les choses qui les font se sentir bien, qui travaillent bien et ne sont pas frustrants</i>. </strong><a href="#">lire plus à propos de moi </a> ou <a href="#">salue-moi</a>
-</article>
 
-{% include paginate.html %}
+    {% include paginate.html %}
+
+    <aside class="tagcloud-livejournal">
+        {% include ul-site-tags.html origin=prefixid ulclass="" spanclass="fl" liclasselse="aHoverXl" %}
+    </aside>
+</article>

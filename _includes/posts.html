@@ -16,7 +16,7 @@
         <h4 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
         {% endif %}
         <!-- <p class="cross-center"> -->
-            <small><time datetime="{{ post.date | date_to_xmlschema }}">{% include date.html pageref="post" %}</time></small>
+            <small><time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date.html pageref="post" %}</time></small>
     {% if post.autor %}
         {% if include.usersvg %}
             {% capture usersvg %}
@@ -38,11 +38,20 @@
     <!-- nav page.tags & page.categories -->
 {% if include.tagshow %}
     {% if include.catsvg and include.tagsvg %}
-        {% include nav-page-tags.html show=include.tagshow ulclass=include.tagulclass iconid=include.id spanclass=include.tagspanclass catsvg=include.catsvg tagsvg=include.tagsvg %}
+        {% if post.tags.size > 0 or post.categories.size > 0 %}
+        <nav>
+            {% include ul-page-labs.html show=include.tagshow ulclass=include.tagulclass iconid=include.id spanclass=include.tagspanclass catsvg=include.catsvg tagsvg=include.tagsvg %}
+        </nav> {% endif %}
     {% elsif include.tagsvg %}
-        {% include nav-page-tags.html show=include.tagshow ulclass=include.tagulclass iconid=include.id spanclass=include.tagspanclass tagsvg=include.tagsvg %}
+        {% if post.tags.size > 0 %}
+        <nav>
+            {% include ul-page-labs.html show=include.tagshow ulclass=include.tagulclass iconid=include.id spanclass=include.tagspanclass tagsvg=include.tagsvg %}
+        </nav> {% endif %}
     {% else %}
-        {% include nav-page-tags.html show=include.tagshow ulclass=include.tagulclass lielse=include.taglielse %}
+        {% if post.tags.size > 0 or post.categories.size > 0 %}
+        <nav>
+            {% include ul-page-labs.html show=include.tagshow ulclass=include.tagulclass lielse=include.taglielse %}
+        </nav> {% endif %}
     {% endif %}
 {% endif %}
 

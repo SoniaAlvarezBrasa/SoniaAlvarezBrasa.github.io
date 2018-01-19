@@ -1,29 +1,14 @@
-<footer class="">
-    <section>
-        <h2><a href="#"></a></h2>
-
-    </section>
-
-    <div class="wrapper">
-
-        <h2 class="footer-heading">{{ site.title[page.lang] }}</h2>
-
-        <div class="footer-col-wrapper">
-            <div class="footer-col footer-col-1">
-                <ul class="contact-list">
-                    <li>{{ site.title[page.lang] }}</li>
-                    <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-                </ul>
-            </div>
-
-            {% include nav-social-text.html webuser=site.tradename sjobs=1 sme=1 iconid="footer1" aclass="cross-centro" %}
-            {% include nav-social-icon.html webuser=site.tradename sjobs=1 sme=1 iconid="footer2" aclass="cross-centro" %}
-
-            <div class="footer-col footer-col-3">
-                <p>{{ site.description[page.lang] }}</p>
-            </div>
-        </div>
-
-    </div>
-
-</footer>
+<h2 class="footer-heading">{{ site.title[page.lang] }}</h2>
+    <nav>
+        <ul class="abcenter">
+                {% capture hover %}
+                    {{ site.tradename }} {{ site.data.t[page.lang].page.seguir }}
+                {% endcapture %}
+            {% include ul-social.html ul="follow" webuser=site.tradename sjobs=true sme=true iconid="footer1" liclass="follow" spansvg="circulo" spant="titulo" spanth="titulo-hover" username=false hover=hover %}
+        </ul>
+    </nav>
+    <nav>
+        <ul>
+            {% include ul-social.html ul="follow" webuser=site.tradename ssite=true iconid="footer2" liclass="svg-icon" username=false %}
+        </ul>
+    </nav>

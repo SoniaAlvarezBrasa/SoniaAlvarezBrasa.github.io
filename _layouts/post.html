@@ -10,57 +10,34 @@ layout: default
         </figure>
 
         <p class="main-start cross-center">
-            <small><time datetime="{{ page.date | date_to_xmlschema }}">{% include date.html pageref="page" date=site.time %}</time> &nbsp;&nbsp;</small>
+            <small><time datetime="{{ page.date | date_to_xmlschema }}">{% include filters/date.html pageref="page" date=site.time %}</time> &nbsp;&nbsp;</small>
         {% if page.autor %}
-            {% capture svgid %}
-                post-show--{{ page.autor }}
-            {% endcapture %}
+                {% capture svgid %}
+                    post-show--{{ page.autor }}
+                {% endcapture %}
             <strong>
                 <small class="svg cross-centro"><a href="#"><span class="cross-centro svg--user">{% include svg/icon-user.svg hidden='true' iconclass='svg--user' id=svgid %}</span>{{ page.autor }}</a></small>
             </strong>
         {% endif %}
         </p>
-
-        {% include nav-page-tags.html show="both" ulclass="main-end" lielse="aHoverXl" iconid="post-show" spanclass="fl" catsvg="folder" tagsvg="tag" %}
-
+    {% if post.tags.size > 0 or post.categories.size > 0 %}
+        <nav>
+            {% include ul-page-labs.html show="both" ulclass="main-end" lielse="aHoverXl" iconid="post-show" spanclass="fl" catsvg="folder" tagsvg="tag" %}
+        </nav>
+    {% endif %}
     </header>
-    {% for user in site.data.people[page.autor].social.jobs %}
-        {% if user.title == 'Twitter' %} {% capture usertwitter %} {{ user.username | strip }} {% endcapture %} {% endif %}
-    {% endfor %}
 
     {{ content }}
-    <nav >
-        <ul class="abcenter compartir">
-            <li>
-                <a class="facebook" href="http://www.facebook.com/sharer/sharer.php?u={{ page.url | prepend: site.url }}" target="_blank">
-                        <span class="circulo">{% include svg/icon-facebook.svg hidden='true' iconclass='svg--facebook' id='pepe-post' %}</span>
-                        <span class="titulo">Facebook</span>
-                        <span class="titulo-hover">Me gusta</span>
-                    </a></li>
-            <li>
-                <a class="linkedin" href="http://www.linkedin.com/shareArticle?url={{ page.url | prepend: site.url }}&source={{ site.url | remove: 'https://' | remove: 'http://'}}" target="_blank">
-                    <span class="circulo">{% include svg/icon-linkedin.svg hidden='true' iconclass='svg--linkedin' id='pepe-post' %}</span>
-                    <span class="titulo">LinkedIn</span>
-                    <span class="titulo-hover">Compartir</span>
-                </a></li>
-            <li>
-                <a class="twitter" href="http://twitter.com/intent/tweet?url={{ page.url | prepend: site.url }}&text={{ site.tradename }}:{{ page.title | url_encode }}{% if page.subtitle %}. {{ page.subtitle }}{% endif %}&via={{ usertwitter | strip }}" target="_blank">
-                    <span class="circulo">{% include svg/icon-twitter.svg hidden='true' iconclass='svg--twitter' id='pepe-post' %}</span>
-                    <span class="titulo">Twitter</span>
-                    <span class="titulo-hover">Tweet</span>
-                </a></li>
-            <li>
-                <a class="cross-centro pinterest" href="https://pinterest.com/pin/create/button/?url={{ page.url | prepend: site.url }}&media={{ site.url }}/assets/img{{ page.fotos.foto1.url }}&description={{ page.fotos.foto1.alt }}" target="_blank">
-                    <span class="circulo">{% include svg/icon-pinterest.svg hidden='true' iconclass='svg--pinterest' id='pepe-post' %}</span>
-                    <span class="titulo">Pinterest</span>
-                    <span class="titulo-hover">Pin</span>
-                </a></li>
-            <li>
-                <a class="googleplus" href="https://plus.google.com/share?url={{ page.url | prepend: site.url }}&text={{ site.tradename }}: {{ page.title | url_encode }}{% if page.subtitle %}. {{ page.subtitle }}{% endif %}" target="_blank">
-                    <span class="circulo">{% include svg/icon-googleplus.svg hidden='true' iconclass='svg--googleplus' id='pepe-post' %}</span>
-                    <span class="titulo">Google+</span>
-                    <span class="titulo-hover"> + 1 </span>
-                </a></li>
-        </ul>
-    </nav>
+
+    <footer>
+        {% if page.compartir %}
+        <nav class="sociales">
+            <header class="abcenter">
+                <h4>{{ site.data.t[page.lang].page.compartir }} <b class="pechado">{{ page.title }}</b></h4><span class="cross-center pl">{% include svg/icon-share.svg hidden='true' id='post-show--' %}</span>
+            </header>
+            <ul class="abcenter">
+                {% include ul-social.html ul="share" baseref="Blog" liclass="share" spansvg="circulo" spant="titulo" spanth="titulo-hover" %}
+            </ul>
+        </nav> {% endif %}
+    </footer>
 </article>

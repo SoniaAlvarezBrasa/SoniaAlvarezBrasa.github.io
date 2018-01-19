@@ -1,4 +1,4 @@
-header.vertical-menu {
+.vertical-menu {
     // border-right: 1px solid #eee;
     ul {
         display: block;
@@ -6,6 +6,7 @@ header.vertical-menu {
         & > li {
             // display: block;
             overflow: hidden;
+            padding: 0.5em 0;
             // width: 1.5em;
             $map:(bg: colorea($color-t1, l5), color: $color-t1, selector: a, ss: 230ms);
             @include hoverCss-background-sweep-to-right ($map...);

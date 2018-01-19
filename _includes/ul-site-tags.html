@@ -1,0 +1,33 @@
+<ul class="{{ include.ulclass }}">
+{% for tag in site.tags %}
+    {% capture prefixid %}
+        {{ include.origin | strip }}-tagcloud-item--{{ forloop.index }}
+    {% endcapture %}
+    {% assign temp=null %}
+    {% assign posts=tag[1] | where:"lang", page.lang %}
+        {% for post in posts %}
+            {% capture temp %}{{ post.content }}{% endcapture %}
+        {% endfor %}
+{% if temp %}
+    {% assign ury = null %} {% capture t %}{{ tag[0] }}{% endcapture %}
+    {% include filters/replace-tildes.html original = t %}
+    {% assign ury = ury %}
+
+    {% if include.svg %}
+        {% capture iconclass %}
+            svg--{{ include.svg }}
+        {% endcapture %}
+    <li class="svg"> {% if page.ref == "cat-index" %}
+        <a href="#{{ page.permalink | slugify }}--tag-{{ ury| slugify }}" title="{{ site.data.t.[page.lang].paginate.tags.titleLink }} {{ tag | first }}">
+        {% else %}
+            {% assign pags=site.pages | where:"ref", "cat-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.url | slugify }}--tag-{{ ury | slugify }}{% endcapture %}{% endfor %}
+        <a href="{{ caturl | prepend: site.url }}"> {% endif %}
+            <span class="{{ include.spanclass }} {{ iconclass }}">{% include svg/icon-{{include.svg}}.svg hidden='true' iconclass=iconclass id=prefixid %}</span>{{ tag[0] | capitalize }}<span> ({{ posts.size }})</span></a></li>
+    {% else %}
+    <li class="{{ include.liclasselse }}"> {% if page.ref == "cat-index" %}
+        <a href="#{{ page.permalink | slugify }}--tag-{{ ury| slugify }}" title="{{ site.data.t.[page.lang].paginate.tags.titleLink }} {{ tag | first }}">{{ tag[0] | replace:'-', ' ' | capitalize }}<span> ({{ posts.size }})</span></a>
+        {% else %}
+            {% assign pags=site.pages | where:"ref", "cat-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.url | slugify }}--tag-{{ ury | slugify }}{% endcapture %}{% endfor %}
+        <a href="{{ caturl | prepend: site.url }}" title="{{ site.data.t.[page.lang].paginate.tags.titleLink }} {{ tag | first }}">{{ tag[0] | replace:'-', ' ' | capitalize }}<span> ({{ posts.size }})</span></a>{% endif %}</li>
+    {% endif %} {% endif %} {% endfor %} {% assign caturl = null %}
+</ul>
