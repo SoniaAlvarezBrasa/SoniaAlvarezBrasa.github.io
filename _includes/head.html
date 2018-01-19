@@ -26,7 +26,7 @@
     <meta property="og:site_name" content="{{ site.tradename }}" />
     <meta property="og:description" content="{% if page.metaOgDescription %}{{ page.metaOgDescription }}{% elsif page.metaDescription %}{{ page.metaDescription }}{% elsif page.description %}{{ page.description }}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}" />
     <meta property="fb:admins" content="{{ site.data.people.[site.seo.author].social.fbadmin }}" />
-    <meta property="fb:app_id" content="{{ site.data.people.[site.seo.author].social.fbapp }}" />
+    <!-- <meta property="fb:app_id" content="{{ site.data.people.[site.seo.author].social.fbapp }}" /> -->
 {% if page.ref == 'index' %}
     <meta property="og:type" content="website" /> {% elsif page.person %}
     <meta property="og:type" content="profile" /> {% else %}

@@ -106,6 +106,7 @@ share:
     -   title: Google +
         name: googleplus
         url: https://plus.google.com/share?url
+        title: true
         hover:
             es: + 1
             en: + 1
@@ -114,7 +115,7 @@ share:
             pt: + 1
     -   title: Reddit
         name: reddit
-        url: http://www.reddit.com/share/link?url
+        url: http://www.reddit.com/submit?url
         text: true
         description: true
         hover:
