@@ -106,7 +106,7 @@ share:
     -   title: Google +
         name: googleplus
         url: https://plus.google.com/share?url
-        title: true
+        t: true
         hover:
             es: + 1
             en: + 1
