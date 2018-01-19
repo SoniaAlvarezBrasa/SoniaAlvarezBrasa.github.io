@@ -31,13 +31,13 @@ layout: default
 
     <footer>
         {% if page.compartir %}
-        <nav class="sociales">
+        <div role="group" class="sociales">
             <header class="abcenter">
                 <h4>{{ site.data.t[page.lang].page.compartir }} <b class="pechado">{{ page.title }}</b></h4><span class="cross-center pl">{% include svg/icon-share.svg hidden='true' id='post-show--' %}</span>
             </header>
             <ul class="abcenter">
                 {% include ul-social.html ul="share" baseref="Blog" liclass="share" spansvg="circulo" spant="titulo" spanth="titulo-hover" %}
             </ul>
-        </nav> {% endif %}
+        </div> {% endif %}
     </footer>
 </article>
