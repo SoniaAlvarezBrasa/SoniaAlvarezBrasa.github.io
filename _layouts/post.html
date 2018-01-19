@@ -20,7 +20,7 @@ layout: default
             </strong>
         {% endif %}
         </p>
-    {% if post.tags.size > 0 or post.categories.size > 0 %}
+    {% if page.tags.size > 0 or page.categories.size > 0 %}
         <nav>
             {% include ul-page-labs.html show="both" ulclass="main-end" lielse="aHoverXl" iconid="post-show" spanclass="fl" catsvg="folder" tagsvg="tag" %}
         </nav>
