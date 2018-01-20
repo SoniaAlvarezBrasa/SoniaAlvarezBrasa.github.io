@@ -13,10 +13,10 @@ metaOgDescription: "Describe en 200 caracteres lo que tus usuarios pueden encont
         <h2>{{ page.title }}</h2>
         <p>{{ site.title[page.lang] }}</p>
         <nav>
-            {% include ul-site-cats.html origin=page.ref ulclass="tagcloud-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="folder" %}
+            {% include ul-site-cats.html origin=page.ref classUlLabs="tagcloud-flexbox" classSpanIconLab="fl" liclasselse="aHoverXl" svg="folder" %}
         </nav>
         <nav>
-            {% include ul-site-tags.html origin=prefixid ulclass="tagcloud-bores-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="tag" %}
+            {% include ul-site-tags.html origin=prefixid classUlLabs="tagcloud-bores-flexbox" classSpanIconLab="fl" liclasselse="aHoverXl" svg="tag" %}
         </nav>
         <!-- nav site.categories -->
     </header>

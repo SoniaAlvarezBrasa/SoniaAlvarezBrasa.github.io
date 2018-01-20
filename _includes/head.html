@@ -65,7 +65,7 @@
     <!-- <link rel="alternate" type="application/rss+xml" title="{{ site.title[page.lang] }}" href="{{ site.feed[page.lang] | prepend: site.baseurl | prepend: site.url }}"> -->
     {% include seo/structured-data-website.html %}
     {% include seo/structured-data-organization.html %}
-    {% if page.ref == 'index' %}{% elsif page.ref == 'cat-index' %}
+    {% if page.ref == 'index' %}{% elsif page.ref == 'blog-index' %}
         {% for cat in site.categories %}
             {% assign temp=null %}
             {% assign name=cat[0] | where:"lang", page.lang %}

@@ -1,4 +1,4 @@
-<ul class="{{ include.ulclass }}">
+<ul class="{{ include.classUlLabs }}">
 {% for cat in site.categories %}
     {% capture prefixid %}
         {{ include.origin | strip }}-{{ page.lang | upcase }}--cat-{{ forloop.index }}
@@ -16,17 +16,17 @@
 
 {% if include.svg %}
         {% capture iconclass %} svg--{{ include.svg }} {% endcapture %}
-    <li class="svg"> {% if page.ref == "cat-index" %}
+    <li class="svg"> {% if page.ref == "blog-index" %}
         <a href="#{{ page.permalink | slugify }}--cat-{{ ury| slugify }}">
         {% else %}
-            {% assign pags=site.pages | where:"ref", "cat-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.url | slugify }}--cat-{{ ury | slugify }}{% endcapture %}{% endfor %}
+            {% assign pags=site.pages | where:"ref", "blog-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.url | slugify }}--cat-{{ ury | slugify }}{% endcapture %}{% endfor %}
         <a href="{{ caturl | prepend: site.url }}"> {% endif %}
-            <span class="{{ include.spanclass }} {{ iconclass | strip }}">{% include svg/icon-{{include.svg}}.svg hidden='true' iconclass=iconclass id=prefixid %}</span>{{ cat[0] | capitalize }}</a></li>
+            <span class="{{ include.classSpanIconLab }} {{ iconclass | strip }}">{% include svg/icon-{{include.svg}}.svg hidden='true' iconclass=iconclass id=prefixid %}</span>{{ cat[0] | capitalize }}</a></li>
 {% else %}
-    <li class="{{ include.liclasselse }}"> {% if page.ref == "cat-index" %}
+    <li class="{{ include.liclasselse }}"> {% if page.ref == "blog-index" %}
         <a href="#{{ page.permalink | slugify }}--cat-{{ ury| slugify }}">{{ cat[0] | capitalize }}</a>
         {% else %}
-            {% assign pags=site.pages | where:"ref", "cat-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.url | slugify }}--cat-{{ ury | slugify }}{% endcapture %}{% endfor %}
+            {% assign pags=site.pages | where:"ref", "blog-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.url | slugify }}--cat-{{ ury | slugify }}{% endcapture %}{% endfor %}
         <a href="{{ caturl | prepend: site.url }}">{{ cat[0] | capitalize }}</a>{% endif %}</li>
 {% endif %} {% endif %} {% endfor %} {% assign caturl = null %}
 </ul>

@@ -16,13 +16,13 @@ layout: default
                     post-show--{{ page.autor }}
                 {% endcapture %}
             <strong>
-                <small class="svg cross-centro"><a href="#"><span class="cross-centro svg--user">{% include svg/icon-user.svg hidden='true' iconclass='svg--user' id=svgid %}</span>{{ page.autor }}</a></small>
+                <small class="svg cross-centro"><a href="#"><span class="cross-centro flp0">{% include svg/icon-user.svg hidden='true' id=svgid %}</span>{{ page.autor }}</a></small>
             </strong>
         {% endif %}
         </p>
     {% if page.tags.size > 0 or page.categories.size > 0 %}
         <nav>
-            {% include ul-page-labs.html show="both" ulclass="main-end" lielse="aHoverXl" iconid="post-show" spanclass="fl" catsvg="folder" tagsvg="tag" %}
+            {% include ul-page-labs.html id="post-show" showcats=true showtags=true iconcat="folder" icontag="tag" classUlLabs="tagcloud-flex" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
         </nav>
     {% endif %}
     </header>

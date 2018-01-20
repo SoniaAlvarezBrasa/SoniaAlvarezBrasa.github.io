@@ -1,57 +1,39 @@
-<article class="list-unchecked">
-    {% capture labelsvgid %}
-        label-{{ include.id | strip }}
-    {% endcapture %}
-    <input id="{{ include.labelid | strip }}" type="checkbox">
-    <label for="{{ include.labelid | strip }}">
-{% if include.labelsvg %}
-    {% capture labelsvg %}
-        svg--{{ include.labelsvg }}
-    {% endcapture %}
-        <span class="{{ include.labelspanflex }} {{ labelsvg | strip }}">{% include svg/icon-{{ include.labelsvg }}.svg hidden='false' iconclass=labelsvg id=labelsvgid %}</span>
+<article class="{{ include.classArticle }}">
+    <input id="{{ include.idcheck | strip }}" type="checkbox">
+    <label for="{{ include.idcheck | strip }}">
+{% if include.iconcheck %}
+            {% capture idiconCheck %}
+                check--{{ include.id | strip }}
+            {% endcapture %}
+        <span class="{{ include.classSpanIconCheck }}">{% include svg/icon-{{ include.iconcheck }}.svg hidden='false' id=idiconCheck %}</span>
 {% endif %}
     </label>
-    <header class="{{ include.headerflex }}">
-        {% if include.hlevel == 3 %}<h3 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>{% elsif include.hlevel == 4 %}
-        <h4 class="{{ include.hpclass }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
+    <header class="{{ include.classHeader }}">
+        {% if include.h3 %}<h3 class="{{ include.classHeaderH }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>{% elsif include.h4 %}
+        <h4 class="{{ include.classHeaderH }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
         {% endif %}
         <!-- <p class="cross-center"> -->
             <small><time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date.html pageref="post" %}</time></small>
     {% if post.autor %}
-        {% if include.usersvg %}
-            {% capture usersvg %}
-                svg--{{ include.usersvg }}
-            {% endcapture %}
+        {% if include.iconuser %}
             <strong>
-                <small class="svg {{ include.usersmallflex }}"><a href="#"><span class="{{ usersvg | strip }}">{% include svg/icon-{{ include.usersvg }}.svg hidden='true' iconclass=usersvg id=include.id %}</span>{{ post.autor }}</a></small>
+                <small class="{{ include.classHeaderSmallIcon }}"><a href="#"><span class="{{ include.classHeaderSpanIcon | strip }}">{% include svg/icon-{{ include.iconuser }}.svg hidden='true' id=include.id %}</span>{{ post.autor }}</a></small>
             </strong>
         {% else %}
-            <strong>
+            <strong class="{{ include.classLiElse }}">
                 <small><a href="#">{{ post.autor }}</a></small>
             </strong>
         {% endif %}
     {% endif %}
     </header>
     <!-- excerpt -->
-    <p class="{{ include.hpclass }} entradilla"><a href="{{ post.url }}">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endif %}</a></p>
+    <p class="{{ include.classP }}"><a href="{{ post.url }}">{% if post.description %}{{ post.description }}{% else %}{{ post.excerpt | remove: '<p>' | remove: '</p>' }}{% endif %}</a></p>
 
-    <!-- nav page.tags & page.categories -->
-{% if include.tagshow %}
-    {% if include.catsvg and include.tagsvg %}
-        {% if post.tags.size > 0 or post.categories.size > 0 %}
-        <nav>
-            {% include ul-page-labs.html show=include.tagshow ulclass=include.tagulclass iconid=include.id spanclass=include.tagspanclass catsvg=include.catsvg tagsvg=include.tagsvg %}
-        </nav> {% endif %}
-    {% elsif include.tagsvg %}
-        {% if post.tags.size > 0 %}
-        <nav>
-            {% include ul-page-labs.html show=include.tagshow ulclass=include.tagulclass iconid=include.id spanclass=include.tagspanclass tagsvg=include.tagsvg %}
-        </nav> {% endif %}
-    {% else %}
-        {% if post.tags.size > 0 or post.categories.size > 0 %}
-        <nav>
-            {% include ul-page-labs.html show=include.tagshow ulclass=include.tagulclass lielse=include.taglielse %}
-        </nav> {% endif %}
+{% if include.showcats or include.showtags %}
+    {% if post.tags.size > 0 or post.categories.size > 0 %}
+    <nav>
+        {% include ul-page-labs.html id=include.id showcats=include.showcats showtags=include.showtags iconcat=include.iconcat icontag=include.icontag classUlLabs=include.classUlLabs classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab %}
+    </nav>
     {% endif %}
 {% endif %}
 

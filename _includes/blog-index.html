@@ -2,9 +2,9 @@
 <section>
     <h2>{{ include.seccion1 }}</h2>
     {% for cat in site.categories %}
-        {% capture prefixid %}
-            {{ include.origin | strip }}-{{ page.lang | upcase }}--cat-{{ forloop.index }}
-        {% endcapture %}
+            {% capture prefixid %}
+                {{ page.ref | strip }}-{{ page.lang | upcase }}-Cat{{ forloop.index }}
+            {% endcapture %}
         {% assign temp=null %}
         {% assign posts=cat[1] | where:"lang", page.lang %}
         {% for post in posts %}
@@ -15,17 +15,17 @@
         {% assign ury = null %} {% capture c %}{{ cat[0] }}{% endcapture %}
         {% include filters/replace-tildes.html original = c %}
         {% assign ury = ury %}
-    <section class="cat-index">
+    <section class="blog-index">
         <h3 id="{{ page.permalink | slugify }}--cat-{{ ury | slugify }}">{{ cat[0] | capitalize }}</h3>
         {% for post in posts %}
                 {% capture postid %}
-                    {{ prefixid | strip }}--post-{{ forloop.index }}
+                    {{ prefixid | strip }}--Post{{ forloop.index }}
                 {% endcapture %}
-                {% capture inputid %}
+                {% capture idcheck %}
                     {{ postid | strip }}--{{ post.id | slugify }}
                 {% endcapture %}
 
-                {% include posts.html id=postid labelid=inputid headerflex='justify' hpclass='aHoverXl' hlevel=4 usersvg='user' usersmallflex='cross-centro' tagshow='tag' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' tagsvg='tag' %}
+            {% include posts.html id=postid idcheck=idcheck h4=true showtags=true icontag='tag' iconuser='user' classArticle='list-unchecked' classHeader='justify' classHeaderH='aHoverXl' classHeaderSmallIcon='svg cross-centro' classHeaderSpanIcon='flp0' classP='entradilla aHoverXl' classUlLabs='tagcloud-flex' classLiLabs='svg' classSpanIconLab='fl' classLiElse='aHoverXl' %}
         {% endfor %}
     </section>
     {% endif %} {% endfor %}
@@ -34,9 +34,9 @@
 <section>
     <h2>{{ include.seccion2 }}</h2>
     {% for tag in site.tags %}
-        {% capture prefixid %}
-            {{ include.origin | strip }}-{{ page.lang | upcase }}--tag-{{ forloop.index }}
-        {% endcapture %}
+            {% capture prefixid %}
+                {{ page.ref | strip }}-{{ page.lang | upcase }}--Tag{{ forloop.index }}
+            {% endcapture %}
         {% assign temp=null %}
         {% assign posts=tag[1] | where:"lang", page.lang %}
         {% for post in posts %}
@@ -47,17 +47,17 @@
         {% assign ury = null %} {% capture t %}{{ tag[0] }}{% endcapture %}
         {% include filters/replace-tildes.html original = t %}
         {% assign ury = ury %}
-    <section class="cat-index">
+    <section class="blog-index">
         <h3 id="{{ page.permalink | slugify }}--tag-{{ ury | slugify }}">{{ tag[0] | capitalize }}</h3>
         {% for post in posts %}
                 {% capture postid %}
-                    {{ prefixid | strip }}--post-{{ forloop.index }}
+                    {{ prefixid | strip }}--Post{{ forloop.index }}
                 {% endcapture %}
-                {% capture inputid %}
+                {% capture idcheck %}
                     {{ postid | strip }}--{{ post.id | slugify }}
                 {% endcapture %}
 
-                {% include posts.html id=postid labelid=inputid headerflex='justify' hpclass='aHoverXl' hlevel=4 usersvg='user' usersmallflex='cross-centro' tagshow='both' tagulclass='tagcloud-flex' tagspanclass='fl' taglielse='aHoverXl' catsvg="folder" tagsvg='tag' %}
+            {% include posts.html id=postid idcheck=idcheck h4=true showcats=true showtags=true iconcat='folder' icontag='tag' iconuser='user' classArticle='list-unchecked' classHeader='justify' classHeaderH='aHoverXl' classHeaderSmallIcon='svg cross-centro' classHeaderSpanIcon='flp0' classP='entradilla aHoverXl' classUlLabs='tagcloud-flex' classLiLabs='svg' classSpanIconLab='fl' classLiElse='aHoverXl' %}
         {% endfor %}
     </section>
     {% endif %} {% endfor %}

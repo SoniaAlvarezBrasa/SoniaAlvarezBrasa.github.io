@@ -1,4 +1,4 @@
-<ul class="{{ include.ulclass }}">
+<ul class="{{ include.classUlLangs }}">
     {% assign posts=site.posts | where:"ref", page.ref | sort: 'lang' %}
     {% for post in posts %} {% if post.lang == page.lang %}
     <li class="{{ include.liclass }}"><span>{{ post.lang }}</span></li>{% else %}

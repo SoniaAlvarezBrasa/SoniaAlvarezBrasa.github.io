@@ -2,11 +2,11 @@
     <h3 class="aHoverXl"><a class="site-title" href="{{ site.baseurl }}/{{ site.index[page.lang] }}">{{ site.title[page.lang] }}</a></h3>
 
     <nav class="idiomas">
-        {% include ul-page-langs.html ulclass="main-end" liclass="aHoverXs" %}
+        {% include ul-page-langs.html classUlLangs="main-end" liclass="aHoverXs" %}
     </nav>
 
     <ul class="main-start principal">{% assign pages=site.pages | where:"lang", page.lang %}
-        {% for pag in pages %}{% if pag.layout != null and pag.ref != 'index' and pag.ref != 'cat-index' and pag.person == null and pag.ref != 'archives' %}
+        {% for pag in pages %}{% if pag.layout != null and pag.ref != 'index' and pag.ref != 'blog-index' and pag.person == null and pag.ref != 'archives' %}
         <li><a href="{{ pag.url | prepend: site.url }}">{{ pag.title }}</a></li> {% endif %} {% endfor %}
         {% for pag in pages %} {% if pag.ref == 'about' %} {% capture about %}{{ pag.permalink }} {% endcapture %} {% endif %}{% if pag.person %}
         <li><a href="{{ about | prepend: site.url | strip }}#{{ pag.person | slugify | strip }}">{{ include.autores | capitalize }}</a>
@@ -14,7 +14,7 @@
                 <li><a href="{{ pag.url | prepend: site.url }}">{{ pag.person }}</a></li>
             </ul>
         </li> {% endif %} {% endfor %}
-        {% for pag in pages %}{% if pag.ref == 'cat-index' %}
+        {% for pag in pages %}{% if pag.ref == 'blog-index' %}
         <li><a href="{{ pag.url | prepend: site.url }}">Blog</a>
             <ul> {% for cat in site.categories %}
             {% assign temp=null %}

@@ -2,7 +2,7 @@
 layout: default
 title: Sommaire
 permalink: /blog/categories.html
-ref: cat-index
+ref: blog-index
 lang: fr
 metaDescription: "Décrivez en 115 caractères ce que vos utilisateurs peuvent trouver dans le sommaire des articles du Blog de Saltw."
 metaOgDescription: "Décrivez en 200 caractères ce que vos utilisateurs peuvent trouver dans le sommaire des articles du Blog de Saltw."
@@ -13,13 +13,13 @@ nomap: 1
     <header>
         <h2>{{ page.title }}</h2>
         <nav>
-            {% include ul-site-cats.html origin=page.ref ulclass="tagcloud-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="folder" %}
+            {% include ul-site-cats.html origin=page.ref classUlLabs="tagcloud-flexbox" classSpanIconLab="fl" liclasselse="aHoverXl" svg="folder" %}
         </nav>
         <nav>
-            {% include ul-site-tags.html origin=prefixid ulclass="tagcloud-bores-flexbox" spanclass="fl" liclasselse="aHoverXl" svg="tag" %}
+            {% include ul-site-tags.html origin=prefixid classUlLabs="tagcloud-bores-flexbox" classSpanIconLab="fl" liclasselse="aHoverXl" svg="tag" %}
         </nav>
     </header>
     <p>Table des matières ou index des catégories et des étiquettes de tous les articles du Blog de {{site.tradename}} pour trouver plus vite le contenu qui vous intéresse. Par date de mise à jour, auteur, thème ou tags, nous vous facilitons l'accès direct à l'article que vous recherchez.</p>
 
-    {% include blog-cat-index.html origin=page.ref seccion1='Catégories' seccion2='Etiquettes' %}
+    {% include blog-index.html origin=page.ref seccion1='Catégories' seccion2='Etiquettes' %}
 </article>

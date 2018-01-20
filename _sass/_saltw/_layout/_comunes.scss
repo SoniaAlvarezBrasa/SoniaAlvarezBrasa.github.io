@@ -106,7 +106,6 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 
 // ---------- Stilos enlaces redes sociales --------
 
-// li.svg / a / span.svg--name / svg.svg--name
 .svg {
     @include social-brand-colors;
     @include hoverCss-border-underline-from-center ($mapHoverCssBorderUnderlineFromCenterMini...);
@@ -120,7 +119,7 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
             overflow: hidden;
             z-index: 1;
 
-            &.svg--user {
+            &.flp0 {
                 display: -webkit-box;
                 display: -ms-flexbox;
                 display: flex;
