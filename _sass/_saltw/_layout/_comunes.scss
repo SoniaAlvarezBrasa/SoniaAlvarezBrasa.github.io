@@ -187,7 +187,7 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
     );
     @include hoverCss-border-underline-from-center ($mapHoverSociales...);
 
-    & header {
+    & div[role="group"] {
         margin: $padding 0;
         & h4 {
             margin: 0;
