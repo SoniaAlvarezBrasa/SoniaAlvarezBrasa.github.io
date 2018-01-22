@@ -14,9 +14,11 @@ description: Slogan da túa Marca Persoal pra buscadores, prá descripción dó 
     </header>
     <p>Ola! Son <strong>{{ site.tradename }}<i> alias de {{ site.alternatename[page.lang] }}</i></strong> e son feliz de simplificar toda cousa enredosa. <strong>Deseño i elaboro produtos, prototipos e sitios web <i>experiencias dixitais amenas i eficaces </i></strong> prá <strong>xente <i>que guste de atopar o que procura, onde estares a gusto e sen frustracións</i>. </strong><a href="#">¡le máis sobre min! </a> ou <a href="#">dime ola!</a>
 
-    {% include paginate.html %}
+    {% include paginate.html id=page.ref %}
 
     <aside class="tagcloud-livejournal">
-        {% include ul-site-tags.html origin=prefixid classUlLabs="" classSpanIconLab="fl" liclasselse="aHoverXl" %}
+        <nav>
+            {% include ul-site-labs.html id=page.ref showtags=true classLiElse="aHoverXl" %}
+        </nav>
     </aside>
 </article>

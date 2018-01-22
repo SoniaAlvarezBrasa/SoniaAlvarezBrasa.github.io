@@ -1,26 +1,26 @@
-{% assign caturl = null %}
-{% assign ury = null %}
-    {% capture t %}{{ include.lab }}{% endcapture %}
-    {% include filters/replace-tildes.html original = t %}
+    {% capture u %}{{ include.lab }}{% endcapture %}
+    {% include filters/replace-tildes.html original = u %}
     {% assign ury = ury %}
 {% if include.iconlab %}
         <li class="{{ include.classLiLabs }}">
     {% if page.ref == "blog-index" %} <!-- href relativo -->
-        <a href="#{{ page.permalink | slugify }}--{{ include.preury }}-{{ ury | slugify }}">
+        <a href="#{{ page.permalink | slugify }}--{{ include.preury }}-{{ ury | slugify }}" title="{{ site.data.t.[page.lang].paginate.tags.titleLink }} {{ include.lab }}">
     {% else %} <!-- href absoluto -->
             {% assign pags=site.pages | where:"ref", "blog-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.permalink | slugify }}--{{ include.preury }}-{{ ury | slugify }}{% endcapture %}{% endfor %}
-        <a href="{{ caturl | prepend: site.url }}">
+        <a href="{{ caturl | prepend: site.url }}" title="{{ site.data.t.[page.lang].paginate.tags.titleLink }} {{ include.lab }}">
     {% endif %}
-            <span class="{{ include.classSpanIconLab }}">{% include svg/icon-{{include.iconlab}}.svg hidden='true' id=include.id %}</span>{{ include.lab | capitalize }}
+            <span class="{{ include.classSpanIconLab }}">{% include svg/icon-{{include.iconlab}}.svg hidden='true' id=include.id %}</span>{{ include.lab | capitalize }}{% if include.uds %}<span> ({{ include.uds }})</span>{% endif %}
         </a>
         </li>
 {% else %}
         <li class="{{ include.classLiElse }}">
     {% if page.ref == "blog-index" %} <!-- href relativo -->
-        <a href="#{{ page.permalink | slugify }}--{{ include.preury }}-{{ ury | slugify }}">{{ include.lab | capitalize }}</a>
+        <a href="#{{ page.permalink | slugify }}--{{ include.preury }}-{{ ury | slugify }}" title="{{ site.data.t.[page.lang].paginate.tags.titleLink }} {{ include.lab }}">{{ include.lab | capitalize }}{% if include.uds %}<span> ({{ include.uds }})</span>{% endif %}</a>
     {% else %} <!-- href absoluto -->
             {% assign pags=site.pages | where:"ref", "blog-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.permalink | slugify }}--{{ include.preury }}-{{ ury | slugify }}{% endcapture %}{% endfor %}
-        <a href="{{ caturl | prepend: site.url }}">{{ include.lab | capitalize }}</a>
+        <a href="{{ caturl | prepend: site.url }}" title="{{ site.data.t.[page.lang].paginate.tags.titleLink }} {{ include.lab }}">{{ include.lab | capitalize }}{% if include.uds %}<span> ({{ include.uds }})</span>{% endif %}</a>
     {% endif %}
         </li>
 {% endif %}
+<!-- captures --> {% assign u = null %} {% assign caturl = null %}
+<!-- assigns --> {% assign ury = null %} {% assign pags = null %}

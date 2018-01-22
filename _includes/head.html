@@ -67,15 +67,16 @@
     {% include seo/structured-data-organization.html %}
     {% if page.ref == 'index' %}{% elsif page.ref == 'blog-index' %}
         {% for cat in site.categories %}
-            {% assign temp=null %}
             {% assign name=cat[0] | where:"lang", page.lang %}
             {% assign posts=cat[1] | where:"lang", page.lang %}
             {% for post in posts %}
-                {% capture temp %}{{ post.content }}{% endcapture %}
+                {% capture temp %}{{ post.url }}{% endcapture %}
             {% endfor %}
         {% if temp %}
 {% include seo/structured-data-itemlist.html name=name cat=posts %}
-        {% endif %} {% endfor %}
+        {% endif %}
+            {% assign temp=null %} {% assign posts = null %} {% assign name = null %}
+        {% endfor %}
     {% else %}
         {% include seo/structured-data-webpage.html %}
     {% endif %}

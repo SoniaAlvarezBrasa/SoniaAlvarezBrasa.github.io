@@ -3,14 +3,13 @@
     {% capture prefixid %}
         {{ include.origin | strip }}-{{ page.lang | upcase }}--cat-{{ forloop.index }}
     {% endcapture %}
-    {% assign temp=null %}
     {% assign posts=cat[1] | where:"lang", page.lang %}
     {% for post in posts %}
-        {% capture temp %}{{ post.content }}{% endcapture%}
+        {% capture temp %}{{ post.url }}{% endcapture%}
     {% endfor %}
 {% if temp %}
 
-    {% assign ury = null %} {% capture c %}{{ cat[0] }}{% endcapture %}
+    {% capture c %}{{ cat[0] }}{% endcapture %}
     {% include filters/replace-tildes.html original = c %}
     {% assign ury = ury %}
 
@@ -28,5 +27,9 @@
         {% else %}
             {% assign pags=site.pages | where:"ref", "blog-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.url | slugify }}--cat-{{ ury | slugify }}{% endcapture %}{% endfor %}
         <a href="{{ caturl | prepend: site.url }}">{{ cat[0] | capitalize }}</a>{% endif %}</li>
-{% endif %} {% endif %} {% endfor %} {% assign caturl = null %}
+{% endif %} {% endif %} {% endfor %}
+<!-- captures -->
+{% assign prefixid = null %} {% assign temp = null %} {% assign c = null %}  {% assign iconclass = null %} {% assign caturl = null %}
+<!-- assigns -->
+{% assign pags = null %} {% assign ury = null %} {% assign posts = null %}
 </ul>

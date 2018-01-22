@@ -5,30 +5,55 @@
         {% include ul-page-langs.html classUlLangs="main-end" liclass="aHoverXs" %}
     </nav>
 
-    <ul class="main-start principal">{% assign pages=site.pages | where:"lang", page.lang %}
-        {% for pag in pages %}{% if pag.layout != null and pag.ref != 'index' and pag.ref != 'blog-index' and pag.person == null and pag.ref != 'archives' %}
-        <li><a href="{{ pag.url | prepend: site.url }}">{{ pag.title }}</a></li> {% endif %} {% endfor %}
-        {% for pag in pages %} {% if pag.ref == 'about' %} {% capture about %}{{ pag.permalink }} {% endcapture %} {% endif %}{% if pag.person %}
-        <li><a href="{{ about | prepend: site.url | strip }}#{{ pag.person | slugify | strip }}">{{ include.autores | capitalize }}</a>
+    <ul class="main-start principal">
+    {% assign pages=site.pages | where:"lang", page.lang %}
+
+    {% for pag in pages %}{% if pag.layout != null and pag.ref != 'index' and pag.ref != 'blog-index' and pag.person == null and pag.ref != 'archives' %}
+        <li><a href="{{ pag.url | prepend: site.url }}">{{ pag.title }}</a></li>
+    {% endif %} {% endfor %}
+
+    {% for pag in pages %}
+        {% if pag.ref == 'about' %}
+            {% capture about %}{{ pag.permalink }} {% endcapture %}
+        {% endif %}
+
+        {% if pag.person %}
+        <li><a href="{{ about | prepend: site.url | strip }}#users-{{ pag.lang | strip }}">{{ include.autores | capitalize }}</a>
             <ul>
                 <li><a href="{{ pag.url | prepend: site.url }}">{{ pag.person }}</a></li>
             </ul>
-        </li> {% endif %} {% endfor %}
-        {% for pag in pages %}{% if pag.ref == 'blog-index' %}
+        </li>
+        {% endif %}
+    {% endfor %}
+    <!-- captures --> {% assign about = null %}
+
+    {% for pag in pages %}{% if pag.ref == 'blog-index' %}
         <li><a href="{{ pag.url | prepend: site.url }}">Blog</a>
-            <ul> {% for cat in site.categories %}
-            {% assign temp=null %}
-            {% assign posts=cat[1] | where:"lang", page.lang %}
-            {% for post in posts %}
-                {% capture temp %}{{ post.content }}{% endcapture%}
-            {% endfor %}
-        {% if temp %}
-                <li><a href="{{ pag.url | prepend: site.url }}#{{ pag.permalink | slugify }}--cat-{{ cat[0]| slugify }}">{{ cat[0] | capitalize }} <small>({{ posts.size }} {{ include.ud }}{% if posts.size > 1 %}s{% endif %})</small></a>
+            <ul>
+            {% for cat in site.categories %}
+                {% assign posts=cat[1] | where:"lang", page.lang %}
+                {% for post in posts %}
+                    {% capture temp %}{{ post.url }}{% endcapture%}
+                {% endfor %}
+                {% if temp %}
+                <li>
+                    <a href="{{ pag.url | prepend: site.url }}#{{ pag.permalink | slugify }}--cat-{{ cat[0]| slugify }}">{{ cat[0] | capitalize }} <small>({{ posts.size }} {{ include.ud }}{% if posts.size > 1 %}s{% endif %})</small></a>
                     <ul> {% for post in posts %}
-                        <li class="cross-center"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><small class="cross-center"><time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date.html pageref="page" date=post.date %}</time></small>{% if post.fotos.size > 0 %}<small class="cross-center">Images ({{post.fotos.size}})</small>{% endif %}</li>{% endfor %}
+                        <li class="cross-center">
+                            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                            <small class="cross-center">
+                                <time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date.html pageref="page" date=post.date %}</time>
+                            </small>{% if post.fotos.size > 0 %}<small class="cross-center">Images ({{post.fotos.size}})</small>{% endif %}
+                        </li>{% endfor %}
                     </ul>
-                </li> {% endif %} {% endfor %}
+                </li>
+                {% endif %}
+                <!-- captures --> {% assign temp=null %}
+                <!-- assigns --> {% assign posts = null %}
+            {% endfor %}
             </ul>
-        </li> {% endif %} {% endfor %}
+        </li>
+    {% endif %} {% endfor %}
+    <!-- assigns --> {% assign pages = null %}
     </ul>
 </nav>

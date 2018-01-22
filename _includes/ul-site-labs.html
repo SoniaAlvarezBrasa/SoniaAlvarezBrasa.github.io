@@ -1,0 +1,36 @@
+{% if include.showcats or include.showtags %} {% if site.tags.size > 0 or site.categories.size > 0 %}
+    <ul class="{{ include.classUlLabs }}">
+    {% if site.categories and include.showcats %} {% for cat in site.categories %}
+                {% capture idcat %}
+                    {{ include.id | strip }}-{{ page.lang | upcase }}--Cat-{{ forloop.index }}
+                {% endcapture %}
+            {% assign posts=cat[1] | where:"lang", page.lang %}
+            {% for post in posts %}
+                {% capture temp %}{{ post.url }}{% endcapture%}
+            {% endfor %}
+        {% if temp %}
+                {% capture lab %}{{ cat[0] }}{% endcapture %}
+                {% assign uds = site.categories[lab] | where:"lang", page.lang | size %}
+            {% include li-page-labs.html lab=lab preury='cat' id=idcat iconlab=include.iconcat uds=uds classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
+        {% endif %}
+    <!-- captures --> {% assign lab = null %} {% assign temp = null %} {% assign uds = null %} {% assign idcat = null %}
+    <!-- assigns --> {% assign posts = null %}
+    {% endfor %} {% endif %}
+    {% if site.tags and include.showtags %} {% for tag in site.tags %}
+                {% capture idtag %}
+                    {{ include.id | strip }}-{{ page.lang | upcase }}--Tag-{{ forloop.index }}
+                {% endcapture %}
+            {% assign posts=tag[1] | where:"lang", page.lang %}
+            {% for post in posts %}
+                {% capture temp %}{{ post.url }}{% endcapture%}
+            {% endfor %}
+        {% if temp %}
+                {% capture lab %}{{ tag[0] }}{% endcapture %}
+                {% assign uds = site.tags[lab] | where:"lang", page.lang | size %}
+            {% include li-page-labs.html lab=lab preury='tag' id=idtag iconlab=include.icontag uds=uds classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
+        {% endif %}
+    <!-- captures --> {% assign lab = null %} {% assign temp = null %} {% assign uds = null %} {% assign idcat = null %}
+    <!-- assigns --> {% assign posts = null %}
+    {% endfor %} {% endif %}
+    </ul>
+{% endif %} {% endif %}

@@ -25,7 +25,7 @@ Enfin, le code source de Jekyll est présenté sur
 [jekyll](https://github.com/jekyll/jekyll)
 
 
-<section markdown="1">
+<section markdown="1" id="users-{{ page.lang }}">
 
 ### La Comuna
 

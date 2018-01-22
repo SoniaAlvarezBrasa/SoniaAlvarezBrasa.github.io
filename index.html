@@ -13,9 +13,11 @@ metaDescription: Eslogan de tu Marca Personal para buscadores, la descripción d
     </header>
     <p>¡Hola! Soy <strong>{{ site.tradename }}<i> acrónimo de {{ site.alternatename[page.lang] }}</i></strong> y me encanta simplificar cosas complicadas. <strong>Diseño y construyo productos, prototipos y sitios web <i>experiencias digitales divertidas y eficaces </i></strong> para las <strong>personas <i>a las que les guste encontrar lo que buscan donde se sientan bien y sin frustraciones</i>. </strong><a href="#">¡lee más sobre mí! </a> o <a href="#">dime ¡hola!</a>
 
-    {% include paginate.html %}
+    {% include paginate.html id=page.ref %}
 
     <aside class="tagcloud-livejournal">
-        {% include ul-site-tags.html origin=prefixid classUlLabs="" classSpanIconLab="fl" liclasselse="aHoverXl" %}
+        <nav>
+            {% include ul-site-labs.html id=page.ref showtags=true classLiElse="aHoverXl" %}
+        </nav>
     </aside>
 </article>

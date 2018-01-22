@@ -1,36 +1,50 @@
 {% if include.showcats or include.showtags %}
     {% if post.tags.size > 0 or post.categories.size > 0 %}
         <ul class="{{ include.classUlLabs }}">
-        {% if post.categories and include.showcats %} {% for cat in post.categories %}
-                {% capture idcat %}
-                    {{ include.id | strip }}--cat-{{ forloop.index | strip }}
-                {% endcapture %}
-            {% include li-page-labs.html lab=cat preury='cat' id=idcat iconlab=include.iconcat classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
-        {% endfor %} {% assign caturl = null %} {% endif %}
-
-        {% if post.tags and include.showtags %} {% for tag in post.tags %}
-                {% capture idtag %}
-                    {{ include.id | strip }}--tag-{{ forloop.index | strip }}
-                {% endcapture %}
-            {% include li-page-labs.html lab=tag preury='tag' id=idtag iconlab=include.icontag classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
-        {% endfor %} {% assign caturl = null %} {% endif %}
+        {% if post.categories and include.showcats %}
+            {% for cat in post.categories %}
+                {% assign uds = site.categories[cat] | where:"lang", page.lang | size %}
+                    {% capture idcat %}
+                        {{ include.id | strip }}--cat-{{ forloop.index | strip }}
+                    {% endcapture %}
+                {% include li-page-labs.html lab=cat preury='cat' id=idcat iconlab=include.iconcat uds=uds classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
+            <!-- captures --> {% assign idtag = null %}  {% assign uds = null %}
+            {% endfor %}
+        {% endif %}
+        {% if post.tags and include.showtags %}
+            {% for tag in post.tags %}
+                {% assign uds = site.tags[tag] | where:"lang", page.lang | size %}
+                    {% capture idtag %}
+                        {{ include.id | strip }}--tag-{{ forloop.index | strip }}
+                    {% endcapture %}
+                {% include li-page-labs.html lab=tag preury='tag' id=idtag iconlab=include.icontag uds=uds classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
+            <!-- captures --> {% assign idtag = null %}  {% assign uds = null %}
+            {% endfor %}
+        {% endif %}
         </ul>
     {% endif %}
     {% if page.tags.size > 0 or page.categories.size > 0 %}
         <ul class="{{ include.classUlLabs }}">
-        {% if page.categories and include.showcats %} {% for cat in page.categories %}
-                {% capture idcat %}
-                    {{ include.id | strip }}--cat-{{ forloop.index | strip }}
-                {% endcapture %}
-            {% include li-page-labs.html lab=cat preury='cat' id=idcat iconlab=include.iconcat classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
-        {% endfor %} {% assign caturl = null %} {% endif %}
-
-        {% if page.tags and include.showtags %} {% for tag in page.tags %}
-                {% capture idtag %}
-                    {{ include.id | strip }}--tag-{{ forloop.index | strip }}
-                {% endcapture %}
-            {% include li-page-labs.html lab=tag preury='tag' id=idtag iconlab=include.icontag classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
-        {% endfor %} {% assign caturl = null %} {% endif %}
+        {% if page.categories and include.showcats %}
+            {% for cat in page.categories %}
+                {% assign uds = site.categories[cat] | where:"lang", page.lang | size %}
+                    {% capture idcat %}
+                        {{ include.id | strip }}--cat-{{ forloop.index | strip }}
+                    {% endcapture %}
+                {% include li-page-labs.html lab=cat preury='cat' id=idcat iconlab=include.iconcat uds=uds classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
+            <!-- captures --> {% assign idtag = null %}  {% assign uds = null %}
+            {% endfor %}
+        {% endif %}
+        {% if page.tags and include.showtags %}
+            {% for tag in page.tags %}
+                {% assign uds = site.tags[tag] | where:"lang", page.lang | size %}
+                    {% capture idtag %}
+                        {{ include.id | strip }}--tag-{{ forloop.index | strip }}
+                    {% endcapture %}
+                {% include li-page-labs.html lab=tag preury='tag' id=idtag iconlab=include.icontag uds=uds classLiLabs=include.classLiLabs classSpanIconLab=include.classSpanIconLab classLiElse=include.classLiElse %}
+            <!-- captures --> {% assign idtag = null %}  {% assign uds = null %}
+            {% endfor %}
+        {% endif %}
         </ul>
     {% endif %}
 {% endif %}

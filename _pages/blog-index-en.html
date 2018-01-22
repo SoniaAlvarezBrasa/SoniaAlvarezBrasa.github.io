@@ -13,13 +13,13 @@ nomap: 1
     <header>
         <h2>{{ page.title }}</h2>
         <nav>
-            {% include ul-site-cats.html origin=page.ref classUlLabs="tagcloud-flexbox" classSpanIconLab="fl" liclasselse="aHoverXl" svg="folder" %}
+            {% include ul-site-labs.html id=page.ref showcats=true iconcat='folder' classUlLabs="tagcloud-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
         </nav>
         <nav>
-            {% include ul-site-tags.html origin=prefixid classUlLabs="tagcloud-bores-flexbox" classSpanIconLab="fl" liclasselse="aHoverXl" svg="tag" %}
+            {% include ul-site-labs.html id=page.ref showtags=true icontag='tag' classUlLabs="tagcloud-bores-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
         </nav>
     </header>
     <p>Sections of contents or index of categories and tags of all the articles of {{site.tradename}} Blog to easily find the content that interests you. By date of update, author, theme or tags, we provide you with direct access to the article you are looking for.</p>
 
-    {% include blog-index.html origin=page.ref seccion1='Categories' seccion2='Tags' %}
+    {% include blog-index.html id=page.ref seccion1='Categories' seccion2='Tags' %}
 </article>

@@ -1,4 +1,4 @@
-h3=true{% assign posts=site.posts | where:"lang", page.lang %}
+{% assign posts=site.posts | where:"lang", page.lang %}
 {% unless posts.blank? %}
 
 <section class="paginate">
@@ -6,7 +6,7 @@ h3=true{% assign posts=site.posts | where:"lang", page.lang %}
         <h2>{{ site.data.t.[page.lang].paginate.heading }}</h2>
     </header>
             {% capture prefixid %}
-                {{ page.ref }}-paginate-{{ page.lang | upcase }}
+                {{ include.id }}-paginate10-{{ page.lang | upcase }}
             {% endcapture %}
     {% for post in posts limit: 10 %}
             {% capture postid %}
@@ -17,6 +17,7 @@ h3=true{% assign posts=site.posts | where:"lang", page.lang %}
             {% endcapture %}
 
         {% include posts.html id=postid idcheck=idcheck h3=true showcats=true showtags=true iconcat='folder' icontag='tag' iconuser='user' classArticle='list-unchecked' classHeader='justify' classHeaderH='aHoverXl' classHeaderSmallIcon='svg cross-centro' classHeaderSpanIcon='flp0' classP='entradilla aHoverXl' classUlLabs='tagcloud-flex' classLiLabs='svg' classSpanIconLab='fl' classLiElse='aHoverXl' %}
+    <!-- captures --> {% assign prefixid = null %} {% assign postid = null %} {% assign idcheck = null %}
     {% endfor %}
     <footer>
         <nav>
@@ -29,6 +30,7 @@ h3=true{% assign posts=site.posts | where:"lang", page.lang %}
         </nav>
     </footer>
 </section>
+<!-- assigns --> {% assign posts = null %}
 
 {% else %}
 <p>{{ site.data.t.[page.lang].paginate.else }}</p>
