@@ -1,13 +1,19 @@
 <nav  class="vertical-menu">
     <ul>
     {% assign pages=site.pages | where:"lang", page.lang %}
-    {% for pag in pages %} {% if pag.title %}
-        {% if pag.ref != 'archives' %}{% if pag.person %}
+    {% for pag in pages %}
+    {% if pag.title %}
+        {% if pag.ref != 'archives' %}
+            {% if pag.person %}
         <li>
-            <a href="{{ pag.url | prepend: site.baseurl }}">{{ include.person }}{{ pag.person }}</a></li> {% else %}
+            <a href="{{ pag.url | prepend: site.baseurl }}">{{ include.person }}{{ pag.person }}</a></li>
+            {% else %}
         <li>
-            <a href="{{ pag.url | prepend: site.baseurl }}">{{ pag.title }}</a></li> {% endif %} {% endif %}
-    {% endif %} {% endfor %}
+            <a href="{{ pag.url | prepend: site.baseurl }}">{{ pag.title }}</a></li>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    {% endfor %}
     <li>
         <a href="mailto:{{ site.email }}">{{ site.email }}</a>
     </li>

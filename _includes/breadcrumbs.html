@@ -1,0 +1,50 @@
+{% if include.pageref == 'page' %}
+<ul>
+    {% assign pags=site.pages | where:"ref", 'index' |  where:"lang", page.lang %}
+    {% for pag in pags %}
+        <li class="aHoverXs"><a href='{{ pag.url | prepend: site.url }}'>{{ pag.alias }}</a></li>
+    {% endfor %}
+    {% assign pags = null %}
+
+    {% if page.ref == 'blog-index'%}
+        <li class="aHoverXs"><span>&rsaquo;</span> <strong>Blog</strong>  &#10004;</li>
+    {% else %}
+        {% assign crumbs = page.url | split: '/' %}
+        {% for crumb in crumbs offset: 1 %}
+            {% if forloop.last %}
+        <li class="aHoverXs"><span>&rsaquo;</span> <strong>{{ crumb | remove: '.html' | capitalize }}</strong>  &#10004;</li>
+            {% else %}
+                <li class="aHoverXs"><span>&rsaquo;</span> <a href="{{ crumb | append: '.html' | prepend: '/' | prepend: site.url }}">{{ crumb | capitalize }}</a></li>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</ul>
+{% endif %}
+
+{% if include.pageref == 'post' %}
+<ul>
+    {% assign pags=site.pages | where:"ref", 'index' |  where:"lang", page.lang %}
+    {% for pag in pags %}
+        <li class="aHoverXs"><a href='{{ pag.url | prepend: site.url }}'>{{ pag.alias }}</a></li>
+    {% endfor %}
+
+    {% assign pags=site.pages | where:"ref", 'blog-index' | where:"lang", page.lang %}
+    {% for pag in pags %}
+        <li class="aHoverXs"><span>&rsaquo;</span> <a href='{{ pag.url | prepend: site.url }}'>Blog</a></li>
+    {% endfor %}
+    {% assign pags = null %}
+
+    {% if page.categories %}
+        {% for cat in page.categories limit: 1 %}
+            {% capture u %}{{ cat }}{% endcapture %}
+            {% include filters/replace-tildes original = u %}
+            {% assign ury = ury %}
+            {% assign pags=site.pages | where:"ref", "blog-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.permalink | slugify }}--cat-{{ ury | slugify }}{% endcapture %}{% endfor %}
+        <li class="aHoverXs"><span>&rsaquo;</span> <a href='{{ caturl | prepend: site.url }}'>{{ cat | capitalize }}</a></li>
+        <!-- captures --> {% assign u = null %} {% assign caturl = null %}
+        <!-- assigns --> {% assign ury = null %} {% assign pags = null %}
+        {% endfor %}
+    {% endif %}
+        <li class="aHoverXs"><span>&rsaquo;</span> <strong>{{ page.title }}</strong>  &#10004;</li>
+</ul>
+{% endif %}

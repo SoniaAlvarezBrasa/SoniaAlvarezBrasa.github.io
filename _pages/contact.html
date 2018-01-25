@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Contacto
 permalink: /contacto.html
 ref: contact
@@ -8,31 +8,4 @@ metaDescription: "Describe en 115 caracteres lo que tus usuarios pueden encontra
 metaOgDescription: "Describe en 200 caracteres lo que tus usuarios pueden encontrar en tu página de contacto. "
 ---
 
-<article class="page">
-    <header>
-        <h2>{{ page.title }}</h2>
-        <p>{{ site.title[page.lang] }}</p>
-        <nav>
-            {% include ul-site-labs.html id=page.ref showcats=true iconcat='folder' classUlLabs="tagcloud-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
-        </nav>
-        <nav>
-            {% include ul-site-labs.html id=page.ref showtags=true icontag='tag' classUlLabs="tagcloud-bores-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
-        </nav>
-    </header>
-
-    <nav>
-        <ul class="abcenter">
-                {% capture hover %}
-                    {{ site.tradename }} {{ site.data.t[page.lang].page.seguir }}
-                {% endcapture %}
-            {% include ul-social.html ul="follow" webuser=site.tradename sjobs=true sme=true iconid="contact1" liclass="follow" spansvg="circulo" spant="titulo" spanth="titulo-hover" username=false hover=hover %}
-        </ul>
-    </nav>
-    <nav>
-        <ul>
-            {% include ul-social.html ul="follow" webuser=site.tradename ssite=true iconid="contact2" liclass="svg-icon" username=false %}
-        </ul>
-    </nav>
-
     <p>{{ site.description[page.lang] }}</p>
-</article>

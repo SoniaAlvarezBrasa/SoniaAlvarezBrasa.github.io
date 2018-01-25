@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Sommaire
 permalink: /blog/categories.html
 ref: blog-index
@@ -9,17 +9,6 @@ metaOgDescription: "Décrivez en 200 caractères ce que vos utilisateurs peuvent
 nomap: 1
 ---
 
-<article class="page">
-    <header>
-        <h2>{{ page.title }}</h2>
-        <nav>
-            {% include ul-site-labs.html id=page.ref showcats=true iconcat='folder' classUlLabs="tagcloud-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
-        </nav>
-        <nav>
-            {% include ul-site-labs.html id=page.ref showtags=true icontag='tag' classUlLabs="tagcloud-bores-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
-        </nav>
-    </header>
     <p>Table des matières ou index des catégories et des étiquettes de tous les articles du Blog de {{site.tradename}} pour trouver plus vite le contenu qui vous intéresse. Par date de mise à jour, auteur, thème ou tags, nous vous facilitons l'accès direct à l'article que vous recherchez.</p>
 
     {% include blog-index.html id=page.ref seccion1='Catégories' seccion2='Etiquettes' %}
-</article>

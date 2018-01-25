@@ -10,7 +10,7 @@ layout: default
         </figure>
 
         <p class="main-start cross-center">
-            <small><time datetime="{{ page.date | date_to_xmlschema }}">{% include filters/date.html pageref="page" date=site.time %}</time> &nbsp;&nbsp;</small>
+            <small><time datetime="{{ page.date | date_to_xmlschema }}">{% include filters/date pageref="page" date=site.time %}</time> &nbsp;&nbsp;</small>
         {% if page.autor %}
                 {% capture svgid %}
                     post-show--{{ page.autor }}
@@ -26,6 +26,10 @@ layout: default
         </nav>
     {% endif %}
     </header>
+
+    <nav class="breadcrumbs">
+        {% include breadcrumbs.html pageref = 'post' %}
+    </nav>
 
     {{ content }}
 

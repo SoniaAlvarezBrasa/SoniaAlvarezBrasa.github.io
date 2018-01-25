@@ -1,7 +1,7 @@
 ---
-layout: default
+layout: page
 title: Sumário
-permalink: /blog/classificaçao.html
+permalink: /blog/classes.html
 ref: blog-index
 lang: pt
 metaDescription: "Descreva em 115 caracteres o que seus usuários podem atopar no índice de artigos do Blog do seu site."
@@ -9,17 +9,6 @@ metaOgDescription: "Descreva em 200 caracteres o que seus usuários podem atopar
 nomap: 1
 ---
 
-<article class="page">
-    <header>
-        <h2>{{ page.title }}</h2>
-        <nav>
-            {% include ul-site-labs.html id=page.ref showcats=true iconcat='folder' classUlLabs="tagcloud-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
-        </nav>
-        <nav>
-            {% include ul-site-labs.html id=page.ref showtags=true icontag='tag' classUlLabs="tagcloud-bores-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
-        </nav>
-    </header>
     <p>Índice de conteúdo ou de categorias e rótulos de todos os artigos do Blog de {{site.tradename}} para acesso fácil ao conteúdo que o interessa. Por data de atualização, autor, tema ou a rotulagem, oferecemos acesso direto ao artigo que você procura.</p>
 
     {% include blog-index.html id=page.ref seccion1='Categorías' seccion2='Etiquetas' %}
-</article>

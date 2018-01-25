@@ -4,7 +4,18 @@ layout: default
 <article class="page">
     <header>
         <h2>{{ page.title }}</h2>
+        <p>{{ site.title[page.lang] }}</p>
+        <nav>
+            {% include ul-site-labs.html id=page.ref showcats=true iconcat='folder' classUlLabs="tagcloud-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
+        </nav>
+        <nav>
+            {% include ul-site-labs.html id=page.ref showtags=true icontag='tag' classUlLabs="tagcloud-bores-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
+        </nav>
     </header>
+
+    <nav class="breadcrumbs">
+        {% include breadcrumbs.html pageref = 'page' %}
+    </nav>
 
     {{ content }}
 

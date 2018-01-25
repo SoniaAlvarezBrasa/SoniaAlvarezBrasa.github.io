@@ -5,6 +5,7 @@
 <body>
     <header>
         <h1 class="pechado">{{ site.title[page.lang] | escape }}</h1>
+        <div class="print fixed">{{ site.seo.organization.date }} &copy; {{ site.title[page.lang] | escape }}</div>
         <nav class="idiomas">
             {% include ul-page-langs.html classUlLangs="main-end" liclass="aHoverXs" %}
         </nav>

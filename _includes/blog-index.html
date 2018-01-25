@@ -12,7 +12,7 @@
     {% if temp %}
 
         {% capture u %}{{ cat[0] }}{% endcapture %}
-        {% include filters/replace-tildes.html original = u %}
+        {% include filters/replace-tildes original = u %}
         {% assign ury = ury %}
     <section class="blog-index">
         <h3 id="{{ page.permalink | slugify }}--cat-{{ ury | slugify }}">{{ cat[0] | capitalize }}</h3>
@@ -47,7 +47,7 @@
     {% if temp %}
 
         {% capture u %}{{ tag[0] }}{% endcapture %}
-        {% include filters/replace-tildes.html original = u %}
+        {% include filters/replace-tildes original = u %}
         {% assign ury = ury %}
     <section class="blog-index">
         <h3 id="{{ page.permalink | slugify }}--tag-{{ ury | slugify }}">{{ tag[0] | capitalize }}</h3>

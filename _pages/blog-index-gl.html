@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Sumario
 permalink: /blog/clasificador.html
 ref: blog-index
@@ -9,17 +9,6 @@ metaOgDescription: "Describe en 200 caracteres o que os teus usuarios poden atop
 nomap: 1
 ---
 
-<article class="page">
-    <header>
-        <h2>{{ page.title }}</h2>
-        <nav>
-            {% include ul-site-labs.html id=page.ref showcats=true iconcat='folder' classUlLabs="tagcloud-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
-        </nav>
-        <nav>
-            {% include ul-site-labs.html id=page.ref showtags=true icontag='tag' classUlLabs="tagcloud-bores-flexbox" classLiLabs='svg' classSpanIconLab="fl" classLiElse="aHoverXl" %}
-        </nav>
-    </header>
     <p>Seccións de contidos por Categorías ou Etiquetas de tódolos artigos do Blog de {{ site.tradename }} pra chegares rápidamente ó contido que che interesa. Por fecha de actualización, autor, temática o etiquetado facilitámosche o acceso directo ó artigo que buscas.</p>
 
     {% include blog-index.html id=page.ref seccion1='Categorías' seccion2='Etiquetas' %}
-</article>

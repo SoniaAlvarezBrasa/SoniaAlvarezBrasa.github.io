@@ -5,11 +5,21 @@
     size: auto;
     margin-top: 3cm;
     margin-bottom: 2cm;
+    // counter-increment: page;
+    // counter-reset: page 1;
+}
+
+@page :empty {
+    display: none;
+}
+
+@page :blank {
+    display: none;
+    margin:0 0 0 100%;
 }
 
 @page :left {
     margin-left: 3cm;
-    margin-right: 4cm;
     margin-right: 4cm;
     p {
         text-align: left;
@@ -31,3 +41,268 @@
 @page rotada {
     size: landscape;
 }
+
+
+html, body, header, nav, main, aside, footer,
+section, article, address, h1, h2, h3, h4, h5, h6,
+div, figure, figcaption,
+p, hr, pre, blockquote, ol, ul, li, dl, dt, dd,
+a, em, strong, small, s, cite, q, dfn, abbr, data, time,
+code, var, samp, kbd, sub, sup, i, b, u, mark, ruby, rt, rp,
+bdi, bdo, span, br, wbr, ins, del,
+img, iframe, embed, object, param, video, audio, source, track,
+canvas, map, area, svg, math,
+table, caption, colgroup, col, tbody, thead, tfoot, tr, td, th,
+form, fieldset, legend, label, input, button, select,
+datalist, optgroup, option, textarea, keygen, output, progress, meter,
+details, summary, command, menu
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    background-color: inherit;
+    color: inherit;
+}
+
+// @media print {
+    // Layout
+body {
+    background: transparent !important;
+    color: #000 !important;
+    background-image: none;
+    text-shadow: none !important;
+    -ms-filter: none !important;
+    -webkit-filter: none !important;
+            filter: none !important;
+    * {
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        transition: none;
+        -moz-transition: none;
+        -webkit-transition: none;
+    }
+
+    & page-break-before { padding-top: 24pt; }
+    & page-break-after { padding-bottom: 24pt; }
+
+
+    h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+    }
+    h2 ~ section,
+    h2 ~ article,
+    h3 ~ section,
+    h3 ~ article {
+        page-break-inside: avoid;
+    }
+
+    header {
+        page-break-inside: avoid;
+        page-break-before: avoid;
+    }
+
+    input, label {
+        page-break-before: avoid;
+        page-break-after: avoid;
+    }
+
+    table {
+      page-break-before: always;
+      page-break-after: always;
+    }
+
+    p, img, tr, blockquote, ul, ol, dl, pre {
+      page-break-inside: avoid;
+    }
+
+    p {
+        orphans: 3;
+        widows: 3;
+        padding-bottom: 18pt;
+    }
+    blockquote {
+        margin-bottom: 12pt;
+        & p {
+            padding: 0 1.5cm;
+        }
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+
+    thead {
+        display: table-header-group;
+    }
+
+    pre, blockquote {
+        border: 1px solid #999;
+    }
+
+    a, a:visited {
+        text-decoration: underline;
+    }
+
+    main {
+        & > article {
+            width: auto;
+            margin: 0;
+            padding: 0;
+            float: none !important;
+            counter-reset: 1;
+            counter-increment: h3;
+            & > section {
+                page-break-before: always;
+                // padding-top: 24pt;
+            }
+            & h3 {
+                // page-break-before: always;
+            }
+
+            // &:before {
+            //     Content: "PEPE";
+            //     position: fixed;
+            //     left: 3cm;
+            //     bottom: 1cm;
+            //     color: red;
+            // }
+        }
+    }
+
+
+    article {
+        h3 + p {
+            // page-break-inside: avoid;
+
+        }
+    }
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // &:after {
+    //     content: '\A';
+    //     white-space: pre;
+    // }
+}
+
+.print {
+    display: inline-block;
+    visibility: visible;
+    overflow-x: visible;
+    height: auto;
+}
+
+.break-after {
+    display: block;
+    width: 100%;
+    page-break-before: avoid;
+    page-break-after: always;
+    margin-top: 36pt;
+}
+
+
+
+
+// Stilos
+.post {
+    padding-bottom: 0;
+    & > p,
+    & > section > p {
+        text-indent: 1.5cm;
+    }
+    & > footer {
+        display: none;
+    }
+}
+.tagcloud-flex,
+.tagcloud-flexbox,
+.tagcloud-bores-flexbox,
+.list-unchecked {
+    & li {
+        // &:before{
+        //     content: '';
+        //     display: inline-block;
+        //     vertical-align: middle;
+        //     height: 100%;
+        // }
+        & a {
+            & span:nth-child(1) { display: none; }
+            & span:nth-child(2) { display: none; }
+        }
+    }
+}
+
+.tagcloud-flex,
+.tagcloud-flexbox,
+.tagcloud-bores-flexbox {
+    & li {
+        // height: 1em;
+        line-height: 1;
+
+        & a {
+            font-size: 0.7em;
+            height: auto;
+            padding: 0.25em 0.5em;
+            color: #999;
+            border: 1px solid #999;
+        }
+    }
+}
+
+.list-unchecked {
+    page-break-inside: avoid;
+}
+.blog-index {
+    // padding: 0;
+    & > h3 {
+        page-break-after: avoid;
+    }
+}
+.idiomas {
+    padding: 0;
+    & li {
+        & span { color: #000; }
+        & a {
+            color: #ddd;
+            text-decoration: none;
+        }
+    }
+}
+
+// body {
+//     background: transparent !important;
+//     color: #000 !important;
+//     background-image: none;
+//     text-shadow: none !important;
+//     -ms-filter: none !important;
+//     -webkit-filter: none !important;
+//             filter: none !important;
+//     * {
+//         margin: 0pt;
+//         padding: 0pt;
+//         -webkit-print-color-adjust: exact;
+//         print-color-adjust: exact;
+//         transition: none;
+//         -moz-transition: none;
+//         -webkit-transition: none;
+//     }
+//
+//     & page-break-before { padding-top: 24pt; }
+//     & page-break-after { padding-bottom: 24pt; }
+//
+// }
+
+}
+// }

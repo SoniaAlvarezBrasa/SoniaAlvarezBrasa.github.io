@@ -13,7 +13,7 @@
         <h4 class="{{ include.classHeaderH }}"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
         {% endif %}
         <!-- <p class="cross-center"> -->
-            <small><time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date.html pageref="post" %}</time></small>
+            <small><time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date pageref="post" %}</time></small>
     {% if post.autor %}
         {% if include.iconuser %}
             <strong>

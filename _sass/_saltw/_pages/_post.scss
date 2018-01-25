@@ -1,16 +1,16 @@
 .blank,
+.page,
 .post {
     & > header {
         padding: 3em 0 1em 0;
     }
 }
 
+.page,
 .post {
     padding-bottom: 10vmin;
 
     & > header {
-        margin-bottom: 4em;
-        border-bottom: $border-default;
 
         h2 { margin-bottom: 3em; }
         h2, h3, h4, h5, h6 {width: 100%;}
@@ -18,6 +18,26 @@
         & > p,
         & > nav {
             @include hoverColorSvg;
+        }
+    }
+
+    & > nav.breadcrumbs {
+        margin-bottom: 4em;
+        border-bottom: $border-default;
+    }
+    .salto,
+    .breadcrumbs {
+        &  li {
+            display: inline-flex;
+            white-space: nowrap;
+            & span {
+                padding: 0 0.25em;
+            }
+        }
+        & li,
+        & li span,
+        & li strong {
+            font-style: italic;
         }
     }
 }

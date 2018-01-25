@@ -42,7 +42,7 @@
                         <li class="cross-center">
                             <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                             <small class="cross-center">
-                                <time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date.html pageref="page" date=post.date %}</time>
+                                <time datetime="{{ post.date | date_to_xmlschema }}">{% include filters/date pageref="page" date=post.date %}</time>
                             </small>{% if post.fotos.size > 0 %}<small class="cross-center">Images ({{post.fotos.size}})</small>{% endif %}
                         </li>{% endfor %}
                     </ul>

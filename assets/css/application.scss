@@ -37,11 +37,6 @@
 // @import "cliente/views/web/index";
 // @import "cliente/views/contactos/contactos-new";
 
-$site-url: "{{ site.url | remove: 'https://' | remove: 'http://' | prepend: 'www.' }}";
-$site-name: "{{ site.tradename }}";
-$copy: "{{ site.seo.organization.date }}";
-$page-id: "{{ page.id }}";
-
 @import "_saltw/_layout/comunes";
 @import "_saltw/_layout/menu";
 @import "_saltw/_layout/paginate";
@@ -51,4 +46,4 @@ $page-id: "{{ page.id }}";
 // @import "cliente/_theme/admin";
 @import "_saltw/_theme/tema";
 @import "_saltw/_pages/post";
-@import "_saltw/_pages/print";
+// @import "_saltw/_pages/print";
