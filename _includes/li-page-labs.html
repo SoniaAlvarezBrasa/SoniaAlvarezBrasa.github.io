@@ -1,5 +1,5 @@
     {% capture u %}{{ include.lab }}{% endcapture %}
-    {% include filters/replace-tildes original = u %}
+    {% include filters/replace-tildes.liquid original = u %}
     {% assign ury = ury %}
 {% if include.iconlab %}
         <li class="{{ include.classLiLabs }}">

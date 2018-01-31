@@ -1,16 +1,24 @@
 {% if include.pageref == 'page' %}
+{% assign pagecrumbs = null %}
 <ul>
     {% assign pags=site.pages | where:"ref", 'index' |  where:"lang", page.lang %}
     {% for pag in pags %}
         <li class="aHoverXs"><a href='{{ pag.url | prepend: site.url }}'>{{ pag.alias }}</a></li>
+        {% capture r %}{{ pag.url | prepend: site.url | remove: 'https:' | remove: 'http:' | remove: '/' | prepend: 'www.' | downcase }}{% endcapture %}
+        {% assign pagecrumbs = pagecrumbs | append: r %}
+        <!-- captures --> {% assign r = null %}
     {% endfor %}
     {% assign pags = null %}
 
     {% if page.ref == 'blog-index'%}
         <li class="aHoverXs"><span>&rsaquo;</span> <strong>Blog</strong>  &#10004;</li>
+        {% assign pagecrumbs = pagecrumbs | append: ' \00bb  Blog' %}
     {% else %}
         {% assign crumbs = page.url | split: '/' %}
         {% for crumb in crumbs offset: 1 %}
+            {% capture r %} \00bb  {{ crumb | remove: '.html' }}{% endcapture %}
+            {% assign pagecrumbs = pagecrumbs | append: r %}
+            <!-- captures --> {% assign r = null %}
             {% if forloop.last %}
         <li class="aHoverXs"><span>&rsaquo;</span> <strong>{{ crumb | remove: '.html' | capitalize }}</strong>  &#10004;</li>
             {% else %}
@@ -22,38 +30,39 @@
 {% endif %}
 
 {% if include.pageref == 'post' %}
-{% assign ruta = null %}
+{% assign pagecrumbs = null %}
 <ul>
     {% assign pags=site.pages | where:"ref", 'index' |  where:"lang", page.lang %}
     {% for pag in pags %}
         <li class="aHoverXs"><a href='{{ pag.url | prepend: site.url }}'>{{ pag.alias }}</a></li>
         {% capture r %}{{ pag.url | prepend: site.url | remove: 'https:' | remove: 'http:' | remove: '/' | prepend: 'www.' | downcase }}{% endcapture %}
-        {% assign ruta = ruta | append: r %}
+        {% assign pagecrumbs = pagecrumbs | append: r %}
+        <!-- captures --> {% assign r = null %}
     {% endfor %}
 
     {% assign pags=site.pages | where:"ref", 'blog-index' | where:"lang", page.lang %}
     {% for pag in pags %}
         <li class="aHoverXs"><span>&rsaquo;</span> <a href='{{ pag.url | prepend: site.url }}'>Blog</a></li>
-        {% assign ruta = ruta | append: ' \00bb  Blog' %}
+        {% assign pagecrumbs = pagecrumbs | append: ' \00bb  Blog' %}
     {% endfor %}
     {% assign pags = null %}
 
     {% if page.categories %}
         {% for cat in page.categories limit: 1 %}
             {% capture u %}{{ cat }}{% endcapture %}
-            {% include filters/replace-tildes original = u %}
+            {% include filters/replace-tildes.liquid original = u %}
             {% assign ury = ury %}
             {% assign pags=site.pages | where:"ref", "blog-index" | where:"lang", page.lang %}{% for pag in pags %}{% capture caturl %}{{ pag.url }}#{{ pag.permalink | slugify }}--cat-{{ ury | slugify }}{% endcapture %}{% endfor %}
         <li class="aHoverXs"><span>&rsaquo;</span> <a href='{{ caturl | prepend: site.url }}'>{{ cat | capitalize }}</a></li>
         {% capture r %} \00bb  {{ cat | capitalize }}{% endcapture %}
-        {% assign ruta = ruta | append: r %}
+        {% assign pagecrumbs = pagecrumbs | append: r %}
         <!-- captures --> {% assign u = null %} {% assign caturl = null %} {% assign r = null %}
         <!-- assigns --> {% assign ury = null %} {% assign pags = null %}
         {% endfor %}
     {% endif %}
         <li class="aHoverXs"><span>&rsaquo;</span> <strong>{{ page.title }}</strong>  &#10004;</li>
         {% capture r %} \00bb  {{ page.title }}{% endcapture %}
-        {% assign ruta = ruta | append: r %}
-        {% assign r = null %}
+        {% assign pagecrumbs = pagecrumbs | append: r %}
+        <!-- captures --> {% assign r = null %}
 </ul>
 {% endif %}

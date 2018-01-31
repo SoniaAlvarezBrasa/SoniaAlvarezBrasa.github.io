@@ -1,6 +1,6 @@
 {% if site.categories %}
 <section>
-    <h2>{{ include.seccion1 }}</h2>
+    <h2 id="{{ include.seccion1 | replace: ' ', '-' | downcase | compact }}">{{ include.seccion1 }}</h2>
 {% for cat in site.categories %}
             {% capture prefixid %}
                 {{ include.id | strip }}-{{ page.lang | upcase }}-Cat{{ forloop.index }}
@@ -12,7 +12,7 @@
     {% if temp %}
 
         {% capture u %}{{ cat[0] }}{% endcapture %}
-        {% include filters/replace-tildes original = u %}
+        {% include filters/replace-tildes.liquid original = u %}
         {% assign ury = ury %}
     <section class="blog-index">
         <h3 id="{{ page.permalink | slugify }}--cat-{{ ury | slugify }}">{{ cat[0] | capitalize }}</h3>
@@ -35,7 +35,7 @@
 </section>
 {% endif %} {% if site.tags %}
 <section>
-    <h2>{{ include.seccion2 }}</h2>
+    <h2 id="{{ include.seccion2 | replace: ' ', '-' | downcase | compact }}">{{ include.seccion2 }}</h2>
 {% for tag in site.tags %}
             {% capture prefixid %}
                 {{ page.ref | strip }}-{{ page.lang | upcase }}--Tag{{ forloop.index }}
@@ -47,7 +47,7 @@
     {% if temp %}
 
         {% capture u %}{{ tag[0] }}{% endcapture %}
-        {% include filters/replace-tildes original = u %}
+        {% include filters/replace-tildes.liquid original = u %}
         {% assign ury = ury %}
     <section class="blog-index">
         <h3 id="{{ page.permalink | slugify }}--tag-{{ ury | slugify }}">{{ tag[0] | capitalize }}</h3>

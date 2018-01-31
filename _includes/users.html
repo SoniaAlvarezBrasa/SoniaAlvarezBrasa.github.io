@@ -1,7 +1,7 @@
 {% for users in site.data.people %}{% for user in users %}
 <article class="">
     <header>
-        <h4>{{ user.name }}</h4>
+        <h4 id="{{ user.name | replace: ' ', '-' | downcase | compact }}">{{ user.name }}</h4>
         <p>{{ user.slogan.[page.lang] }}</p>
     </header>
 </article>

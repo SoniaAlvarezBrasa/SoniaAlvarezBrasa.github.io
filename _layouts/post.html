@@ -10,7 +10,7 @@ layout: default
         </figure>
 
         <p class="main-start cross-center">
-            <small><time datetime="{{ page.date | date_to_xmlschema }}">{% include filters/date pageref="page" date=site.time %}</time> &nbsp;&nbsp;</small>
+            <small><time datetime="{{ page.date | date_to_xmlschema }}">{% include filters/date.liquid pageref="page" date=site.time %}</time> &nbsp;&nbsp;</small>
         {% if page.autor %}
                 {% capture svgid %}
                     post-show--{{ page.autor }}
@@ -31,202 +31,14 @@ layout: default
         {% include breadcrumbs.html pageref = 'post' %}
     </nav>
 
-    {% assign titles = null %}
-    {% assign tids = null %}
-    {% assign parents = null %}
-
-    {% assign ch2 = page.content | split: '</h2>' %}
-    {% for c2 in ch2 %}
-        {% assign ch3 = c2 | split: '</h3>' %}
-
-        {% for c3 in ch3 %}
-            {% assign ch4 = c3 | split: '</h4>' %}
-
-            {% for c4 in ch4 %}
-                {% assign ch5 = c4 | split: '</h5>' %}
-
-                {% for c5 in ch5 %}
-                    {% assign ch6 = c5 | split: '</h6>' %}
-
-                    {% for c6 in ch6 %}
-                        {% if c6 contains '<h6' %}
-                            {% assign insideh = c6 | split: '<h6' | first %}
-                            {% assign hh = c6 | remove: insideh %}
-                            {% assign titleh = hh | split: '</h6>' | first | strip %}
-                            {% assign titles = titles | append: titleh | append: '|||' %}
-                        {% endif %}
-                    {% endfor %}
-
-                    {% if c5 contains '<h5' %}
-                        {% assign insideh = c5 | split: '<h5' | first %}
-                        {% assign hh = c5 | remove: insideh %}
-                        {% assign titleh = hh | split: '</h5>' | first | strip %}
-                        {% assign titles = titles | append: titleh | append: '|||' %}
-                    {% endif %}
-                {% endfor %}
-
-                {% if c4 contains '<h4' %}
-                    {% assign insideh = c4 | split: '<h4' | first %}
-                    {% assign hh = c4 | remove: insideh %}
-                    {% assign titleh = hh | split: '</h4>' | first | strip %}
-                    {% assign titles = titles | append: titleh | append: '|||' %}
-                {% endif %}
-            {% endfor %}
-
-            {% if c3 contains '<h3' %}
-                {% assign insideh = c3 | split: '<h3' | first %}
-                {% assign hh = c3 | remove: insideh %}
-                {% assign titleh = hh | split: '</h3>' | first | strip %}
-                {% assign titles = titles | append: titleh | append: '|||' %}
-            {% endif %}
-        {% endfor %}
-
-        {% if c2 contains '<h2' %}
-            {% assign insideh = c2 | split: '<h2' | first %}
-            {% assign hh = c2 | remove: insideh %}
-            {% assign titleh = hh | split: '</h2>' | first | strip %}
-            {% assign titles = titles | append: titleh | append: '|||' %}
-        {% endif %}
-    {% endfor %}
-
-    {% for c2 in ch2 %}
-        {% assign ch3 = c2 | split: '</h3>' %}
-
-        {% for c3 in ch3 %}
-            {% assign ch4 = c3 | split: '</h4>' %}
-
-            {% for c4 in ch4 %}
-                {% assign ch5 = c4 | split: '</h5>' %}
-
-                {% for c5 in ch5 %}
-                    {% assign ch6 = c5 | split: '</h6>' %}
-
-                    {% for c6 in ch6 %}
-                        {% if c6 contains '<h6 id=' %}
-                            {% assign insideh = c6 | split: '<h6 id=' | first %}
-                            {% assign hh = c6 | remove: insideh | remove: '<h6 id=' %}
-                            {% assign titleh = hh | split: '>' | first | strip %}
-                            {% assign titleh = titleh | remove: "'" | remove: '"' %}
-                            {% assign tids = tids | append: titleh | append: '|||' %}
-                        {% endif %}
-                    {% endfor %}
-
-                    {% if c5 contains '<h5 id=' %}
-                        {% assign insideh = c5 | split: '<h5 id=' | first %}
-                        {% assign hh = c5 | remove: insideh | remove: '<h5 id=' %}
-                        {% assign titleh = hh | split: '>' | first | strip %}
-                        {% assign titleh = titleh | remove: "'" | remove: '"' %}
-                        {% assign tids = tids | append: titleh | append: '|||' %}
-                    {% endif %}
-                {% endfor %}
-
-                {% if c4 contains '<h4 id=' %}
-                    {% assign insideh = c4 | split: '<h4 id=' | first %}
-                    {% assign hh = c4 | remove: insideh | remove: '<h4 id=' %}
-                    {% assign titleh = hh | split: '>' | first | strip %}
-                    {% assign titleh = titleh | remove: "'" | remove: '"' %}
-                    {% assign tids = tids | append: titleh | append: '|||' %}
-                {% endif %}
-            {% endfor %}
-
-
-            {% if c3 contains '<h3 id=' %}
-                {% assign insideh = c3 | split: '<h3 id=' | first %}
-                {% assign hh = c3 | remove: insideh | remove: '<h3 id=' %}
-                {% assign titleh = hh | split: '>' | first | strip %}
-                {% assign titleh = titleh | remove: "'" | remove: '"' %}
-                {% assign tids = tids | append: titleh | append: '|||' %}
-            {% endif %}
-        {% endfor %}
-
-        {% if c2 contains '<h2 id=' %}
-            {% assign insideh = c2 | split: '<h2 id=' | first %}
-            {% assign hh = c2 | remove: insideh | remove: '<h2 id=' %}
-            {% assign titleh = hh | split: '>' | first | strip %}
-            {% assign titleh = titleh | remove: "'" | remove: '"' %}
-            {% assign tids = tids | append: titleh | append: '|||' %}
-        {% endif %}
-    {% endfor %}
-
-    {% for c2 in ch2 %}
-        {% assign ch3 = c2 | split: '</h3>' %}
-
-        {% for c3 in ch3 %}
-            {% assign ch4 = c3 | split: '</h4>' %}
-
-            {% for c4 in ch4 %}
-                {% assign ch5 = c4 | split: '</h5>' %}
-
-                {% for c5 in ch5 %}
-                    {% assign ch6 = c5 | split: '</h6>' %}
-
-                    {% for c6 in ch6 %}
-                        {% if c6 contains '<h6 id=' %}
-                            {% assign insideh = c6 | split: '<h6 id=' | first %}
-                            {% assign hh = c6 | remove: insideh %}
-                            {% assign insideh = hh | split: '>' | first %}
-                            {% assign titleh6 = hh | remove: insideh | remove: '>' %}
-                            {% assign titleh6 = titleh6 | split: '<' | first | strip %}
-                            {% capture h %} \00bb  {{ titleh2 }} \00bb  {{ titleh3 }} \00bb  {{ titleh4 }} \00bb  {{ titleh5 }} \00bb  {{ titleh6 }}{% endcapture %}
-                            {% assign parents = parents | append: h | append: '|||' %}
-                        {% endif %}
-                    {% endfor %}
-
-                    {% if c5 contains '<h5 id=' %}
-                        {% assign insideh = c5 | split: '<h5 id=' | first %}
-                        {% assign hh = c5 | remove: insideh %}
-                        {% assign insideh = hh | split: '>' | first %}
-                        {% assign titleh5 = hh | remove: insideh | remove: '>' %}
-                        {% assign titleh5 = titleh5 | split: '<' | first | strip %}
-                        {% capture h %} \00bb  {{ titleh2 }} \00bb  {{ titleh3 }} \00bb  {{ titleh4 }} \00bb  {{ titleh5 }}{% endcapture %}
-                        {% assign parents = parents | append: h | append: '|||' %}
-                    {% endif %}
-                {% endfor %}
-
-                {% if c4 contains '<h4 id=' %}
-                    {% assign insideh = c4 | split: '<h4 id=' | first %}
-                    {% assign hh = c4 | remove: insideh %}
-                    {% assign insideh = hh | split: '>' | first %}
-                    {% assign titleh4 = hh | remove: insideh | remove: '>' %}
-                    {% assign titleh4 = titleh4 | split: '<' | first | strip %}
-                    {% capture h %} \00bb  {{ titleh2 }} \00bb  {{ titleh3 }} \00bb  {{ titleh4 }}{% endcapture %}
-                    {% assign parents = parents | append: h | append: '|||' %}
-                {% endif %}
-            {% endfor %}
-
-
-            {% if c3 contains '<h3 id=' %}
-                {% assign insideh = c3 | split: '<h3 id=' | first %}
-                {% assign hh = c3 | remove: insideh %}
-                {% assign insideh = hh | split: '>' | first %}
-                {% assign titleh3 = hh | remove: insideh | remove: '>' %}
-                {% assign titleh3 = titleh3 | split: '<' | first | strip %}
-                {% capture h %} \00bb  {{ titleh2 }} \00bb  {{ titleh3 }}{% endcapture %}
-                {% assign parents = parents | append: h | append: '|||' %}
-            {% endif %}
-        {% endfor %}
-
-        {% if c2 contains '<h2 id=' %}
-            {% assign insideh = c2 | split: '<h2 id=' | first %}
-            {% assign hh = c2 | remove: insideh %}
-            {% assign insideh = hh | split: '>' | first %}
-            {% assign titleh2 = hh | remove: insideh | remove: '>' %}
-            {% assign titleh2 = titleh2 | split: '<' | first | strip %}
-            {% capture h %} \00bb  {{ titleh2 }}{% endcapture %}
-            {% assign parents = parents | append: h | append: '|||' %}
-        {% endif %}
-    {% endfor %}
-
-    {% assign titles = titles | split: '|||' %}
-    {% assign tids = tids | split: '|||' %}
-    {% assign parents = parents | split: '|||' %}
-
-    {% assign ch2 = null %}
-
-    {% for i in tids %}
+    {% include filters/headercrumbs.liquid %}
+    <!-- La variable pagecrumbs se asigna en breaadcrumbs.html -->
+    <!-- El array ids se asigna en headercrumbs.liquid -->
+    <!-- El array headercrumbs se asigna en headercrumbs.liquid -->
+    {% for i in ids %}
         <style type="text/css" media="print">
             #{{ i }}:after {
-                content: '\A {{ ruta }} {{ parents[forloop.index0 ] }} \2714';
+                content: '\A {{ pagecrumbs }} {{ headercrumbs[forloop.index0 ] }} \2714';
                 white-space: pre-wrap;
                 font-size: 65%;
                 font-weight: normal;
@@ -234,6 +46,11 @@ layout: default
             }
         </style>
     {% endfor %}
+    <ul>
+        <li>{{ page.content }}</li>
+        <pepe>{{ ch3 | join: ', ' }}</pepe>
+        <pepa>{{ c3 }}</pepa>
+    </ul>
 
     {{ content }}
 
