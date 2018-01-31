@@ -19,7 +19,6 @@ Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de a
 ```
 ```
 "No hay nadie que ame el dolor mismo, que lo busque, lo encuentre y lo quiera, simplemente porque es el dolor."
-
 ```
 
 ### Texto simulado _Kafka_

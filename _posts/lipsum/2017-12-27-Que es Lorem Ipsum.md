@@ -35,14 +35,12 @@ No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno 
 
 >  "No hay nadie que ame el dolor mismo, que lo busque, lo encuentre y lo quiera, simplemente porque es dolor."
 
-{% include salto %}
 
 
 ### El pasaje estándar Lorem Ipsum, usado desde el año 1500.
 
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-{% include salto tit="El pasaje estándar Lorem Ipsum, usado desde el año 1500." %}
 
 
 ### Sección 1.10.32 de "de Finibus Bonorum et Malorum", escrito por Cicero en el 45 antes de Cristo

@@ -25,7 +25,7 @@ Dar formato a las palabras en **negrita** o _cursiva_, insertar enlaces internos
 En su mayoría, Markdown sólo es texto normal con algunos caracteres no alfabéticos como ```#``` o ```*```.
 
 
-Sumario
+### Sumario
 
 1. [Párrafos](#párrafos)
 1. [Encabezados](#encabezados)
@@ -67,8 +67,9 @@ Comencemos...
 Las líneas de texto consecutivas se consideran un párrafo.
 
 Escribiendo esto
-
->   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+```
 
 ... tus usuarios ven ...
 
@@ -87,26 +88,19 @@ Se usa la almohadilla para indicar el nivel del titulo.
 
 Escribiendo esto
 
->   # Encabezado h1 (Título del sitio web)\\
->   ## Encabezado h2 (Título de la página)\\
->   ### Encabezado h3 (Sección de página)\\
->   #### Encabezado h4 (Subsección)\\
->   ##### Encabezado h5 (Subsub)\\
->   ###### Encabezado h6 (subsubsub)
-
-... tus usuarios ven ...
-
-``` Encabezado h1 (Título del sitio web) -anulado. Nivel superior -```
+```
 ## Encabezado h2 (Título de la página)
 ### Encabezado h3 (Sección de página)
 #### Encabezado h4 (Subsección)
 ##### Encabezado h5 (Subsub)
 ###### Encabezado h6 (subsubsub)
+```
+
+... tus usuarios ven el título al nivel indicado
 
 ... y se programa así
 
 ``` html
-<h1>Encabezado h1 (Título del sitio web)</h1>
 <h2>Encabezado h2 (Título de la página)</h2>
 <h3>Encabezado h3 (Sección de página)</h3>
 <h4>Encabezado h4 (Subsección)</h4>
@@ -121,21 +115,22 @@ a). Separando párrafos con una ó mas línea/s en blanco entre párrafos.
 
 Escribiendo esto
 
-> Quien fue a sevilla
->
-> perdió su silla
+```
+Quien fue a Sevilla
+
+perdió su silla
+```
 
 ... tus usuarios ven ...
 
-    Quien fue a sevilla
+Quien fue a Sevilla
 
-    perdió su silla
+perdió su silla
 
 ... y se programa así
 
 ``` html
-<p>Quien fue a sevilla</p>
-
+<p>Quien fue a Sevilla</p>
 <p>perdió su silla</p>
 ```
 
@@ -143,18 +138,20 @@ b). Añadiendo `\\` al final de línea.
 
 Escribiendo esto
 
-> `Quien fue a Sevilla\\`
-> `perdió su silla`
+```
+Quien fue a Sevilla \\
+perdió su silla
+```
 
 ... tus usuarios ven ...
 
-    Quien fue a Sevilla
-    perdió su silla
+Quien fue a Sevilla \\
+perdió su silla
 
 ... y se programa así
 
 ``` html
-<p>Quien fue a Sevilla<br />
+<p>Quien fue a Sevilla <br />
 perdió su silla</p>
 ```
 
@@ -167,13 +164,19 @@ Las líneas horizontales se crean con tres guiones
 
 Escribiendo esto
 
-> `---` ó\\
-> `***` ó\\
-> `___`
-
-... tus usuarios ven ...
-
+```
 ---
+```
+ó
+```
+***
+```
+ó
+```
+___
+```
+
+... tus usuarios ven un salto de línea
 
 ... y se programa así
 
@@ -184,11 +187,17 @@ Escribiendo esto
 
 ### Énfasis
 
-```*Este texto se verá en cursiva*``` *Este texto se verá en cursiva*\\
-```_Este texto también se verá en cursiva_``` _Este texto también se verá en cursiva_\\
-```**Este texto se verá en negrita**``` **Este texto se verá en negrita**\\
-```__Este texto también se verá en negrita__``` __Este texto también se verá en negrita__\\
-```_También **puedes combinar** ambos_``` _También **puedes combinar** ambos_\\
+```*Este texto se verá en cursiva*``` *Este texto se verá en cursiva*
+
+```_Este texto también se verá en cursiva_``` _Este texto también se verá en cursiva_
+
+
+```**Este texto se verá en negrita**``` **Este texto se verá en negrita**
+
+```__Este texto también se verá en negrita__``` __Este texto también se verá en negrita__
+
+```_También **puedes combinar** ambos_``` _También **puedes combinar** ambos_
+
 ```**También _puedes combinar_ ambos**``` **También _puedes combinar_ ambos**
 
 ... y se programa así
@@ -331,22 +340,23 @@ Se puede utilizar `*`, `+` ó `-`, seguidos de un espacio en blanco.
 También se pueden anidar.
 
 Escribiendo esto
-
-> * Un elemento en una lista no ordenada
-> * Otro elemento de la lista
-> >    * sub-ítem 1
-> >    * sub-ítem 2
-> >    * sub-ítem 3
-> > >    * subsub 1
+```
+* Un elemento en una lista no ordenada
+* Otro elemento de la lista
+    * sub-ítem 1
+    * sub-ítem 2
+    * sub-ítem 3
+        * subsub 3.1
+```
 
 ... tus usuarios ven ...
 
 * Un elemento en una lista no ordenada
 * Otro elemento de la lista
-    * sub-ítem 2a
-    * sub-ítem 2b
-    * sub-ítem 2c
-        * subsub 2c1
+    * sub-ítem 1
+    * sub-ítem 2
+    * sub-ítem 3
+        * subsub 3.1
 
 ... y se programa así
 
@@ -355,11 +365,11 @@ Escribiendo esto
   <li>Un elemento en una lista no ordenada</li>
   <li>Otro elemento de la lista
     <ul>
-      <li>sub-ítem 2a</li>
-      <li>sub-ítem 2b</li>
-      <li>sub-ítem 2c
+      <li>sub-ítem 1</li>
+      <li>sub-ítem 2</li>
+      <li>sub-ítem 3
         <ul>
-          <li>subsub 2c1</li>
+          <li>subsub 3.1</li>
         </ul>
       </li>
     </ul>
@@ -378,9 +388,11 @@ Primeramente se escribe el término y en una nueva línea su definicion precedid
 
 Escribiendo esto
 
-> `Término`\\
->   `: definición principal`\\
->   `: otra definición`
+```
+Término
+: definición principal
+: otra definición
+```
 
 ... tus usuarios ven ...
 
@@ -525,7 +537,7 @@ Escribiendo esto
 ... y se programa así
 
 ``` html
-<table rules="groups">
+<table>
   <thead>
     <tr>
       <th style="text-align: left"> Header A </th>
