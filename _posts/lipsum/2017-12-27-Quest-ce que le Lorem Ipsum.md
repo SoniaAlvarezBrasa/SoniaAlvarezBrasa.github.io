@@ -21,7 +21,7 @@ Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la burea
 "Il n’y a personne qui n’aime la souffrance pour elle-même, qui ne la recherche et qui ne la veuille pour elle-même…"
 ```
 
-### Le passage de Lorem Ipsum standard, utilisé depuis 1500
+### Le passage de Lorem Ipsum standard, utilise depuis 1500
 
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 

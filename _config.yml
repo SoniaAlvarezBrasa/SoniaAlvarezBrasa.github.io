@@ -243,6 +243,8 @@ alternate:
 
 # Build settings
 markdown: kramdown
+kramdown:
+    input: GFM
 include: ["_pages"]
 # permalink: /:title/
 permalink: /blog/:slug.html

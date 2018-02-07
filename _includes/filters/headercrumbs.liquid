@@ -1,5 +1,6 @@
 {% assign ids = null %}
 {% assign headercrumbs = null %}
+{% assign index2 = null %}
 
 {% assign ch2 = content | split: '</h2>' %}
 {% for c2 in ch2 %}
@@ -21,67 +22,7 @@
                         {% assign id = hh | split: '>' | first | strip %}
                         {% assign id = id | remove: "'" | remove: '"' %}
                         {% assign ids = ids | append: id | append: '|||' %}
-                        {% assign hh = null %} {% assign inside h = null %}
-                    {% endif %}
-                {% endfor %}
 
-                {% if c5 contains '<h5 id=' %}
-                    {% assign insideh = c5 | split: '<h5 id=' | first %}
-                    {% assign hh = c5 | remove: insideh | remove: '<h5 id=' %}
-                    {% assign id = hh | split: '>' | first | strip %}
-                    {% assign id = id | remove: "'" | remove: '"' %}
-                    {% assign ids = ids | append: id | append: '|||' %}
-                    {% assign hh = null %} {% assign inside h = null %}
-                {% endif %}
-            {% endfor %}
-
-            {% if c4 contains '<h4 id=' %}
-                {% assign insideh = c4 | split: '<h4 id=' | first %}
-                {% assign hh = c4 | remove: insideh | remove: '<h4 id=' %}
-                {% assign id = hh | split: '>' | first | strip %}
-                {% assign id = id | remove: "'" | remove: '"' %}
-                {% assign ids = ids | append: id | append: '|||' %}
-                {% assign hh = null %} {% assign inside h = null %}
-            {% endif %}
-        {% endfor %}
-
-        {% if c3 contains '<h3 id=' %}
-            {% assign insideh = c3 | split: '<h3 id=' | first %}
-            {% assign hh = c3 | remove: insideh | remove: '<h3 id=' %}
-            {% assign id = hh | split: '>' | first | strip %}
-            {% assign id = id | remove: "'" | remove: '"' %}
-            {% assign ids = ids | append: id | append: '|||' %}
-            {% assign hh = null %} {% assign inside h = null %}
-        {% endif %}
-    {% endfor %}
-
-    {% if c2 contains '<h2 id=' %}
-        {% assign insideh = c2 | split: '<h2 id=' | first %}
-        {% assign hh = c2 | remove: insideh | remove: '<h2 id=' %}
-        {% assign id = hh | split: '>' | first | strip %}
-        {% assign id = id | remove: "'" | remove: '"' %}
-        {% assign ids = ids | append: id | append: '|||' %}
-        {% assign hh = null %} {% assign inside h = null %}
-    {% endif %}
-{% endfor %}
-
-{% assign id = null %}
-{% assign ids = ids | split: '|||' %}
-
-{% for c2 in ch2 %}
-    {% assign ch3 = c2 | split: '</h3>' %}
-
-    {% for c3 in ch3 %}
-        {% assign ch4 = c3 | split: '</h4>' %}
-
-        {% for c4 in ch4 %}
-            {% assign ch5 = c4 | split: '</h5>' %}
-
-            {% for c5 in ch5 %}
-                {% assign ch6 = c5 | split: '</h6>' %}
-
-                {% for c6 in ch6 %}
-                    {% if c6 contains '<h6 id=' %}
                         {% assign insideh = c6 | split: '<h6 id=' | first %}
                         {% assign hh = c6 | remove: insideh %}
                         {% assign insideh = hh | split: '>' | first %}
@@ -95,6 +36,12 @@
 
                 {% if c5 contains '<h5 id=' %}
                     {% assign insideh = c5 | split: '<h5 id=' | first %}
+                    {% assign hh = c5 | remove: insideh | remove: '<h5 id=' %}
+                    {% assign id = hh | split: '>' | first | strip %}
+                    {% assign id = id | remove: "'" | remove: '"' %}
+                    {% assign ids = ids | append: id | append: '|||' %}
+
+                    {% assign insideh = c5 | split: '<h5 id=' | first %}
                     {% assign hh = c5 | remove: insideh %}
                     {% assign insideh = hh | split: '>' | first %}
                     {% assign header5 = hh | remove: insideh | remove: '>' %}
@@ -107,6 +54,12 @@
 
             {% if c4 contains '<h4 id=' %}
                 {% assign insideh = c4 | split: '<h4 id=' | first %}
+                {% assign hh = c4 | remove: insideh | remove: '<h4 id=' %}
+                {% assign id = hh | split: '>' | first | strip %}
+                {% assign id = id | remove: "'" | remove: '"' %}
+                {% assign ids = ids | append: id | append: '|||' %}
+
+                {% assign insideh = c4 | split: '<h4 id=' | first %}
                 {% assign hh = c4 | remove: insideh %}
                 {% assign insideh = hh | split: '>' | first %}
                 {% assign header4 = hh | remove: insideh | remove: '>' %}
@@ -117,13 +70,18 @@
             {% endif %}
         {% endfor %}
 
-
         {% if c3 contains '<h3 id=' %}
+            {% assign insideh = c3 | split: '<h3 id=' | first %}
+            {% assign hh = c3 | remove: insideh | remove: '<h3 id=' %}
+            {% assign id = hh | split: '>' | first | strip %}
+            {% assign id = id | remove: "'" | remove: '"' %}
+            {% assign ids = ids | append: id | append: '|||' %}
+
             {% assign insideh = c3 | split: '<h3 id=' | first %}
             {% assign hh = c3 | remove: insideh %}
             {% assign insideh = hh | split: '>' | first %}
             {% assign header3 = hh | remove: insideh | remove: '>' %}
-            {% assign header3 = header3 | split: '<' | first | strip %}
+            {% assign header3 = header3 | split: '<' | first | compact %}
             {% capture h %}{% if header2 != null %} \2192\2002 {{ header2 }}{% endif %} \2192\2002 {{ header3 }}{% endcapture %}
             {% assign headercrumbs = headercrumbs | append: h | append: '|||' %}
             {% assign  h = null %} {% assign insideh = null %} {% assign hh = null %}
@@ -131,6 +89,12 @@
     {% endfor %}
 
     {% if c2 contains '<h2 id=' %}
+        {% assign insideh = c2 | split: '<h2 id=' | first %}
+        {% assign hh = c2 | remove: insideh | remove: '<h2 id=' %}
+        {% assign id = hh | split: '>' | first | strip %}
+        {% assign id = id | remove: "'" | remove: '"' %}
+        {% assign ids = ids | append: id | append: '|||' %}
+
         {% assign insideh = c2 | split: '<h2 id=' | first %}
         {% assign hh = c2 | remove: insideh %}
         {% assign insideh = hh | split: '>' | first %}
@@ -142,8 +106,12 @@
     {% endif %}
 {% endfor %}
 
+{% assign id = null %}
 {% assign header2 = null %} {% assign header3 = null %} {% assign header4 = null %} {% assign header5 = null %} {% assign header6 = null %}
-
 {% assign ch2 = null %} {% assign ch3 = null %} {% assign ch4 = null %} {% assign ch5 = null %} {% assign ch6 = null %}
 
+{% assign ids = ids | split: '|||' %}
 {% assign headercrumbs = headercrumbs | split: '|||' %}
+
+{% assign index2 = index2 | prepend: '<ol type="I">' %}
+{% assign index2 = index2 | append: '</ol>' %}

@@ -72,6 +72,7 @@ details, summary, command, menu
     transition: none;
     -moz-transition: none;
     -webkit-transition: none;
+    float: none;
 }
 
 ol { margin-left: 2cm; }
@@ -313,7 +314,7 @@ body {
                 padding-top: 1cm;
                 margin-bottom: 1cm;
                 padding-bottom: 0.25cm;
-                border-bottom: 1pt groove $bgris;
+                // border-bottom: 1pt groove $bgris;
 
             }
             & > h2 {
@@ -324,6 +325,7 @@ body {
                 }
                 & ~ h3 {
                     counter-increment: mah3plus 1;
+                    counter-reset: mah4plus 0;
                     width: 90%;
                     margin-left: auto;
                     margin-right: auto;
@@ -331,30 +333,40 @@ body {
                     &:before {
                         content: counter(mah2) ". " counter(mah3plus) ".- ";
                     }
+                    & ~ h4 {
+                        counter-increment: mah4plus 1;
+                        counter-reset: mah5plus 0;
+                        &:before {
+                            content: counter(mah2) ". " counter(mah3plus) ". " counter(mah4plus) ".- ";
+                        }
+                        & ~ h5 {
+                            counter-increment: mah5plus 1;
+                            counter-reset: mah6plus 0;
+                            &:before {
+                                content: counter(mah2) ". " counter(mah3plus) ". " counter(mah4plus) ". " counter(mah5plus) ".- ";
+                            }
+                            & ~ h6 {
+                                counter-increment: mah6plus 1;
+                                &:before {
+                                    content: counter(mah2) ". " counter(mah3plus) ". " counter(mah4plus) ". " counter(mah5plus) ". " counter(mah6plus) ".- ";
+                                }
+                            }
+                        }
+                    }
                 }
-                & ~ p:nth-last-of-type(1) {
-                    background: lime;
-                }
-                // & ~ p + h3 {
-                //     // &:before {
-                //         content: "PEPE";
-                //         color: green;
-                //         background: yellow;
-                //     // }
-                // }
             }
-
 
             & > h3 {
-                // counter-increment: h3 1;
-                // &:before {
-                //     content: counter(h2) ". " counter(h3) ".- ";
-                // }
+                counter-increment: mah2 1;
+                &:before {
+                    content: counter(mah2) ".- ";
+                }
             }
+
             & > section {
+                counter-increment: mash2 1;
                 counter-reset: tagh3 0;
                 h2 {
-                    counter-increment: mash2 1;
                     &:before {
                         content: counter(mash2) ".- ";
                     }
@@ -373,9 +385,9 @@ body {
                 & > article {
                     counter-increment: mapah3 -1;
                     & > header h3 a:before {
+                        content: counter(mash2) ". " counter(mapah3) ".- ";
                         position: static;
                         background: transparent;
-                        content: counter(mash2) ". " counter(mapah3) ".- ";
                     }
                 }
             }

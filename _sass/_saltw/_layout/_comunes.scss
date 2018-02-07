@@ -5,6 +5,17 @@ h2 {
 // Code formating
 pre > code { white-space: pre-wrap; }
 
+.afternone {
+    text-indent: 0;
+    &:after {
+        content: none;
+        white-space: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
+    }
+}
+
 //--------------- HOVERS ---------------------
 // HoverUnderline links website
 

@@ -4,8 +4,12 @@
     {% assign pags=site.pages | where:"ref", 'index' |  where:"lang", page.lang %}
     {% for pag in pags %}
         <li class="aHoverXs"><a href='{{ pag.url | prepend: site.url }}'>{{ pag.alias }}</a></li>
-        {% capture r %}{{ pag.url | prepend: site.url | remove: 'https:' | remove: 'http:' | remove: '/' | prepend: 'www.' | downcase }}{% endcapture %}
-        {% assign pagecrumbs = pagecrumbs | append: r %}
+        {% capture r %}{{ pag.url | prepend: site.url | remove: 'https://' | remove: 'http://' | remove: '.html' | prepend: 'www.' | downcase }}{% endcapture %}
+        {% if pag.lang == 'es' %}
+            {% assign pagecrumbs = pagecrumbs | append: r | remove: '/' %}
+        {% else %}
+            {% assign pagecrumbs = pagecrumbs | append: r %}
+        {% endif %}
         <!-- captures --> {% assign r = null %}
     {% endfor %}
     {% assign pags = null %}
@@ -35,8 +39,12 @@
     {% assign pags=site.pages | where:"ref", 'index' |  where:"lang", page.lang %}
     {% for pag in pags %}
         <li class="aHoverXs"><a href='{{ pag.url | prepend: site.url }}'>{{ pag.alias }}</a></li>
-        {% capture r %}{{ pag.url | prepend: site.url | remove: 'https:' | remove: 'http:' | remove: '/' | prepend: 'www.' | downcase }}{% endcapture %}
-        {% assign pagecrumbs = pagecrumbs | append: r %}
+        {% capture r %}{{ pag.url | prepend: site.url | remove: 'https://' | remove: 'http://' | remove: '.html' | prepend: 'www.' | downcase }}{% endcapture %}
+        {% if pag.lang == 'es' %}
+            {% assign pagecrumbs = pagecrumbs | append: r | remove: '/' %}
+        {% else %}
+            {% assign pagecrumbs = pagecrumbs | append: r %}
+        {% endif %}
         <!-- captures --> {% assign r = null %}
     {% endfor %}
 

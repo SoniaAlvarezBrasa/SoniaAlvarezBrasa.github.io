@@ -36,9 +36,9 @@ layout: default
     <!-- El array ids se asigna en headercrumbs.liquid -->
     <!-- El array headercrumbs se asigna en headercrumbs.liquid -->
     {% for i in ids %}
-        <style type="text/css" media="print">
+        <style type="text/css">
             #{{ i }}:after {
-                content: '\A {{ pagecrumbs }} {{ headercrumbs[forloop.index0 ] }} \2714';
+                content: "\A {{ pagecrumbs }} {{ headercrumbs[forloop.index0 ] }} \2714";
                 white-space: pre-wrap;
                 font-size: 65%;
                 font-weight: normal;
@@ -46,11 +46,232 @@ layout: default
             }
         </style>
     {% endfor %}
-    <ul>
-        <li>{{ page.content }}</li>
-        <pepe>{{ ch3 | join: ', ' }}</pepe>
-        <pepa>{{ c3 }}</pepa>
-    </ul>
+    <!-- assigns --> {% assign headercrumbs = null %} {% assign pagecrumbs = null %} {% assign ids = null %}
+
+
+
+{% assign i2 = null %}
+{% assign i3 = null %}
+{% assign i4 = null %}
+{% assign i5 = null %}
+{% assign i6 = null %}
+
+{% assign l2 = null %}
+{% assign l3 = null %}
+{% assign l4 = null %}
+{% assign l5 = null %}
+{% assign l6 = null %}
+
+{% assign b3 = true %}
+{% assign b3 = true %}
+{% assign b5 = true %}
+{% assign b6 = true %}
+
+{% assign t2 = null %}
+{% assign t3 = null %}
+{% assign t4 = null %}
+{% assign t5 = null %}
+{% assign t6 = null %}
+{% assign titles = null  %}
+{% assign ch2 = page.content | split: '</h2>' %}
+
+{% for c2 in ch2  %}
+    {% assign ch3 = c2 | split: '</h3>' %}
+    {% assign z3 = ch2[forloop.index] | split: '</h3>' | size | minus: 1 %}
+
+    {% for c3 in ch3 %}
+        {% assign ch4 = c3 | split: '</h4>' %}
+        {% assign z4 = ch3[forloop.index] | split: '</h4>' | size | minus: 1 %}
+
+        {% if t3 != null %}
+            {% assign titles = titles | append: t3 | append: '~~~'  %}
+            {% assign t3 = null %}
+        {% endif %}
+
+        {% for c4 in ch4 %}
+            {% assign ch5 = c4 | split: '</h5>' %}
+            {% assign z5 = ch4[forloop.index] | split: '</h5>' | size | minus: 1 %}
+
+            {% if t4 != null %}
+                {% assign titles = titles | append: t4 | append: '~~~' %}
+                {% assign t4 = null %}
+            {% endif %}
+
+            {% for c5 in ch5 %}
+                {% assign ch6 = c5 | split: '</h6>' %}
+                {% assign z6 = ch5[forloop.index] | split: '</h6>' | size | minus: 1 %}
+
+                {% if t5 != null %}
+                    {% assign titles = titles | append: t5 | append: '~~~' %}
+                    {% assign t5 = null %}
+                {% endif %}
+
+                {% for c6 in ch6 %}
+                    {% if t6 != null %}
+                        {% assign titles = titles | append: t6 | append: '~~~' %}
+                        {% assign t6 = null %}
+                    {% endif %}
+
+                    {% if c6 contains '<h6 id=' %}
+                        {% assign i6 = forloop.index %}
+                        {% assign l6 = forloop.length | minus: 1 %}
+
+                        {% assign insideh = c6 | split: '<h6 id=' | first %}
+                        {% assign hh = c6 | remove: insideh | remove: '<h6 id=' %}
+                        {% assign ii = hh | split: '>' | first | strip %}
+                        {% assign hh = hh | remove: ii %}
+                        {% assign ii = ii | remove: "'" | remove: '"' %}
+                        {% assign hh = hh | prepend: '"' | prepend: ii | prepend: 'href="#' | prepend: '<a class="afternone" ' | prepend: '<li>'%}
+                        {% assign titleh = hh | split: '</h6>' | first | strip %}
+                        {% assign titleh = titleh | remove: '</h6>' | append: '</a>' %}
+                        {% if forloop.first %}
+                            {% assign titles = titles | append: '<ol type="i">' %}
+                        {% endif %}
+                        {% if i5 != null %}
+                            {% assign titleh = titleh | append: '</li>' %}
+                            {% if i6 == l6 %}
+                                {% assign titleh = titleh | append: '</ol></li>' %}
+                                {% if i5 == l5 %}
+                                    {% assign titleh = titleh | append: '</ol></li>' %}
+                                    {% if i4 == l4 %}
+                                        {% assign titleh = titleh | append: '</ol></li>' %}
+                                        {% if i3 == l3 %}
+                                            {% assign titleh = titleh | append: '</ol></li>' %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+
+                        {% assign t6 = t6 | append: titleh %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if c5 contains '<h5 id=' %}
+                    {% assign i5 = forloop.index %}
+                    {% assign l5 = forloop.length | minus: 1 %}
+
+                    {% assign insideh = c5 | split: '<h5 id=' | first %}
+                    {% assign hh = c5 | remove: insideh | remove: '<h5 id=' %}
+                    {% assign ii = hh | split: '>' | first | strip %}
+                    {% assign hh = hh | remove: ii %}
+                    {% assign ii = ii | remove: "'" | remove: '"' %}
+                    {% assign hh = hh | prepend: '"' | prepend: ii | prepend: 'href="#' | prepend: '<a class="afternone" ' | prepend: '<li>'%}
+                    {% assign titleh = hh | split: '</h5>' | first | strip %}
+                    {% assign titleh = titleh | remove: '</h5>' | append: '</a>' %}
+                    {% if forloop.first %}
+                        {% assign titles = titles | append: '<ol type="a">' %}
+                    {% endif %}
+                    {% if i4 != null %}
+                        {% if z6 < 1  %}
+                            {% assign titleh = titleh | append: '</li>' %}
+                            {% if i5 == l5 %}
+                                {% assign titleh = titleh | append: '</ol></li>' %}
+                                {% if i4 == l4 %}
+                                    {% assign titleh = titleh | append: '</ol></li>' %}
+                                    {% if i3 == l3 %}
+                                        {% assign titleh = titleh | append: '</ol></li>' %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                    {% assign t5 = t5 | append: titleh %}
+                {% endif %}
+            {% endfor %}
+
+            {% if c4 contains '<h4 id=' %}
+                {% assign i4 = forloop.index %}
+                {% assign l4 = forloop.length | minus: 1 %}
+
+                {% assign insideh = c4 | split: '<h4 id=' | first %}
+                {% assign hh = c4 | remove: insideh | remove: '<h4 id=' %}
+                {% assign ii = hh | split: '>' | first | strip %}
+                {% assign hh = hh | remove: ii %}
+                {% assign ii = ii | remove: "'" | remove: '"' %}
+                {% assign hh = hh | prepend: '"' | prepend: ii | prepend: 'href="#' | prepend: '<a class="afternone" ' | prepend: '<li>' %}
+                {% assign titleh = hh | split: '</h4>' | first | strip %}
+                {% assign titleh = titleh | remove: '</h4>' | append: '</a>' %}
+                {% if forloop.first %}
+                    {% assign titles = titles | append: '<ol type="A">' %}
+                {% endif %}
+                {% if i3 != null %}
+                    {% if z5 < 1  %}
+                        {% assign titleh = titleh | append: '</li>' %}
+                        {% if i4 == l4 %}
+                            {% assign titleh = titleh | append: '</ol></li>' %}
+                            {% if i3 == l3 %}
+                                {% assign titleh = titleh | append: '</ol></li>' %}
+                            {% endif %%}
+                        {% endif %%}
+                    {% endif %}
+                {% endif %}
+
+                {% assign t4 = t4 | append: titleh %}
+            {% endif %}
+        {% endfor %}
+
+        {% if c3 contains '<h3 id=' %}
+            {% assign i3 = forloop.index %}
+            {% assign l3 = forloop.length | minus: 1 %}
+
+            {% assign insideh = c3 | split: '<h3 id=' | first %}
+            {% assign hh = c3 | remove: insideh | remove: '<h3 id=' %}
+            {% assign ii = hh | split: '>' | first | strip %}
+            {% assign hh = hh | remove: ii %}
+            {% assign ii = ii | remove: "'" | remove: '"' %}
+            {% assign hh = hh | prepend: '"' | prepend: ii | prepend: 'href="#' | prepend: '<a class="afternone" ' | prepend: '<li>'%}
+            {% assign titleh = hh | split: '</h3>' | first | strip %}
+            {% assign titleh = titleh | remove: '</h3>' | append: '</a>' %}
+            {% if forloop.first %}
+                {% assign titles = titles | append: '<ol>' %}
+            {% endif %}
+            {% if i2 != null %}
+                {% if z4 < 1 %}
+                    {% assign titleh = titleh | append: '</li>' %}
+                    {% if i3 == l3 %}
+                        {% assign titleh = titleh | append: '</ol></li>' %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+            {% assign t3 = t3 | append: titleh %}
+        {% endif %}
+    {% endfor %}
+
+
+    {% if c2 contains '<h2 id=' %}
+        {% assign i2 = forloop.index %}
+        {% assign l2 = forloop.length %}
+        {% assign l2 = l2 | minus: 1 %}
+        {% assign insideh = c2 | split: '<h2 id=' | first %}
+        {% assign hh = c2 | remove: insideh | remove: '<h2 id=' %}
+        {% assign ii = hh | split: '>' | first | strip %}
+        {% assign hh = hh | remove: ii %}
+        {% assign ii = ii | remove: "'" | remove: '"' %}
+        {% assign hh = hh | prepend: '"' | prepend: ii | prepend: 'href="#' | prepend: '<a class="afternone" ' | prepend: '<li>'%}
+        {% assign titleh = hh | split: '</h2>' | first | strip %}
+        {% assign titleh = titleh | remove: '</h2>' | append: '</a>' %}
+        {% if forloop.first %}
+            {% assign titles = titles | append: '<ol type="I">' %}
+        {% endif %}
+        {% if z3 < 1 %}
+            {% assign titleh = titleh | append: '</li>' %}
+            {% if i2 == l2 %}
+                {% assign titleh = titleh | append: '</ol>' %}
+            {% endif %}
+        {% endif %}
+
+        {% assign titles = titles | append: titleh | append: '~~~' %}
+    {% endif %}
+{% endfor %}
+
+{% assign titles = titles | split: '~~~' %}
+
+    <nav>
+        {{ titles }}
+    </nav>
 
     {{ content }}
 

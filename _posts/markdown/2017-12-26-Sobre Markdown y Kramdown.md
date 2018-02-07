@@ -9,13 +9,14 @@ categories: markdown
 tags: [Kramdown, Markdown]
 description: Kramdown es una librería en Ruby para convertir Markdown a XHTML. Guía de sintáxis de Markdown para convertir fácilmente tus publicaciones en código web semántico.
 robots: NoIndex, Follow
+compartir: si
 ---
 
 
 [**Kramdown**](https://kramdown.gettalong.org/) es una librería en [Ruby](https://www.ruby-lang.org/es/) para procesar y convertir **Markdown** a HTML. La librería, ademas de Kramdown, puede interpretar Markdown, [Github Flavored Markdown](https://guides.github.com/features/mastering-markdown/) y HTML
 
 
-## ¿Qué es Markdown?
+## (h2) ¿Qué es Markdown?
 
 [**Markdown**](https://daringfireball.net/projects/markdown/) es un lenguaje de marcado ligero parecido al que se emplea en muchas wikis y basado originalmente en convenciones existentes en el marcado de los los correos electronicos. Emplea texto plano, procurando que sea legible pero consiguiendo que se convierta en XHTML correctamente formateado.
 
@@ -25,7 +26,7 @@ Dar formato a las palabras en **negrita** o _cursiva_, insertar enlaces internos
 En su mayoría, Markdown sólo es texto normal con algunos caracteres no alfabéticos como ```#``` o ```*```.
 
 
-### Sumario
+### (h3) Sumario
 
 1. [Párrafos](#párrafos)
 1. [Encabezados](#encabezados)
@@ -50,7 +51,7 @@ En su mayoría, Markdown sólo es texto normal con algunos caracteres no alfabé
 1. [Atributos HTML](#atributos-html)
 
 
-## Sintáxis básica Kramdown
+## (h2) Sintáxis básica Kramdown
 
 [original](https://kramdown.gettalong.org/quickref.html)
 
@@ -63,7 +64,7 @@ A saber, la secuencia ```\*``` mostrará un asterisco en lugar de empezar una se
 Comencemos...
 
 
-### Párrafos
+### (h3) Párrafos
 Las líneas de texto consecutivas se consideran un párrafo.
 
 Escribiendo esto
@@ -82,7 +83,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ```
 
 
-### Encabezados
+#### (h4) Encabezados
 
 Se usa la almohadilla para indicar el nivel del titulo.
 
@@ -109,7 +110,7 @@ Escribiendo esto
 ```
 
 
-#### Saltos de línea
+##### (h5) Saltos de línea
 
 a). Separando párrafos con una ó mas línea/s en blanco entre párrafos.
 
@@ -158,7 +159,7 @@ perdió su silla</p>
 c). Añadiendo dos espacios en blanco correlativos al final de línea.
 
 
-### Línea horizontal
+### (h3) Línea horizontal
 
 Las líneas horizontales se crean con tres guiones
 
@@ -185,7 +186,7 @@ ___
 ```
 
 
-### Énfasis
+### (h3) Énfasis
 
 ```*Este texto se verá en cursiva*``` *Este texto se verá en cursiva*
 
@@ -220,7 +221,7 @@ ___
     * Aunque la costumbre se restringe a términos técnicos, nombres propios o referencias puedes usarla para dar __musicalidad__ a tus publicaciones y mejorar la experiencia de usuario con humor, cercanía o complicidad.
 
 
-### Citas o blockquotes
+### (h3) Citas o blockquotes
 
 Se comienza un blockquote usando el marcador "mayor que" (`>`) seguido de un espacio opcional.
 
@@ -256,7 +257,7 @@ Escribiendo esto
 ```
 
 
-### Bloques de código
+### (h3) Bloques de código
 
 Se pueden crear bloques de código para albergar extractos de código fuente de un lenguaje de programación o para reproducir literalmente cualquier tipo de texto sin que sea interpretado por markdown.
 
@@ -295,11 +296,11 @@ Esto es otro bloque de código
 ```
 
 
-### Listas
+#### (h4) Listas
 
 Puede crear listas ordenadas y listas desordenadas.
 
-#### Ordenadas
+##### (h5) Ordenadas
 
 Utilizan el número, un punto y un espacio seguido del ítem.
 
@@ -334,7 +335,7 @@ Escribiendo esto
 </ol>
 ```
 
-#### Desordenadas
+##### (h5) Desordenadas
 
 Se puede utilizar `*`, `+` ó `-`, seguidos de un espacio en blanco.
 También se pueden anidar.
@@ -378,7 +379,7 @@ Escribiendo esto
 ```
 
 
-#### Listas de definiciones
+#### (h4) Listas de definiciones
 
 Las listas de definición apenas se utilizan en la mayoría de páginas web.
 
@@ -411,9 +412,9 @@ Término
 ```
 
 
-### Enlaces
+### (h3) Enlaces
 
-#### Enlaces externos
+#### (h4) Enlaces externos
 
 Se puede crear un enlace simple rodeando el texto con corchetes y el enlace URL con paréntesis
 
@@ -431,9 +432,9 @@ Practica con textos [Lorem Ipsum](http://www.loremipsum.es/) los ejemplos de est
 <p>Practica con textos <a href="http://www.loremipsum.es/">Lorem Ipsum</a> los ejemplos de esta guía básica.</p>
 ```
 
-#### Enlaces internos
+#### (h4) Enlaces internos
 
-##### A párrafos de la página actual
+##### (h5) A párrafos de la página actual
 
 Los encabezados crean automáticamente anclas en la salida html renderizada resultante. También puedes tus propios identificadores de cabecera que tendrá prioridad sobre los id's automáticos
 
@@ -457,7 +458,17 @@ Véase [Enlaces externos](#enlaces-externos)
 <p>Véase <a href="#enlaces-externos">Enlaces externos</a></p>
 ```
 
-##### A párrafos de otras páginas de tu web
+###### (h6) Penúltimo H
+
+añjfñadf djñafafj ñadsjflafjañ añjfajflajf añjfañljfalfjla.
+añjf. añjfañlfjñlajf añllsjfkaflañjfal, añjaljfalfjaljf.
+
+###### (h6) último H
+
+añjfñadf djñafafj ñadsjflafjañ añjfajflajf añjfañljfalfjla.
+añjf. añjfañlfjñlajf añllsjfkaflañjfal, añjaljfalfjaljf.
+
+##### (h5) A párrafos de otras páginas de tu web
 
 Similar al anterior
 
@@ -480,7 +491,7 @@ Copia este [Pasaje estándar Lorem Ipsum]({{ "/blog/que-es-lorem-ipsum.html/#el-
 ```
 
 
-### Imágenes
+### (h3) Imágenes
 
 De forma similar a los enlaces, se inician con un signo de exclamación seguido por el [texto alternativo de la imágen](https://www.w3schools.com/tags/att_img_alt.asp) entre corchetes y el enlace URL entre paréntesis.
 
@@ -489,7 +500,7 @@ De forma similar a los enlaces, se inician con un signo de exclamación seguido 
 ![[Google! agrúpame como imágen de fútbol y puesta de sol](http://lorempixel.com/output/sports-q-c-640-480-6.jpg)\\
 
 
-### Tablas
+### (h3) Tablas
 
 **Kramdown** admite una sintaxis para crear tablas simples.
 
@@ -582,7 +593,7 @@ Escribiendo esto
 :paperclip: **Nota:** `&nbsp;` imprime un espacio en blanco
 
 
-### Notas a pie de página
+### (h3) Notas a pie de página
 
 Cada nota de pie de página se compone de dos elementos; un marcador al lado del texto que se convierte en un superíndice y de una definición que se puede colocar en una lista de notas al pie al final de documento.
 
@@ -615,7 +626,7 @@ Esto es un texto con nota a pie de página [^1]
 ```
 
 
-### Abreviaturas
+#### (h4) Abreviaturas
 
 
 Para crear abreviaturas HTML lo único necesario es crear una lista de ellas (normalmente al final del texto) y en cualquier lugar de la página en la que el texto que aparezca la abreviatura se aplicará automáticamente.
@@ -644,7 +655,7 @@ Puedes crear una versión de tu CV en PDF
 ```
 
 
-### Atributos html
+### (h3) Atributos html
 
 Son modificadores del código html generado por el intérprete **Kramdown* añadiéndoles algún valor por medio de atributos.
 
@@ -725,6 +736,12 @@ Mira más colores en [CSS Colors](https://www.w3schools.com/cssref/css_colors.as
 <p>Mira más colores en <a href="https://www.w3schools.com/cssref/css_colors.asp" title="Nombres de color admitidos por todos los navegadores">CSS Colors</a></p>
 ```
 
+## (h2) Penúltimo H2
 
+jfñajfñlafk ñañjfñlajfaf ñjalfjalfañ ajfñlaflafj ñafjñaf
+
+## (h2) Último H2
+
+jfñajfñlafk ñañjfñlajfaf ñjalfjalfañ ajfñlaflafj ñafjñaf
 
 ---
