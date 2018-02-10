@@ -30,6 +30,7 @@ es:
         tags:
             titleLink: Artículos sobre
     page:
+        titleIndex: Índice de Contenidos
         compartir: Comparte
         seguir: en
     icons:
@@ -109,6 +110,7 @@ gl:
                 link: vía RSS
                 url: /feed.xml
     page:
+        titleIndex: Índice de Contido
         compartir: Comparte
         seguir: no
     icons:
@@ -188,6 +190,7 @@ en:
                 link: via RSS
                 url: /feed.xml
     page:
+        titleIndex: Table of Contents
         compartir: Shares
         seguir: on
     icons:
@@ -267,6 +270,7 @@ pt:
                 link: via RSS
                 url: /feed.xml
     page:
+        titleIndex: Índice
         compartir: Compartilha
         seguir: no
     icons:
@@ -346,6 +350,7 @@ fr:
                 link: flux RSS
                 url: /flux.xml
     page:
+        titleIndex: Table des matières
         compartir: Partage
         seguir: sur
 

@@ -5,14 +5,18 @@ h2 {
 // Code formating
 pre > code { white-space: pre-wrap; }
 
-.afternone {
-    text-indent: 0;
-    &:after {
-        content: none;
-        white-space: inherit;
-        font-size: inherit;
-        font-weight: inherit;
-        color: inherit;
+nav ol li a,
+nav ul li a {
+    &.afternone {
+        text-indent: 0;
+        overflow: visible;
+        &:after {
+            content: none;
+            white-space: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+        }
     }
 }
 
