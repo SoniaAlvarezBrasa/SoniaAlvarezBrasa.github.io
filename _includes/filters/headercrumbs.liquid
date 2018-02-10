@@ -1,117 +1,265 @@
-{% assign ids = null %}
-{% assign headercrumbs = null %}
-{% assign index2 = null %}
+{% capture listClose %}</ol>{% endcapture %}
+{% capture olClose %}</ol></li>{% endcapture %}
+{% capture liOpen %}<li class="{{ include.classLi }}">{% endcapture %}
+{% capture liClose %}</li>{% endcapture %}
+{% capture aOpen %}a class="{{ include.classA }}"{% endcapture %}
+{% capture aClose %}</a>{% endcapture %}
+
+{% assign headercrumbs = null %} {% assign ids = null %}
+{% assign list = null  %}
 
 {% assign ch2 = content | split: '</h2>' %}
 {% for c2 in ch2 %}
     {% assign ch3 = c2 | split: '</h3>' %}
+    {% assign level3 = ch2[forloop.index] | split: '</h3>' | size | minus: 1 %}
 
     {% for c3 in ch3 %}
         {% assign ch4 = c3 | split: '</h4>' %}
+        {% assign level4 = ch3[forloop.index] | split: '</h4>' | size | minus: 1 %}
+
+        {% if ol3 != null %}
+            {% assign list = list | append: ol3 | append: '~~~'  %}
+            {% assign ol3 = null %}
+        {% endif %}
 
         {% for c4 in ch4 %}
             {% assign ch5 = c4 | split: '</h5>' %}
+            {% assign level5 = ch4[forloop.index] | split: '</h5>' | size | minus: 1 %}
+
+            {% if ol4 != null %}
+                {% assign list = list | append: ol4 | append: '~~~' %}
+                {% assign ol4 = null %}
+            {% endif %}
 
             {% for c5 in ch5 %}
                 {% assign ch6 = c5 | split: '</h6>' %}
+                {% assign level6 = ch5[forloop.index] | split: '</h6>' | size | minus: 1 %}
+
+                {% if ol5 != null %}
+                    {% assign list = list | append: ol5 | append: '~~~' %}
+                    {% assign ol5 = null %}
+                {% endif %}
 
                 {% for c6 in ch6 %}
-                    {% if c6 contains '<h6 id=' %}
-                        {% assign insideh = c6 | split: '<h6 id=' | first %}
-                        {% assign hh = c6 | remove: insideh | remove: '<h6 id=' %}
-                        {% assign id = hh | split: '>' | first | strip %}
-                        {% assign id = id | remove: "'" | remove: '"' %}
-                        {% assign ids = ids | append: id | append: '|||' %}
+                    {% if ol6 != null %}
+                        {% assign list = list | append: ol6 | append: '~~~' %}
+                        {% assign ol6 = null %}
+                    {% endif %}
 
-                        {% assign insideh = c6 | split: '<h6 id=' | first %}
-                        {% assign hh = c6 | remove: insideh %}
-                        {% assign insideh = hh | split: '>' | first %}
-                        {% assign header6 = hh | remove: insideh | remove: '>' %}
-                        {% assign header6 = header6 | split: '<' | first | strip %}
+                    {% if c6 contains '<h6 id=' %}
+                        {% capture olOpen %}<ol type="{{include.olType6}}">{% endcapture %}
+                        {% assign index6 = forloop.index %}
+                        {% assign length6 = forloop.length | minus: 1 %}
+
+                        {% assign priori = c6 | split: '<h6 id=' | first %}
+                        {% assign header = c6 | remove: priori | remove: '<h6 id=' %} {% assign priori = null %}
+                        {% assign id = header | split: '>' | first | strip %}
+                        {% assign text = header | split: '</h6>' | first %} {% assign header = null %}
+                        {% assign text = text | remove: id | remove: '<em>' | remove: '</em>' | remove: '<strong>' | remove: '</strong>' | remove: '>' %}
+                        {% assign header6 = text | strip %}
+                        {% assign id = id | remove: "'" | remove: '"' %}
+                        {% assign href = id | prepend: 'href="#' | append: '"' %}
                         {% capture h %}{% if header2 %} \2192\2002 {{ header2 }}{% endif %} \2192\2002 {{ header3 }} \2192\2002 {{ header4 }} \2192\2002 {{ header5 }} \2192\2002 {{ header6 }}{% endcapture %}
-                        {% assign headercrumbs = headercrumbs | append: h | append: '|||' %}
-                        {% assign  h = null %} {% assign insideh = null %} {% assign hh = null %}
+
+                        {% assign ids = ids | append: id | append: '|||' %} {% assign id = null %}
+                        {% assign headercrumbs = headercrumbs | append: h | append: '|||' %} {% assign h = null %}
+                        {% assign li = liOpen | append: '<' | append: aOpen | append: href | append: '>' | append: text | append: aClose %} {% assign href = null %} {% assign text = null %}
+
+                        {% if forloop.first %}
+                            {% assign list = list | append: olOpen %}
+                        {% endif %}
+                        {% if index5 != null %}
+                            {% assign li = li | append: liClose %}
+                            {% if index6 == length6 %}
+                                {% assign li = li | append: olClose %}
+                                {% if index5 == length5 %}
+                                    {% assign li = li | append: olClose %}
+                                    {% if index4 == length4 %}
+                                        {% assign li = li | append: olClose %}
+                                        {% if index3 == length3 %}
+                                            {% assign li = li | append: olClose %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+
+                        {% assign ol6 = ol6 | append: li %} {% assign li = null %}
                     {% endif %}
                 {% endfor %}
 
                 {% if c5 contains '<h5 id=' %}
-                    {% assign insideh = c5 | split: '<h5 id=' | first %}
-                    {% assign hh = c5 | remove: insideh | remove: '<h5 id=' %}
-                    {% assign id = hh | split: '>' | first | strip %}
-                    {% assign id = id | remove: "'" | remove: '"' %}
-                    {% assign ids = ids | append: id | append: '|||' %}
+                    {% capture olOpen %}<ol type="{{include.olType5}}">{% endcapture %}
+                    {% assign index5 = forloop.index %}
+                    {% assign length5 = forloop.length | minus: 1 %}
 
-                    {% assign insideh = c5 | split: '<h5 id=' | first %}
-                    {% assign hh = c5 | remove: insideh %}
-                    {% assign insideh = hh | split: '>' | first %}
-                    {% assign header5 = hh | remove: insideh | remove: '>' %}
-                    {% assign header5 = header5 | split: '<' | first | strip %}
+                    {% assign priori = c5 | split: '<h5 id=' | first %}
+                    {% assign header = c5 | remove: priori | remove: '<h5 id=' %} {% assign priori = null %}
+                    {% assign id = header | split: '>' | first | strip %}
+                    {% assign text = header | split: '</h5>' | first %} {% assign header = null %}
+                    {% assign text = text | remove: id | remove: '<em>' | remove: '</em>' | remove: '<strong>' | remove: '</strong>' | remove: '>' %}
+                    {% assign header5 = text | strip %}
+                    {% assign id = id | remove: "'" | remove: '"' %}
+                    {% assign href = id | prepend: 'href="#' | append: '"' %}
                     {% capture h %}{% if header2 %} \2192\2002 {{ header2 }}{% endif %} \2192\2002 {{ header3 }} \2192\2002 {{ header4 }} \2192\2002 {{ header5 }}{% endcapture %}
-                    {% assign headercrumbs = headercrumbs | append: h | append: '|||' %}
-                    {% assign  h = null %} {% assign insideh = null %} {% assign hh = null %}
+                    {% assign header6 = null %}
+
+                    {% assign ids = ids | append: id | append: '|||' %} {% assign id = null %}
+                    {% assign headercrumbs = headercrumbs | append: h | append: '|||' %} {% assign h = null %}
+                    {% assign li = liOpen | append: '<' | append: aOpen | append: href | append: '>' | append: text | append: aClose %} {% assign href = null %} {% assign text = null %}
+
+                    {% if forloop.first %}
+                        {% assign list = list | append: olOpen %}
+                    {% endif %}
+                    {% if index4 != null %}
+                        {% if level6 < 1  %}
+                            {% assign li = li | append: liClose %}
+                            {% if index5 == length5 %}
+                                {% assign li = li | append: olClose %}
+                                {% if index4 == length4 %}
+                                    {% assign li = li | append: olClose %}
+                                    {% if index3 == length3 %}
+                                        {% assign li = li | append: olClose %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                    {% assign ol5 = ol5 | append: li %} {% assign li = null %}
                 {% endif %}
             {% endfor %}
 
             {% if c4 contains '<h4 id=' %}
-                {% assign insideh = c4 | split: '<h4 id=' | first %}
-                {% assign hh = c4 | remove: insideh | remove: '<h4 id=' %}
-                {% assign id = hh | split: '>' | first | strip %}
-                {% assign id = id | remove: "'" | remove: '"' %}
-                {% assign ids = ids | append: id | append: '|||' %}
+                {% capture olOpen %}<ol type="{{include.olType4}}">{% endcapture %}
+                {% assign index4 = forloop.index %}
+                {% assign length4 = forloop.length | minus: 1 %}
 
-                {% assign insideh = c4 | split: '<h4 id=' | first %}
-                {% assign hh = c4 | remove: insideh %}
-                {% assign insideh = hh | split: '>' | first %}
-                {% assign header4 = hh | remove: insideh | remove: '>' %}
-                {% assign header4 = header4 | split: '<' | first | strip %}
+                {% assign priori = c4 | split: '<h4 id=' | first %}
+                {% assign header = c4 | remove: priori | remove: '<h4 id=' %} {% assign priori = null %}
+                {% assign id = header | split: '>' | first | strip %}
+                {% assign text = header | split: '</h4>' | first %} {% assign header = null %}
+                {% assign text = text | remove: id | remove: '<em>' | remove: '</em>' | remove: '<strong>' | remove: '</strong>' | remove: '>' %}
+                {% assign header4 = text | strip %}
+                {% assign id = id | remove: "'" | remove: '"' %}
+                {% assign href = id | prepend: 'href="#' | append: '"' %}
                 {% capture h %}{% if header2 != null %} \2192\2002 {{ header2 }}{% endif %} \2192\2002 {{ header3 }} \2192\2002 {{ header4 }}{% endcapture %}
-                {% assign headercrumbs = headercrumbs | append: h | append: '|||' %}
-                {% assign  h = null %} {% assign insideh = null %} {% assign hh = null %}
+                {% assign header5 = null %}
+
+                {% assign ids = ids | append: id | append: '|||' %} {% assign id = null %}
+                {% assign headercrumbs = headercrumbs | append: h | append: '|||' %} {% assign h = null %}
+                {% assign li = liOpen | append: '<' | append: aOpen | append: href | append: '>' | append: text | append: aClose %} {% assign href = null %} {% assign text = null %}
+
+                {% if forloop.first %}
+                    {% assign list = list | append: olOpen %}
+                {% endif %}
+                {% if index3 != null %}
+                    {% if level5 < 1  %}
+                        {% assign li = li | append: liClose %}
+                        {% if index4 == length4 %}
+                            {% assign li = li | append: olClose %}
+                            {% if index3 == length3 %}
+                                {% assign li = li | append: olClose %}
+                            {% endif %%}
+                        {% endif %%}
+                    {% endif %}
+                {% endif %}
+
+                {% assign ol4 = ol4 | append: li %} {% assign li = null %}
             {% endif %}
         {% endfor %}
 
         {% if c3 contains '<h3 id=' %}
-            {% assign insideh = c3 | split: '<h3 id=' | first %}
-            {% assign hh = c3 | remove: insideh | remove: '<h3 id=' %}
-            {% assign id = hh | split: '>' | first | strip %}
-            {% assign id = id | remove: "'" | remove: '"' %}
-            {% assign ids = ids | append: id | append: '|||' %}
+            {% capture olOpen %}<ol type="{{include.olType3}}">{% endcapture %}
+            {% assign index3 = forloop.index %}
+            {% assign length3 = forloop.length | minus: 1 %}
 
-            {% assign insideh = c3 | split: '<h3 id=' | first %}
-            {% assign hh = c3 | remove: insideh %}
-            {% assign insideh = hh | split: '>' | first %}
-            {% assign header3 = hh | remove: insideh | remove: '>' %}
-            {% assign header3 = header3 | split: '<' | first | compact %}
+            {% assign priori = c3 | split: '<h3 id=' | first %}
+            {% assign header = c3 | remove: priori | remove: '<h3 id=' %} {% assign priori = null %}
+            {% assign id = header | split: '>' | first | strip %}
+            {% assign text = header | split: '</h3>' | first %} {% assign header = null %}
+            {% assign text = text | remove: id | remove: '<em>' | remove: '</em>' | remove: '<strong>' | remove: '</strong>' | remove: '>' %}
+            {% assign header3 = text | strip %}
+            {% assign id = id | remove: "'" | remove: '"' %}
+            {% assign href = id | prepend: 'href="#' | append: '"' %}
             {% capture h %}{% if header2 != null %} \2192\2002 {{ header2 }}{% endif %} \2192\2002 {{ header3 }}{% endcapture %}
-            {% assign headercrumbs = headercrumbs | append: h | append: '|||' %}
-            {% assign  h = null %} {% assign insideh = null %} {% assign hh = null %}
+            {% assign header4 = null %}
+
+            {% assign ids = ids | append: id | append: '|||' %} {% assign id = null %}
+            {% assign headercrumbs = headercrumbs | append: h | append: '|||' %} {% assign h = null %}
+            {% assign li = liOpen | append: '<' | append: aOpen | append: href | append: '>' | append: text | append: aClose %} {% assign href = null %} {% assign text = null %}
+
+            {% if forloop.first %}
+                {% assign list = list | append: olOpen %}
+            {% endif %}
+            {% if index2 != null %}
+                {% if level4 < 1 %}
+                    {% assign li = li | append: liClose %}
+                    {% if index3 == length3 %}
+                        {% assign li = li | append: olClose %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+            {% assign ol3 = ol3 | append: li %} {% assign li = null %}
         {% endif %}
     {% endfor %}
 
     {% if c2 contains '<h2 id=' %}
-        {% assign insideh = c2 | split: '<h2 id=' | first %}
-        {% assign hh = c2 | remove: insideh | remove: '<h2 id=' %}
-        {% assign id = hh | split: '>' | first | strip %}
-        {% assign id = id | remove: "'" | remove: '"' %}
-        {% assign ids = ids | append: id | append: '|||' %}
+        {% capture olOpen %}<ol class="{{include.classOl}}" type="{{include.olType2}}">{% endcapture %}
+        {% assign index2 = forloop.index %}
+        {% assign length2 = forloop.length | minus: 1 %}
 
-        {% assign insideh = c2 | split: '<h2 id=' | first %}
-        {% assign hh = c2 | remove: insideh %}
-        {% assign insideh = hh | split: '>' | first %}
-        {% assign header2 = hh | remove: insideh | remove: '>' %}
-        {% assign header2 = header2 | split: '<' | first | strip %}
+        {% assign priori = c2 | split: '<h2 id=' | first %}
+        {% assign header = c2 | remove: priori | remove: '<h2 id=' %} {% assign priori = null %}
+        {% assign id = header | split: '>' | first | strip %}
+        {% assign text = header | split: '</h2>' | first %} {% assign header = null %}
+        {% assign text = text | remove: id | remove: '<em>' | remove: '</em>' | remove: '<strong>' | remove: '</strong>' | remove: '>' %}
+        {% assign header2 = text | strip %}
+        {% assign id = id | remove: "'" | remove: '"' %}
+        {% assign href = id | prepend: 'href="#' | append: '"' %}
         {% capture h %} \2192\2002 {{ header2 }}{% endcapture %}
-        {% assign headercrumbs = headercrumbs | append: h | append: '|||' %}
-        {% assign  h = null %} {% assign insideh = null %} {% assign hh = null %}
+        {% assign header3 = null %}
+
+        {% assign ids = ids | append: id | append: '|||' %} {% assign id = null %}
+        {% assign headercrumbs = headercrumbs | append: h | append: '|||' %} {% assign h = null %}
+        {% assign li = liOpen | append: '<' | append: aOpen | append: href | append: '>' | append: text | append: aClose %} {% assign href = null %} {% assign text = null %}
+
+        {% if forloop.first %}
+            {% assign list = list | append: olOpen %}
+        {% endif %}
+        {% if level3 < 1 %}
+            {% assign li = li | append: liClose %}
+            {% if index2 == length2 %}
+                {% assign li = li | append: listClose %}
+            {% endif %}
+        {% endif %}
+
+        {% assign list = list | append: li | append: '~~~' %}
     {% endif %}
 {% endfor %}
+{% assign list = list | split: '~~~' %} {% assign li = null %}
 
-{% assign id = null %}
-{% assign header2 = null %} {% assign header3 = null %} {% assign header4 = null %} {% assign header5 = null %} {% assign header6 = null %}
 {% assign ch2 = null %} {% assign ch3 = null %} {% assign ch4 = null %} {% assign ch5 = null %} {% assign ch6 = null %}
+{% assign header2 = null %}
+{% assign level3 = null %} {% assign level4 = null %} {% assign level5 = null %} {% assign level6 = null %}
+{% assign ol3 = null %} {% assign ol4 = null %} {% assign ol5 = null %} {% assign ol6 = null %}
+{% assign length2 = null %} {% assign length3 = null %} {% assign length4 = null %} {% assign length5 = null %} {% assign length6 = null %}
+{% assign listClose = null %} {% assign olOpen = null %} {% assign olClose = null %} {% assign liOpen = null %} {% assign liClose = null %} {% assign aOpen = null %} {% assign aClose = null %} {% assign listOpen = null %}
 
 {% assign ids = ids | split: '|||' %}
 {% assign headercrumbs = headercrumbs | split: '|||' %}
 
-{% assign index2 = index2 | prepend: '<ol type="I">' %}
-{% assign index2 = index2 | append: '</ol>' %}
+<!-- La variable pagecrumbs se asigna en breaadcrumbs.html -->
+{% for i in ids %}
+    <style type="text/css" media="print">
+        #{{ i }}:after {
+            content: "\A {{ pagecrumbs }} {{ headercrumbs[forloop.index0 ] }} \2714";
+            white-space: pre-wrap;
+            font-size: 65%;
+            font-weight: normal;
+            color: #808080;
+        }
+    </style>
+{% endfor %}
+{% assign headercrumbs = null %} {% assign pagecrumbs = null %} {% assign ids = null %}

@@ -26,31 +26,6 @@ Dar formato a las palabras en **negrita** o _cursiva_, insertar enlaces internos
 En su mayoría, Markdown sólo es texto normal con algunos caracteres no alfabéticos como ```#``` o ```*```.
 
 
-### (h3) Sumario
-
-1. [Párrafos](#párrafos)
-1. [Encabezados](#encabezados)
-1. [Saltos de línea](#saltos-de-línea)
-1. [Línea horizontal](#línea-horizontal)
-1. [Énfasis](#énfasis)
-1. [Citas](#citas)
-1. [Bloques de código](#bloques-de-código)
-1. [Listas](#listas)
-    1. [Ordenadas](#ordenadas)
-    1. [Desordenadas](#desordenadas)
-    1. [Listas de definiciones](#listas-de-definiciones)
-1. [Enlaces](#enlaces)
-    1. [Enlaces externos](#enlaces-externos)
-    1. [Enlaces internos](#enlaces-internos)
-        1. [A párrafos de la página actual](#a-párrafos-de-la-página-actual)
-        1. [A párrafos de otras páginas de tu web](#a-párrafos-de-otras-páginas-de-tu-web)
-1. [Imágenes](#imágenes)
-1. [Tablas](#tablas)
-1. [Notas a pie de página](#notas-a-pie-de-página)
-1. [Abreviaturas](#abreviaturas)
-1. [Atributos HTML](#atributos-html)
-
-
 ## (h2) Sintáxis básica Kramdown
 
 [original](https://kramdown.gettalong.org/quickref.html)
