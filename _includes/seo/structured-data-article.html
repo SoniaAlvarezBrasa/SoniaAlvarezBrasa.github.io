@@ -15,7 +15,7 @@
         {% include seo/structured-data-publisher.html %}
     }, {% if pag.images %}{% for img in pag.images limit:1 %}
     "image": "{{ site.url }}/assets/img{{ img }}", {% endfor %} {% elsif site.ogImage %}
-    "image": "{{ site.url }}/assets/img{{ site.ogImage }}", {% else %}
+    "image": "{{ site.url }}/assets/img{{ site.ogImage.url }}", {% else %}
     "image": "{{ site.url }}/assets/img/default.jpg", {% endif %}
 {% if pag.categories %}{% for category in pag.categories limit:1 %}
     "articleSection": "{{ category }}", {% endfor %}{% endif %}{% if pag.tags %}
