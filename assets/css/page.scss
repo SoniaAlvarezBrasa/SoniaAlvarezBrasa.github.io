@@ -19,8 +19,8 @@
 }
 
 @page :left {
-    margin-left: 3cm;
-    margin-right: 4cm;
+    margin-left: 2cm;
+    margin-right: 3cm;
     p {
         text-align: left;
     }
@@ -29,8 +29,8 @@
     }
 }
 @page :right {
-    margin-left: 4cm;
-    margin-right: 3cm;
+    margin-left: 3cm;
+    margin-right: 2cm;
     p {
         text-align: right !important;
     }
@@ -75,8 +75,6 @@ details, summary, command, menu
     float: none;
 }
 
-ol { margin-left: 2cm; }
-
 body {
     background: transparent !important;
     color: #000 !important;
@@ -87,19 +85,20 @@ body {
             filter: none !important;
 
 
-// --- Pagination
-
-    & page-break-before { padding-top: 24pt; }
-    & page-break-after { padding-bottom: 24pt; }
-
+// --- Pagination and margins
 
     h2, h3, h4, h5, h6 {
         page-break-after: avoid;
+        &:after {
+            page-break-after: avoid;
+        }
+        & + p:nth-of-type(1) {
+            // page-break-before: avoid;
+            // page-break-inside: avoid;
+        }
     }
-    h2 ~ section,
-    h2 ~ article,
-    h3 ~ section,
-    h3 ~ article {
+    h2 ~ section, h2 ~ article,
+    h3 ~ section, h3 ~ article {
         page-break-inside: avoid;
     }
 
@@ -118,7 +117,7 @@ body {
       page-break-after: always;
     }
 
-    p, img, tr, blockquote, ul, ol, dl, pre {
+    p, img, tr, blockquote, ul, dl, pre {
       page-break-inside: avoid;
     }
 
@@ -128,11 +127,13 @@ body {
         padding-bottom: 18pt;
     }
 
+    ol { margin-left: 2cm; }
+
     thead {
         display: table-header-group;
     }
 
-// --- Pagination +
+// --- P & M +
 
     main {
         & > article {
@@ -140,16 +141,56 @@ body {
             margin: 0;
             padding: 0;
             float: none !important;
+
             & > section {
                 page-break-before: always;
                 // padding-top: 24pt;
             }
+
+            & > aside {
+                page-break-before: avoid;
+                & > h3 {
+                    page-break-after: avoid;
+                }
+                & > nav {
+                    page-break-before: avoid;
+                }
+                nav {
+                    & > ol {
+                        margin-left: 2cm;
+                        ol {
+                            margin-left: 1cm;
+                        }
+                        .aHoverXl, .aHoverXs {
+                            a:before {
+                            content: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            & > h2 {
+                page-break-before: always;
+                margin-top: 0;
+                padding-top: 0;
+            }
+
+            & > h3 ~ h3 {
+                page-break-before: always;
+            }
+
+            & > p:nth-of-type(1) {
+                padding-top: 1cm;
+            }
+
             .blog-index {
                 // padding: 0;
                 & > h3 {
                     page-break-after: avoid;
                 }
             }
+
         }
 
         ol + h2 {
@@ -172,6 +213,14 @@ body {
             }
             &.post {
                 padding-bottom: 0;
+                & > header {
+                    h2 {
+                        margin-bottom: 1cm;
+                    }
+                }
+                nav.breadcrumbs {
+                    margin-bottom: 1cm;
+                }
                 & > p,
                 & > section > p {
                     text-indent: 1.5cm;
@@ -260,6 +309,13 @@ body {
                 font-weight: bold;
             }
 
+            .aHoverXl, .aHoverXs {
+                a:before {
+                content: none;
+                // height: 0;
+                }
+            }
+
             .tagcloud-flex,
             .tagcloud-flexbox,
             .tagcloud-bores-flexbox {
@@ -311,10 +367,10 @@ body {
             & > h4,
             & > h5,
             & > h6 {
-                padding-top: 1cm;
+                // padding-top: 1cm;
                 margin-bottom: 1cm;
                 padding-bottom: 0.25cm;
-                // border-bottom: 1pt groove $bgris;
+                border-bottom: 1pt groove $bgris;
 
             }
             & > h2 {
