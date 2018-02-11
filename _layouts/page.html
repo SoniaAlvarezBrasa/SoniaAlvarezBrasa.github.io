@@ -18,22 +18,6 @@ layout: default
     </nav>
 
     {% include filters/headercrumbs.liquid %}
-    <!-- La variable pagecrumbs se asigna en breaadcrumbs.html -->
-    <!-- El array ids se asigna en headercrumbs.liquid -->
-    <!-- El array headercrumbs se asigna en headercrumbs.liquid -->
-    {% for i in ids %}
-    <style type="text/css" media="print">
-        #{{ i }}:after {
-            content: "\A {{ pagecrumbs }} {{ headercrumbs[forloop.index0 ] }} \2714";
-            white-space: pre-wrap;
-            font-size: 65%;
-            font-weight: normal;
-            color: #808080;
-        }
-    </style>
-    {% endfor %}
-    <!-- assigns --> {% assign headercrumbs = null %} {% assign pagecrumbs = null %} {% assign ids = null %}
-
 
     {{ content }}
 

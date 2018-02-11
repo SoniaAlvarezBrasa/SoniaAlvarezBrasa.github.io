@@ -1,0 +1,44 @@
+{% assign breadcrumblistNames = site.tradename | append: '~~~'%}
+{% assign breadcrumblistItems = site.url | append: '~~~' %}
+{% assign item = site.url %}
+{% assign crumbs = page.url | split: '/' %}
+{% for crumb in crumbs offset: 1 %}
+    {% if forloop.last %}
+        {% if page.categories %}
+            {% for cat in page.categories limit: 1 %}
+                {% capture c %}{{ cat | capitalize }}{% endcapture %}
+                {% assign item = item | append: '/' | append: cat %}
+                {% assign breadcrumblistNames = breadcrumblistNames | append: c | append: '~~~'%}
+                {% assign breadcrumblistItems = breadcrumblistItems | append: item | append: '~~~'%}
+                {% assign c = null %}
+            {% endfor %}
+        {% endif %}
+        {% assign name = page.title %}
+        {% assign item = item | append: '/' | append: crumb %}
+    {% else %}
+        {% assign item = item | append: '/' | append: crumb %}
+        {% capture name %}{{ crumb | capitalize }}{% endcapture %}
+    {% endif %}
+    {% assign breadcrumblistNames = breadcrumblistNames | append: name | append: '~~~'%}
+    {% assign breadcrumblistItems = breadcrumblistItems | append: item | append: '~~~'%}
+    {% assign name = null %}
+{% endfor %}
+{% assign item = null %}
+{% assign breadcrumblistNames = breadcrumblistNames | split: '~~~'%}
+{% assign breadcrumblistItems = breadcrumblistItems | split: '~~~'%}
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [ {% for item in breadcrumblistItems %}
+    {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "item": {
+            "@id": "{{ item }}",
+            "name": "{{ breadcrumblistNames[forloop.index0] }}"
+        } {% if forloop.last %}
+    }] {% else %}
+    }, {% endif %} {% endfor %}
+}
+</script>

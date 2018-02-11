@@ -117,6 +117,10 @@ body {
       page-break-after: always;
     }
 
+    thead {
+        display: table-header-group;
+    }
+
     p, img, tr, blockquote, ul, dl, pre {
       page-break-inside: avoid;
     }
@@ -128,10 +132,6 @@ body {
     }
 
     ol { margin-left: 2cm; }
-
-    thead {
-        display: table-header-group;
-    }
 
 // --- P & M +
 
