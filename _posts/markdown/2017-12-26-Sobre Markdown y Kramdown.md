@@ -389,7 +389,7 @@ Término
 
 ### (h3) Enlaces
 
-#### (h4) Enlaces externos
+#### Enlaces externos
 
 Se puede crear un enlace simple rodeando el texto con corchetes y el enlace URL con paréntesis
 
