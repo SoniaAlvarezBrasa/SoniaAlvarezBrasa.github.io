@@ -11,6 +11,10 @@ es:
             url: /blog/categorias.html
         -   name: Sobre Saltw
             url: /nosotros/saltw.html
+    feed:
+        title: Abrir el canal web
+        texto: Suscribirse
+        link: vía RSS
     paginate:
         heading: Últimos artículos
         else: No hay artículos.
@@ -22,11 +26,6 @@ es:
             blogs:
                 title:
                 url:
-            feed:
-                title: Abrir el canal web
-                texto: Suscribirse
-                link: vía RSS
-                url: /feed.xml
         tags:
             titleLink: Artículos sobre
     page:
@@ -93,6 +92,10 @@ gl:
     home:
         title: Webs simples e usables
         subtitle: satisfacción do usuario, arquitectura da información, estratexia, deseño mais desenrolo
+    feed:
+        title: Abri-lo canal web
+        texto: Suscribirse
+        link: vía RSS
     paginate:
         heading: Últimos artigos
         else: Non hai artigos aínda
@@ -104,11 +107,6 @@ gl:
             blogs:
                 title:
                 url:
-            feed:
-                title: Abrir o canal web
-                texto: Suscribirse
-                link: vía RSS
-                url: /feed.xml
     page:
         titleIndex: Índice de Contido
         compartir: Comparte
@@ -173,6 +171,10 @@ en:
     home:
         title: Simple & usable websites
         subtitle: user experience, info architecture, strategy, design, and development
+    feed:
+        title: Open web channel
+        texto: Suscribe
+        link: via RSS
     paginate:
         heading: Recent Posts
         else: No post yet
@@ -184,11 +186,6 @@ en:
             blogs:
                 title:
                 url:
-            feed:
-                title: Open web channel
-                texto: Suscribe
-                link: via RSS
-                url: /feed.xml
     page:
         titleIndex: Table of Contents
         compartir: Shares
@@ -253,6 +250,10 @@ pt:
     home:
         title: Sites simples e utilizáveis
         subtitle: satisfação do usuário, arquitetura da informação, estratégia, design e desenvolvimento
+    feed:
+        title: Abrir o canal web
+        texto: Inscreva-se
+        link: via RSS
     paginate:
         heading: Últimos artigos
         else: Nenhum artigo
@@ -264,11 +265,6 @@ pt:
             blogs:
                 title:
                 url:
-            feed:
-                title: Abrir o canal web
-                texto: Inscreva-se
-                link: via RSS
-                url: /feed.xml
     page:
         titleIndex: Índice
         compartir: Compartilha
@@ -333,6 +329,10 @@ fr:
     home:
         title: Sites simples et utilisables
         subtitle: satisfaction des utilisateurs, architecture de l'information, stratégie, conception et développement
+    feed:
+        title: Ouvrir le canal Web
+        texto: Suivre le
+        link: flux RSS
     paginate:
         heading: Articles récents
         else: Pas encore d'articles
@@ -344,11 +344,6 @@ fr:
             blogs:
                 title:
                 url:
-            feed:
-                title: Ouvrir le canal Web
-                texto: Suivre le
-                link: flux RSS
-                url: /flux.xml
     page:
         titleIndex: Table des matières
         compartir: Partage

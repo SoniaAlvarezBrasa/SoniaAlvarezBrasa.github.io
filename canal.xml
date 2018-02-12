@@ -1,6 +1,6 @@
 ---
 layout: null
-lang: fr
+lang: gl
 nomap: 1
 ---
 {% include filters/feed.liquid %}
