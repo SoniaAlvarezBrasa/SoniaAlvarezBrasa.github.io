@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xml:lang="{{ page.lang }}">
+    <title>{{ site.title[page.lang] | xml_escape }}</title>
+    {% if site.subtitle %}
+    <subtitle>{{ site.subtitle[page.lang] | xml_escape }}</subtitle>{% elsif site.description %}
+    <subtitle>{{ site.description[page.lang] | xml_escape }}</subtitle>{% endif %}
+    <link href="{{ page.url }}" rel="self" type="application/atom+xml" />
+    <link href="{{ site.url }}{% if site.index.[page.lang] != empty %}/{{ site.index.[page.lang] }}{% endif %}" rel="alternate" type="text/html" />
+    {% if site.seo.author %}
+    <author> {% capture autor %}{{ site.seo.author }}{% endcapture %}
+        <name>{{ autor }}</name>
+        <email>{{ site.data.people[autor].email }}</email> {% assign autor = null %}
+    </author> {% endif %}
+    <id>{{ site.url }}{% if site.index.[page.lang] != empty %}/{{ site.index.[page.lang] }}{% endif %}</id>
+    <updated>{{ site.time | date_to_rfc822 }}</updated>
+    {% assign posts=site.posts | where:"lang", page.lang %}
+    {% for post in posts limit:10 %}
+    <entry xml:lang="{{ page.lang }}"> {% assign cats = null %} {% assign c = null %}
+        <title>{{ post.title | xml_escape }}</title>
+        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
+        <id>{{ post.id | prepend: site.baseurl | prepend: site.url }}</id>
+        {% if post.subtitle %}
+        <subtitle>{{ post.subtitle[page.lang] | xml_escape }}</subtitle>{% endif %}
+        <updated>{{ site.time | date_to_rfc822 }}</updated>
+        {% if post.date %}
+        <published>{{ post.date | date_to_rfc822 }}</published> {% endif %}
+        <summary>{% if post.metaOgDescription %}{{ post.metaOgDescription }}{% elsif post.metaDescription %}{{ post.metaDescription }}{% elsif post.description %}{{ post.description }}{% elsif post.excerpt %}{{ post.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}</summary>
+        {% if post.autor %}
+        <author>
+            <name>{{ post.autor }}</name>
+            <email>{{ site.data.people[post.autor].email }}</email> {% assign autor = null %}
+        </author> {% endif %}
+        {% if post.categories.size > 0 %} {% for cat in post.categories %}
+            {% capture c %}{{ cat | capitalize | xml_escape }}{% endcapture %}
+            {% assign cats = cats | append: c | append: '~~~' %} {% assign c = null %}
+        {% endfor %} {% endif %}
+        {% if post.tags.size > 0 %} {% for tag in post.tags %}
+            {% capture c %}{{ tag | capitalize | xml_escape }}{% endcapture %}
+            {% assign cats = cats | append: c | append: '~~~' %} {% assign c = null %}
+        {% endfor %} {% endif %} {% assign cats = cats | split: '~~~' | uniq %}
+        {% for i in cats %}
+        <category term="{{ i | xml_escape }}" label="{{ i | xml_escape }}" />
+        {% endfor %} {% assign cats = null %}
+        <content type="html" xml:base="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{ post.content | xml_escape }}</content>
+    </entry>
+    {% endfor %}
+</feed>

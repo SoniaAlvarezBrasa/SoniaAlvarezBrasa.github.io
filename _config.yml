@@ -37,12 +37,18 @@ index:
     fr: accueil.html
     gl: lar.html
     pt: benvida.html
-feed:
-    es: /fuente.xml
-    en: /feed.xml
-    fr: /flux.xml
-    gl: /canal.xml
-    pt: /feedsite.xml
+rss:
+    es: /rss.xml
+    en: /rss-en.xml
+    fr: /rss-fr.xml
+    gl: /rss-gl.xml
+    pt: /rss-pt.xml
+atom:
+    es: /atom.xml
+    en: /atom-en.xml
+    fr: /atom-fr.xml
+    gl: /atom-gl.xml
+    pt: /atom-pt.xml
 
 # Site default
 prefix: " | Saltw"

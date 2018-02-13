@@ -62,7 +62,8 @@
     {% assign pages=site.pages | where:"ref", page.ref | sort: 'lang' %}{% for pag in pages %}
     {% if pag.lang == 'es' %}<link rel="alternate" hreflang="x-default" href="{{ pag.url | prepend: site.url }}" />{% endif %}
     <link rel="alternate" hreflang="{{ pag.lang }}" href="{{ pag.url | prepend: site.url }}" />{% endfor %}
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title[page.lang] }}" href="{{ site.feed[page.lang] | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title[page.lang] }}" href="{{ site.rss[page.lang] | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title[page.lang] }}" href="{{ site.atom[page.lang] | prepend: site.baseurl | prepend: site.url }}">
     {% include seo/structured-data-website.html %}
     {% include seo/structured-data-organization.html %}
     {% if page.ref == 'index' %}{% elsif page.ref == 'blog-index' %}
