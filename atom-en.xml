@@ -1,0 +1,6 @@
+---
+layout: null
+lang: en
+nomap: 1
+---
+{% include filters/atom.liquid %}

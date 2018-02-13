@@ -12,8 +12,7 @@
         {% for post in posts limit:10 %}
         <item> {% assign cats = null %} {% assign c = null %}
             <title>{{ post.title | xml_escape }}</title>
-            {% capture absolut %}href="{{ post.url  prepend: site.baseurl | prepend: site.url }}#{% endcapture %}
-            <description>{{ post.content | xml_escape | replace: 'href="#', absolut }}</description> {% assign absolut = null %}
+            <description>{{ post.content | xml_escape }}</description>
             <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
             {% if post.autor %}
             <author>{{ site.data.people[post.autor].email }} ({{ post.autor }})</author> {% endif %}

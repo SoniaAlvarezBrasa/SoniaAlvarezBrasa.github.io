@@ -19,12 +19,10 @@
         <title>{{ post.title | xml_escape }}</title>
         <link href="{{ post.url | prepend: site.baseurl | prepend: site.url }}" rel="alternate" type="text/html" />
         <id>{{ post.url | prepend: site.baseurl | prepend: site.url }}</id>
-        {% if post.subtitle %}
-        <subtitle>{{ post.subtitle | xml_escape }}</subtitle>{% endif %}
-        <updated>{{ site.time | date_to_rfc822 }}</updated>
+        <updated>{{ site.time | date_to_xmlschema }}</updated>
         {% if post.date %}
-        <published>{{ post.date | date_to_rfc822 }}</published> {% endif %}
-        <summary>{% if post.metaOgDescription %}{{ post.metaOgDescription }}{% elsif post.metaDescription %}{{ post.metaDescription }}{% elsif post.description %}{{ post.description }}{% elsif post.excerpt %}{{ post.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}</summary>
+        <published>{{ post.date | date_to_xmlschema }}</published> {% endif %}
+        <summary>{% if post.subtitle %}{{ post.subtitle | xml_escape }}{% endif %}. {% if post.metaOgDescription %}{{ post.metaOgDescription }}{% elsif post.metaDescription %}{{ post.metaDescription }}{% elsif post.description %}{{ post.description }}{% elsif post.excerpt %}{{ post.excerpt | strip_html | strip_newlines | truncate: 156 }}{% else %}{{ site.description[page.lang] }}{% endif %}</summary>
         {% if post.autor %}
         <author>
             <name>{{ post.autor }}</name>
