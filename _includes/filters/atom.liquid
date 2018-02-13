@@ -4,7 +4,7 @@
     {% if site.subtitle %}
     <subtitle>{{ site.subtitle[page.lang] | xml_escape }}</subtitle>{% elsif site.description %}
     <subtitle>{{ site.description[page.lang] | xml_escape }}</subtitle>{% endif %}
-    <link href="{{ page.url }}" rel="self" type="application/atom+xml" />
+    <link href="{{ page.url | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/atom+xml" />
     <link href="{{ site.url }}{% if site.index.[page.lang] != empty %}/{{ site.index.[page.lang] }}{% endif %}" rel="alternate" type="text/html" />
     {% if site.seo.author %}
     <author> {% capture autor %}{{ site.seo.author }}{% endcapture %}
@@ -12,15 +12,15 @@
         <email>{{ site.data.people[autor].email }}</email> {% assign autor = null %}
     </author> {% endif %}
     <id>{{ site.url }}{% if site.index.[page.lang] != empty %}/{{ site.index.[page.lang] }}{% endif %}</id>
-    <updated>{{ site.time | date_to_rfc822 }}</updated>
+    <updated>{{ site.time | date_to_xmlschema }}</updated>
     {% assign posts=site.posts | where:"lang", page.lang %}
     {% for post in posts limit:10 %}
     <entry xml:lang="{{ page.lang }}"> {% assign cats = null %} {% assign c = null %}
         <title>{{ post.title | xml_escape }}</title>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <id>{{ post.id | prepend: site.baseurl | prepend: site.url }}</id>
+        <link href="{{ post.url | prepend: site.baseurl | prepend: site.url }}" rel="alternate" type="text/html" />
+        <id>{{ post.url | prepend: site.baseurl | prepend: site.url }}</id>
         {% if post.subtitle %}
-        <subtitle>{{ post.subtitle[page.lang] | xml_escape }}</subtitle>{% endif %}
+        <subtitle>{{ post.subtitle | xml_escape }}</subtitle>{% endif %}
         <updated>{{ site.time | date_to_rfc822 }}</updated>
         {% if post.date %}
         <published>{{ post.date | date_to_rfc822 }}</published> {% endif %}
