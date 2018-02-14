@@ -12,9 +12,9 @@ es:
         -   name: Sobre Saltw
             url: /nosotros/saltw.html
     feed:
-        title: Abrir el canal web
+        title: Abrir la fuente web
         texto: Suscribirse
-        link: vía RSS
+        link: vía
     paginate:
         heading: Últimos artículos
         else: No hay artículos.
@@ -95,7 +95,7 @@ gl:
     feed:
         title: Abri-lo canal web
         texto: Suscribirse
-        link: vía RSS
+        link: vía
     paginate:
         heading: Últimos artigos
         else: Non hai artigos aínda
@@ -174,7 +174,7 @@ en:
     feed:
         title: Open web channel
         texto: Suscribe
-        link: via RSS
+        link: via
     paginate:
         heading: Recent Posts
         else: No post yet
@@ -253,7 +253,7 @@ pt:
     feed:
         title: Abrir o canal web
         texto: Inscreva-se
-        link: via RSS
+        link: via
     paginate:
         heading: Últimos artigos
         else: Nenhum artigo
@@ -332,7 +332,7 @@ fr:
     feed:
         title: Ouvrir le canal Web
         texto: Suivre le
-        link: flux RSS
+        link: flux
     paginate:
         heading: Articles récents
         else: Pas encore d'articles

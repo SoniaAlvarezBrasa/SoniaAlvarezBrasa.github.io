@@ -293,6 +293,7 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
     @include social-brand-text-hover ((brand: colorGrey)...);
     @include social-brand-colors-span ((brand: bgGrey)...);
 }
+
 // ---------- fin de Stilos enlaces redes sociales --------
 
 // ------------------ TagClouds --------------------
@@ -448,4 +449,22 @@ $mapHoverCssBorderUnderlineFromCenterMini:(
 
         & span { color: $color-small; }
     }
+}
+
+.rss {
+    & > li {
+        display: inline-flex;
+        & a span svg {
+            fill: $color-body;
+        }
+        &:hover, &:target, &:focus {
+            & .rss {
+                & svg { fill: #f26522; }
+            }
+            & .atom {
+                & svg { fill: #5dbcd2; }
+            }
+        }
+    }
+
 }

@@ -107,6 +107,9 @@
 
 // ----- Brand colors -----
 $mapSocial:(
+    atom :(
+        bg: #5dbcd2, fill: #fff
+    ),
     codepen :(
         bg: #000, fill: #fff
     ),
@@ -138,6 +141,9 @@ $mapSocial:(
     ),
     reddit :(
         bg: #0077D6, fill: #fff, ellipse: #ff4500
+    ),
+    rss :(
+        bg: #f26522, fill: #fff
     ),
     stackoverflow :(
         bg-dark: #222426, bg-light: #f48023, fill: none

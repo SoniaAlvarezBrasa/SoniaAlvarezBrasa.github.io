@@ -21,12 +21,7 @@
     {% endfor %}
     <footer>
         <nav>
-            <ul>
-                <li class="underlineFCxs">{{ site.data.t.[page.lang].feed.texto }}&nbsp;
-                    <a target="_blank" href="{{ site.feed[page.lang] | prepend: site.url }}" title="{{ site.data.t.[page.lang].feed.title}}">{{ site.data.t.[page.lang].feed.link }}
-                    </a>
-                </li>
-            </ul>
+            {% include ul-feeds.html %}
         </nav>
     </footer>
 </section>

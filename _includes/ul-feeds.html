@@ -1,0 +1,6 @@
+<ul class="rss">
+    <li class="aHoverXs">{{ site.data.t.[page.lang].feed.texto }}&nbsp;
+        <a class="rss" target="_blank" href="{{ site.rss[page.lang] | prepend: site.url }}" title="{{ site.data.t.[page.lang].feed.title}} {{ site.data.t.[page.lang].feed.link }} Rss"><span>{% include svg/icon-rss.svg hidden='true' id='paginate-rss' %}</span>{{ site.data.t.[page.lang].feed.link }} Rss </a></li>
+    <li class="aHoverXs">
+        <a class="atom" target="_blank" href="{{ site.atom[page.lang] | prepend: site.url }}" title="{{ site.data.t.[page.lang].feed.title}} {{ site.data.t.[page.lang].feed.link }} Atom"><span>{% include svg/icon-rss.svg hidden='true' id='paginate-atom' %}</span>{{ site.data.t.[page.lang].feed.link }} Atom </a></li>
+</ul>
