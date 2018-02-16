@@ -4,17 +4,17 @@
     <link rel="icon" sizes="192x192" href="{{ logourl }}favicon-192.png" />
     <link rel="icon" type="image/png" href="{{ logourl }}favicon-32.png" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ logourl }}favicon-180.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ logourl }}favicon-152.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ logourl }}favicon-144.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="{{ logourl }}favicon-120.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ logourl }}favicon-114.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ logourl }}favicon-76.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ logourl }}favicon-72.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ logourl }}favicon-57.png" />
-
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ logourl }}favicon-114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ logourl }}favicon-72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ logourl }}favicon-57.png" />
+    <link rel="apple-touch-icon" href="{{ logourl }}apple-touch-icon-120.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ logourl }}apple-touch-icon-180.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ logourl }}apple-touch-icon-167.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ logourl }}apple-touch-icon-152.png" />
 
     <link rel="mask-icon" color="#971f1f" href="{{ logourl }}logo-mask.svg" />
+
+    <meta name="application-name" content="{{ site.title[page.lang] }}" />
+    <meta name="msapplication-TileColor" content="#971f1f" />
+    <meta name="msapplication-square70x70logo" content="{{logourl}}tile-70.png" />
+    <meta name="msapplication-square150x150logo" content="{{logourl}}tile-150.png" />
+    <meta name="msapplication-square310x310logo" content="{{logourl}}tile-310.png" />
+    <meta name="msapplication-wide310x150logo" content="{{logourl}}tile-wide-310.png" />
+    <meta name="msapplication-notification" content="cycle=2;frequency=360;polling-uri={{ site.rss[page.lang] | prepend: site.url }}" />
