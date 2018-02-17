@@ -3,6 +3,7 @@
     <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="{{ logourl }}favicon.ico" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#971f1f" />
+    <link rel="manifest" href="{{ logourl }}manifest.json" />
     <link rel="icon" type="image/png" sizes="192x192" href="{{ logourl }}favicon-192.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="{{ logourl }}favicon-16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ logourl }}favicon-32.png" />
@@ -15,7 +16,7 @@
 
     <link rel="mask-icon" color="#971f1f" href="{{ logourl }}logo-mask.svg" />
 
-    <meta name="application-name" content="{{ logourl }}msapplication.xml" />
-    <meta name="msapplication-config" content="{{ site.data.ieconfig.xml }}">
+    <meta name="application-name" content="{{ site.title[page.lang] }}" />
+    <meta name="msapplication-config" content="{{ logourl }}ieconfig.xml }}">
     <meta name="msapplication-TileColor" content="#971f1f" />
     <meta name="msapplication-notification" content="cycle=2;frequency=360;polling-uri={{ site.rss[page.lang] | prepend: site.url }}" />
